@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Omni — Modular Dev Environment for Termux</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Inter:wght@400;500;600;700;800&display=swap');
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --bg: #0a0a0f;
+      --surface: #12121a;
+      --border: #1e1e2e;
+      --text: #e2e2e8;
+      --muted: #6b6b80;
+      --accent: #7c3aed;
+      --accent2: #06b6d4;
+      --green: #22c55e;
+      --pink: #ec4899;
+      --orange: #f59e0b;
+    }
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+
+    /* ── Nav ── */
+    nav {
+      padding: 20px 0;
+      border-bottom: 1px solid var(--border);
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    nav .logo { font-size: 1.5rem; font-weight: 800; }
+    nav .logo span { color: var(--accent); }
+    nav a { color: var(--muted); text-decoration: none; font-size: 0.9rem; transition: color .2s; }
+    nav a:hover { color: var(--text); }
+    nav .links { display: flex; gap: 24px; align-items: center; }
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--accent); color: #fff; padding: 10px 24px;
+      border-radius: 8px; text-decoration: none; font-weight: 600;
+      font-size: 0.9rem; transition: all .2s;
+    }
+    .btn:hover { background: #6d28d9; transform: translateY(-1px); }
+    .btn-outline {
+      background: transparent; border: 1px solid var(--border); color: var(--text);
+    }
+    .btn-outline:hover { border-color: var(--accent); background: rgba(124,58,237,.08); }
+
+    /* ── Hero ── */
+    .hero {
+      padding: 80px 0 60px;
+      text-align: center;
+    }
+    .hero h1 {
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      font-weight: 800;
+      line-height: 1.1;
+      margin-bottom: 20px;
+    }
+    .hero h1 span { background: linear-gradient(135deg, var(--accent), var(--accent2)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .hero p {
+      font-size: 1.2rem;
+      color: var(--muted);
+      max-width: 700px;
+      margin: 0 auto 32px;
+    }
+    .hero .actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+    .hero .badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: rgba(124,58,237,.1); color: var(--accent);
+      padding: 6px 14px; border-radius: 100px; font-size: 0.8rem; font-weight: 600;
+      margin-bottom: 24px;
+    }
+
+    /* ── Stats ── */
+    .stats {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px; margin: 60px 0;
+    }
+    .stat-card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 12px; padding: 24px; text-align: center;
+    }
+    .stat-card .num {
+      font-size: 2.5rem; font-weight: 800;
+      background: linear-gradient(135deg, var(--accent), var(--pink));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .stat-card .label { color: var(--muted); font-size: 0.9rem; margin-top: 4px; }
+
+    /* ── Features / Cards ── */
+    .section-title {
+      font-size: 2rem; font-weight: 700; margin-bottom: 12px;
+      text-align: center;
+    }
+    .section-sub { color: var(--muted); text-align: center; margin-bottom: 48px; font-size: 1.1rem; }
+    .features { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px; margin: 40px 0; }
+    .card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 12px; padding: 28px; transition: all .2s;
+    }
+    .card:hover { border-color: var(--accent); transform: translateY(-2px); }
+    .card .icon { font-size: 2rem; margin-bottom: 12px; }
+    .card h3 { font-size: 1.1rem; font-weight: 600; margin-bottom: 8px; }
+    .card p { color: var(--muted); font-size: 0.9rem; }
+
+    /* ── AI Tools Grid ── */
+    .tool-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+      gap: 10px; margin: 40px 0;
+    }
+    .tool-chip {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 8px; padding: 12px 16px;
+      font-size: 0.85rem; font-weight: 500; text-align: center;
+      transition: all .2s;
+    }
+    .tool-chip:hover { border-color: var(--accent); background: rgba(124,58,237,.05); }
+
+    /* ── Code block ── */
+    .code-block {
+      background: #0d0d14; border: 1px solid var(--border);
+      border-radius: 10px; padding: 20px 24px;
+      font-family: 'JetBrains Mono', monospace; font-size: 0.85rem;
+      overflow-x: auto; margin: 40px 0;
+    }
+    .code-block .comment { color: #6b7280; }
+    .code-block .keyword { color: var(--accent); }
+    .code-block .str { color: var(--green); }
+    .code-block .fn { color: var(--accent2); }
+
+    /* ── Install section ── */
+    .install-box {
+      background: linear-gradient(135deg, rgba(124,58,237,.08), rgba(6,182,212,.08));
+      border: 1px solid var(--border); border-radius: 12px;
+      padding: 40px; text-align: center; margin: 60px 0;
+    }
+    .install-box h2 { font-size: 1.8rem; margin-bottom: 12px; }
+    .install-box p { color: var(--muted); margin-bottom: 24px; }
+    .install-cmd {
+      background: #0d0d14; border: 1px solid var(--border);
+      border-radius: 10px; padding: 16px 20px;
+      font-family: 'JetBrains Mono', monospace; font-size: 0.9rem;
+      display: inline-flex; align-items: center; gap: 12px;
+      max-width: 100%; overflow-x: auto;
+    }
+    .install-cmd .prompt { color: var(--green); }
+    .install-cmd .cmd { color: var(--accent2); }
+
+    /* ── Footer ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 40px 0; margin-top: 80px;
+      text-align: center; color: var(--muted); font-size: 0.9rem;
+    }
+    footer a { color: var(--accent); text-decoration: none; }
+
+    /* ── Responsive ── */
+    @media (max-width: 600px) {
+      nav .links .btn { display: none; }
+      .hero { padding: 40px 0; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <nav>
+      <div class="logo">◈ <span>Omni</span></div>
+      <div class="links">
+        <a href="#features">Features</a>
+        <a href="#tools">Tools</a>
+        <a href="https://github.com/israel676767/omni" target="_blank">GitHub</a>
+        <a href="https://github.com/israel676767/omni" class="btn">★ Star on GitHub</a>
+      </div>
+    </nav>
+
+    <section class="hero">
+      <div class="badge">⚡ v4.4.0 — Android + Termux</div>
+      <h1>Your <span>Dev Environment</span><br>One Command Away</h1>
+      <p>Install languages, databases, AI coding agents, editors, and tools on Termux — all from a single, beautifully modular CLI.</p>
+      <div class="actions">
+        <a href="https://github.com/israel676767/omni" class="btn">▼ Install Omni</a>
+        <a href="https://github.com/israel676767/omni" class="btn btn-outline">📖 Read Docs</a>
+      </div>
+    </section>
+
+    <div class="stats">
+      <div class="stat-card"><div class="num">26</div><div class="label">AI Tools</div></div>
+      <div class="stat-card"><div class="num">8</div><div class="label">Languages</div></div>
+      <div class="stat-card"><div class="num">4</div><div class="label">Databases</div></div>
+      <div class="stat-card"><div class="num">19</div><div class="label">Dev Tools</div></div>
+      <div class="stat-card"><div class="num">10</div><div class="label">Node Modules</div></div>
+    </div>
+
+    <div class="install-box">
+      <h2>🚀 Install in One Line</h2>
+      <p>Runs on any Termux Android device. Zero dependencies required.</p>
+      <div class="install-cmd">
+        <span class="prompt">$</span>
+        <span class="cmd">curl -fsSL https://raw.githubusercontent.com/israel676767/omni/main/install.sh | bash</span>
+      </div>
+    </div>
+
+    <section id="features">
+      <h2 class="section-title">Why Omni?</h2>
+      <p class="section-sub">Everything you need to code on your phone</p>
+      <div class="features">
+        <div class="card">
+          <div class="icon">🤖</div>
+          <h3>26 AI Coding Agents</h3>
+          <p>OpenCode, Claude Code, Gemini CLI, Codex, Freebuff, Qwen, MiMo, and more — pre-configured for Termux.</p>
+        </div>
+        <div class="card">
+          <div class="icon">📦</div>
+          <h3>Modular Installation</h3>
+          <p>Install only what you need. Choose individual tools or entire modules. CLI flags or interactive TUI menu.</p>
+        </div>
+        <div class="card">
+          <div class="icon">⚡</div>
+          <h3>Native + Proot Support</h3>
+          <p>Automatic glibc setup for native binaries. Falls back to proot-distro Ubuntu containers when needed.</p>
+        </div>
+        <div class="card">
+          <div class="icon">🧠</div>
+          <h3>Second Brain</h3>
+          <p>Built-in memory system with AI-powered search, graph visualization, and GitHub sync.</p>
+        </div>
+        <div class="card">
+          <div class="icon">🎨</div>
+          <h3>Beautiful Terminal UI</h3>
+          <p>Interactive dialog/whiptail menus, real-time progress bars, spinner animations, and startup banner.</p>
+        </div>
+        <div class="card">
+          <div class="icon">🔧</div>
+          <h3>Doctor Diagnostics</h3>
+          <p>Comprehensive environment audit with auto-correction. Detects and fixes 20+ categories of issues.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="tools">
+      <h2 class="section-title">All AI Tools</h2>
+      <p class="section-sub">Pre-packaged and ready to install</p>
+      <div class="tool-grid">
+        <div class="tool-chip">Qwen Code</div>
+        <div class="tool-chip">Gemini CLI</div>
+        <div class="tool-chip">Claude Code</div>
+        <div class="tool-chip">Mistral Vibe</div>
+        <div class="tool-chip">OpenClaude</div>
+        <div class="tool-chip">OpenClaw</div>
+        <div class="tool-chip">Ollama</div>
+        <div class="tool-chip">Codex CLI</div>
+        <div class="tool-chip">OpenCode</div>
+        <div class="tool-chip">MiMo Code</div>
+        <div class="tool-chip">Engram</div>
+        <div class="tool-chip">CodeGraph</div>
+        <div class="tool-chip">Pi</div>
+        <div class="tool-chip">Antigravity CLI</div>
+        <div class="tool-chip">Gentle AI</div>
+        <div class="tool-chip">Minimax CLI</div>
+        <div class="tool-chip">GGA</div>
+        <div class="tool-chip">Hermes Agent</div>
+        <div class="tool-chip">Kimi Code</div>
+        <div class="tool-chip">Command Code</div>
+        <div class="tool-chip">Freebuff</div>
+        <div class="tool-chip">Kiro CLI</div>
+        <div class="tool-chip">HeyGen CLI</div>
+        <div class="tool-chip">Seedance CLI</div>
+        <div class="tool-chip">Veo 3 SDK</div>
+        <div class="tool-chip">Odysseus</div>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="section-title">Quick Start</h2>
+      <p class="section-sub">After installation</p>
+      <div class="code-block">
+        <span class="comment"># Install specific AI tools</span><br>
+        <span class="prompt">$ </span>omni install ai --opencode --claude-code --ollama<br><br>
+        <span class="comment"># Install everything</span><br>
+        <span class="prompt">$ </span>omni install lang db dev npm shell ui<br><br>
+        <span class="comment"># Open interactive menu</span><br>
+        <span class="prompt">$ </span>omni<br><br>
+        <span class="comment"># Check environment health</span><br>
+        <span class="prompt">$ </span>omni doctor<br><br>
+        <span class="comment"># List installed AI tools</span><br>
+        <span class="prompt">$ </span>omni list ai
+      </div>
+    </section>
+
+    <footer>
+      <p>Built with ❤️ by <a href="https://github.com/israel676767">israel marques</a> — 12 years of experience</p>
+      <p style="margin-top:8px"><a href="https://github.com/israel676767/omni">GitHub</a> &middot; <a href="https://github.com/israel676767/omni/blob/main/LICENSE">MIT License</a></p>
+    </footer>
+  </div>
+</body>
+</html>

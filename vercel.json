@@ -1,0 +1,6 @@
+{
+  "buildCommand": "cp -r public/* . && echo 'Built'",
+  "outputDirectory": ".",
+  "framework": null,
+  "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }]
+}
