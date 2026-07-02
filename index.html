@@ -5,187 +5,160 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Omni — Modular Dev Environment for Termux</title>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Inter:wght@400;500;600;700;800&display=swap');
-
+    @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Inter:wght@400;500;600;700;800;900&display=swap');
     * { margin: 0; padding: 0; box-sizing: border-box; }
     :root {
-      --bg: #0a0a0f;
-      --surface: #12121a;
-      --border: #1e1e2e;
-      --text: #e2e2e8;
-      --muted: #6b6b80;
-      --accent: #7c3aed;
-      --accent2: #06b6d4;
-      --green: #22c55e;
-      --pink: #ec4899;
-      --orange: #f59e0b;
+      --bg: #0a0a0f; --surface: #12121a; --surface2: #181825;
+      --border: #1e1e2e; --text: #e2e2e8; --muted: #6b6b80;
+      --accent: #7c3aed; --accent2: #06b6d4; --green: #22c55e;
+      --pink: #ec4899; --radius: 12px;
     }
-    body {
-      font-family: 'Inter', system-ui, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-      min-height: 100vh;
-    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', system-ui, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; min-height: 100vh; }
     .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
-
-    /* ── Nav ── */
-    nav {
-      padding: 20px 0;
-      border-bottom: 1px solid var(--border);
-      display: flex; justify-content: space-between; align-items: center;
-    }
-    nav .logo { font-size: 1.5rem; font-weight: 800; }
-    nav .logo span { color: var(--accent); }
+    .container-wide { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+    nav { padding: 20px 0; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; }
+    nav .logo { display: flex; align-items: center; gap: 12px; font-size: 1.3rem; font-weight: 800; text-decoration: none; color: var(--text); }
     nav a { color: var(--muted); text-decoration: none; font-size: 0.9rem; transition: color .2s; }
     nav a:hover { color: var(--text); }
     nav .links { display: flex; gap: 24px; align-items: center; }
-    .btn {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: var(--accent); color: #fff; padding: 10px 24px;
-      border-radius: 8px; text-decoration: none; font-weight: 600;
-      font-size: 0.9rem; transition: all .2s;
-    }
-    .btn:hover { background: #6d28d9; transform: translateY(-1px); }
-    .btn-outline {
-      background: transparent; border: 1px solid var(--border); color: var(--text);
-    }
-    .btn-outline:hover { border-color: var(--accent); background: rgba(124,58,237,.08); }
-
-    /* ── Hero ── */
-    .hero {
-      padding: 80px 0 60px;
-      text-align: center;
-    }
-    .hero h1 {
-      font-size: clamp(2.5rem, 6vw, 4.5rem);
-      font-weight: 800;
-      line-height: 1.1;
-      margin-bottom: 20px;
-    }
-    .hero h1 span { background: linear-gradient(135deg, var(--accent), var(--accent2)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-    .hero p {
-      font-size: 1.2rem;
-      color: var(--muted);
-      max-width: 700px;
-      margin: 0 auto 32px;
-    }
-    .hero .actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
-    .hero .badge {
-      display: inline-flex; align-items: center; gap: 6px;
-      background: rgba(124,58,237,.1); color: var(--accent);
-      padding: 6px 14px; border-radius: 100px; font-size: 0.8rem; font-weight: 600;
-      margin-bottom: 24px;
-    }
-
-    /* ── Stats ── */
-    .stats {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 16px; margin: 60px 0;
-    }
-    .stat-card {
-      background: var(--surface); border: 1px solid var(--border);
-      border-radius: 12px; padding: 24px; text-align: center;
-    }
-    .stat-card .num {
-      font-size: 2.5rem; font-weight: 800;
-      background: linear-gradient(135deg, var(--accent), var(--pink));
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-    }
-    .stat-card .label { color: var(--muted); font-size: 0.9rem; margin-top: 4px; }
-
-    /* ── Features / Cards ── */
-    .section-title {
-      font-size: 2rem; font-weight: 700; margin-bottom: 12px;
-      text-align: center;
-    }
-    .section-sub { color: var(--muted); text-align: center; margin-bottom: 48px; font-size: 1.1rem; }
+    .btn { display: inline-flex; align-items: center; gap: 8px; background: var(--accent); color: #fff; padding: 10px 24px; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 0.9rem; transition: all .2s; cursor: pointer; border: none; }
+    .btn:hover { background: #6d28d9; transform: translateY(-1px); box-shadow: 0 8px 24px rgba(124,58,237,.3); }
+    .btn-outline { background: transparent; border: 1px solid var(--border); color: var(--text); }
+    .btn-outline:hover { border-color: var(--accent); background: rgba(124,58,237,.08); box-shadow: none; }
+    .btn-copy { background: var(--surface); border: 1px solid var(--border); color: var(--muted); padding: 8px 16px; font-size: .8rem; cursor: pointer; border-radius: 6px; transition: all .2s; }
+    .btn-copy:hover { border-color: var(--accent2); color: var(--accent2); }
+    .hero { padding: 100px 0 60px; text-align: center; position: relative; overflow: hidden; }
+    .hero::before { content: ''; position: absolute; top: -50%; left: 50%; transform: translateX(-50%); width: 800px; height: 800px; background: radial-gradient(circle, rgba(124,58,237,.06) 0%, transparent 70%); pointer-events: none; }
+    .hero-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(124,58,237,.1); color: var(--accent); padding: 8px 18px; border-radius: 100px; font-size: 0.85rem; font-weight: 600; margin-bottom: 28px; border: 1px solid rgba(124,58,237,.2); }
+    .hero h1 { font-size: clamp(2.8rem, 7vw, 5rem); font-weight: 900; line-height: 1.05; margin-bottom: 20px; letter-spacing: -0.02em; }
+    .hero h1 .gradient-text { background: linear-gradient(135deg, var(--accent), var(--accent2), var(--pink)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .hero p { font-size: 1.2rem; color: var(--muted); max-width: 650px; margin: 0 auto 36px; line-height: 1.7; }
+    .hero .actions { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+    .logo-svg { width: 72px; height: 72px; display: block; filter: drop-shadow(0 4px 20px rgba(124,58,237,.3)); }
+    .hero .logo-wrap { margin-bottom: 24px; display: flex; justify-content: center; }
+    .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; margin: 60px 0; }
+    .stat-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 24px 16px; text-align: center; transition: all .3s; }
+    .stat-card:hover { border-color: var(--accent); transform: translateY(-2px); }
+    .stat-card .num { font-size: 2.5rem; font-weight: 800; background: linear-gradient(135deg, var(--accent), var(--pink)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .stat-card .label { color: var(--muted); font-size: 0.85rem; margin-top: 6px; }
+    .section-title { font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 800; margin-bottom: 12px; text-align: center; }
+    .section-sub { color: var(--muted); text-align: center; margin-bottom: 48px; font-size: 1.05rem; max-width: 600px; margin-left: auto; margin-right: auto; }
     .features { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px; margin: 40px 0; }
-    .card {
-      background: var(--surface); border: 1px solid var(--border);
-      border-radius: 12px; padding: 28px; transition: all .2s;
-    }
-    .card:hover { border-color: var(--accent); transform: translateY(-2px); }
-    .card .icon { font-size: 2rem; margin-bottom: 12px; }
+    .card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 28px; transition: all .3s; position: relative; overflow: hidden; }
+    .card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, var(--accent), var(--accent2)); opacity: 0; transition: opacity .3s; }
+    .card:hover::before { opacity: 1; }
+    .card:hover { border-color: var(--accent); transform: translateY(-3px); box-shadow: 0 12px 40px rgba(0,0,0,.3); }
+    .card .icon { font-size: 2rem; margin-bottom: 14px; }
     .card h3 { font-size: 1.1rem; font-weight: 600; margin-bottom: 8px; }
-    .card p { color: var(--muted); font-size: 0.9rem; }
-
-    /* ── AI Tools Grid ── */
-    .tool-grid {
-      display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-      gap: 10px; margin: 40px 0;
-    }
-    .tool-chip {
-      background: var(--surface); border: 1px solid var(--border);
-      border-radius: 8px; padding: 12px 16px;
-      font-size: 0.85rem; font-weight: 500; text-align: center;
-      transition: all .2s;
-    }
-    .tool-chip:hover { border-color: var(--accent); background: rgba(124,58,237,.05); }
-
-    /* ── Code block ── */
-    .code-block {
-      background: #0d0d14; border: 1px solid var(--border);
-      border-radius: 10px; padding: 20px 24px;
-      font-family: 'JetBrains Mono', monospace; font-size: 0.85rem;
-      overflow-x: auto; margin: 40px 0;
-    }
-    .code-block .comment { color: #6b7280; }
-    .code-block .keyword { color: var(--accent); }
-    .code-block .str { color: var(--green); }
-    .code-block .fn { color: var(--accent2); }
-
-    /* ── Install section ── */
-    .install-box {
-      background: linear-gradient(135deg, rgba(124,58,237,.08), rgba(6,182,212,.08));
-      border: 1px solid var(--border); border-radius: 12px;
-      padding: 40px; text-align: center; margin: 60px 0;
-    }
+    .card p { color: var(--muted); font-size: 0.9rem; line-height: 1.6; }
+    .tool-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 10px; margin: 40px 0; }
+    .tool-chip { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 12px 14px; font-size: 0.82rem; font-weight: 500; text-align: center; transition: all .2s; }
+    .tool-chip:hover { border-color: var(--accent); background: rgba(124,58,237,.08); transform: translateY(-1px); }
+    .code-block { background: #0d0d14; border: 1px solid var(--border); border-radius: 10px; padding: 20px 24px; font-family: 'JetBrains Mono', monospace; font-size: 0.82rem; overflow-x: auto; margin: 40px 0; line-height: 1.7; }
+    .code-block .comment { color: #6b7280; font-style: italic; }
+    .code-block .keyword { color: var(--accent); } .code-block .str { color: var(--green); } .code-block .fn { color: var(--accent2); }
+    .install-box { background: linear-gradient(135deg, rgba(124,58,237,.06), rgba(6,182,212,.06)); border: 1px solid var(--border); border-radius: var(--radius); padding: 48px 40px; text-align: center; margin: 60px 0; }
     .install-box h2 { font-size: 1.8rem; margin-bottom: 12px; }
-    .install-box p { color: var(--muted); margin-bottom: 24px; }
-    .install-cmd {
-      background: #0d0d14; border: 1px solid var(--border);
-      border-radius: 10px; padding: 16px 20px;
-      font-family: 'JetBrains Mono', monospace; font-size: 0.9rem;
-      display: inline-flex; align-items: center; gap: 12px;
-      max-width: 100%; overflow-x: auto;
-    }
-    .install-cmd .prompt { color: var(--green); }
-    .install-cmd .cmd { color: var(--accent2); }
-
-    /* ── Footer ── */
-    footer {
-      border-top: 1px solid var(--border);
-      padding: 40px 0; margin-top: 80px;
-      text-align: center; color: var(--muted); font-size: 0.9rem;
-    }
+    .install-box p { color: var(--muted); margin-bottom: 24px; font-size: 1rem; }
+    .install-cmd-wrap { display: flex; align-items: center; justify-content: center; gap: 10px; flex-wrap: wrap; }
+    .install-cmd { background: #0d0d14; border: 1px solid var(--border); border-radius: 10px; padding: 14px 20px; font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; display: inline-flex; align-items: center; gap: 10px; max-width: 100%; overflow-x: auto; }
+    .install-cmd .prompt { color: var(--green); user-select: none; }
+    .install-cmd .cmd { color: var(--accent2); white-space: nowrap; }
+    .deploy-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 16px; margin: 40px 0; }
+    .deploy-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 28px; text-align: center; transition: all .3s; }
+    .deploy-card:hover { border-color: var(--accent2); transform: translateY(-2px); }
+    .deploy-card .d-icon { font-size: 2.2rem; margin-bottom: 12px; }
+    .deploy-card h3 { font-size: 1.1rem; font-weight: 600; margin-bottom: 6px; }
+    .deploy-card p { color: var(--muted); font-size: 0.85rem; }
+    .deploy-card .status { display: inline-block; margin-top: 10px; background: rgba(34,197,94,.1); color: var(--green); padding: 4px 12px; border-radius: 100px; font-size: 0.75rem; }
+    .npm-preview { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 32px; margin: 40px 0; text-align: center; }
+    .npm-preview .npm-logo { display: inline-flex; align-items: center; gap: 8px; font-size: 1.2rem; font-weight: 700; margin-bottom: 16px; }
+    .npm-preview .npm-logo span { color: #cb3837; }
+    .npm-preview .npm-info { display: flex; justify-content: center; gap: 32px; flex-wrap: wrap; margin: 20px 0; }
+    .npm-preview .npm-info > div { text-align: center; }
+    .npm-preview .npm-info .val { font-size: 1.5rem; font-weight: 700; }
+    .npm-preview .npm-info .lbl { color: var(--muted); font-size: 0.8rem; }
+    footer { border-top: 1px solid var(--border); padding: 48px 0; margin-top: 80px; text-align: center; color: var(--muted); font-size: 0.9rem; }
+    footer .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 32px; text-align: left; margin-bottom: 32px; }
+    footer .footer-grid h4 { font-size: 0.85rem; font-weight: 600; margin-bottom: 12px; color: var(--text); }
+    footer .footer-grid a { display: block; color: var(--muted); text-decoration: none; font-size: 0.85rem; margin-bottom: 8px; transition: color .2s; }
+    footer .footer-grid a:hover { color: var(--accent); }
+    footer .footer-bottom { border-top: 1px solid var(--border); padding-top: 24px; }
     footer a { color: var(--accent); text-decoration: none; }
-
-    /* ── Responsive ── */
-    @media (max-width: 600px) {
-      nav .links .btn { display: none; }
-      .hero { padding: 40px 0; }
+    .toast { position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%); background: var(--surface2); border: 1px solid var(--border); color: var(--text); padding: 10px 20px; border-radius: 8px; font-size: 0.85rem; opacity: 0; transition: opacity .3s; z-index: 999; pointer-events: none; }
+    .toast.show { opacity: 1; }
+    @media (max-width: 768px) {
+      .container { padding: 0 16px; }
+      nav .links a:not(.btn) { display: none; }
+      .hero { padding: 60px 0 40px; }
+      .hero h1 { font-size: clamp(2rem, 8vw, 2.8rem); }
+      .hero p { font-size: 1rem; }
+      .stats { grid-template-columns: repeat(3, 1fr); gap: 8px; }
+      .stat-card { padding: 16px 12px; } .stat-card .num { font-size: 1.8rem; }
+      .features { grid-template-columns: 1fr; }
+      .tool-grid { grid-template-columns: repeat(2, 1fr); }
+      .install-box { padding: 32px 20px; }
+      .install-cmd { font-size: 0.75rem; padding: 10px 14px; }
+      .deploy-grid { grid-template-columns: 1fr; }
+      footer .footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 480px) {
+      .stats { grid-template-columns: repeat(2, 1fr); }
+      .tool-grid { grid-template-columns: repeat(2, 1fr); }
+      .hero .actions .btn { width: 100%; justify-content: center; }
+      .logo-svg { width: 56px; height: 56px; }
     }
   </style>
 </head>
 <body>
-  <div class="container">
+  <div class="toast" id="toast"></div>
+  <div class="container-wide">
     <nav>
-      <div class="logo">◈ <span>Omni</span></div>
+      <a href="#" class="logo">
+        <svg class="logo-svg" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="rubyGrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#e11d48"/><stop offset="50%" stop-color="#be123c"/><stop offset="100%" stop-color="#881337"/></linearGradient>
+            <linearGradient id="obsidianGrad" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#334155"/><stop offset="50%" stop-color="#1e293b"/><stop offset="100%" stop-color="#0f172a"/></linearGradient>
+            <linearGradient id="shimmer" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="rgba(255,255,255,.35)"/><stop offset="50%" stop-color="rgba(255,255,255,0)"/><stop offset="100%" stop-color="rgba(255,255,255,.08)"/></linearGradient>
+          </defs>
+          <polygon points="60,4 110,35 110,85 60,116 10,85 10,35" fill="url(#obsidianGrad)" stroke="#475569" stroke-width="1.5"/>
+          <polygon points="60,4 110,35 60,60 10,35" fill="url(#rubyGrad)" opacity=".9"/>
+          <polygon points="60,60 110,85 60,116 10,85" fill="url(#obsidianGrad)"/>
+          <polygon points="60,4 60,60 10,35" fill="url(#shimmer)" opacity=".35"/>
+          <polygon points="60,60 110,35 110,85" fill="url(#shimmer)" opacity=".12"/>
+          <line x1="60" y1="4" x2="60" y2="116" stroke="#475569" stroke-width=".5" opacity=".4"/>
+        </svg>
+        <span>Omni</span>
+      </a>
       <div class="links">
         <a href="#features">Features</a>
         <a href="#tools">Tools</a>
+        <a href="#deploy">Deploy</a>
         <a href="https://github.com/israel676767/omni" target="_blank">GitHub</a>
-        <a href="https://github.com/israel676767/omni" class="btn">★ Star on GitHub</a>
+        <a href="https://github.com/israel676767/omni" class="btn">★ Star</a>
       </div>
     </nav>
+  </div>
 
+  <div class="container">
     <section class="hero">
-      <div class="badge">⚡ v4.4.0 — Android + Termux</div>
-      <h1>Your <span>Dev Environment</span><br>One Command Away</h1>
-      <p>Install languages, databases, AI coding agents, editors, and tools on Termux — all from a single, beautifully modular CLI.</p>
+      <div class="logo-wrap">
+        <svg class="logo-svg" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <use href="#rubyGrad"/> <use href="#obsidianGrad"/> <use href="#shimmer"/>
+          <polygon points="60,4 110,35 110,85 60,116 10,85 10,35" fill="url(#obsidianGrad)" stroke="#475569" stroke-width="1.5"/>
+          <polygon points="60,4 110,35 60,60 10,35" fill="url(#rubyGrad)" opacity=".9"/>
+          <polygon points="60,60 110,85 60,116 10,85" fill="url(#obsidianGrad)"/>
+          <polygon points="60,4 60,60 10,35" fill="url(#shimmer)" opacity=".35"/>
+          <polygon points="60,60 110,35 110,85" fill="url(#shimmer)" opacity=".12"/>
+          <line x1="60" y1="4" x2="60" y2="116" stroke="#475569" stroke-width=".5" opacity=".4"/>
+        </svg>
+      </div>
+      <div class="hero-badge">⚡ v4.4.0 &mdash; Android + Termux</div>
+      <h1>Your <span class="gradient-text">Dev Environment</span><br>One Command Away</h1>
+      <p>Install languages, databases, AI coding agents, editors, and deploy tools on Termux &mdash; all from a single modular CLI.</p>
       <div class="actions">
-        <a href="https://github.com/israel676767/omni" class="btn">▼ Install Omni</a>
+        <a href="#install" class="btn">▼ Install Now</a>
         <a href="https://github.com/israel676767/omni" class="btn btn-outline">📖 Read Docs</a>
       </div>
     </section>
@@ -195,15 +168,19 @@
       <div class="stat-card"><div class="num">8</div><div class="label">Languages</div></div>
       <div class="stat-card"><div class="num">4</div><div class="label">Databases</div></div>
       <div class="stat-card"><div class="num">19</div><div class="label">Dev Tools</div></div>
-      <div class="stat-card"><div class="num">10</div><div class="label">Node Modules</div></div>
+      <div class="stat-card"><div class="num">3</div><div class="label">Deploy CLIs</div></div>
+      <div class="stat-card"><div class="num">77</div><div class="label">Total Packages</div></div>
     </div>
 
-    <div class="install-box">
+    <div id="install" class="install-box">
       <h2>🚀 Install in One Line</h2>
       <p>Runs on any Termux Android device. Zero dependencies required.</p>
-      <div class="install-cmd">
-        <span class="prompt">$</span>
-        <span class="cmd">curl -fsSL https://raw.githubusercontent.com/israel676767/omni/main/install.sh | bash</span>
+      <div class="install-cmd-wrap">
+        <div class="install-cmd">
+          <span class="prompt">$</span>
+          <span class="cmd">bash -c "$(curl -fsSL https://raw.githubusercontent.com/israel676767/omni/main/install.sh)"</span>
+        </div>
+        <button class="btn-copy" onclick="copyCmd()">📋 Copy</button>
       </div>
     </div>
 
@@ -211,93 +188,108 @@
       <h2 class="section-title">Why Omni?</h2>
       <p class="section-sub">Everything you need to code on your phone</p>
       <div class="features">
-        <div class="card">
-          <div class="icon">🤖</div>
-          <h3>26 AI Coding Agents</h3>
-          <p>OpenCode, Claude Code, Gemini CLI, Codex, Freebuff, Qwen, MiMo, and more — pre-configured for Termux.</p>
-        </div>
-        <div class="card">
-          <div class="icon">📦</div>
-          <h3>Modular Installation</h3>
-          <p>Install only what you need. Choose individual tools or entire modules. CLI flags or interactive TUI menu.</p>
-        </div>
-        <div class="card">
-          <div class="icon">⚡</div>
-          <h3>Native + Proot Support</h3>
-          <p>Automatic glibc setup for native binaries. Falls back to proot-distro Ubuntu containers when needed.</p>
-        </div>
-        <div class="card">
-          <div class="icon">🧠</div>
-          <h3>Second Brain</h3>
-          <p>Built-in memory system with AI-powered search, graph visualization, and GitHub sync.</p>
-        </div>
-        <div class="card">
-          <div class="icon">🎨</div>
-          <h3>Beautiful Terminal UI</h3>
-          <p>Interactive dialog/whiptail menus, real-time progress bars, spinner animations, and startup banner.</p>
-        </div>
-        <div class="card">
-          <div class="icon">🔧</div>
-          <h3>Doctor Diagnostics</h3>
-          <p>Comprehensive environment audit with auto-correction. Detects and fixes 20+ categories of issues.</p>
-        </div>
+        <div class="card"><div class="icon">🤖</div><h3>26 AI Coding Agents</h3><p>OpenCode, Claude Code, Gemini CLI, Codex, Freebuff, Qwen, MiMo, and more &mdash; pre-configured for Termux.</p></div>
+        <div class="card"><div class="icon">📦</div><h3>Modular Installation</h3><p>Install only what you need. Choose individual tools or entire modules. CLI flags or interactive TUI menu.</p></div>
+        <div class="card"><div class="icon">⚡</div><h3>Native + Proot Support</h3><p>Automatic glibc setup for native binaries. Falls back to proot-distro Ubuntu containers when needed.</p></div>
+        <div class="card"><div class="icon">🧠</div><h3>Second Brain</h3><p>Built-in memory system with AI-powered search, graph visualization, and GitHub sync.</p></div>
+        <div class="card"><div class="icon">🎨</div><h3>Beautiful Terminal UI</h3><p>Interactive dialog/whiptail menus, real-time progress bars, spinner animations, and startup banner.</p></div>
+        <div class="card"><div class="icon">🔧</div><h3>Doctor Diagnostics</h3><p>Comprehensive environment audit with auto-correction. Detects and fixes 20+ categories of issues.</p></div>
+        <div class="card"><div class="icon">🔗</div><h3>Deploy CLIs Included</h3><p>Vercel, Railway &amp; Netlify CLIs pre-configured. Deploy your projects directly from Termux.</p></div>
+        <div class="card"><div class="icon">📦</div><h3>npm Publishing Ready</h3><p>Install via npm with <code>npm install -g omni</code>. Full npm ecosystem integration for package management.</p></div>
       </div>
     </section>
 
     <section id="tools">
-      <h2 class="section-title">All AI Tools</h2>
+      <h2 class="section-title">All 26 AI Tools</h2>
       <p class="section-sub">Pre-packaged and ready to install</p>
       <div class="tool-grid">
-        <div class="tool-chip">Qwen Code</div>
-        <div class="tool-chip">Gemini CLI</div>
-        <div class="tool-chip">Claude Code</div>
-        <div class="tool-chip">Mistral Vibe</div>
-        <div class="tool-chip">OpenClaude</div>
-        <div class="tool-chip">OpenClaw</div>
-        <div class="tool-chip">Ollama</div>
-        <div class="tool-chip">Codex CLI</div>
-        <div class="tool-chip">OpenCode</div>
-        <div class="tool-chip">MiMo Code</div>
-        <div class="tool-chip">Engram</div>
-        <div class="tool-chip">CodeGraph</div>
-        <div class="tool-chip">Pi</div>
-        <div class="tool-chip">Antigravity CLI</div>
-        <div class="tool-chip">Gentle AI</div>
-        <div class="tool-chip">Minimax CLI</div>
-        <div class="tool-chip">GGA</div>
-        <div class="tool-chip">Hermes Agent</div>
-        <div class="tool-chip">Kimi Code</div>
-        <div class="tool-chip">Command Code</div>
-        <div class="tool-chip">Freebuff</div>
-        <div class="tool-chip">Kiro CLI</div>
-        <div class="tool-chip">HeyGen CLI</div>
-        <div class="tool-chip">Seedance CLI</div>
-        <div class="tool-chip">Veo 3 SDK</div>
-        <div class="tool-chip">Odysseus</div>
+        <div class="tool-chip">Qwen Code</div> <div class="tool-chip">Gemini CLI</div> <div class="tool-chip">Claude Code</div>
+        <div class="tool-chip">Mistral Vibe</div> <div class="tool-chip">OpenClaude</div> <div class="tool-chip">OpenClaw</div>
+        <div class="tool-chip">Ollama</div> <div class="tool-chip">Codex CLI</div> <div class="tool-chip">OpenCode</div>
+        <div class="tool-chip">MiMo Code</div> <div class="tool-chip">Engram</div> <div class="tool-chip">CodeGraph</div>
+        <div class="tool-chip">Pi</div> <div class="tool-chip">Antigravity CLI</div> <div class="tool-chip">Gentle AI</div>
+        <div class="tool-chip">Minimax CLI</div> <div class="tool-chip">GGA</div> <div class="tool-chip">Hermes Agent</div>
+        <div class="tool-chip">Kimi Code</div> <div class="tool-chip">Command Code</div> <div class="tool-chip">Freebuff</div>
+        <div class="tool-chip">Kiro CLI</div> <div class="tool-chip">HeyGen CLI</div> <div class="tool-chip">Seedance CLI</div>
+        <div class="tool-chip">Veo 3 SDK</div> <div class="tool-chip">Odysseus</div>
       </div>
     </section>
+
+    <section id="deploy">
+      <h2 class="section-title">Deploy CLIs</h2>
+      <p class="section-sub">Ship your projects to production from your phone</p>
+      <div class="deploy-grid">
+        <div class="deploy-card"><div class="d-icon">▲</div><h3>Vercel</h3><p>Deploy frontends, APIs, and serverless functions with zero config.</p><div class="status">✅ Installed v54</div></div>
+        <div class="deploy-card"><div class="d-icon">🚂</div><h3>Railway</h3><p>Full-stack deployment with databases, cron jobs, and volumes.</p><div class="status">✅ Installed v5</div></div>
+        <div class="deploy-card"><div class="d-icon">🔥</div><h3>Netlify</h3><p>Continuous deployment with edge functions and forms.</p><div class="status">✅ Installed v26</div></div>
+      </div>
+    </section>
+
+    <div class="npm-preview">
+      <div class="npm-logo">⬡ <span>npm</span></div>
+      <p style="color: var(--muted); font-size: 0.9rem; margin-bottom: 12px;">Coming soon &mdash; install Omni via npm</p>
+      <div class="install-cmd-wrap" style="justify-content: center;">
+        <div class="install-cmd">
+          <span class="prompt">$</span>
+          <span class="cmd">npm install -g omni</span>
+        </div>
+        <button class="btn-copy" onclick="copyNpm()">📋 Copy</button>
+      </div>
+      <div class="npm-info">
+        <div><div class="val">curl</div><div class="lbl">Primary Install</div></div>
+        <div><div class="val">npm</div><div class="lbl">Coming Soon</div></div>
+        <div><div class="val">pkg</div><div class="lbl">Termux Native</div></div>
+      </div>
+    </div>
 
     <section>
       <h2 class="section-title">Quick Start</h2>
       <p class="section-sub">After installation</p>
       <div class="code-block">
         <span class="comment"># Install specific AI tools</span><br>
-        <span class="prompt">$ </span>omni install ai --opencode --claude-code --ollama<br><br>
+        <span class="fn">$ </span>omni install ai --opencode --claude-code --ollama<br><br>
         <span class="comment"># Install everything</span><br>
-        <span class="prompt">$ </span>omni install lang db dev npm shell ui<br><br>
+        <span class="fn">$ </span>omni install lang db dev npm shell ui deploy<br><br>
         <span class="comment"># Open interactive menu</span><br>
-        <span class="prompt">$ </span>omni<br><br>
+        <span class="fn">$ </span>omni<br><br>
         <span class="comment"># Check environment health</span><br>
-        <span class="prompt">$ </span>omni doctor<br><br>
+        <span class="fn">$ </span>omni doctor<br><br>
         <span class="comment"># List installed AI tools</span><br>
-        <span class="prompt">$ </span>omni list ai
+        <span class="fn">$ </span>omni list ai<br><br>
+        <span class="comment"># Deploy via Vercel</span><br>
+        <span class="fn">$ </span>vercel deploy --prod<br><br>
+        <span class="comment"># Deploy via Railway</span><br>
+        <span class="fn">$ </span>railway up
       </div>
     </section>
 
     <footer>
-      <p>Built with ❤️ by <a href="https://github.com/israel676767">israel marques</a> — 12 years of experience</p>
-      <p style="margin-top:8px"><a href="https://github.com/israel676767/omni">GitHub</a> &middot; <a href="https://github.com/israel676767/omni/blob/main/LICENSE">MIT License</a></p>
+      <div class="footer-grid">
+        <div><h4>Omni</h4><a href="#">Home</a><a href="#features">Features</a><a href="#tools">Tools</a><a href="#deploy">Deploy</a></div>
+        <div><h4>Resources</h4><a href="https://github.com/israel676767/omni">GitHub</a><a href="https://github.com/israel676767/omni/blob/main/README.md">Documentation</a><a href="https://github.com/israel676767/omni/issues">Issues</a></div>
+        <div><h4>Install</h4><a href="#install">curl Install</a><a href="#">npm (soon)</a><a href="#">pkg (soon)</a></div>
+      </div>
+      <div class="footer-bottom">
+        <p>Built with ❤️ by <a href="https://github.com/israel676767">israel marques</a></p>
+        <p style="margin-top:8px"><a href="https://github.com/israel676767/omni">GitHub</a> &middot; <a href="https://github.com/israel676767/omni/blob/main/LICENSE">MIT License</a></p>
+      </div>
     </footer>
   </div>
+
+  <script>
+    function copyCmd() {
+      navigator.clipboard.writeText('bash -c "$(curl -fsSL https://raw.githubusercontent.com/israel676767/omni/main/install.sh)"');
+      showToast('Copied install command');
+    }
+    function copyNpm() {
+      navigator.clipboard.writeText('npm install -g omni');
+      showToast('Copied npm command');
+    }
+    function showToast(msg) {
+      var t = document.getElementById('toast');
+      t.textContent = msg; t.classList.add('show');
+      setTimeout(function(){ t.classList.remove('show'); }, 2000);
+    }
+  </script>
 </body>
 </html>
