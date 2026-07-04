@@ -5,26 +5,26 @@ import CodeBlock from "@/components/CodeBlock";
 
 export default function CoreTermux() {
   const modules = [
-    { name: "Language Packages", desc: "Programming languages and runtimes via pkg", cmd: "omni install lang" },
+    { name: "Language Packages", desc: "Node, Python, Perl, PHP, Rust, C/C++, Go", cmd: "omni install lang" },
     { name: "Databases", desc: "PostgreSQL, MariaDB, SQLite, MongoDB", cmd: "omni install db" },
-    { name: "AI Tools", desc: "AI coding assistants and chat tools", cmd: "omni install ai" },
-    { name: "Code Editor", desc: "Neovim with NvChad configuration", cmd: "omni install editor" },
-    { name: "Development Tools", desc: "Essential CLI tools for development", cmd: "omni install dev" },
-    { name: "Node.js Modules", desc: "Global npm packages", cmd: "omni install npm" },
-    { name: "ZSH Shell", desc: "ZSH + Oh My Zsh + plugins", cmd: "omni install shell" },
-    { name: "Termux UI", desc: "UI customization for Termux", cmd: "omni install ui" },
-    { name: "Automation", desc: "Automation tools like n8n", cmd: "omni install auto" },
+    { name: "AI Tools", desc: "OpenCode, Gentle AI, Claude Code, etc.", cmd: "omni install ai" },
+    { name: "Code Editor", desc: "Neovim + NvChad + Plugins", cmd: "omni install editor" },
+    { name: "Development Tools", desc: "GitHub CLI, wget, curl, fzf, etc.", cmd: "omni install dev" },
+    { name: "Node.js Modules", desc: "Node.js global npm packages", cmd: "omni install npm" },
+    { name: "ZSH Shell", desc: "ZSH + Oh My Zsh + 10 plugins", cmd: "omni install shell" },
+    { name: "Termux UI", desc: "Font, Cursor, Extra-keys, Banner", cmd: "omni install ui" },
+    { name: "Automation", desc: "Automation Tools (n8n)", cmd: "omni install auto" },
   ];
 
   const commands = [
     { cmd: "omni --version", desc: "Show current version" },
     { cmd: "omni brain", desc: "Second brain — save and search memories" },
     { cmd: "omni env", desc: "Manage environment variables" },
-    { cmd: "omni install", desc: "Install specific modules" },
+    { cmd: "omni install", desc: "Install modules and packages" },
     { cmd: "omni show", desc: "Show tool documentation" },
     { cmd: "omni update", desc: "Update modules or framework" },
     { cmd: "omni uninstall", desc: "Remove installed modules" },
-    { cmd: "omni reinstall", desc: "Uninstall + reinstall modules" },
+    { cmd: "omni reinstall", desc: "Uninstall + install modules" },
     { cmd: "omni voice", desc: "Speech-to-agent via microphone" },
     { cmd: "omni open", desc: "Open documentation in browser" },
     { cmd: "omni list", desc: "List available tools in modules" },

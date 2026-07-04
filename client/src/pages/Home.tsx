@@ -36,7 +36,7 @@ export default function Home() {
 
           <p className="text-xl text-muted-foreground mb-10 max-w-2xl mx-auto leading-relaxed font-light">
             Transform your Android phone into a full-featured development workstation. 
-            Install 26 AI agents, 8 programming languages, 4 databases, 19 dev tools, 
+            Install 23 AI agents, 8 programming languages, 4 databases, 19 dev tools, 
             and 3 deployment CLIs — all in seconds.
           </p>
 
