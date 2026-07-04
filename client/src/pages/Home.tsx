@@ -3,15 +3,8 @@ import { ArrowRight, Zap, Code2, Cpu, Terminal, Brain, Rocket, Stethoscope, Eye,
 import { Button } from "@/components/ui/button";
 import Layout from "@/components/Layout";
 import CodeBlock from "@/components/CodeBlock";
-import { useEffect, useState } from "react";
 
 export default function Home() {
-  const [scrollY, setScrollY] = useState(0);
-  useEffect(() => {
-    const onScroll = () => setScrollY(window.scrollY);
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
 
   const stats = [
     { label: "AI Agents", value: "28" },
@@ -22,19 +15,14 @@ export default function Home() {
     { label: "Total Packages", value: "77" },
   ];
 
-  const gemOpacity = Math.max(0.1, 1 - scrollY / 350);
-  const dimOpacity = Math.min(0.7, scrollY / 600);
-
   const iconColors = ["text-red-500", "text-purple-500", "text-orange-500", "text-sky-500", "text-emerald-500", "text-pink-500", "text-amber-500", "text-indigo-500"];
 
   return (
     <Layout>
-      <div className="scroll-overlay" style={{ opacity: dimOpacity }} />
-
       {/* Hero Banner */}
       <section className="relative min-h-screen py-24 px-4 bg-gradient-to-b from-accent/5 via-background to-background overflow-hidden">
         {/* Background gem: Ruby (left) */}
-        <div className="hero-gem hero-gem-left" style={{ opacity: gemOpacity }}>
+        <div className="hero-gem hero-gem-left">
           <div className="gem-container">
             <div className="gem gem-ruby" />
             <div className="gem-ring" />
@@ -44,7 +32,7 @@ export default function Home() {
         </div>
 
         {/* Background gem: Obsidian (right) */}
-        <div className="hero-gem hero-gem-right" style={{ opacity: gemOpacity }}>
+        <div className="hero-gem hero-gem-right">
           <div className="gem-container">
             <div className="gem gem-obsidian" />
             <div className="gem-ring" style={{ borderColor: "#a855f7 transparent transparent transparent" }} />
@@ -131,6 +119,12 @@ export default function Home() {
               code={`npm install -g omni-catalyst`}
               language="bash"
               title="npm install"
+            />
+            <p className="text-center text-xs text-muted-foreground">or</p>
+            <CodeBlock
+              code={`pnpm add -g omni-catalyst`}
+              language="bash"
+              title="pnpm install"
             />
           </div>
           <p className="text-center text-muted-foreground text-sm mt-6">

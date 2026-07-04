@@ -193,33 +193,26 @@
 }
 
 .hero-gem .gem {
-  width: 40px;
-  height: 40px;
+  width: 60px;
+  height: 60px;
 }
 
 .hero-gem .gem-ring {
-  width: 160px;
-  height: 54px;
+  width: 220px;
+  height: 74px;
+  border-width: 3px;
 }
 
 .hero-gem-left {
-  top: 15%;
-  left: 5%;
+  top: 20%;
+  left: 8%;
 }
 
 .hero-gem-right {
-  bottom: 20%;
-  right: 5%;
+  bottom: 25%;
+  right: 8%;
 }
 
-/* Scroll dim overlay */
-.scroll-overlay {
-  position: fixed;
-  inset: 0;
-  z-index: 1;
-  background: #000;
-  pointer-events: none;
-}
 
 /* Brand gem animation */
 .brand-gem-sidebar > .gem-spin,
