@@ -3,35 +3,29 @@ import CodeBlock from "@/components/CodeBlock";
 
 export default function AITools() {
   const aiTools = [
-    { name: "Qwen Code", desc: "Alibaba's AI coding assistant", cmd: "omni install ai --qwen-code" },
-    { name: "Gemini CLI", desc: "Google's AI assistant with Gemini", cmd: "omni install ai --gemini-cli" },
-    { name: "Claude Code", desc: "Anthropic's CLI tool with Claude AI", cmd: "omni install ai --claude-code" },
-    { name: "Mistral Vibe", desc: "Command-line coding assistant powered by Mistral's models", cmd: "omni install ai --mistral-vibe" },
-    { name: "OpenClaude", desc: "Open source Claude Code alternative", cmd: "omni install ai --openclaude" },
-    { name: "OpenClaw", desc: "Personal AI Assistant", cmd: "omni install ai --openclaw" },
-    { name: "Ollama", desc: "Run open-source LLMs locally on Termux", cmd: "omni install ai --ollama" },
-    { name: "Codex CLI", desc: "Coding agent from OpenAI that runs locally on your computer", cmd: "omni install ai --codex" },
-    { name: "OpenCode", desc: "Open-source agent that helps you write code in your terminal", cmd: "omni install ai --opencode" },
-    { name: "Kilo Code CLI", desc: "Open source coding agent for building with AI in VS Code, JetBrains, or the CLI", cmd: "omni install ai --kilocode-cli" },
-    { name: "Kimchi", desc: "Terminal coding agent powered by Kimchi's multi-model orchestration", cmd: "omni install ai --kimchi" },
-    { name: "MiMo Code", desc: "Xiaomi's AI coding agent — fast, local, and open-source", cmd: "omni install ai --mimocode" },
-    { name: "Engram", desc: "Persistent memory system for AI coding agents", cmd: "omni install ai --engram" },
-    { name: "CodeGraph", desc: "Analyzes your codebase structure and dependencies to improve navigation", cmd: "omni install ai --codegraph" },
-    { name: "Pi", desc: "Minimal terminal coding harness — adapt Pi to your workflows", cmd: "omni install ai --pi" },
-    { name: "Antigravity CLI", desc: "Lightweight, terminal-first surface for Antigravity agents", cmd: "omni install ai --antigravity-cli" },
-    { name: "Gentle AI", desc: "Ecosystem, Frameworks, Workflows for AI coding agents", cmd: "omni install ai --gentle-ai" },
-    { name: "MiniMax CLI", desc: "Generate text, images, video, speech, and music from the terminal", cmd: "omni install ai --minimax-cli" },
-    { name: "GGA", desc: "Provider-agnostic AI code review on every commit", cmd: "omni install ai --gga" },
-    { name: "Hermes Agent", desc: "The self-improving AI agent built by Nous Research", cmd: "omni install ai --hermes-agent" },
-    { name: "Kimi Code", desc: "Kimi Code CLI — The Starting Point for Next-Gen Agents", cmd: "omni install ai --kimi-code" },
-    { name: "Command Code", desc: "The coding agent that learns your coding taste", cmd: "omni install ai --command-code" },
-    { name: "Freebuff", desc: "A 100% free coding agent, right from your terminal", cmd: "omni install ai --freebuff" },
-  ];
-
-  const ollamaModels = [
-    { name: "llama3", size: "4.7GB", desc: "Meta's latest 8B model, optimized for dialogue and coding" },
-    { name: "qwen2.5-coder", size: "4.7GB", desc: "State-of-the-art coding model from Alibaba" },
-    { name: "codegemma", size: "4.8GB", desc: "Google's lightweight model for code generation" },
+    { name: "Qwen Code", bin: "qwen", flag: "--qwen-code" },
+    { name: "Gemini CLI", bin: "gemini", flag: "--gemini-cli" },
+    { name: "Claude Code", bin: "claude", flag: "--claude-code" },
+    { name: "Mistral Vibe", bin: "vibe", flag: "--mistral-vibe" },
+    { name: "OpenClaude", bin: "openclaude", flag: "--openclaude" },
+    { name: "OpenClaw", bin: "openclaw", flag: "--openclaw" },
+    { name: "Ollama", bin: "ollama", flag: "--ollama" },
+    { name: "Codex CLI", bin: "codex", flag: "--codex" },
+    { name: "OpenCode", bin: "opencode", flag: "--opencode" },
+    { name: "Kilo Code CLI", bin: "kilo", flag: "--kilocode-cli" },
+    { name: "Kimchi", bin: "kimchi", flag: "--kimchi" },
+    { name: "MiMoCode", bin: "mimo", flag: "--mimocode" },
+    { name: "Engram", bin: "engram", flag: "--engram" },
+    { name: "CodeGraph", bin: "codegraph", flag: "--codegraph" },
+    { name: "Pi Coding Agent", bin: "pi", flag: "--pi" },
+    { name: "Antigravity CLI", bin: "agy", flag: "--antigravity-cli" },
+    { name: "Minimax CLI", bin: "mmx", flag: "--minimax-cli" },
+    { name: "Gentle AI", bin: "gentle-ai", flag: "--gentle-ai" },
+    { name: "GGA", bin: "gga", flag: "--gga" },
+    { name: "Hermes Agent", bin: "hermes", flag: "--hermes-agent" },
+    { name: "Kimi Code", bin: "kimi", flag: "--kimi-code" },
+    { name: "Command Code", bin: "cmdc", flag: "--command-code" },
+    { name: "Freebuff", bin: "freebuff", flag: "--freebuff" },
   ];
 
   return (
@@ -55,52 +49,32 @@ export default function AITools() {
 
           {/* AI Tools Grid */}
           <h2 className="text-2xl font-bold font-mono mb-6">Available AI Tools</h2>
-          <p className="text-muted-foreground mb-8">{aiTools.length} AI coding assistants and tools</p>
+          <p className="text-muted-foreground mb-8">{aiTools.length} AI coding assistants and tools — exact list from <code className="text-accent">omni list ai</code></p>
 
-          <div className="grid md:grid-cols-2 gap-6 mb-12">
-            {aiTools.map((tool, i) => (
-              <div
-                key={i}
-                className="bg-card border border-border rounded-lg p-6 hover:border-accent/50 transition-colors"
-              >
-                <h3 className="font-bold font-mono mb-2">{tool.name}</h3>
-                <p className="text-sm text-muted-foreground mb-4">{tool.desc}</p>
-                <CodeBlock code={tool.cmd} language="bash" />
-              </div>
-            ))}
-          </div>
-
-          {/* Ollama Section */}
-          <div className="bg-card border border-border rounded-lg p-8">
-            <h2 className="text-2xl font-bold font-mono mb-6">Ollama - Run LLMs Locally</h2>
-            <p className="text-muted-foreground mb-6">
-              Run open-source language models directly on your Termux environment.
-            </p>
-
-            <div className="mb-8">
-              <h3 className="font-bold font-mono mb-4">Available Models</h3>
-              <div className="space-y-4">
-                {ollamaModels.map((model, i) => (
-                  <div key={i} className="bg-background border border-border rounded p-4">
-                    <div className="flex justify-between items-start mb-2">
-                      <h4 className="font-mono font-bold text-accent">{model.name}</h4>
-                      <span className="text-xs text-muted-foreground">{model.size}</span>
-                    </div>
-                    <p className="text-sm text-muted-foreground">{model.desc}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            <div className="space-y-4">
-              <div>
-                <h3 className="font-bold font-mono mb-3">Pull a Model</h3>
-                <CodeBlock code={`ollama pull llama3`} language="bash" />
-              </div>
-              <div>
-                <h3 className="font-bold font-mono mb-3">Run a Model</h3>
-                <CodeBlock code={`ollama run llama3`} language="bash" />
-              </div>
+          <div className="bg-card border border-border rounded-lg overflow-hidden mb-12">
+            <div className="overflow-x-auto">
+              <table className="w-full text-sm">
+                <thead>
+                  <tr className="border-b border-border bg-secondary/30">
+                    <th className="text-left py-3 px-4 font-mono">Tool</th>
+                    <th className="text-left py-3 px-4 font-mono">Flag</th>
+                    <th className="text-left py-3 px-4 font-mono">Command</th>
+                    <th className="text-left py-3 px-4 font-mono">Install</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {aiTools.map((tool, i) => (
+                    <tr key={i} className="border-b border-border hover:bg-secondary/20 transition-colors">
+                      <td className="py-3 px-4 font-mono font-bold">{tool.name}</td>
+                      <td className="py-3 px-4 text-accent font-mono text-xs">{tool.flag}</td>
+                      <td className="py-3 px-4 font-mono text-xs">{tool.bin}</td>
+                      <td className="py-3 px-4">
+                        <CodeBlock code={`omni install ai ${tool.flag}`} language="bash" />
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
             </div>
           </div>
         </div>

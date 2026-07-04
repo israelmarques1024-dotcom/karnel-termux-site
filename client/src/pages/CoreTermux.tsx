@@ -152,10 +152,14 @@ omni voice !                  # Alias for 'text'`}
             </p>
             <CodeBlock
               code={`omni open                     # Show help
-omni open <target>            # Open official documentation in browser`}
+omni open <target>            # Open official documentation in browser
+omni open omni                # Opens https://omni-catalyst.vercel.app`}
               language="bash"
               title="terminal"
             />
+            <p className="text-sm text-muted-foreground mt-4">
+              Targets: <code className="text-accent">core</code>, <code className="text-accent">lang</code>, <code className="text-accent">db</code>, <code className="text-accent">ai</code>, <code className="text-accent">editor</code>, <code className="text-accent">dev</code>, <code className="text-accent">npm</code>, <code className="text-accent">shell</code>, <code className="text-accent">ui</code>, <code className="text-accent">auto</code>
+            </p>
           </div>
 
           {/* pg */}
