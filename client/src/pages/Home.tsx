@@ -22,24 +22,35 @@ export default function Home() {
     { label: "Total Packages", value: "77" },
   ];
 
-  const heroOpacity = Math.max(0.15, 1 - scrollY / 500);
-  const dimOpacity = Math.min(0.6, scrollY / 800);
+  const gemOpacity = Math.max(0.1, 1 - scrollY / 350);
+  const dimOpacity = Math.min(0.7, scrollY / 600);
 
   const iconColors = ["text-red-500", "text-purple-500", "text-orange-500", "text-sky-500", "text-emerald-500", "text-pink-500", "text-amber-500", "text-indigo-500"];
 
   return (
     <Layout>
-      {/* Scroll dim overlay */}
       <div className="scroll-overlay" style={{ opacity: dimOpacity }} />
 
       {/* Hero Banner */}
-      <section className="relative py-24 px-4 bg-gradient-to-b from-accent/5 via-background to-background overflow-hidden min-h-[80vh]">
-        {/* Background gem logo with rings — fades on scroll */}
-        <div
-          className="hero-gem-logo"
-          style={{ opacity: heroOpacity }}
-        >
-          <div className="gem gem-duo" />
+      <section className="relative min-h-screen py-24 px-4 bg-gradient-to-b from-accent/5 via-background to-background overflow-hidden">
+        {/* Background gem: Ruby (left) */}
+        <div className="hero-gem hero-gem-left" style={{ opacity: gemOpacity }}>
+          <div className="gem-container">
+            <div className="gem gem-ruby" />
+            <div className="gem-ring" />
+            <div className="gem-ring" style={{ width: "180px", height: "60px", borderColor: "transparent #a855f7 transparent transparent", animationDuration: "7s", animationDirection: "reverse" }} />
+            <div className="gem-ring" style={{ width: "140px", height: "46px", borderColor: "transparent transparent #111 transparent", animationDuration: "4s" }} />
+          </div>
+        </div>
+
+        {/* Background gem: Obsidian (right) */}
+        <div className="hero-gem hero-gem-right" style={{ opacity: gemOpacity }}>
+          <div className="gem-container">
+            <div className="gem gem-obsidian" />
+            <div className="gem-ring" style={{ borderColor: "#a855f7 transparent transparent transparent" }} />
+            <div className="gem-ring" style={{ width: "170px", height: "56px", borderColor: "transparent #dc2626 transparent transparent", animationDuration: "6s", animationDirection: "reverse" }} />
+            <div className="gem-ring" style={{ width: "130px", height: "42px", borderColor: "transparent transparent #111 transparent", animationDuration: "5s" }} />
+          </div>
         </div>
 
         <div className="relative max-w-5xl mx-auto text-center">
@@ -80,7 +91,6 @@ export default function Home() {
             </Link>
           </div>
 
-          {/* Stats Grid */}
           <div className="grid grid-cols-3 lg:grid-cols-6 gap-3">
             {stats.map((stat) => (
               <div

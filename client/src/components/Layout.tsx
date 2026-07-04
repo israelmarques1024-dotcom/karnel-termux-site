@@ -31,12 +31,11 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           {/* Logo */}
           <Link href="/">
             <a className="flex items-center gap-3 mb-8 hover:opacity-90 transition-all duration-300 group">
-              <div className="brand-gem-sidebar relative w-10 h-10 flex items-center justify-center flex-shrink-0">
-                <div className="w-5 h-5 rounded-full z-10" style={{ background: "conic-gradient(from 0deg, #dc2626, #a855f7, #dc2626, #111111, #a855f7, #dc2626)" }} />
-                <div className="absolute w-[140%] h-[60%] rounded-full border border-red-500/40 gem-spin" style={{ animationDuration: "4s" }} />
-                <div className="absolute w-[120%] h-[50%] rounded-full border border-purple-500/40 gem-spin" style={{ animationDuration: "3s", animationDirection: "reverse" }} />
-                <div className="absolute w-[160%] h-[70%] rounded-full border border-black/30 gem-spin" style={{ animationDuration: "5s" }} />
-              </div>
+              <img
+                src="/omni-logo-pixel.svg"
+                alt="Omni Catalyst"
+                className="w-10 h-10 drop-shadow-lg drop-shadow-accent/50 group-hover:drop-shadow-xl group-hover:drop-shadow-accent/70 transition-all duration-300"
+              />
               <div>
                 <h1 className="font-bold text-lg font-mono text-foreground group-hover:text-accent transition-colors">OMNI</h1>
                 <p className="text-xs text-muted-foreground group-hover:text-accent/70 transition-colors">CATALYST</p>
@@ -82,11 +81,11 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           <div className="flex items-center justify-between p-4 lg:hidden">
             <Link href="/">
               <a className="flex items-center gap-2">
-                <div className="brand-gem relative w-8 h-8 flex items-center justify-center">
-                  <div className="w-4 h-4 rounded-full z-10" style={{ background: "conic-gradient(from 0deg, #dc2626, #a855f7, #dc2626, #111111, #a855f7, #dc2626)", boxShadow: "0 0 8px rgba(220,38,38,0.4)" }} />
-                  <div className="absolute inset-0 rounded-full border border-red-500/40 gem-spin" style={{ clipPath: "polygon(0 0, 100% 0, 100% 50%, 0 50%)" }} />
-                  <div className="absolute inset-0 rounded-full border border-purple-500/40 gem-spin" style={{ clipPath: "polygon(0 50%, 100% 50%, 100% 100%, 0 100%)", animationDirection: "reverse", animationDuration: "3s" }} />
-                </div>
+                <img
+                  src="/omni-logo-pixel.svg"
+                  alt="Omni Catalyst"
+                  className="w-8 h-8"
+                />
                 <span className="font-bold font-mono text-sm">OMNI CATALYST</span>
               </a>
             </Link>
