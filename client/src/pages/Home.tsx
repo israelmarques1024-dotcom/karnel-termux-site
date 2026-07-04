@@ -1,10 +1,18 @@
 import { Link } from "wouter";
-import { ArrowRight, Zap, Code2, Cpu, Terminal, Brain, Rocket } from "lucide-react";
+import { ArrowRight, Zap, Code2, Cpu, Terminal, Brain, Rocket, Stethoscope, Eye, Mic, Database, Puzzle, Shield } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Layout from "@/components/Layout";
 import CodeBlock from "@/components/CodeBlock";
+import { useEffect, useState } from "react";
 
 export default function Home() {
+  const [scrollY, setScrollY] = useState(0);
+  useEffect(() => {
+    const onScroll = () => setScrollY(window.scrollY);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   const stats = [
     { label: "AI Agents", value: "28" },
     { label: "Languages", value: "8" },
@@ -14,19 +22,24 @@ export default function Home() {
     { label: "Total Packages", value: "77" },
   ];
 
+  const heroOpacity = Math.max(0, 1 - scrollY / 400);
+
+  const iconColors = ["text-red-500", "text-purple-500", "text-orange-500", "text-sky-500", "text-emerald-500", "text-pink-500", "text-amber-500", "text-indigo-500"];
+
   return (
     <Layout>
       {/* Hero Banner */}
-      <section className="relative py-24 px-4 bg-gradient-to-b from-accent/5 via-background to-background overflow-hidden">
-        {/* Background gem logo with rings */}
-        <div className="hero-gem-logo">
+      <section className="relative py-24 px-4 bg-gradient-to-b from-accent/5 via-background to-background overflow-hidden min-h-[80vh]">
+        {/* Background gem logo with rings — fades on scroll */}
+        <div
+          className="hero-gem-logo"
+          style={{ opacity: Math.max(0, Math.min(0.35, heroOpacity)) }}
+        >
           <div className="gem-container" style={{ top: 0, left: 0 }}>
             <div className="gem gem-duo" />
-            <div className="gem-ring" style={{ borderColor: "#dc2626 transparent transparent transparent" }} />
-            <div className="gem-ring" style={{ borderColor: "transparent #a855f7 transparent transparent", width: "160px", height: "54px", animationDuration: "7s", animationDirection: "reverse" }} />
-            <div className="gem-ring" style={{ borderColor: "transparent transparent #111111 transparent", width: "130px", height: "44px", animationDuration: "4s" }} />
-            <div className="gem-ring" style={{ borderColor: "#a855f7 transparent transparent transparent", width: "100px", height: "34px", animationDuration: "5s" }} />
-            <div className="gem-ring" style={{ borderColor: "transparent transparent #dc2626 transparent", width: "180px", height: "60px", animationDuration: "9s", animationDirection: "reverse" }} />
+            <div className="gem-ring-single" style={{ borderColor: "#dc2626 transparent transparent transparent", width: "140px", height: "46px", animationDuration: "6s" }} />
+            <div className="gem-ring-single" style={{ borderColor: "transparent transparent #111111 transparent", width: "110px", height: "36px", animationDuration: "4s", animationDirection: "reverse" }} />
+            <div className="gem-ring-single" style={{ borderColor: "transparent #a855f7 transparent transparent", width: "170px", height: "56px", animationDuration: "8s" }} />
           </div>
         </div>
 
@@ -159,12 +172,42 @@ export default function Home() {
                 title: "Deploy Directly",
                 desc: "Vercel, Railway, Netlify CLIs pre-configured. Ship to production from your phone.",
               },
+              {
+                icon: <Stethoscope size={22} />,
+                title: "omni doctor",
+                desc: "Diagnose your entire environment with 20 automated checks and one-command fixes.",
+              },
+              {
+                icon: <Eye size={22} />,
+                title: "omni show",
+                desc: "Browse documentation for every tool and module without leaving the terminal.",
+              },
+              {
+                icon: <Mic size={22} />,
+                title: "omni voice",
+                desc: "Talk to your AI agents using voice commands. Hands-free coding on the go.",
+              },
+              {
+                icon: <Database size={22} />,
+                title: "omni pg",
+                desc: "Manage PostgreSQL databases: init, start, stop, shell — all from one command.",
+              },
+              {
+                icon: <Puzzle size={22} />,
+                title: "omni init",
+                desc: "Scaffold Next.js, Express, and other project templates in seconds.",
+              },
+              {
+                icon: <Shield size={22} />,
+                title: "omni env",
+                desc: "Manage API keys and environment variables securely. Never hardcode secrets.",
+              },
             ].map((feature, i) => (
               <div
                 key={i}
                 className="bg-background border border-border rounded-lg p-6 hover:border-accent/30 transition-colors"
               >
-                <div className="text-accent mb-3">{feature.icon}</div>
+                <div className={`mb-3 ${iconColors[i % iconColors.length]}`}>{feature.icon}</div>
                 <h3 className="text-base font-bold font-mono mb-2">
                   {feature.title}
                 </h3>
