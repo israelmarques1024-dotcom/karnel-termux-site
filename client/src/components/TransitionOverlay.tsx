@@ -12,6 +12,56 @@ function lerp(a: number, b: number, t: number): number {
   return a + (b - a) * Math.max(0, Math.min(1, t));
 }
 
+function hexToRgb(hex: string) {
+  const r = parseInt(hex.slice(1, 3), 16);
+  const g = parseInt(hex.slice(3, 5), 16);
+  const b = parseInt(hex.slice(5, 7), 16);
+  return { r, g, b };
+}
+
+function rgbToHex(r: number, g: number, b: number) {
+  const clamp = (n: number) => Math.max(0, Math.min(255, Math.round(n)));
+  return `#${clamp(r).toString(16).padStart(2, "0")}${clamp(g).toString(16).padStart(2, "0")}${clamp(b).toString(16).padStart(2, "0")}`;
+}
+
+function lerpColor(a: string, b: string, t: number): string {
+  const ca = hexToRgb(a);
+  const cb = hexToRgb(b);
+  return rgbToHex(
+    ca.r + (cb.r - ca.r) * t,
+    ca.g + (cb.g - ca.g) * t,
+    ca.b + (cb.b - ca.b) * t
+  );
+}
+
+interface ColorPalette {
+  s1: string;
+  s2: string;
+  s3: string;
+  s4: string;
+}
+
+const COVER_START: ColorPalette = {
+  s1: "#1a0028",
+  s2: "#0d001a",
+  s3: "#080010",
+  s4: "#040008",
+};
+
+const COVER_PEAK: ColorPalette = {
+  s1: "#FF2D55",
+  s2: "#eb1e5a",
+  s3: "#A855F7",
+  s4: "#7C3AED",
+};
+
+const REVEAL_END: ColorPalette = {
+  s1: "#0d0015",
+  s2: "#080010",
+  s3: "#040008",
+  s4: "#020005",
+};
+
 export default function TransitionOverlay() {
   const pathRef = useRef<SVGPathElement>(null);
   const overlayRef = useRef<HTMLDivElement>(null);
@@ -19,101 +69,153 @@ export default function TransitionOverlay() {
   const textRevealRef = useRef<SVGRectElement>(null);
   const glowRef = useRef<SVGRectElement>(null);
   const rafRef = useRef(0);
+  const stop1Ref = useRef<SVGStopElement>(null);
+  const stop2Ref = useRef<SVGStopElement>(null);
+  const stop3Ref = useRef<SVGStopElement>(null);
+  const stop4Ref = useRef<SVGStopElement>(null);
+  const textStop1Ref = useRef<SVGStopElement>(null);
+  const textStop2Ref = useRef<SVGStopElement>(null);
+  const textStop3Ref = useRef<SVGStopElement>(null);
+
+  function setGradientColors(palette: ColorPalette) {
+    stop1Ref.current?.setAttribute("stop-color", palette.s1);
+    stop2Ref.current?.setAttribute("stop-color", palette.s2);
+    stop3Ref.current?.setAttribute("stop-color", palette.s3);
+    stop4Ref.current?.setAttribute("stop-color", palette.s4);
+  }
+
+  function lerpPalette(a: ColorPalette, b: ColorPalette, t: number): ColorPalette {
+    return {
+      s1: lerpColor(a.s1, b.s1, t),
+      s2: lerpColor(a.s2, b.s2, t),
+      s3: lerpColor(a.s3, b.s3, t),
+      s4: lerpColor(a.s4, b.s4, t),
+    };
+  }
 
   useEffect(() => {
+    // Set initial dark gradient
+    setGradientColors(COVER_START);
+
     transitionControllerRef.current = {
       cover() {
         return new Promise((resolve) => {
-          const path = pathRef.current;
-          const textGroup = textGroupRef.current;
-          const textReveal = textRevealRef.current;
-          const glow = glowRef.current;
-          if (!path || !textGroup || !textReveal || !glow) {
-            resolve();
-            return;
-          }
-
-          if (overlayRef.current) overlayRef.current.style.opacity = "1";
-
-          const DURATION = 1200;
-          const start = performance.now();
-
-          path.style.transformOrigin = "50% 100%";
-          path.style.transform = "scale(0)";
-          textGroup.style.opacity = "0";
-          textReveal.setAttribute("width", "0");
-
-          function tick(now: number) {
-            const t = Math.min((now - start) / DURATION, 1);
-
-            // Blob: grows from 0→3 during first 60%
-            const blobT = Math.min(t / 0.6, 1);
-            path.style.transform = `scale(${ease(blobT) * 3})`;
-
-            // Text reveal: left-to-right, starts at 25%, finishes at 85%
-            const revealT = Math.max(0, Math.min((t - 0.25) / 0.6, 1));
-            const textWidth = ease(revealT) * 120;
-            textReveal.setAttribute("width", String(textWidth));
-            textGroup.style.opacity = String(revealT < 0.01 ? 0 : Math.min(revealT * 1.5, 1));
-
-            // Glow intensity
-            const glowOpacity = t < 0.3 ? 0 : (t - 0.3) / 0.3;
-            glow.style.opacity = String(Math.min(glowOpacity, 0.7));
-
-            if (t < 1) {
-              rafRef.current = requestAnimationFrame(tick);
-            } else {
+          try {
+            const path = pathRef.current;
+            const textGroup = textGroupRef.current;
+            const textReveal = textRevealRef.current;
+            const glow = glowRef.current;
+            if (!path || !textGroup || !textReveal || !glow) {
               resolve();
+              return;
             }
-          }
 
-          rafRef.current = requestAnimationFrame(tick);
+            if (overlayRef.current) overlayRef.current.style.opacity = "1";
+
+            const DURATION = 1200;
+            const start = performance.now();
+
+            path.style.transformOrigin = "50% 100%";
+            path.style.transform = "scale(0)";
+            textGroup.style.opacity = "0";
+            textReveal.setAttribute("width", "0");
+
+            function tick(now: number) {
+              try {
+                const t = Math.min((now - start) / DURATION, 1);
+
+                // Animate gradient: dark → vibrant (completes by 60%)
+                const gradT = ease(Math.min(t / 0.6, 1));
+                const palette = lerpPalette(COVER_START, COVER_PEAK, gradT);
+                setGradientColors(palette);
+
+                // Blob: grows from 0→3 during first 60%
+                const blobT = Math.min(t / 0.6, 1);
+                path.style.transform = `scale(${ease(blobT) * 3})`;
+
+                // Text reveal: left-to-right, starts at 25%, finishes at 85%
+                const revealT = Math.max(0, Math.min((t - 0.25) / 0.6, 1));
+                const textWidth = ease(revealT) * 120;
+                textReveal.setAttribute("width", String(textWidth));
+                textGroup.style.opacity = String(revealT < 0.01 ? 0 : Math.min(revealT * 1.5, 1));
+
+                // Glow intensity
+                const glowOpacity = t < 0.3 ? 0 : (t - 0.3) / 0.3;
+                glow.style.opacity = String(Math.min(glowOpacity, 0.7));
+
+                if (t < 1) {
+                  rafRef.current = requestAnimationFrame(tick);
+                } else {
+                  resolve();
+                }
+              } catch {
+                resolve();
+              }
+            }
+
+            rafRef.current = requestAnimationFrame(tick);
+          } catch {
+            resolve();
+          }
         });
       },
 
       reveal() {
         return new Promise((resolve) => {
-          const path = pathRef.current;
-          const textGroup = textGroupRef.current;
-          const textReveal = textRevealRef.current;
-          const glow = glowRef.current;
-          if (!path || !textGroup || !textReveal || !glow) {
-            resolve();
-            return;
-          }
-
-          const DURATION = 1000;
-          const start = performance.now();
-
-          path.style.transformOrigin = "50% 0%";
-          path.style.transform = "scale(3)";
-          textGroup.style.opacity = "1";
-          textReveal.setAttribute("width", "120");
-
-          function tick(now: number) {
-            const t = Math.min((now - start) / DURATION, 1);
-
-            // Text fades out first (0→40%)
-            const textT = Math.min(t / 0.4, 1);
-            textGroup.style.opacity = String(1 - ease(textT));
-            textReveal.setAttribute("width", String(120 * (1 - ease(textT))));
-
-            // Glow fades
-            glow.style.opacity = String(0.7 * (1 - ease(Math.min(t / 0.3, 1))));
-
-            // Blob shrinks (starts at 30%, finishes at 100%)
-            const blobT = Math.max(0, Math.min((t - 0.3) / 0.7, 1));
-            path.style.transform = `scale(${3 * (1 - ease(blobT))})`;
-
-            if (t < 1) {
-              rafRef.current = requestAnimationFrame(tick);
-            } else {
-              if (overlayRef.current) overlayRef.current.style.opacity = "0";
+          try {
+            const path = pathRef.current;
+            const textGroup = textGroupRef.current;
+            const textReveal = textRevealRef.current;
+            const glow = glowRef.current;
+            if (!path || !textGroup || !textReveal || !glow) {
               resolve();
+              return;
             }
-          }
 
-          rafRef.current = requestAnimationFrame(tick);
+            const DURATION = 1000;
+            const start = performance.now();
+
+            path.style.transformOrigin = "50% 0%";
+            path.style.transform = "scale(3)";
+            textGroup.style.opacity = "1";
+            textReveal.setAttribute("width", "120");
+
+            function tick(now: number) {
+              try {
+                const t = Math.min((now - start) / DURATION, 1);
+
+                // Gradient fades from vibrant back to dark
+                const gradT = ease(Math.min(t / 0.4, 1));
+                const palette = lerpPalette(COVER_PEAK, REVEAL_END, gradT);
+                setGradientColors(palette);
+
+                // Text fades out first (0→40%)
+                const textT = Math.min(t / 0.4, 1);
+                textGroup.style.opacity = String(1 - ease(textT));
+                textReveal.setAttribute("width", String(120 * (1 - ease(textT))));
+
+                // Glow fades
+                glow.style.opacity = String(0.7 * (1 - ease(Math.min(t / 0.3, 1))));
+
+                // Blob shrinks (starts at 30%, finishes at 100%)
+                const blobT = Math.max(0, Math.min((t - 0.3) / 0.7, 1));
+                path.style.transform = `scale(${3 * (1 - ease(blobT))})`;
+
+                if (t < 1) {
+                  rafRef.current = requestAnimationFrame(tick);
+                } else {
+                  if (overlayRef.current) overlayRef.current.style.opacity = "0";
+                  resolve();
+                }
+              } catch {
+                resolve();
+              }
+            }
+
+            rafRef.current = requestAnimationFrame(tick);
+          } catch {
+            resolve();
+          }
         });
       },
     };
@@ -137,8 +239,8 @@ export default function TransitionOverlay() {
         opacity: 0,
       }}
     >
-      {/* Black background */}
-      <div className="absolute inset-0 bg-black" />
+      {/* Dark background matching site theme */}
+      <div className="absolute inset-0" style={{ backgroundColor: "#0a0a0f" }} />
 
       {/* SVG liquid layer */}
       <svg
@@ -147,12 +249,12 @@ export default function TransitionOverlay() {
         className="absolute inset-0 w-full h-full"
       >
         <defs>
-          {/* Liquid gradient: red → purple */}
+          {/* Animated liquid gradient: red → purple */}
           <linearGradient id="liquid-grad" x1="0" y1="1" x2="0.3" y2="0">
-            <stop offset="0%" stopColor="#FF2D55" />
-            <stop offset="40%" stopColor="#e01e5a" />
-            <stop offset="70%" stopColor="#9b4df5" />
-            <stop offset="100%" stopColor="#8B5CF6" />
+            <stop ref={stop1Ref} offset="0%" stopColor="#1a0028" />
+            <stop ref={stop2Ref} offset="40%" stopColor="#0d001a" />
+            <stop ref={stop3Ref} offset="70%" stopColor="#080010" />
+            <stop ref={stop4Ref} offset="100%" stopColor="#040008" />
           </linearGradient>
 
           {/* Glow filter */}
@@ -168,9 +270,9 @@ export default function TransitionOverlay() {
 
           {/* Text fill gradient: rises from bottom */}
           <linearGradient id="text-fill-grad" x1="0" y1="1" x2="0" y2="0">
-            <stop offset="20%" stopColor="#FF2D55" />
-            <stop offset="60%" stopColor="#8B5CF6" />
-            <stop offset="100%" stopColor="#A855F7" />
+            <stop ref={textStop1Ref} offset="20%" stopColor="#FF2D55" />
+            <stop ref={textStop2Ref} offset="60%" stopColor="#8B5CF6" />
+            <stop ref={textStop3Ref} offset="100%" stopColor="#A855F7" />
           </linearGradient>
 
           {/* Main mask: blob + text */}

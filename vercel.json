@@ -4,5 +4,8 @@
   "devCommand": "pnpm dev",
   "framework": "vite",
   "installCommand": "pnpm install",
-  "alias": ["omni-catalyst.vercel.app"]
+  "alias": ["omni-catalyst.vercel.app"],
+  "rewrites": [
+    { "source": "/(.*)", "destination": "/index.html" }
+  ]
 }

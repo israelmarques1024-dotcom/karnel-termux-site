@@ -9,7 +9,7 @@ import TransitionOverlay from "./components/TransitionOverlay";
 import Home from "./pages/Home";
 import Termux from "./pages/Termux";
 import TermuxAPI from "./pages/TermuxAPI";
-import CoreTermux from "./pages/CoreTermux";
+import OmniDocs from "./pages/OmniDocs";
 import AITools from "./pages/AITools";
 import CodeEditor from "./pages/CodeEditor";
 import Deploy from "./pages/Deploy";
@@ -28,7 +28,7 @@ function RouterOutlet() {
       <Route path={"/"} component={Home} />
       <Route path={"/termux"} component={Termux} />
       <Route path={"/termux/api"} component={TermuxAPI} />
-      <Route path={"/omni"} component={CoreTermux} />
+      <Route path={"/omni"} component={OmniDocs} />
       <Route path={"/omni/ai"} component={AITools} />
       <Route path={"/omni/editor"} component={CodeEditor} />
       <Route path={"/omni/deploy"} component={Deploy} />

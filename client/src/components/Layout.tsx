@@ -4,7 +4,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 
 const navItems = [
-  { label: "Início", href: "/" },
+  { label: "Comece Aqui", href: "/" },
   { label: "Termux", href: "/termux" },
   { label: "Termux:API", href: "/termux/api" },
   { label: "Omni", href: "/omni" },
@@ -121,6 +121,11 @@ export default function Layout({ children }: { children: React.ReactNode }) {
               className="text-accent hover:underline font-semibold"
             >
               israel marques
+            </a>
+          </p>
+          <p className="mt-2 text-xs">
+            <a href="mailto:israelmarques1024@gmail.com" className="text-accent/70 hover:text-accent transition-colors">
+              israelmarques1024@gmail.com
             </a>
           </p>
           <p className="mt-3">

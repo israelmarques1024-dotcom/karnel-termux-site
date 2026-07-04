@@ -61,7 +61,7 @@ export default function Termux() {
           </div>
 
           {/* Comparison Table */}
-          <h2 className="text-2xl font-bold font-mono mb-6">
+            <h2 className="text-2xl font-bold font-mono mb-6">
             Por que Usar o Omni?
           </h2>
           <p className="text-muted-foreground mb-6">
@@ -86,46 +86,24 @@ export default function Termux() {
               </thead>
               <tbody>
                 {[
-                  {
-                    feature: "Configuração com um comando",
-                    termux: false,
-                    core: true,
-                  },
-                  {
-                    feature: "Sistema de módulos & CLI framework",
-                    termux: false,
-                    core: true,
-                  },
-                  {
-                    feature: "Ferramentas de IA pré-configuradas (18+)",
-                    termux: false,
-                    core: true,
-                  },
-                  {
-                    feature: "Neovim + suporte LSP (16+ linguagens)",
-                    termux: false,
-                    core: true,
-                  },
-                  {
-                    feature: "ZSH + plugins + memória persistente",
-                    termux: false,
-                    core: true,
-                  },
-                  {
-                    feature: "Mecanismo de atualização centralizado",
-                    termux: false,
-                    core: true,
-                  },
-                  {
-                    feature: "Instalações manuais com pkg necessárias",
-                    termux: true,
-                    core: false,
-                  },
-                  {
-                    feature: "Sem sistema de módulos",
-                    termux: true,
-                    core: false,
-                  },
+                  { feature: "Configuração com um comando", termux: false },
+                  { feature: "Sistema de módulos & CLI framework", termux: false },
+                  { feature: "28 agentes de IA pré-configurados", termux: false },
+                  { feature: "Neovim + LSP (20+ linguagens)", termux: false },
+                  { feature: "ZSH + plugins + memória persistente", termux: false },
+                  { feature: "Deploy direto (Vercel, Railway, Netlify)", termux: false },
+                  { feature: "Assistente de voz integrado", termux: false },
+                  { feature: "Banco PostgreSQL + Redis gerenciados", termux: false },
+                  { feature: "Diagnóstico automático (omni doctor)", termux: false },
+                  { feature: "Gerenciamento de secrets (omni env)", termux: false },
+                  { feature: "Multi-linguagem (Python, Node, Go, Rust)", termux: false },
+                  { feature: "Git + GitHub CLI pré-configurados", termux: false },
+                  { feature: "Mecanismo de atualização centralizado", termux: false },
+                  { feature: "Instalação automatizada de pacotes", termux: false },
+                  { feature: "Editor profissional (Neovim + NvChad)", termux: false },
+                  { feature: "Ambiente configurado em segundos", termux: false },
+                  { feature: "Shell aprimorado (ZSH + plugins)", termux: false },
+                  { feature: "Diagnóstico integrado", termux: false },
                 ].map((row, i) => (
                   <tr
                     key={i}
@@ -136,17 +114,13 @@ export default function Termux() {
                     </td>
                     <td className="py-3 px-4 text-center">
                       {row.termux ? (
-                        <X size={18} className="mx-auto text-destructive" />
+                        <Check size={18} className="mx-auto text-emerald-500" />
                       ) : (
-                        <Check size={18} className="mx-auto text-accent" />
+                        <X size={18} className="mx-auto text-destructive" />
                       )}
                     </td>
                     <td className="py-3 px-4 text-center">
-                      {row.core ? (
-                        <Check size={18} className="mx-auto text-accent" />
-                      ) : (
-                        <X size={18} className="mx-auto text-destructive" />
-                      )}
+                      <Check size={18} className="mx-auto text-emerald-500" />
                     </td>
                   </tr>
                 ))}
