@@ -7,12 +7,12 @@ const navItems = [
   { label: "Home", href: "/" },
   { label: "Termux", href: "/termux" },
   { label: "Termux:API", href: "/termux/api" },
-  { label: "Omni", href: "/core-termux" },
-  { label: "AI Tools", href: "/core-termux/ai" },
-  { label: "Code Editor", href: "/core-termux/editor" },
-  { label: "Deploy", href: "/core-termux/deploy" },
-  { label: "Doctor", href: "/core-termux/doctor" },
-  { label: "Show", href: "/core-termux/show" },
+  { label: "Omni", href: "/omni" },
+  { label: "AI Tools", href: "/omni/ai" },
+  { label: "Code Editor", href: "/omni/editor" },
+  { label: "Deploy", href: "/omni/deploy" },
+  { label: "Doctor", href: "/omni/doctor" },
+  { label: "Show", href: "/omni/show" },
 ];
 
 export default function Layout({ children }: { children: React.ReactNode }) {

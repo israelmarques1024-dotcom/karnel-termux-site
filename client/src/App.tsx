@@ -20,12 +20,12 @@ function Router() {
       <Route path={"/"} component={Home} />
       <Route path={"/termux"} component={Termux} />
       <Route path={"/termux/api"} component={TermuxAPI} />
-      <Route path={"/core-termux"} component={CoreTermux} />
-      <Route path={"/core-termux/ai"} component={AITools} />
-      <Route path={"/core-termux/editor"} component={CodeEditor} />
-      <Route path={"/core-termux/deploy"} component={Deploy} />
-      <Route path={"/core-termux/doctor"} component={Doctor} />
-      <Route path={"/core-termux/show"} component={ShowDocs} />
+      <Route path={"/omni"} component={CoreTermux} />
+      <Route path={"/omni/ai"} component={AITools} />
+      <Route path={"/omni/editor"} component={CodeEditor} />
+      <Route path={"/omni/deploy"} component={Deploy} />
+      <Route path={"/omni/doctor"} component={Doctor} />
+      <Route path={"/omni/show"} component={ShowDocs} />
       <Route path={"/404"} component={NotFound} />
       <Route component={NotFound} />
     </Switch>

@@ -47,7 +47,7 @@ export default function Home() {
                 </Button>
               </a>
             </Link>
-            <Link href="/core-termux">
+            <Link href="/omni">
               <a>
                 <Button size="lg" variant="outline" className="font-semibold text-base">
                   Explore Docs
