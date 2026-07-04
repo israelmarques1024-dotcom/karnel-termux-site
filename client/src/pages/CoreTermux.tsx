@@ -14,6 +14,7 @@ export default function CoreTermux() {
     { name: "ZSH Shell", desc: "ZSH + Oh My Zsh + 10 plugins", cmd: "omni install shell" },
     { name: "Termux UI", desc: "Font, Cursor, Extra-keys, Banner", cmd: "omni install ui" },
     { name: "Automation", desc: "Automation Tools (n8n)", cmd: "omni install auto" },
+    { name: "Deploy CLIs", desc: "Vercel, Railway, Netlify", cmd: "omni install deploy" },
   ];
 
   const commands = [
@@ -21,7 +22,8 @@ export default function CoreTermux() {
     { cmd: "omni brain", desc: "Second brain — save and search memories" },
     { cmd: "omni env", desc: "Manage environment variables" },
     { cmd: "omni install", desc: "Install modules and packages" },
-    { cmd: "omni show", desc: "Show tool documentation" },
+    { cmd: "omni show", desc: "Show documentation for any tool" },
+    { cmd: "omni doctor", desc: "Diagnose Termux & Omni environment (20 checks)" },
     { cmd: "omni update", desc: "Update modules or framework" },
     { cmd: "omni uninstall", desc: "Remove installed modules" },
     { cmd: "omni reinstall", desc: "Uninstall + install modules" },
@@ -158,7 +160,7 @@ omni open omni                # Opens https://omni-catalyst.vercel.app`}
               title="terminal"
             />
             <p className="text-sm text-muted-foreground mt-4">
-              Targets: <code className="text-accent">core</code>, <code className="text-accent">lang</code>, <code className="text-accent">db</code>, <code className="text-accent">ai</code>, <code className="text-accent">editor</code>, <code className="text-accent">dev</code>, <code className="text-accent">npm</code>, <code className="text-accent">shell</code>, <code className="text-accent">ui</code>, <code className="text-accent">auto</code>
+              Targets: <code className="text-accent">omni</code>, <code className="text-accent">lang</code>, <code className="text-accent">db</code>, <code className="text-accent">ai</code>, <code className="text-accent">editor</code>, <code className="text-accent">dev</code>, <code className="text-accent">npm</code>, <code className="text-accent">shell</code>, <code className="text-accent">ui</code>, <code className="text-accent">auto</code>, <code className="text-accent">deploy</code>
             </p>
           </div>
 

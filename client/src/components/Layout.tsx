@@ -10,6 +10,9 @@ const navItems = [
   { label: "Omni", href: "/core-termux" },
   { label: "AI Tools", href: "/core-termux/ai" },
   { label: "Code Editor", href: "/core-termux/editor" },
+  { label: "Deploy", href: "/core-termux/deploy" },
+  { label: "Doctor", href: "/core-termux/doctor" },
+  { label: "Show", href: "/core-termux/show" },
 ];
 
 export default function Layout({ children }: { children: React.ReactNode }) {

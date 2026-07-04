@@ -12,8 +12,6 @@ export default function AITools() {
     { name: "Ollama", bin: "ollama", flag: "--ollama" },
     { name: "Codex CLI", bin: "codex", flag: "--codex" },
     { name: "OpenCode", bin: "opencode", flag: "--opencode" },
-    { name: "Kilo Code CLI", bin: "kilo", flag: "--kilocode-cli" },
-    { name: "Kimchi", bin: "kimchi", flag: "--kimchi" },
     { name: "MiMoCode", bin: "mimo", flag: "--mimocode" },
     { name: "Engram", bin: "engram", flag: "--engram" },
     { name: "CodeGraph", bin: "codegraph", flag: "--codegraph" },
@@ -26,6 +24,12 @@ export default function AITools() {
     { name: "Kimi Code", bin: "kimi", flag: "--kimi-code" },
     { name: "Command Code", bin: "cmdc", flag: "--command-code" },
     { name: "Freebuff", bin: "freebuff", flag: "--freebuff" },
+    { name: "Kiro CLI", bin: "kiro", flag: "--kiro-cli" },
+    { name: "HeyGen CLI", bin: "heygen", flag: "--heygen" },
+    { name: "Seedance CLI", bin: "seedance", flag: "--seedance" },
+    { name: "Veo 3 SDK", bin: "veo3", flag: "--veo3" },
+    { name: "Odysseus", bin: "odysseus", flag: "--odysseus" },
+    { name: "Kimchi AI", bin: "kimchi", flag: "--kimchi-code" },
   ];
 
   return (
