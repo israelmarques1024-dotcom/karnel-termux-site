@@ -2,7 +2,7 @@ import { useEffect, useRef } from "react";
 import { transitionControllerRef } from "@/hooks/transitionController";
 
 const BLOB_PATH =
-  "M0.5,-0.9 C0.65,-0.95 0.82,-0.78 0.92,-0.55 C1.02,-0.32 1.08,-0.05 1.05,0.22 C1.02,0.49 0.92,0.74 0.76,0.92 C0.6,1.1 0.38,1.2 0.15,1.15 C-0.08,1.1 -0.28,0.95 -0.38,0.72 C-0.48,0.49 -0.46,0.22 -0.34,-0.02 C-0.22,-0.26 -0.05,-0.48 0.15,-0.65 C0.35,-0.82 0.42,-0.87 0.5,-0.9 Z";
+  "M50,-90 C65,-95 82,-78 92,-55 C102,-32 108,-5 105,22 C102,49 92,74 76,92 C60,110 38,120 15,115 C-8,110 -28,95 -38,72 C-48,49 -46,22 -34,-2 C-22,-26 -5,-48 15,-65 C35,-82 42,-87 50,-90 Z";
 
 function ease(t: number): number {
   return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
@@ -202,8 +202,8 @@ export default function TransitionOverlay() {
                   textAnchor="middle"
                   fontFamily="monospace, sans-serif"
                   fontWeight="900"
-                  fontSize="21"
-                  letterSpacing="2"
+                  fontSize="22"
+                  letterSpacing="1"
                 >
                   OMNI
                 </text>
@@ -213,8 +213,8 @@ export default function TransitionOverlay() {
                   textAnchor="middle"
                   fontFamily="monospace, sans-serif"
                   fontWeight="700"
-                  fontSize="13"
-                  letterSpacing="3"
+                  fontSize="14"
+                  letterSpacing="1.5"
                 >
                   CATALYST
                 </text>

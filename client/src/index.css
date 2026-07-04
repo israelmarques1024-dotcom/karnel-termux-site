@@ -148,8 +148,8 @@
   top: 30%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 280px;
-  height: 280px;
+  width: min(280px, 70vw);
+  height: min(280px, 70vw);
   z-index: 0;
   pointer-events: none;
 }

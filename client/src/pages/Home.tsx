@@ -57,7 +57,7 @@ export default function Home() {
   return (
     <Layout>
       {/* Hero Banner */}
-      <section className="relative min-h-screen py-24 px-4 overflow-hidden">
+      <section className="relative min-h-screen py-16 md:py-24 px-4 overflow-hidden">
         {/* Permanent gradient background */}
         <div className="absolute inset-0 bg-gradient-to-b from-accent/5 via-background to-background pointer-events-none z-0" />
 
@@ -91,7 +91,7 @@ export default function Home() {
             </span>
           </div>
 
-          <h1 className="text-5xl lg:text-6xl font-bold font-mono mb-6 leading-tight tracking-tight" style={{ color: fg }}>
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold font-mono mb-6 leading-tight tracking-tight" style={{ color: fg }}>
             Seu Ambiente Dev
             <br />
             <span style={{ color: accent }}>
@@ -122,7 +122,7 @@ export default function Home() {
             </Link>
           </div>
 
-          <div className="grid grid-cols-3 lg:grid-cols-6 gap-3">
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
             {stats.map((stat) => (
               <div
                 key={stat.label}
@@ -145,9 +145,9 @@ export default function Home() {
       </section>
 
       {/* Instalação */}
-      <section className="py-20 px-4 bg-background">
+      <section className="py-16 md:py-20 px-4 bg-background">
         <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-12">
+          <div className="text-center mb-8 md:mb-12">
             <h2 className="text-3xl font-bold font-mono mb-3">
               Instale em Uma Linha
             </h2>
@@ -181,7 +181,7 @@ export default function Home() {
       </section>
 
       {/* Por que Omni */}
-      <section className="py-20 px-4 bg-card/30 border-t border-border">
+      <section className="py-16 md:py-20 px-4 bg-card/30 border-t border-border">
         <div className="max-w-5xl mx-auto">
           <h2 className="text-3xl font-bold font-mono mb-3 text-center">
             Por que Desenvolvedores Escolhem o Omni
@@ -282,7 +282,7 @@ export default function Home() {
       </section>
 
       {/* FAQ */}
-      <section className="py-20 px-4 bg-background border-t border-border">
+      <section className="py-16 md:py-20 px-4 bg-background border-t border-border">
         <div className="max-w-3xl mx-auto">
           <h2 className="text-3xl font-bold font-mono mb-3 text-center">
             Perguntas Frequentes
@@ -311,7 +311,7 @@ export default function Home() {
               href="https://github.com/israel676767/omni"
               target="_blank"
               rel="noopener noreferrer"
-              className="star-btn inline-flex items-center gap-3 px-8 py-4 rounded-xl font-bold font-mono text-base transition-all duration-300"
+              className="star-btn inline-flex items-center gap-2 sm:gap-3 px-5 sm:px-8 py-3 sm:py-4 rounded-xl font-bold font-mono text-sm sm:text-base transition-all duration-300"
             >
               <svg viewBox="0 0 16 16" className="w-6 h-6" fill="currentColor">
                 <path d="M8 .25a.75.75 0 0 1 .673.418l1.882 3.815 4.21.612a.75.75 0 0 1 .416 1.279l-3.046 2.97.719 4.192a.751.751 0 0 1-1.088.791L8 12.347l-3.766 1.98a.75.75 0 0 1-1.088-.79l.72-4.194L.818 6.374a.75.75 0 0 1 .416-1.28l4.21-.611L7.327.668A.75.75 0 0 1 8 .25z" />

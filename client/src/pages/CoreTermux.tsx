@@ -68,7 +68,7 @@ export default function CoreTermux() {
             Clique em um módulo para ver todas as ferramentas incluídas
           </p>
 
-          <div className="grid md:grid-cols-2 gap-6 mb-12">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-12">
             {modules.map((module, i) => (
               <div
                 key={i}
@@ -207,7 +207,7 @@ omni init <template>          # Configurar com template específico`}
               title="terminal"
             />
             <p className="text-sm text-muted-foreground mt-4 mb-2">Templates disponíveis:</p>
-            <div className="grid grid-cols-2 gap-3 text-sm">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm">
               {[
                 { name: "next", desc: "Next.js com Turbopack, TypeScript, Tailwind CSS" },
                 { name: "react", desc: "React + Vite com estrutura moderna" },

@@ -55,8 +55,8 @@ export default function CodeBlock({
       )}
 
       {/* Code */}
-      <pre className="p-5 overflow-x-auto bg-gradient-to-b from-background to-background/80">
-        <code className="font-mono text-sm text-foreground leading-relaxed tracking-tight">
+      <pre className="p-3 sm:p-5 overflow-x-auto bg-gradient-to-b from-background to-background/80">
+        <code className="font-mono text-xs sm:text-sm text-foreground leading-relaxed tracking-tight">
           {code}
         </code>
       </pre>

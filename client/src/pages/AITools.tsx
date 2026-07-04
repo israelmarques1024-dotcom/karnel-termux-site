@@ -63,18 +63,21 @@ export default function AITools() {
                   <tr className="border-b border-border bg-secondary/30">
                     <th className="text-left py-3 px-4 font-mono">Ferramenta</th>
                     <th className="text-left py-3 px-4 font-mono">Flag</th>
-                    <th className="text-left py-3 px-4 font-mono">Comando</th>
+                    <th className="text-left py-3 px-4 font-mono hidden md:table-cell">Comando</th>
                     <th className="text-left py-3 px-4 font-mono">Instalar</th>
                   </tr>
                 </thead>
                 <tbody>
                   {aiTools.map((tool, i) => (
                     <tr key={i} className="border-b border-border hover:bg-secondary/20 transition-colors">
-                      <td className="py-3 px-4 font-mono font-bold">{tool.name}</td>
+                      <td className="py-3 px-4 font-mono font-bold text-xs sm:text-sm">{tool.name}</td>
                       <td className="py-3 px-4 text-accent font-mono text-xs">{tool.flag}</td>
-                      <td className="py-3 px-4 font-mono text-xs">{tool.bin}</td>
+                      <td className="py-3 px-4 font-mono text-xs hidden md:table-cell">{tool.bin}</td>
                       <td className="py-3 px-4">
-                        <CodeBlock code={`omni install ai ${tool.flag}`} language="bash" />
+                        <span className="inline md:hidden font-mono text-xs text-accent">omni install ai {tool.flag}</span>
+                        <span className="hidden md:inline">
+                          <CodeBlock code={`omni install ai ${tool.flag}`} language="bash" />
+                        </span>
                       </td>
                     </tr>
                   ))}
