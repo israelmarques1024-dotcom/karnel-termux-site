@@ -58,8 +58,14 @@ export default function Home() {
     <Layout>
       {/* Hero Banner */}
       <section className="relative min-h-screen py-16 md:py-24 px-4 overflow-hidden">
-        {/* Permanent gradient background */}
-        <div className="absolute inset-0 bg-gradient-to-b from-accent/5 via-background to-background pointer-events-none z-0" />
+        {/* Banner background image */}
+        <div
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat pointer-events-none z-0"
+          style={{ backgroundImage: "url(/omni-banner.jpg)" }}
+        />
+
+        {/* Gradient overlay for readability */}
+        <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/50 to-background pointer-events-none z-0" />
 
         {/* White overlay — fades out as user scrolls */}
         {p < 1 && (
@@ -71,7 +77,7 @@ export default function Home() {
 
         {/* Background logo watermark — fades out with scroll */}
         <img
-          src="/omni-logo-pixel.svg"
+          src="/omni-logo.svg"
           alt=""
           className="hero-bg-logo"
           style={{ opacity: logoVis }}

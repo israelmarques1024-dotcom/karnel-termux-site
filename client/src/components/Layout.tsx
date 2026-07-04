@@ -38,7 +38,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           <Link href="/">
             <a className="flex items-center gap-3 mb-8 hover:opacity-90 transition-all duration-300 group">
               <img
-                src="/omni-logo-pixel.svg"
+                src="/omni-logo.svg"
                 alt="Omni Catalyst"
                 className="w-10 h-10 drop-shadow-lg drop-shadow-accent/50 group-hover:drop-shadow-xl group-hover:drop-shadow-accent/70 transition-all duration-300"
               />
@@ -88,7 +88,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             <Link href="/">
               <a className="flex items-center gap-2">
                 <img
-                  src="/omni-logo-pixel.svg"
+                  src="/omni-logo.svg"
                   alt="Omni Catalyst"
                   className="w-8 h-8"
                 />
