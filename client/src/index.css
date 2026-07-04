@@ -197,7 +197,7 @@
 
 .gem-duo {
   background: conic-gradient(from 0deg, #dc2626, #a855f7, #dc2626, #111111, #a855f7, #dc2626);
-  box-shadow: 0 0 30px rgba(220, 38, 38, 0.3), 0 0 60px rgba(168, 85, 247, 0.2);
+  box-shadow: 0 0 40px rgba(220, 38, 38, 0.5), 0 0 80px rgba(168, 85, 247, 0.4), 0 0 120px rgba(220, 38, 38, 0.2);
   animation: gem-pulse 4s ease-in-out infinite;
 }
 
@@ -215,43 +215,29 @@
   justify-content: center;
 }
 
-/* Single diagonal ring for hero gem */
-.gem-ring-single {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  translate: -50% -50%;
-  border-radius: 50%;
-  border-style: solid;
-  border-width: 2px;
-  transform-style: preserve-3d;
-  transform: rotateX(65deg) rotateZ(45deg);
-  animation: spin-ring-single linear infinite;
-}
-
-@keyframes spin-ring-single {
-  0% { transform: rotateX(65deg) rotateZ(45deg); }
-  100% { transform: rotateX(65deg) rotateZ(405deg); }
-}
-
-/* Hero background gem logo */
+/* Hero background gem */
 .hero-gem-logo {
   position: absolute;
   top: 35%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 0;
-  height: 0;
   z-index: 0;
   pointer-events: none;
 }
 
 .hero-gem-logo .gem {
-  width: 36px;
-  height: 36px;
-  top: 50%;
-  left: 50%;
-  translate: -50% -50%;
+  width: 48px;
+  height: 48px;
+}
+
+/* Scroll dim overlay */
+.scroll-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  background: #000;
+  pointer-events: none;
+  transition: opacity 0.05s linear;
 }
 
 /* Brand gem animation */

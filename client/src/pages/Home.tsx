@@ -22,12 +22,16 @@ export default function Home() {
     { label: "Total Packages", value: "77" },
   ];
 
-  const heroOpacity = Math.max(0.25, 1 - scrollY / 600);
+  const heroOpacity = Math.max(0.15, 1 - scrollY / 500);
+  const dimOpacity = Math.min(0.6, scrollY / 800);
 
   const iconColors = ["text-red-500", "text-purple-500", "text-orange-500", "text-sky-500", "text-emerald-500", "text-pink-500", "text-amber-500", "text-indigo-500"];
 
   return (
     <Layout>
+      {/* Scroll dim overlay */}
+      <div className="scroll-overlay" style={{ opacity: dimOpacity }} />
+
       {/* Hero Banner */}
       <section className="relative py-24 px-4 bg-gradient-to-b from-accent/5 via-background to-background overflow-hidden min-h-[80vh]">
         {/* Background gem logo with rings — fades on scroll */}
@@ -35,12 +39,7 @@ export default function Home() {
           className="hero-gem-logo"
           style={{ opacity: heroOpacity }}
         >
-          <div className="gem-container" style={{ top: 0, left: 0 }}>
-            <div className="gem gem-duo" />
-            <div className="gem-ring-single" style={{ borderColor: "#dc2626 transparent transparent transparent", width: "140px", height: "46px", animationDuration: "6s" }} />
-            <div className="gem-ring-single" style={{ borderColor: "transparent transparent #111111 transparent", width: "110px", height: "36px", animationDuration: "4s", animationDirection: "reverse" }} />
-            <div className="gem-ring-single" style={{ borderColor: "transparent #a855f7 transparent transparent", width: "170px", height: "56px", animationDuration: "8s" }} />
-          </div>
+          <div className="gem gem-duo" />
         </div>
 
         <div className="relative max-w-5xl mx-auto text-center">
