@@ -7,7 +7,7 @@ const navItems = [
   { label: "Home", href: "/" },
   { label: "Termux", href: "/termux" },
   { label: "Termux:API", href: "/termux/api" },
-  { label: "Core-Termux", href: "/core-termux" },
+  { label: "Omni", href: "/core-termux" },
   { label: "AI Tools", href: "/core-termux/ai" },
   { label: "Code Editor", href: "/core-termux/editor" },
 ];
