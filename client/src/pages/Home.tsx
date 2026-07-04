@@ -143,78 +143,89 @@ export default function Home() {
           <div className="grid md:grid-cols-2 gap-6">
             {[
               {
+                href: "/omni",
                 icon: <Zap size={22} />,
                 title: "Modular Architecture",
                 desc: "Install exactly what you need. Skip the rest. Mix and match tools without conflicts.",
               },
               {
+                href: "/omni/ai",
                 icon: <Code2 size={22} />,
                 title: "28 AI Coding Agents",
                 desc: "Claude, Gemini, OpenCode, Ollama, and more. Pre-configured and ready to use.",
               },
               {
+                href: "/omni/editor",
                 icon: <Terminal size={22} />,
                 title: "Professional Editor",
                 desc: "Neovim + NvChad with LSP support for 20+ languages. GitHub Copilot included.",
               },
               {
+                href: "/omni",
                 icon: <Cpu size={22} />,
                 title: "Full Linux Stack",
                 desc: "PostgreSQL, MongoDB, Node.js, Python, Go, Rust. Everything you need for real projects.",
               },
               {
+                href: "/omni",
                 icon: <Brain size={22} />,
                 title: "Second Brain",
                 desc: "Built-in memory system with AI search and graph visualization. Never lose an idea.",
               },
               {
+                href: "/omni/deploy",
                 icon: <Rocket size={22} />,
                 title: "Deploy Directly",
                 desc: "Vercel, Railway, Netlify CLIs pre-configured. Ship to production from your phone.",
               },
               {
+                href: "/omni/doctor",
                 icon: <Stethoscope size={22} />,
                 title: "omni doctor",
                 desc: "Diagnose your entire environment with 20 automated checks and one-command fixes.",
               },
               {
+                href: "/omni/show",
                 icon: <Eye size={22} />,
                 title: "omni show",
                 desc: "Browse documentation for every tool and module without leaving the terminal.",
               },
               {
+                href: "/omni",
                 icon: <Mic size={22} />,
                 title: "omni voice",
                 desc: "Talk to your AI agents using voice commands. Hands-free coding on the go.",
               },
               {
+                href: "/omni",
                 icon: <Database size={22} />,
                 title: "omni pg",
                 desc: "Manage PostgreSQL databases: init, start, stop, shell — all from one command.",
               },
               {
+                href: "/omni",
                 icon: <Puzzle size={22} />,
                 title: "omni init",
                 desc: "Scaffold Next.js, Express, and other project templates in seconds.",
               },
               {
+                href: "/omni",
                 icon: <Shield size={22} />,
                 title: "omni env",
                 desc: "Manage API keys and environment variables securely. Never hardcode secrets.",
               },
             ].map((feature, i) => (
-              <div
-                key={i}
-                className="bg-background border border-border rounded-lg p-6 hover:border-accent/30 transition-colors"
-              >
-                <div className={`mb-3 ${iconColors[i % iconColors.length]}`}>{feature.icon}</div>
-                <h3 className="text-base font-bold font-mono mb-2">
-                  {feature.title}
-                </h3>
-                <p className="text-sm text-muted-foreground leading-relaxed">
-                  {feature.desc}
-                </p>
-              </div>
+              <Link key={i} href={feature.href}>
+                <a className="block bg-background border border-border rounded-lg p-6 hover:border-accent/30 transition-colors cursor-pointer">
+                  <div className={`mb-3 ${iconColors[i % iconColors.length]}`}>{feature.icon}</div>
+                  <h3 className="text-base font-bold font-mono mb-2">
+                    {feature.title}
+                  </h3>
+                  <p className="text-sm text-muted-foreground leading-relaxed">
+                    {feature.desc}
+                  </p>
+                </a>
+              </Link>
             ))}
           </div>
         </div>
