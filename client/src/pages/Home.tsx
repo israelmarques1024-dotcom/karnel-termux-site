@@ -20,8 +20,8 @@ export default function Home() {
       >
         <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/50 to-background" />
         <div className="relative max-w-5xl mx-auto text-center">
-            <div className="inline-block mb-6 px-4 py-2 bg-accent/20 border border-accent/50 rounded-full backdrop-blur-sm">
-              <span className="text-accent font-mono text-sm font-semibold">
+            <div className="inline-block mb-6 px-4 py-2 bg-accent/20 border rounded-full backdrop-blur-sm animate-pixel-float" style={{ animation: "gem-glow 3s ease-in-out infinite, pixel-float 3s ease-in-out infinite" }}>
+              <span className="text-accent font-mono text-sm font-semibold" style={{ animation: "text-glow 3s ease-in-out infinite" }}>
                 ⚡ Omni Catalyst v4.7.0 — Android + Termux
               </span>
             </div>
@@ -29,7 +29,7 @@ export default function Home() {
           <h1 className="text-6xl lg:text-7xl font-bold font-mono mb-6 text-foreground leading-tight tracking-tight">
             Your Dev Environment
             <br />
-            <span className="bg-gradient-to-r from-red-500 via-accent to-purple-500 bg-clip-text text-transparent animate-pulse">
+            <span className="bg-gradient-to-r from-red-500 via-accent to-purple-500 bg-clip-text text-transparent" style={{ animation: "text-glow 3s ease-in-out infinite" }}>
               One Command Away
             </span>
           </h1>

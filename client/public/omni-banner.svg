@@ -1,113 +1,242 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600" fill="none">
   <defs>
     <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%" stop-color="#0f001a"/>
-      <stop offset="40%" stop-color="#1a0533"/>
-      <stop offset="70%" stop-color="#2d0a4a"/>
-      <stop offset="100%" stop-color="#4a0e3a"/>
+      <stop offset="0%" stop-color="#080010"/>
+      <stop offset="30%" stop-color="#120428"/>
+      <stop offset="60%" stop-color="#250840"/>
+      <stop offset="100%" stop-color="#3a0d35"/>
     </linearGradient>
-    <linearGradient id="gem" x1="0" y1="0" x2="1" y2="1">
+    <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
       <stop offset="0%" stop-color="#ff3b6f"/>
-      <stop offset="50%" stop-color="#a855f7"/>
-      <stop offset="100%" stop-color="#4a0e78"/>
+      <stop offset="30%" stop-color="#ff6b9d"/>
+      <stop offset="60%" stop-color="#c44dff"/>
+      <stop offset="100%" stop-color="#7c3aed"/>
     </linearGradient>
-    <linearGradient id="gem2" x1="0" y1="1" x2="1" y2="0">
+    <linearGradient id="g2" x1="0" y1="1" x2="1" y2="0">
       <stop offset="0%" stop-color="#7c3aed"/>
-      <stop offset="100%" stop-color="#ff6b9d"/>
+      <stop offset="40%" stop-color="#a855f7"/>
+      <stop offset="70%" stop-color="#ff6b9d"/>
+      <stop offset="100%" stop-color="#ff3b6f"/>
     </linearGradient>
-    <filter id="glow">
-      <feGaussianBlur stdDeviation="8" result="blur"/>
-      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
-    </filter>
-    <filter id="glow2">
-      <feGaussianBlur stdDeviation="4" result="blur"/>
-      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
-    </filter>
+    <linearGradient id="g3" x1="1" y1="1" x2="0" y2="0">
+      <stop offset="0%" stop-color="#4a0e78"/>
+      <stop offset="50%" stop-color="#7c3aed"/>
+      <stop offset="100%" stop-color="#ff3b6f"/>
+    </linearGradient>
   </defs>
   <!-- sky -->
   <rect width="1200" height="600" fill="url(#sky)"/>
   <!-- stars -->
-  <rect x="100" y="40" width="2" height="2" fill="white" opacity="0.8"/>
-  <rect x="250" y="80" width="2" height="2" fill="white" opacity="0.6"/>
-  <rect x="350" y="30" width="3" height="3" fill="white" opacity="0.7"/>
-  <rect x="500" y="60" width="2" height="2" fill="white" opacity="0.5"/>
-  <rect x="680" y="45" width="2" height="2" fill="white" opacity="0.8"/>
-  <rect x="800" y="90" width="3" height="3" fill="white" opacity="0.6"/>
-  <rect x="950" y="35" width="2" height="2" fill="white" opacity="0.7"/>
-  <rect x="1050" y="75" width="2" height="2" fill="white" opacity="0.5"/>
-  <rect x="150" y="120" width="2" height="2" fill="white" opacity="0.4"/>
-  <rect x="720" y="110" width="2" height="2" fill="white" opacity="0.6"/>
-  <rect x="430" y="100" width="2" height="2" fill="white" opacity="0.5"/>
-  <rect x="880" y="50" width="2" height="2" fill="white" opacity="0.7"/>
-  <!-- mountains (pixel art style) -->
-  <rect x="0" y="300" width="1200" height="4" fill="#1a0533"/>
-  <!-- mountain range 1 -->
-  <rect x="0" y="420" width="1200" height="4" fill="#1a0540"/>
-  <rect x="60" y="380" width="40" height="40" fill="#1a0540"/>
-  <rect x="60" y="360" width="20" height="20" fill="#1a0540"/>
-  <rect x="140" y="360" width="40" height="60" fill="#1a0540"/>
-  <rect x="140" y="340" width="20" height="20" fill="#1a0540"/>
-  <rect x="220" y="320" width="40" height="100" fill="#1a0540"/>
-  <rect x="220" y="300" width="20" height="20" fill="#1a0540"/>
-  <rect x="280" y="340" width="40" height="80" fill="#1a0540"/>
-  <rect x="280" y="320" width="20" height="20" fill="#1a0540"/>
-  <!-- mountain range 2 -->
-  <rect x="400" y="360" width="40" height="60" fill="#2a0a4a"/>
-  <rect x="400" y="340" width="20" height="20" fill="#2a0a4a"/>
-  <rect x="480" y="380" width="40" height="40" fill="#2a0a4a"/>
-  <rect x="540" y="340" width="40" height="80" fill="#2a0a4a"/>
-  <rect x="540" y="320" width="20" height="20" fill="#2a0a4a"/>
-  <rect x="620" y="360" width="40" height="60" fill="#2a0a4a"/>
-  <rect x="620" y="340" width="20" height="20" fill="#2a0a4a"/>
-  <!-- mountain range 3 -->
-  <rect x="750" y="340" width="40" height="80" fill="#1a0540"/>
-  <rect x="750" y="320" width="20" height="20" fill="#1a0540"/>
-  <rect x="830" y="360" width="40" height="60" fill="#1a0540"/>
-  <rect x="890" y="380" width="40" height="40" fill="#1a0540"/>
-  <rect x="970" y="350" width="40" height="70" fill="#1a0540"/>
-  <rect x="970" y="330" width="20" height="20" fill="#1a0540"/>
-  <rect x="1050" y="370" width="40" height="50" fill="#1a0540"/>
-  <rect x="1120" y="390" width="80" height="30" fill="#1a0540"/>
+  <rect x="60" y="36" width="4" height="4" fill="white" opacity="0.6"/>
+  <rect x="180" y="72" width="4" height="4" fill="white" opacity="0.4"/>
+  <rect x="300" y="20" width="4" height="4" fill="white" opacity="0.7"/>
+  <rect x="440" y="52" width="4" height="4" fill="white" opacity="0.3"/>
+  <rect x="600" y="30" width="4" height="4" fill="white" opacity="0.6"/>
+  <rect x="740" y="80" width="4" height="4" fill="white" opacity="0.4"/>
+  <rect x="880" y="24" width="4" height="4" fill="white" opacity="0.7"/>
+  <rect x="1020" y="68" width="4" height="4" fill="white" opacity="0.3"/>
+  <rect x="120" y="108" width="4" height="4" fill="white" opacity="0.2"/>
+  <rect x="680" y="100" width="4" height="4" fill="white" opacity="0.4"/>
+  <rect x="400" y="90" width="4" height="4" fill="white" opacity="0.3"/>
+  <rect x="820" y="40" width="4" height="4" fill="white" opacity="0.5"/>
+  <rect x="520" y="120" width="4" height="4" fill="white" opacity="0.2"/>
+  <rect x="50" y="148" width="4" height="4" fill="white" opacity="0.15"/>
+  <rect x="1100" y="48" width="4" height="4" fill="white" opacity="0.5"/>
+  <rect x="350" y="140" width="4" height="4" fill="white" opacity="0.2"/>
+  <rect x="950" y="112" width="4" height="4" fill="white" opacity="0.3"/>
+  <!-- moon -->
+  <rect x="920" y="52" width="40" height="40" fill="#e8d4f0" opacity="0.1"/>
+  <rect x="924" y="56" width="32" height="32" fill="#e8d4f0" opacity="0.15"/>
+  <rect x="928" y="60" width="24" height="24" fill="#e8d4f0" opacity="0.25"/>
+  <rect x="932" y="64" width="16" height="16" fill="#e8d4f0" opacity="0.35"/>
+  <!-- moon craters -->
+  <rect x="936" y="68" width="4" height="4" fill="#c0a8d0" opacity="0.3"/>
+  <rect x="944" y="72" width="4" height="4" fill="#c0a8d0" opacity="0.2"/>
+  <!-- terrain line -->
+  <rect x="0" y="320" width="1200" height="4" fill="#180430"/>
+  <!-- back mountain range -->
+  <rect x="0" y="380" width="60" height="80" fill="#180430"/>
+  <rect x="0" y="360" width="40" height="20" fill="#180430"/>
+  <rect x="0" y="340" width="20" height="20" fill="#180430"/>
+  <rect x="80" y="400" width="60" height="60" fill="#180430"/>
+  <rect x="80" y="380" width="40" height="20" fill="#180430"/>
+  <rect x="80" y="360" width="20" height="20" fill="#180430"/>
+  <rect x="160" y="370" width="60" height="90" fill="#180430"/>
+  <rect x="160" y="350" width="40" height="20" fill="#180430"/>
+  <rect x="160" y="330" width="20" height="20" fill="#180430"/>
+  <rect x="240" y="390" width="60" height="70" fill="#180430"/>
+  <rect x="240" y="370" width="40" height="20" fill="#180430"/>
+  <rect x="240" y="350" width="20" height="20" fill="#180430"/>
+  <rect x="320" y="410" width="60" height="50" fill="#180430"/>
+  <rect x="320" y="390" width="40" height="20" fill="#180430"/>
+  <rect x="320" y="370" width="20" height="20" fill="#180430"/>
+  <rect x="400" y="380" width="60" height="80" fill="#180430"/>
+  <rect x="400" y="360" width="40" height="20" fill="#180430"/>
+  <rect x="400" y="340" width="20" height="20" fill="#180430"/>
+  <!-- mid mountain range -->
+  <rect x="0" y="420" width="1200" height="4" fill="#200840"/>
+  <rect x="40" y="420" width="80" height="60" fill="#200840"/>
+  <rect x="40" y="400" width="40" height="20" fill="#200840"/>
+  <rect x="40" y="380" width="20" height="20" fill="#200840"/>
+  <rect x="140" y="440" width="80" height="40" fill="#200840"/>
+  <rect x="140" y="420" width="40" height="20" fill="#200840"/>
+  <rect x="140" y="400" width="20" height="20" fill="#200840"/>
+  <rect x="260" y="430" width="80" height="50" fill="#200840"/>
+  <rect x="260" y="410" width="40" height="20" fill="#200840"/>
+  <rect x="260" y="390" width="20" height="20" fill="#200840"/>
+  <rect x="380" y="420" width="80" height="60" fill="#200840"/>
+  <rect x="380" y="400" width="40" height="20" fill="#200840"/>
+  <rect x="380" y="380" width="20" height="20" fill="#200840"/>
+  <rect x="500" y="440" width="80" height="40" fill="#200840"/>
+  <rect x="500" y="420" width="40" height="20" fill="#200840"/>
+  <rect x="500" y="400" width="20" height="20" fill="#200840"/>
+  <rect x="620" y="430" width="80" height="50" fill="#200840"/>
+  <rect x="620" y="410" width="40" height="20" fill="#200840"/>
+  <rect x="620" y="390" width="20" height="20" fill="#200840"/>
+  <!-- front mountain range -->
+  <rect x="0" y="460" width="1200" height="4" fill="#2a0a4a"/>
+  <rect x="60" y="460" width="100" height="40" fill="#2a0a4a"/>
+  <rect x="60" y="440" width="60" height="20" fill="#2a0a4a"/>
+  <rect x="60" y="420" width="20" height="20" fill="#2a0a4a"/>
+  <rect x="200" y="460" width="100" height="40" fill="#2a0a4a"/>
+  <rect x="200" y="440" width="60" height="20" fill="#2a0a4a"/>
+  <rect x="200" y="420" width="20" height="20" fill="#2a0a4a"/>
+  <rect x="340" y="460" width="100" height="40" fill="#2a0a4a"/>
+  <rect x="340" y="440" width="60" height="20" fill="#2a0a4a"/>
+  <rect x="340" y="420" width="20" height="20" fill="#2a0a4a"/>
+  <rect x="700" y="460" width="100" height="40" fill="#2a0a4a"/>
+  <rect x="700" y="440" width="60" height="20" fill="#2a0a4a"/>
+  <rect x="700" y="420" width="20" height="20" fill="#2a0a4a"/>
+  <rect x="840" y="460" width="100" height="40" fill="#2a0a4a"/>
+  <rect x="840" y="440" width="60" height="20" fill="#2a0a4a"/>
+  <rect x="840" y="420" width="20" height="20" fill="#2a0a4a"/>
   <!-- ground -->
-  <rect x="0" y="420" width="1200" height="4" fill="#2a0a4a"/>
-  <rect x="0" y="424" width="1200" height="4" fill="#3a1060"/>
-  <rect x="0" y="428" width="1200" height="172" fill="#1a0533"/>
-  <!-- foreground pixel grid -->
-  <rect x="0" y="440" width="20" height="20" fill="#2a0a4a" opacity="0.3"/>
-  <rect x="40" y="460" width="20" height="20" fill="#2a0a4a" opacity="0.3"/>
-  <rect x="80" y="450" width="20" height="20" fill="#2a0a4a" opacity="0.2"/>
-  <rect x="140" y="470" width="20" height="20" fill="#2a0a4a" opacity="0.3"/>
-  <rect x="1000" y="445" width="20" height="20" fill="#2a0a4a" opacity="0.3"/>
-  <rect x="1060" y="465" width="20" height="20" fill="#2a0a4a" opacity="0.2"/>
-  <rect x="1120" y="450" width="20" height="20" fill="#2a0a4a" opacity="0.3"/>
-  <rect x="1160" y="480" width="20" height="20" fill="#2a0a4a" opacity="0.2"/>
-  <!-- gem glow -->
-  <ellipse cx="600" cy="280" rx="100" ry="120" fill="#a855f7" opacity="0.1" filter="url(#glow)"/>
-  <ellipse cx="600" cy="280" rx="60" ry="80" fill="#ff3b6f" opacity="0.15" filter="url(#glow)"/>
-  <!-- pixel art gem -->
-  <rect x="584" y="200" width="32" height="12" rx="2" fill="url(#gem)" filter="url(#glow2)"/>
-  <rect x="576" y="212" width="48" height="12" rx="2" fill="url(#gem)"/>
-  <rect x="568" y="224" width="64" height="12" rx="2" fill="url(#gem)"/>
-  <rect x="560" y="236" width="80" height="12" rx="2" fill="url(#gem)"/>
-  <rect x="552" y="248" width="96" height="12" rx="2" fill="url(#gem)"/>
-  <rect x="544" y="260" width="112" height="12" rx="2" fill="url(#gem2)"/>
-  <rect x="548" y="272" width="104" height="12" rx="2" fill="url(#gem2)"/>
-  <rect x="556" y="284" width="88" height="12" rx="2" fill="url(#gem2)"/>
-  <rect x="564" y="296" width="72" height="12" rx="2" fill="url(#gem2)"/>
-  <rect x="572" y="308" width="56" height="12" rx="2" fill="#ff3b6f"/>
-  <rect x="580" y="320" width="40" height="12" rx="2" fill="#ff3b6f"/>
-  <rect x="588" y="332" width="24" height="12" rx="2" fill="#ff6b9d"/>
-  <!-- gem highlights -->
-  <rect x="576" y="224" width="16" height="12" rx="2" fill="white" opacity="0.3"/>
-  <rect x="568" y="236" width="12" height="12" rx="2" fill="white" opacity="0.2"/>
-  <rect x="584" y="236" width="20" height="12" rx="2" fill="white" opacity="0.15"/>
-  <rect x="600" y="248" width="24" height="12" rx="2" fill="white" opacity="0.12"/>
-  <rect x="544" y="260" width="16" height="12" rx="2" fill="white" opacity="0.1"/>
-  <!-- sparkles around gem -->
-  <rect x="520" y="220" width="6" height="6" rx="1" fill="white" opacity="0.7" filter="url(#glow2)"/>
-  <rect x="674" y="240" width="6" height="6" rx="1" fill="white" opacity="0.5" filter="url(#glow2)"/>
-  <rect x="510" y="280" width="4" height="4" rx="1" fill="white" opacity="0.4"/>
-  <rect x="686" y="270" width="4" height="4" rx="1" fill="white" opacity="0.6" filter="url(#glow2)"/>
-  <rect x="640" y="210" width="4" height="4" rx="1" fill="white" opacity="0.5"/>
-  <rect x="556" y="200" width="4" height="4" rx="1" fill="white" opacity="0.4"/>
+  <rect x="0" y="464" width="1200" height="4" fill="#3a1060"/>
+  <rect x="0" y="468" width="1200" height="4" fill="#4a1470"/>
+  <rect x="0" y="472" width="1200" height="4" fill="#5a1880"/>
+  <rect x="0" y="476" width="1200" height="124" fill="#1a0533"/>
+  <!-- ground pixel pattern -->
+  <rect x="0" y="484" width="8" height="8" fill="#2a0a4a" opacity="0.2"/>
+  <rect x="16" y="500" width="8" height="8" fill="#2a0a4a" opacity="0.15"/>
+  <rect x="40" y="520" width="8" height="8" fill="#2a0a4a" opacity="0.12"/>
+  <rect x="64" y="492" width="8" height="8" fill="#2a0a4a" opacity="0.2"/>
+  <rect x="88" y="512" width="8" height="8" fill="#2a0a4a" opacity="0.15"/>
+  <rect x="112" y="532" width="8" height="8" fill="#2a0a4a" opacity="0.12"/>
+  <rect x="140" y="488" width="8" height="8" fill="#2a0a4a" opacity="0.2"/>
+  <rect x="170" y="508" width="8" height="8" fill="#2a0a4a" opacity="0.15"/>
+  <rect x="200" y="528" width="8" height="8" fill="#2a0a4a" opacity="0.12"/>
+  <rect x="230" y="496" width="8" height="8" fill="#2a0a4a" opacity="0.2"/>
+  <rect x="260" y="516" width="8" height="8" fill="#2a0a4a" opacity="0.15"/>
+  <rect x="800" y="520" width="8" height="8" fill="#2a0a4a" opacity="0.12"/>
+  <rect x="850" y="490" width="8" height="8" fill="#2a0a4a" opacity="0.2"/>
+  <rect x="900" y="510" width="8" height="8" fill="#2a0a4a" opacity="0.15"/>
+  <rect x="950" y="530" width="8" height="8" fill="#2a0a4a" opacity="0.12"/>
+  <rect x="1000" y="500" width="8" height="8" fill="#2a0a4a" opacity="0.2"/>
+  <rect x="1050" y="520" width="8" height="8" fill="#2a0a4a" opacity="0.15"/>
+  <rect x="1100" y="540" width="8" height="8" fill="#2a0a4a" opacity="0.12"/>
+  <rect x="1140" y="504" width="8" height="8" fill="#2a0a4a" opacity="0.2"/>
+  <rect x="1170" y="524" width="8" height="8" fill="#2a0a4a" opacity="0.15"/>
+  <!-- gem aura glow -->
+  <rect x="460" y="128" width="280" height="280" fill="#a855f7" opacity="0.04"/>
+  <rect x="480" y="148" width="240" height="240" fill="#ff3b6f" opacity="0.05"/>
+  <rect x="500" y="168" width="200" height="200" fill="#7c3aed" opacity="0.06"/>
+  <!-- big detailed pixel gem -->
+  <!-- top tip -->
+  <rect x="572" y="100" width="56" height="12" fill="url(#g1)"/>
+  <rect x="568" y="112" width="64" height="8" fill="url(#g1)"/>
+  <!-- upper body -->
+  <rect x="544" y="120" width="112" height="12" fill="url(#g1)"/>
+  <rect x="536" y="132" width="128" height="12" fill="url(#g1)"/>
+  <rect x="528" y="144" width="144" height="12" fill="url(#g1)"/>
+  <rect x="520" y="156" width="160" height="12" fill="url(#g1)"/>
+  <rect x="512" y="168" width="176" height="12" fill="url(#g1)"/>
+  <rect x="504" y="180" width="192" height="12" fill="url(#g1)"/>
+  <rect x="496" y="192" width="208" height="12" fill="url(#g1)"/>
+  <!-- mid body (wider) -->
+  <rect x="488" y="204" width="224" height="12" fill="url(#g1)"/>
+  <rect x="480" y="216" width="240" height="12" fill="url(#g2)"/>
+  <rect x="472" y="228" width="256" height="12" fill="url(#g2)"/>
+  <rect x="468" y="240" width="264" height="12" fill="url(#g2)"/>
+  <rect x="472" y="252" width="256" height="12" fill="url(#g2)"/>
+  <!-- lower body -->
+  <rect x="480" y="264" width="240" height="12" fill="url(#g2)"/>
+  <rect x="488" y="276" width="224" height="12" fill="url(#g2)"/>
+  <rect x="496" y="288" width="208" height="12" fill="url(#g2)"/>
+  <rect x="504" y="300" width="192" height="12" fill="url(#g3)"/>
+  <rect x="512" y="312" width="176" height="12" fill="url(#g3)"/>
+  <rect x="520" y="324" width="160" height="12" fill="url(#g3)"/>
+  <!-- bottom narrowing -->
+  <rect x="528" y="336" width="144" height="12" fill="#ff3b6f"/>
+  <rect x="536" y="348" width="128" height="12" fill="#ff3b6f"/>
+  <rect x="544" y="360" width="112" height="12" fill="#ff6b9d"/>
+  <rect x="552" y="372" width="96" height="12" fill="#ff6b9d"/>
+  <rect x="560" y="384" width="80" height="12" fill="#c44dff" opacity="0.8"/>
+  <rect x="568" y="396" width="64" height="12" fill="#c44dff" opacity="0.6"/>
+  <!-- pedestal base -->
+  <rect x="540" y="408" width="120" height="8" fill="#4a0e78" opacity="0.5"/>
+  <rect x="520" y="416" width="160" height="8" fill="#3a0d60" opacity="0.3"/>
+  <!-- gem highlights - left side -->
+  <rect x="556" y="120" width="12" height="12" fill="white" opacity="0.35"/>
+  <rect x="548" y="132" width="12" height="12" fill="white" opacity="0.3"/>
+  <rect x="540" y="144" width="12" height="12" fill="white" opacity="0.28"/>
+  <rect x="532" y="156" width="12" height="12" fill="white" opacity="0.25"/>
+  <rect x="524" y="168" width="12" height="12" fill="white" opacity="0.22"/>
+  <rect x="516" y="180" width="12" height="12" fill="white" opacity="0.2"/>
+  <rect x="508" y="192" width="12" height="12" fill="white" opacity="0.18"/>
+  <!-- gem highlights - center stripe -->
+  <rect x="580" y="120" width="20" height="12" fill="white" opacity="0.2"/>
+  <rect x="576" y="132" width="28" height="12" fill="white" opacity="0.18"/>
+  <rect x="572" y="144" width="36" height="12" fill="white" opacity="0.15"/>
+  <rect x="568" y="156" width="44" height="12" fill="white" opacity="0.12"/>
+  <rect x="564" y="168" width="52" height="12" fill="white" opacity="0.1"/>
+  <rect x="584" y="204" width="24" height="12" fill="white" opacity="0.15"/>
+  <rect x="576" y="216" width="40" height="12" fill="white" opacity="0.12"/>
+  <rect x="572" y="228" width="48" height="12" fill="white" opacity="0.1"/>
+  <rect x="568" y="240" width="56" height="12" fill="white" opacity="0.08"/>
+  <!-- gem highlights - right side -->
+  <rect x="632" y="120" width="12" height="12" fill="white" opacity="0.15"/>
+  <rect x="636" y="132" width="16" height="12" fill="white" opacity="0.12"/>
+  <rect x="640" y="144" width="20" height="12" fill="white" opacity="0.1"/>
+  <rect x="644" y="156" width="24" height="12" fill="white" opacity="0.08"/>
+  <!-- bottom highlights -->
+  <rect x="556" y="336" width="16" height="12" fill="white" opacity="0.1"/>
+  <rect x="548" y="348" width="20" height="12" fill="white" opacity="0.08"/>
+  <!-- dark accents - left edge -->
+  <rect x="544" y="120" width="8" height="12" fill="#4a0e78" opacity="0.4"/>
+  <rect x="536" y="132" width="8" height="12" fill="#4a0e78" opacity="0.35"/>
+  <rect x="528" y="144" width="8" height="12" fill="#4a0e78" opacity="0.3"/>
+  <rect x="520" y="156" width="8" height="12" fill="#4a0e78" opacity="0.25"/>
+  <rect x="512" y="168" width="8" height="12" fill="#4a0e78" opacity="0.22"/>
+  <!-- dark accents - right edge -->
+  <rect x="648" y="120" width="8" height="12" fill="#4a0e78" opacity="0.4"/>
+  <rect x="652" y="132" width="12" height="12" fill="#4a0e78" opacity="0.35"/>
+  <rect x="660" y="144" width="12" height="12" fill="#4a0e78" opacity="0.3"/>
+  <rect x="668" y="156" width="12" height="12" fill="#4a0e78" opacity="0.25"/>
+  <rect x="676" y="168" width="12" height="12" fill="#4a0e78" opacity="0.22"/>
+  <!-- sparkles -->
+  <rect x="448" y="136" width="8" height="8" fill="white" opacity="0.9"/>
+  <rect x="440" y="128" width="8" height="8" fill="white" opacity="0.5"/>
+  <rect x="456" y="144" width="4" height="4" fill="white" opacity="0.6"/>
+  <rect x="748" y="148" width="8" height="8" fill="white" opacity="0.8"/>
+  <rect x="756" y="140" width="8" height="8" fill="white" opacity="0.4"/>
+  <rect x="740" y="156" width="4" height="4" fill="white" opacity="0.5"/>
+  <rect x="430" y="220" width="6" height="6" fill="white" opacity="0.5"/>
+  <rect x="762" y="240" width="6" height="6" fill="white" opacity="0.6"/>
+  <rect x="720" y="116" width="6" height="6" fill="white" opacity="0.4"/>
+  <rect x="474" y="104" width="6" height="6" fill="white" opacity="0.5"/>
+  <rect x="736" y="300" width="6" height="6" fill="white" opacity="0.3"/>
+  <rect x="458" y="310" width="6" height="6" fill="white" opacity="0.3"/>
+  <rect x="700" y="360" width="4" height="4" fill="white" opacity="0.25"/>
+  <rect x="496" y="370" width="4" height="4" fill="white" opacity="0.25"/>
+  <!-- floating pixel particles -->
+  <rect x="120" y="160" width="8" height="8" fill="#a855f7" opacity="0.15"/>
+  <rect x="200" y="140" width="8" height="8" fill="#ff3b6f" opacity="0.12"/>
+  <rect x="280" y="180" width="8" height="8" fill="#7c3aed" opacity="0.15"/>
+  <rect x="860" y="140" width="8" height="8" fill="#ff6b9d" opacity="0.18"/>
+  <rect x="960" y="170" width="8" height="8" fill="#a855f7" opacity="0.12"/>
+  <rect x="1060" y="150" width="8" height="8" fill="#7c3aed" opacity="0.15"/>
+  <rect x="100" y="260" width="8" height="8" fill="#ff3b6f" opacity="0.1"/>
+  <rect x="1080" y="280" width="8" height="8" fill="#a855f7" opacity="0.1"/>
+  <rect x="160" y="300" width="6" height="6" fill="#c44dff" opacity="0.08"/>
+  <rect x="1040" y="240" width="6" height="6" fill="#ff6b9d" opacity="0.1"/>
 </svg>
