@@ -47,11 +47,19 @@ export default function CoreTermux() {
           {/* Quick Install */}
           <div className="bg-card border border-accent/50 rounded-lg p-6 mb-12">
             <h3 className="font-bold font-mono mb-4">Quick Installation</h3>
-            <CodeBlock
-              code={`bash -c "$(curl -fsSL https://raw.githubusercontent.com/israel676767/omni/main/install.sh)"`}
-              language="bash"
-              title="terminal"
-            />
+            <div className="space-y-3">
+              <CodeBlock
+                code={`bash -c "$(curl -fsSL https://raw.githubusercontent.com/israel676767/omni/main/install.sh)"`}
+                language="bash"
+                title="quick install"
+              />
+              <p className="text-center text-xs text-muted-foreground">or</p>
+              <CodeBlock
+                code={`npm install -g omni-catalyst`}
+                language="bash"
+                title="npm install"
+              />
+            </div>
           </div>
 
           {/* Modules Grid */}

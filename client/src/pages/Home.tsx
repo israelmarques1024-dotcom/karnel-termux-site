@@ -6,7 +6,7 @@ import CodeBlock from "@/components/CodeBlock";
 
 export default function Home() {
   const stats = [
-    { label: "AI Agents", value: "27" },
+    { label: "AI Agents", value: "28" },
     { label: "Languages", value: "8" },
     { label: "Databases", value: "4" },
     { label: "Dev Tools", value: "19" },
@@ -35,7 +35,7 @@ export default function Home() {
 
           <p className="text-lg text-muted-foreground mb-10 max-w-2xl mx-auto leading-relaxed">
             Transform your Android phone into a full-featured development workstation.
-            Install 27 AI agents, 8 programming languages, 4 databases, 19 dev tools,
+            Install 28 AI agents, 8 programming languages, 4 databases, 19 dev tools,
             and 3 deployment CLIs — all in seconds.
           </p>
 
@@ -86,11 +86,19 @@ export default function Home() {
               No dependencies. No bloat. Just pure development power.
             </p>
           </div>
-          <CodeBlock
-            code={`bash -c "$(curl -fsSL https://raw.githubusercontent.com/israel676767/omni/main/install.sh)"`}
-            language="bash"
-            title="terminal"
-          />
+          <div className="space-y-3">
+            <CodeBlock
+              code={`bash -c "$(curl -fsSL https://raw.githubusercontent.com/israel676767/omni/main/install.sh)"`}
+              language="bash"
+              title="quick install"
+            />
+            <p className="text-center text-xs text-muted-foreground">or</p>
+            <CodeBlock
+              code={`npm install -g omni-catalyst`}
+              language="bash"
+              title="npm install"
+            />
+          </div>
           <p className="text-center text-muted-foreground text-sm mt-6">
             Works on any Termux Android device. Takes less than 2 minutes.
           </p>
@@ -116,7 +124,7 @@ export default function Home() {
               },
               {
                 icon: <Code2 size={22} />,
-                title: "27 AI Coding Agents",
+                title: "28 AI Coding Agents",
                 desc: "Claude, Gemini, OpenCode, Ollama, and more. Pre-configured and ready to use.",
               },
               {

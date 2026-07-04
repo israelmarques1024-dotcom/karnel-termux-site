@@ -24,6 +24,7 @@ export default function AITools() {
     { name: "Kimi Code", bin: "kimi", flag: "--kimi-code" },
     { name: "Command Code", bin: "cmdc", flag: "--command-code" },
     { name: "Freebuff", bin: "freebuff", flag: "--freebuff" },
+    { name: "Kilo Code CLI", bin: "kilo", flag: "--kilocode-cli" },
     { name: "Kiro CLI", bin: "kiro", flag: "--kiro-cli" },
     { name: "HeyGen CLI", bin: "heygen", flag: "--heygen" },
     { name: "Seedance CLI", bin: "seedance", flag: "--seedance" },
