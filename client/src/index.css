@@ -145,6 +145,7 @@
   position: absolute;
   border-radius: 50%;
   border-style: solid;
+  border-width: 2px;
   transform-style: preserve-3d;
   animation: spin-ring linear infinite;
 }
@@ -152,7 +153,6 @@
 .gem-ring:nth-child(1) {
   width: 120px;
   height: 40px;
-  border-width: 2px;
   border-color: #dc2626 transparent transparent transparent;
   animation-duration: 4s;
 }
@@ -160,7 +160,6 @@
 .gem-ring:nth-child(2) {
   width: 150px;
   height: 50px;
-  border-width: 2px;
   border-color: transparent #a855f7 transparent transparent;
   animation-duration: 6s;
   animation-direction: reverse;
@@ -169,20 +168,19 @@
 .gem-ring:nth-child(3) {
   width: 100px;
   height: 33px;
-  border-width: 2px;
-  border-color: transparent transparent #1a1a1a transparent;
+  border-color: transparent transparent #111111 transparent;
   animation-duration: 3s;
 }
 
 @keyframes spin-ring {
-  0% { transform: rotateX(60deg) rotateZ(0deg); }
-  100% { transform: rotateX(60deg) rotateZ(360deg); }
+  0% { transform: rotateX(65deg) rotateZ(0deg); }
+  100% { transform: rotateX(65deg) rotateZ(360deg); }
 }
 
 .gem {
   position: absolute;
-  width: 24px;
-  height: 24px;
+  width: 28px;
+  height: 28px;
   border-radius: 50%;
   z-index: 10;
 }
@@ -197,6 +195,17 @@
   box-shadow: 0 0 20px rgba(168, 85, 247, 0.5);
 }
 
+.gem-duo {
+  background: conic-gradient(from 0deg, #dc2626, #a855f7, #dc2626, #111111, #a855f7, #dc2626);
+  box-shadow: 0 0 30px rgba(220, 38, 38, 0.3), 0 0 60px rgba(168, 85, 247, 0.2);
+  animation: gem-pulse 4s ease-in-out infinite;
+}
+
+@keyframes gem-pulse {
+  0%, 100% { transform: scale(1); opacity: 0.8; }
+  50% { transform: scale(1.15); opacity: 1; }
+}
+
 .gem-container {
   position: absolute;
   width: 0;
@@ -204,6 +213,53 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+/* Hero background gem logo */
+.hero-gem-logo {
+  position: sticky;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 0;
+  height: 0;
+  z-index: 0;
+  opacity: 0.25;
+  animation: hero-gem-fade 6s ease-in-out infinite;
+}
+
+.hero-gem-logo .gem {
+  width: 40px;
+  height: 40px;
+}
+
+@keyframes hero-gem-fade {
+  0%, 100% { opacity: 0.15; transform: translate(-50%, -50%) scale(0.9); }
+  50% { opacity: 0.35; transform: translate(-50%, -50%) scale(1.1); }
+}
+
+/* Brand gem animation */
+.brand-gem-sidebar > .gem-spin,
+.brand-gem > .gem-spin {
+  position: absolute;
+  border-radius: 50%;
+  border-style: solid;
+  border-width: 1.5px;
+  transform-style: preserve-3d;
+  transform: rotateX(60deg);
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+}
+
+.gem-spin {
+  animation: gem-spin-ring linear infinite;
+  animation-duration: 2s;
+}
+
+@keyframes gem-spin-ring {
+  0% { transform: rotateX(60deg) rotateZ(0deg); }
+  100% { transform: rotateX(60deg) rotateZ(360deg); }
 }
 
 @layer components {
