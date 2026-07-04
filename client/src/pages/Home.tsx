@@ -49,7 +49,7 @@ export default function Home() {
     { q: "É de graça?", a: "Sim! O Omni é 100% gratuito e open source (MIT)." },
     { q: "Precisa de root?", a: "Não. O Omni funciona em qualquer Android com Termux, sem root." },
     { q: "Funciona em qualquer Android?", a: "Sim, Android 11+ recomendado. Dispositivos com 4GB+ de RAM têm melhor performance." },
-    { q: "Como o Omni se sustenta?", a: "Em breve a CLI vai ter anúncios, por enquanto não terá." },
+    { q: "Como o Omni se sustenta?", a: "A CLI Omni Catalyst não exibe anúncios nem coleta dados. Futuramente, recursos premium podem ser oferecidos, mas o core permanecerá gratuito e open source." },
     { q: "Precisa de internet?", a: "Sim, pra instalar os pacotes. Depois de instalado, a maioria das ferramentas funciona offline." },
     { q: "Dá pra usar sem saber Linux?", a: "Sim! O Omni foi feito pra ser simples. Comandos em português e assistente integrado." },
   ];
@@ -303,6 +303,21 @@ export default function Home() {
                 </div>
               </details>
             ))}
+          </div>
+
+          {/* GitHub Star Button */}
+          <div className="text-center mt-12">
+            <a
+              href="https://github.com/israel676767/omni"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="star-btn inline-flex items-center gap-3 px-8 py-4 rounded-xl font-bold font-mono text-base transition-all duration-300"
+            >
+              <svg viewBox="0 0 16 16" className="w-6 h-6" fill="currentColor">
+                <path d="M8 .25a.75.75 0 0 1 .673.418l1.882 3.815 4.21.612a.75.75 0 0 1 .416 1.279l-3.046 2.97.719 4.192a.751.751 0 0 1-1.088.791L8 12.347l-3.766 1.98a.75.75 0 0 1-1.088-.79l.72-4.194L.818 6.374a.75.75 0 0 1 .416-1.28l4.21-.611L7.327.668A.75.75 0 0 1 8 .25z" />
+              </svg>
+              Dar uma estrela no GitHub
+            </a>
           </div>
         </div>
       </section>
