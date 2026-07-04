@@ -13,6 +13,12 @@ import CodeEditor from "./pages/CodeEditor";
 import Deploy from "./pages/Deploy";
 import Doctor from "./pages/Doctor";
 import ShowDocs from "./pages/ShowDocs";
+import Linux from "./pages/Linux";
+import Brain from "./pages/Brain";
+import Voice from "./pages/Voice";
+import PG from "./pages/PG";
+import Init from "./pages/Init";
+import Env from "./pages/Env";
 
 function Router() {
   return (
@@ -26,6 +32,12 @@ function Router() {
       <Route path={"/omni/deploy"} component={Deploy} />
       <Route path={"/omni/doctor"} component={Doctor} />
       <Route path={"/omni/show"} component={ShowDocs} />
+      <Route path={"/omni/linux"} component={Linux} />
+      <Route path={"/omni/brain"} component={Brain} />
+      <Route path={"/omni/voice"} component={Voice} />
+      <Route path={"/omni/pg"} component={PG} />
+      <Route path={"/omni/init"} component={Init} />
+      <Route path={"/omni/env"} component={Env} />
       <Route path={"/404"} component={NotFound} />
       <Route component={NotFound} />
     </Switch>

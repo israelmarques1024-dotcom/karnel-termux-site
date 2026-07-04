@@ -37,14 +37,14 @@ export default function AITools() {
     <Layout>
       <section className="py-12 px-4">
         <div className="max-w-4xl mx-auto">
-          <h1 className="text-4xl font-bold font-mono mb-4">AI Development Tools</h1>
+          <h1 className="text-4xl font-bold font-mono mb-4">Ferramentas de Desenvolvimento com IA</h1>
           <p className="text-lg text-muted-foreground mb-8">
-            AI coding assistants and tools adapted for Termux. Boost your
-            productivity with AI-powered code generation, debugging, and more.
+            Assistentes de codificação com IA e ferramentas adaptadas para o Termux. Aumente sua
+            produtividade com geração de código, depuração e muito mais com IA.
           </p>
 
           <div className="bg-card border border-accent/50 rounded-lg p-6 mb-12">
-            <h3 className="font-bold font-mono mb-4">Quick Install</h3>
+            <h3 className="font-bold font-mono mb-4">Instalação Rápida</h3>
             <CodeBlock
               code={`omni install ai`}
               language="bash"
@@ -53,18 +53,18 @@ export default function AITools() {
           </div>
 
           {/* AI Tools Grid */}
-          <h2 className="text-2xl font-bold font-mono mb-6">Available AI Tools</h2>
-          <p className="text-muted-foreground mb-8">{aiTools.length} AI coding assistants and tools — exact list from <code className="text-accent">omni list ai</code></p>
+          <h2 className="text-2xl font-bold font-mono mb-6">Ferramentas de IA Disponíveis</h2>
+          <p className="text-muted-foreground mb-8">{aiTools.length} assistentes e ferramentas de IA — lista exata do <code className="text-accent">omni list ai</code></p>
 
           <div className="bg-card border border-border rounded-lg overflow-hidden mb-12">
             <div className="overflow-x-auto">
               <table className="w-full text-sm">
                 <thead>
                   <tr className="border-b border-border bg-secondary/30">
-                    <th className="text-left py-3 px-4 font-mono">Tool</th>
+                    <th className="text-left py-3 px-4 font-mono">Ferramenta</th>
                     <th className="text-left py-3 px-4 font-mono">Flag</th>
-                    <th className="text-left py-3 px-4 font-mono">Command</th>
-                    <th className="text-left py-3 px-4 font-mono">Install</th>
+                    <th className="text-left py-3 px-4 font-mono">Comando</th>
+                    <th className="text-left py-3 px-4 font-mono">Instalar</th>
                   </tr>
                 </thead>
                 <tbody>

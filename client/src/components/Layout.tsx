@@ -4,12 +4,18 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 
 const navItems = [
-  { label: "Home", href: "/" },
+  { label: "Início", href: "/" },
   { label: "Termux", href: "/termux" },
   { label: "Termux:API", href: "/termux/api" },
   { label: "Omni", href: "/omni" },
-  { label: "AI Tools", href: "/omni/ai" },
-  { label: "Code Editor", href: "/omni/editor" },
+  { label: "Ferramentas IA", href: "/omni/ai" },
+  { label: "Editor", href: "/omni/editor" },
+  { label: "Stack Linux", href: "/omni/linux" },
+  { label: "Segundo Cérebro", href: "/omni/brain" },
+  { label: "Voz", href: "/omni/voice" },
+  { label: "PG", href: "/omni/pg" },
+  { label: "Inicialização", href: "/omni/init" },
+  { label: "Env", href: "/omni/env" },
   { label: "Deploy", href: "/omni/deploy" },
   { label: "Doctor", href: "/omni/doctor" },
   { label: "Show", href: "/omni/show" },
@@ -69,7 +75,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             <p className="text-xs text-muted-foreground font-mono">
               <span className="text-accent">v1.0.1</span> • Android + Termux
             </p>
-            <p className="text-xs text-muted-foreground/60 mt-2">Built for developers</p>
+            <p className="text-xs text-muted-foreground/60 mt-2">Feito para desenvolvedores</p>
           </div>
         </div>
       </aside>
@@ -86,7 +92,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                   alt="Omni Catalyst"
                   className="w-8 h-8"
                 />
-                <span className="font-bold font-mono text-sm">OMNI CATALYST</span>
+                <span className="font-bold font-mono text-sm">OMNI</span>
               </a>
             </Link>
             <Button
@@ -107,7 +113,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         {/* Footer */}
         <footer className="bg-card border-t border-border p-6 text-center text-sm text-muted-foreground">
           <p>
-            Omni Catalyst — Built with ❤️ by{" "}
+            Omni Catalyst — Feito com ❤️ por{" "}
             <a
               href="https://github.com/israel676767"
               target="_blank"

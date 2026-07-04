@@ -5,33 +5,33 @@ import CodeBlock from "@/components/CodeBlock";
 
 export default function CoreTermux() {
   const modules = [
-    { name: "Language Packages", desc: "Node, Python, Perl, PHP, Rust, C/C++, Go", cmd: "omni install lang" },
-    { name: "Databases", desc: "PostgreSQL, MariaDB, SQLite, MongoDB", cmd: "omni install db" },
-    { name: "AI Tools", desc: "OpenCode, Gentle AI, Claude Code, etc.", cmd: "omni install ai" },
-    { name: "Code Editor", desc: "Neovim + NvChad + Plugins", cmd: "omni install editor" },
-    { name: "Development Tools", desc: "GitHub CLI, wget, curl, fzf, etc.", cmd: "omni install dev" },
-    { name: "Node.js Modules", desc: "Node.js global npm packages", cmd: "omni install npm" },
-    { name: "ZSH Shell", desc: "ZSH + Oh My Zsh + 10 plugins", cmd: "omni install shell" },
-    { name: "Termux UI", desc: "Font, Cursor, Extra-keys, Banner", cmd: "omni install ui" },
-    { name: "Automation", desc: "Automation Tools (n8n)", cmd: "omni install auto" },
-    { name: "Deploy CLIs", desc: "Vercel, Railway, Netlify", cmd: "omni install deploy" },
+    { name: "Pacotes de Linguagem", desc: "Node, Python, Perl, PHP, Rust, C/C++, Go", cmd: "omni install lang" },
+    { name: "Bancos de Dados", desc: "PostgreSQL, MariaDB, SQLite, MongoDB", cmd: "omni install db" },
+    { name: "Ferramentas de IA", desc: "OpenCode, Gentle AI, Claude Code, etc.", cmd: "omni install ai" },
+    { name: "Editor de Código", desc: "Neovim + NvChad + Plugins", cmd: "omni install editor" },
+    { name: "Ferramentas de Desenvolvimento", desc: "GitHub CLI, wget, curl, fzf, etc.", cmd: "omni install dev" },
+    { name: "Módulos Node.js", desc: "Pacotes npm globais do Node.js", cmd: "omni install npm" },
+    { name: "Shell ZSH", desc: "ZSH + Oh My Zsh + 10 plugins", cmd: "omni install shell" },
+    { name: "Interface Termux", desc: "Fonte, Cursor, Extra-keys, Banner", cmd: "omni install ui" },
+    { name: "Automação", desc: "Ferramentas de Automação (n8n)", cmd: "omni install auto" },
+    { name: "CLIs de Deploy", desc: "Vercel, Railway, Netlify", cmd: "omni install deploy" },
   ];
 
   const commands = [
-    { cmd: "omni --version", desc: "Show current version" },
-    { cmd: "omni brain", desc: "Second brain — save and search memories" },
-    { cmd: "omni env", desc: "Manage environment variables" },
-    { cmd: "omni install", desc: "Install modules and packages" },
-    { cmd: "omni show", desc: "Show documentation for any tool" },
-    { cmd: "omni doctor", desc: "Diagnose Termux & Omni environment (20 checks)" },
-    { cmd: "omni update", desc: "Update modules or framework" },
-    { cmd: "omni uninstall", desc: "Remove installed modules" },
-    { cmd: "omni reinstall", desc: "Uninstall + install modules" },
-    { cmd: "omni voice", desc: "Speech-to-agent via microphone" },
-    { cmd: "omni open", desc: "Open documentation in browser" },
-    { cmd: "omni list", desc: "List available tools in modules" },
-    { cmd: "omni pg", desc: "PostgreSQL database manager" },
-    { cmd: "omni init", desc: "Configure existing projects" },
+    { cmd: "omni --version", desc: "Mostrar versão atual" },
+    { cmd: "omni brain", desc: "Segundo cérebro — salvar e pesquisar memórias" },
+    { cmd: "omni env", desc: "Gerenciar variáveis de ambiente" },
+    { cmd: "omni install", desc: "Instalar módulos e pacotes" },
+    { cmd: "omni show", desc: "Mostrar documentação de qualquer ferramenta" },
+    { cmd: "omni doctor", desc: "Diagnosticar ambiente Termux & Omni (20 verificações)" },
+    { cmd: "omni update", desc: "Atualizar módulos ou framework" },
+    { cmd: "omni uninstall", desc: "Remover módulos instalados" },
+    { cmd: "omni reinstall", desc: "Desinstalar + instalar módulos" },
+    { cmd: "omni voice", desc: "Fala-para-agente via microfone" },
+    { cmd: "omni open", desc: "Abrir documentação no navegador" },
+    { cmd: "omni list", desc: "Listar ferramentas disponíveis nos módulos" },
+    { cmd: "omni pg", desc: "Gerenciador de banco de dados PostgreSQL" },
+    { cmd: "omni init", desc: "Configurar projetos existentes" },
   ];
 
   return (
@@ -40,20 +40,20 @@ export default function CoreTermux() {
         <div className="max-w-4xl mx-auto">
           <h1 className="text-4xl font-bold font-mono mb-4">OMNI CATALYST</h1>
           <p className="text-lg text-muted-foreground mb-8">
-            Modular Dev Environment for Termux (Android). Automate installations,
-            updates, and configurations with simple commands.
+            Ambiente de Desenvolvimento Modular para Termux (Android). Automatize instalações,
+            atualizações e configurações com comandos simples.
           </p>
 
           {/* Quick Install */}
           <div className="bg-card border border-accent/50 rounded-lg p-6 mb-12">
-            <h3 className="font-bold font-mono mb-4">Quick Installation</h3>
+            <h3 className="font-bold font-mono mb-4">Instalação Rápida</h3>
             <div className="space-y-3">
               <CodeBlock
                 code={`bash -c "$(curl -fsSL https://raw.githubusercontent.com/israel676767/omni/main/install.sh)"`}
                 language="bash"
                 title="quick install"
               />
-              <p className="text-center text-xs text-muted-foreground">or</p>
+              <p className="text-center text-xs text-muted-foreground">ou</p>
               <CodeBlock
                 code={`npm install -g omni-catalyst`}
                 language="bash"
@@ -63,9 +63,9 @@ export default function CoreTermux() {
           </div>
 
           {/* Modules Grid */}
-          <h2 className="text-2xl font-bold font-mono mb-6">Modules</h2>
+          <h2 className="text-2xl font-bold font-mono mb-6">Módulos</h2>
           <p className="text-muted-foreground mb-8">
-            Click on a module to see all tools included
+            Clique em um módulo para ver todas as ferramentas incluídas
           </p>
 
           <div className="grid md:grid-cols-2 gap-6 mb-12">
@@ -84,9 +84,9 @@ export default function CoreTermux() {
           </div>
 
           {/* Main Commands */}
-          <h2 className="text-2xl font-bold font-mono mb-6">Main Commands</h2>
+          <h2 className="text-2xl font-bold font-mono mb-6">Comandos Principais</h2>
           <p className="text-muted-foreground mb-8">
-            Click on any command to see full documentation
+            Clique em qualquer comando para ver a documentação completa
           </p>
 
           <div className="bg-card border border-border rounded-lg overflow-hidden mb-12">
@@ -112,27 +112,27 @@ export default function CoreTermux() {
           </div>
 
           {/* Detailed Commands */}
-          <h2 className="text-2xl font-bold font-mono mb-6">Detailed Commands</h2>
+          <h2 className="text-2xl font-bold font-mono mb-6">Comandos Detalhados</h2>
 
           {/* reinstall */}
           <div className="bg-card border border-border rounded-lg p-6 mb-6">
             <h3 className="font-bold font-mono text-accent mb-2">omni reinstall</h3>
             <p className="text-muted-foreground mb-4">
-              Reinstall modules or specific tools — uninstalls then installs from scratch.
+              Reinstalar módulos ou ferramentas específicas — desinstala e instala do zero.
             </p>
             <CodeBlock
-              code={`omni reinstall                # Show help
-omni reinstall <target>       # Reinstall specific target
-omni reinstall <target> --tool1 --tool2  # Reinstall specific tools`}
+              code={`omni reinstall                # Mostrar ajuda
+omni reinstall <target>       # Reinstalar alvo específico
+omni reinstall <target> --tool1 --tool2  # Reinstalar ferramentas específicas`}
               language="bash"
               title="terminal"
             />
             <div className="mt-4">
-              <p className="text-sm text-muted-foreground">Examples:</p>
+              <p className="text-sm text-muted-foreground">Exemplos:</p>
               <CodeBlock
-                code={`omni reinstall ai --opencode --ollama       # Reinstall only OpenCode and Ollama
-omni reinstall db --postgresql --sqlite     # Reinstall only PostgreSQL and SQLite
-omni reinstall dev --gh --fzf               # Reinstall only gh and fzf`}
+                code={`omni reinstall ai --opencode --ollama       # Reinstalar apenas OpenCode e Ollama
+omni reinstall db --postgresql --sqlite     # Reinstalar apenas PostgreSQL e SQLite
+omni reinstall dev --gh --fzf               # Reinstalar apenas gh e fzf`}
                 language="bash"
               />
             </div>
@@ -142,13 +142,13 @@ omni reinstall dev --gh --fzf               # Reinstall only gh and fzf`}
           <div className="bg-card border border-border rounded-lg p-6 mb-6">
             <h3 className="font-bold font-mono text-accent mb-2">omni voice</h3>
             <p className="text-muted-foreground mb-4">
-              Capture voice from the microphone, review it in nvim, and launch an AI agent.
+              Capturar voz do microfone, revisar no nvim e iniciar um agente de IA.
             </p>
             <CodeBlock
-              code={`omni voice                    # Show help
-omni voice <agent>            # Capture → nvim → launch agent
-omni voice text               # Capture → nvim → print to stdout
-omni voice !                  # Alias for 'text'`}
+              code={`omni voice                    # Mostrar ajuda
+omni voice <agent>            # Capturar → nvim → iniciar agente
+omni voice text               # Capturar → nvim → imprimir no stdout
+omni voice !                  # Atalho para 'text'`}
               language="bash"
               title="terminal"
             />
@@ -158,17 +158,17 @@ omni voice !                  # Alias for 'text'`}
           <div className="bg-card border border-border rounded-lg p-6 mb-6">
             <h3 className="font-bold font-mono text-accent mb-2">omni open</h3>
             <p className="text-muted-foreground mb-4">
-              Open official documentation in browser.
+              Abrir documentação oficial no navegador.
             </p>
             <CodeBlock
-              code={`omni open                     # Show help
-omni open <target>            # Open official documentation in browser
-omni open omni                # Opens https://omni-catalyst.vercel.app`}
+              code={`omni open                     # Mostrar ajuda
+omni open <target>            # Abrir documentação oficial no navegador
+omni open omni                # Abre https://omni-catalyst.vercel.app`}
               language="bash"
               title="terminal"
             />
             <p className="text-sm text-muted-foreground mt-4">
-              Targets: <code className="text-accent">omni</code>, <code className="text-accent">lang</code>, <code className="text-accent">db</code>, <code className="text-accent">ai</code>, <code className="text-accent">editor</code>, <code className="text-accent">dev</code>, <code className="text-accent">npm</code>, <code className="text-accent">shell</code>, <code className="text-accent">ui</code>, <code className="text-accent">auto</code>, <code className="text-accent">deploy</code>
+              Alvos: <code className="text-accent">omni</code>, <code className="text-accent">lang</code>, <code className="text-accent">db</code>, <code className="text-accent">ai</code>, <code className="text-accent">editor</code>, <code className="text-accent">dev</code>, <code className="text-accent">npm</code>, <code className="text-accent">shell</code>, <code className="text-accent">ui</code>, <code className="text-accent">auto</code>, <code className="text-accent">deploy</code>
             </p>
           </div>
 
@@ -176,19 +176,19 @@ omni open omni                # Opens https://omni-catalyst.vercel.app`}
           <div className="bg-card border border-border rounded-lg p-6 mb-6">
             <h3 className="font-bold font-mono text-accent mb-2">omni pg</h3>
             <p className="text-muted-foreground mb-4">
-              PostgreSQL database manager.
+              Gerenciador de banco de dados PostgreSQL.
             </p>
             <CodeBlock
-              code={`omni pg                       # Show help
-omni pg start                 # Start server
-omni pg stop                  # Stop server
-omni pg restart               # Restart server
-omni pg status                # Check status
-omni pg init                  # Initialize database
-omni pg create <name>         # Create database
-omni pg drop <name>           # Drop database
-omni pg list                  # List databases
-omni pg shell                 # Open psql console`}
+              code={`omni pg                       # Mostrar ajuda
+omni pg start                 # Iniciar servidor
+omni pg stop                  # Parar servidor
+omni pg restart               # Reiniciar servidor
+omni pg status                # Verificar status
+omni pg init                  # Inicializar banco de dados
+omni pg create <name>         # Criar banco de dados
+omni pg drop <name>           # Remover banco de dados
+omni pg list                  # Listar bancos de dados
+omni pg shell                 # Abrir console psql`}
               language="bash"
               title="terminal"
             />
@@ -198,21 +198,21 @@ omni pg shell                 # Open psql console`}
           <div className="bg-card border border-border rounded-lg p-6 mb-6">
             <h3 className="font-bold font-mono text-accent mb-2">omni init</h3>
             <p className="text-muted-foreground mb-4">
-              Configure existing projects with predefined dependencies, folder structure, and tooling.
+              Configurar projetos existentes com dependências, estrutura de pastas e ferramentas predefinidas.
             </p>
             <CodeBlock
-              code={`omni init                     # Auto-detect project type and configure
-omni init <template>          # Configure with specific template`}
+              code={`omni init                     # Detectar tipo de projeto automaticamente e configurar
+omni init <template>          # Configurar com template específico`}
               language="bash"
               title="terminal"
             />
-            <p className="text-sm text-muted-foreground mt-4 mb-2">Available templates:</p>
+            <p className="text-sm text-muted-foreground mt-4 mb-2">Templates disponíveis:</p>
             <div className="grid grid-cols-2 gap-3 text-sm">
               {[
-                { name: "next", desc: "Next.js with Turbopack, TypeScript, Tailwind CSS" },
-                { name: "react", desc: "React + Vite with modern structure" },
-                { name: "nest", desc: "NestJS with TypeORM and authentication" },
-                { name: "express", desc: "Express API with TypeScript + TypeORM + migrations" },
+                { name: "next", desc: "Next.js com Turbopack, TypeScript, Tailwind CSS" },
+                { name: "react", desc: "React + Vite com estrutura moderna" },
+                { name: "nest", desc: "NestJS com TypeORM e autenticação" },
+                { name: "express", desc: "Express API com TypeScript + TypeORM + migrations" },
               ].map((tpl) => (
                 <div key={tpl.name} className="bg-background border border-border rounded p-3">
                   <span className="font-mono text-accent font-bold">{tpl.name}</span>
@@ -225,18 +225,18 @@ omni init <template>          # Configure with specific template`}
           {/* GitHub Link */}
           <div className="bg-card border border-border rounded-lg p-8 text-center">
             <h3 className="text-xl font-bold font-mono mb-4">
-              View Full Documentation
+              Ver Documentação Completa
             </h3>
             <p className="text-muted-foreground mb-6">
-              Explore the complete Omni repository on GitHub for detailed
-              documentation and examples.
+              Explore o repositório completo do Omni no GitHub para documentação
+              detalhada e exemplos.
             </p>
             <a
               href="https://github.com/israel676767/omni"
               target="_blank"
               rel="noopener noreferrer"
             >
-              <Button>View on GitHub</Button>
+              <Button>Ver no GitHub</Button>
             </a>
           </div>
         </div>

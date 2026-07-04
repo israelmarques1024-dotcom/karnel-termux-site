@@ -3,12 +3,12 @@ import CodeBlock from "@/components/CodeBlock";
 
 export default function ShowDocs() {
   const examples = [
-    { cmd: "omni show ai --opencode", desc: "Show OpenCode README in the AI module" },
-    { cmd: "omni show ai --ollama", desc: "Show Ollama documentation" },
-    { cmd: "omni show db --postgresql", desc: "Show PostgreSQL setup guide" },
-    { cmd: "omni show dev --gh", desc: "Show GitHub CLI docs" },
-    { cmd: "omni show npm --typescript", desc: "Show TypeScript npm package guide" },
-    { cmd: "omni show all --<tool>", desc: "Search for a tool across all modules" },
+    { cmd: "omni show ai --opencode", desc: "Mostrar README do OpenCode no módulo de IA" },
+    { cmd: "omni show ai --ollama", desc: "Mostrar documentação do Ollama" },
+    { cmd: "omni show db --postgresql", desc: "Mostrar guia de configuração do PostgreSQL" },
+    { cmd: "omni show dev --gh", desc: "Mostrar docs do GitHub CLI" },
+    { cmd: "omni show npm --typescript", desc: "Mostrar guia do pacote npm TypeScript" },
+    { cmd: "omni show all --<tool>", desc: "Pesquisar uma ferramenta em todos os módulos" },
   ];
 
   return (
@@ -17,37 +17,37 @@ export default function ShowDocs() {
         <div className="max-w-4xl mx-auto">
           <h1 className="text-4xl font-bold font-mono mb-4">omni show</h1>
           <p className="text-lg text-muted-foreground mb-8">
-            Display README documentation for any tool installed via Omni. Supports
-            rendering via glow (when available), pygmentize, or plain cat.
+            Exibe documentação README para qualquer ferramenta instalada via Omni. Suporta
+            renderização via glow (quando disponível), pygmentize ou cat simples.
           </p>
 
           <div className="bg-card border border-accent/50 rounded-lg p-6 mb-12">
-            <h3 className="font-bold font-mono mb-4">Usage</h3>
+            <h3 className="font-bold font-mono mb-4">Uso</h3>
             <CodeBlock
               code={"omni show <module> --<tool>"}
               language="bash"
               title="terminal"
             />
             <p className="text-sm text-muted-foreground mt-4">
-              Run <code className="text-accent">omni list &lt;module&gt;</code> first to see available
-              tools in a module.
+              Execute <code className="text-accent">omni list &lt;module&gt;</code> primeiro para ver as ferramentas
+              disponíveis em um módulo.
             </p>
           </div>
 
-          <h2 className="text-2xl font-bold font-mono mb-6">How It Works</h2>
+          <h2 className="text-2xl font-bold font-mono mb-6">Como Funciona</h2>
 
           <div className="bg-card border border-border rounded-lg p-6 mb-12">
             <p className="text-muted-foreground mb-6">
-              The command looks up <code className="text-accent">$OMNI_PATH/tools/&lt;module&gt;/&lt;tool&gt;/README.md</code>
-              and displays it. If <code className="text-accent">glow</code> is installed, it renders
-              with syntax highlighting. Falls back to pygmentize or plain cat.
+              O comando procura <code className="text-accent">$OMNI_PATH/tools/&lt;module&gt;/&lt;tool&gt;/README.md</code>
+              e o exibe. Se o <code className="text-accent">glow</code> estiver instalado, ele renderiza
+              com destaque de sintaxe. Caso contrário, usa pygmentize ou cat simples.
             </p>
 
             <div className="grid md:grid-cols-2 gap-4">
               {[
-                { name: "glow", desc: "Renders Markdown with syntax highlighting and styling" },
-                { name: "pygmentize", desc: "Syntax-highlighted Markdown via less -R" },
-                { name: "cat", desc: "Plain text fallback when neither tool is available" },
+                { name: "glow", desc: "Renderiza Markdown com destaque de sintaxe e estilo" },
+                { name: "pygmentize", desc: "Markdown com destaque de sintaxe via less -R" },
+                { name: "cat", desc: "Texto simples quando nenhuma ferramenta está disponível" },
               ].map((renderer, i) => (
                 <div key={i} className="bg-background border border-border rounded p-3">
                   <span className="font-mono text-accent font-bold">{renderer.name}</span>
@@ -57,7 +57,7 @@ export default function ShowDocs() {
             </div>
           </div>
 
-          <h2 className="text-2xl font-bold font-mono mb-6">Examples</h2>
+          <h2 className="text-2xl font-bold font-mono mb-6">Exemplos</h2>
 
           <div className="space-y-6 mb-12">
             {examples.map((ex, i) => (
@@ -68,12 +68,12 @@ export default function ShowDocs() {
             ))}
           </div>
 
-          <h2 className="text-2xl font-bold font-mono mb-6">Listing Tools in a Module</h2>
+          <h2 className="text-2xl font-bold font-mono mb-6">Listar Ferramentas em um Módulo</h2>
 
           <div className="bg-card border border-border rounded-lg p-6 mb-12">
             <p className="text-muted-foreground mb-4">
-              Run <code className="text-accent">omni show &lt;module&gt;</code> without a tool flag to list
-              all available tools in that module:
+              Execute <code className="text-accent">omni show &lt;module&gt;</code> sem uma flag de ferramenta para listar
+              todas as ferramentas disponíveis nesse módulo:
             </p>
             <CodeBlock
               code={`omni show ai
@@ -87,20 +87,20 @@ gemini            Google Gemini CLI`}
               title="example"
             />
             <p className="text-sm text-muted-foreground mt-4">
-              Each tool's README first line is shown as its description.
+              A primeira linha do README de cada ferramenta é mostrada como sua descrição.
             </p>
           </div>
 
-          <h2 className="text-2xl font-bold font-mono mb-6">Available Modules</h2>
+          <h2 className="text-2xl font-bold font-mono mb-6">Módulos Disponíveis</h2>
 
           <div className="bg-card border border-border rounded-lg overflow-hidden">
             <div className="overflow-x-auto">
               <table className="w-full text-sm">
                 <thead>
                   <tr className="border-b border-border bg-secondary/30">
-                    <th className="text-left py-3 px-4 font-mono">Module</th>
-                    <th className="text-left py-3 px-4 font-mono">Command</th>
-                    <th className="text-left py-3 px-4 font-mono">Examples</th>
+                    <th className="text-left py-3 px-4 font-mono">Módulo</th>
+                    <th className="text-left py-3 px-4 font-mono">Comando</th>
+                    <th className="text-left py-3 px-4 font-mono">Exemplos</th>
                   </tr>
                 </thead>
                 <tbody>

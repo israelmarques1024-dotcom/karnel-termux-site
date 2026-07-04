@@ -10,9 +10,9 @@ export default function Termux() {
         <div className="max-w-4xl mx-auto">
           <h1 className="text-4xl font-bold font-mono mb-4">Termux</h1>
           <p className="text-lg text-muted-foreground mb-8">
-            Termux is a Linux terminal emulator for Android that provides a
-            secure, lightweight environment for running command-line programs.
-            It turns your Android device into a powerful development workstation.
+            Termux é um emulador de terminal Linux para Android que fornece um
+            ambiente seguro e leve para executar programas de linha de comando.
+            Ele transforma seu dispositivo Android em uma poderosa estação de trabalho de desenvolvimento.
           </p>
 
           <div className="flex gap-4 mb-12">
@@ -21,7 +21,7 @@ export default function Termux() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <Button size="lg">Download Termux</Button>
+              <Button size="lg">Baixar Termux</Button>
             </a>
           </div>
 
@@ -30,23 +30,23 @@ export default function Termux() {
             {[
               {
                 icon: "🔒",
-                title: "Secure",
-                desc: "Sandboxed Linux environment with built-in security features",
+                title: "Seguro",
+                desc: "Ambiente Linux isolado com recursos de segurança integrados",
               },
               {
                 icon: "⚡",
-                title: "Fast",
-                desc: "Lightweight terminal that runs smoothly on any Android device",
+                title: "Rápido",
+                desc: "Terminal leve que funciona perfeitamente em qualquer Android",
               },
               {
                 icon: "💪",
-                title: "Powerful",
-                desc: "Access to a full Linux shell with package manager",
+                title: "Poderoso",
+                desc: "Acesso a um shell Linux completo com gerenciador de pacotes",
               },
               {
                 icon: "🔧",
-                title: "Flexible",
-                desc: "Install Python, Node.js, Git, and thousands of other packages",
+                title: "Flexível",
+                desc: "Instale Python, Node.js, Git e milhares de outros pacotes",
               },
             ].map((feature, i) => (
               <div
@@ -62,11 +62,11 @@ export default function Termux() {
 
           {/* Comparison Table */}
           <h2 className="text-2xl font-bold font-mono mb-6">
-            Why Use Omni?
+            Por que Usar o Omni?
           </h2>
           <p className="text-muted-foreground mb-6">
-            While Termux works great out of the box, Omni enhances your
-            experience with automation and advanced tooling.
+            Embora o Termux funcione muito bem pronto para uso, o Omni melhora sua
+            experiência com automação e ferramentas avançadas.
           </p>
 
           <div className="overflow-x-auto mb-12">
@@ -74,10 +74,10 @@ export default function Termux() {
               <thead>
                 <tr className="border-b border-border">
                   <th className="text-left py-3 px-4 font-mono font-bold">
-                    Feature
+                    Funcionalidade
                   </th>
                   <th className="text-center py-3 px-4 font-mono font-bold">
-                    Termux Only
+                    Apenas Termux
                   </th>
                   <th className="text-center py-3 px-4 font-mono font-bold">
                     Omni
@@ -87,42 +87,42 @@ export default function Termux() {
               <tbody>
                 {[
                   {
-                    feature: "One-command setup",
+                    feature: "Configuração com um comando",
                     termux: false,
                     core: true,
                   },
                   {
-                    feature: "Module system & CLI framework",
+                    feature: "Sistema de módulos & CLI framework",
                     termux: false,
                     core: true,
                   },
                   {
-                    feature: "Pre-configured AI tools (18+)",
+                    feature: "Ferramentas de IA pré-configuradas (18+)",
                     termux: false,
                     core: true,
                   },
                   {
-                    feature: "Neovim + LSP support (16+ languages)",
+                    feature: "Neovim + suporte LSP (16+ linguagens)",
                     termux: false,
                     core: true,
                   },
                   {
-                    feature: "ZSH + plugins + persistent memory",
+                    feature: "ZSH + plugins + memória persistente",
                     termux: false,
                     core: true,
                   },
                   {
-                    feature: "Centralized update mechanism",
+                    feature: "Mecanismo de atualização centralizado",
                     termux: false,
                     core: true,
                   },
                   {
-                    feature: "Manual pkg installs required",
+                    feature: "Instalações manuais com pkg necessárias",
                     termux: true,
                     core: false,
                   },
                   {
-                    feature: "No module system",
+                    feature: "Sem sistema de módulos",
                     termux: true,
                     core: false,
                   },
@@ -157,11 +157,11 @@ export default function Termux() {
           {/* Next Steps */}
           <div className="bg-card border border-border rounded-lg p-8">
             <h3 className="text-xl font-bold font-mono mb-4">
-              Ready to Get Started?
+              Pronto para Começar?
             </h3>
             <p className="text-muted-foreground mb-6">
-              Download Termux first, then install Omni to unlock the full
-              potential of your Android development environment.
+              Baixe o Termux primeiro, depois instale o Omni para desbloquear todo o
+              potencial do seu ambiente de desenvolvimento Android.
             </p>
             <div className="flex gap-4 flex-wrap">
               <a
@@ -169,7 +169,7 @@ export default function Termux() {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <Button>Download Termux</Button>
+                <Button>Baixar Termux</Button>
               </a>
             </div>
           </div>
