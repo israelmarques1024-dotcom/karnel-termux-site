@@ -151,6 +151,12 @@
   z-index: 0;
   opacity: 0.25;
   pointer-events: none;
+  animation: hero-logo-spin 30s linear infinite;
+}
+
+@keyframes hero-logo-spin {
+  0% { transform: translate(-50%, -50%) rotate(0deg); }
+  100% { transform: translate(-50%, -50%) rotate(360deg); }
 }
 
 
