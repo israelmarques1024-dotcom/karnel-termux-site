@@ -21,7 +21,7 @@ export default function Home() {
         <div className="relative max-w-5xl mx-auto text-center">
           <div className="inline-block mb-6 px-4 py-1.5 bg-accent/10 border border-accent/20 rounded-full">
             <span className="text-accent font-mono text-sm font-semibold">
-              Omni Catalyst v1.0.0 — Android + Termux
+              Omni Catalyst v1.0.1 — Android + Termux
             </span>
           </div>
 
