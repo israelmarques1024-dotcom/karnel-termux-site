@@ -17,7 +17,25 @@ export default function Home() {
   return (
     <Layout>
       {/* Hero Banner */}
-      <section className="relative py-24 px-4 bg-gradient-to-b from-accent/5 via-background to-background">
+      <section className="relative py-24 px-4 bg-gradient-to-b from-accent/5 via-background to-background overflow-hidden">
+        {/* Gem decorations with rings */}
+        <div className="absolute top-1/4 left-[10%] hidden lg:block">
+          <div className="gem-container" style={{ top: 0, left: 0 }}>
+            <div className="gem gem-ruby" />
+            <div className="gem-ring" style={{ borderColor: "#dc2626 transparent transparent transparent" }} />
+            <div className="gem-ring" style={{ borderColor: "transparent #a855f7 transparent transparent", width: "150px", height: "50px", animationDuration: "6s", animationDirection: "reverse" }} />
+            <div className="gem-ring" style={{ borderColor: "transparent transparent #1a1a1a transparent", width: "110px", height: "36px", animationDuration: "3s" }} />
+          </div>
+        </div>
+        <div className="absolute bottom-1/3 right-[8%] hidden lg:block">
+          <div className="gem-container" style={{ top: 0, left: 0 }}>
+            <div className="gem gem-obsidian" />
+            <div className="gem-ring" style={{ borderColor: "#a855f7 transparent transparent transparent" }} />
+            <div className="gem-ring" style={{ borderColor: "transparent #dc2626 transparent transparent", width: "140px", height: "46px", animationDuration: "5s", animationDirection: "reverse" }} />
+            <div className="gem-ring" style={{ borderColor: "transparent transparent #1a1a1a transparent", width: "105px", height: "35px", animationDuration: "4s" }} />
+          </div>
+        </div>
+
         <div className="relative max-w-5xl mx-auto text-center">
           <div className="inline-block mb-6 px-4 py-1.5 bg-accent/10 border border-accent/20 rounded-full">
             <span className="text-accent font-mono text-sm font-semibold">

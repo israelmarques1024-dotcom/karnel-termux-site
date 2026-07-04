@@ -140,6 +140,72 @@
 
 
 
+/* Gem with Saturn-like rings */
+.gem-ring {
+  position: absolute;
+  border-radius: 50%;
+  border-style: solid;
+  transform-style: preserve-3d;
+  animation: spin-ring linear infinite;
+}
+
+.gem-ring:nth-child(1) {
+  width: 120px;
+  height: 40px;
+  border-width: 2px;
+  border-color: #dc2626 transparent transparent transparent;
+  animation-duration: 4s;
+}
+
+.gem-ring:nth-child(2) {
+  width: 150px;
+  height: 50px;
+  border-width: 2px;
+  border-color: transparent #a855f7 transparent transparent;
+  animation-duration: 6s;
+  animation-direction: reverse;
+}
+
+.gem-ring:nth-child(3) {
+  width: 100px;
+  height: 33px;
+  border-width: 2px;
+  border-color: transparent transparent #1a1a1a transparent;
+  animation-duration: 3s;
+}
+
+@keyframes spin-ring {
+  0% { transform: rotateX(60deg) rotateZ(0deg); }
+  100% { transform: rotateX(60deg) rotateZ(360deg); }
+}
+
+.gem {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  z-index: 10;
+}
+
+.gem-ruby {
+  background: radial-gradient(circle at 35% 35%, #ef4444, #991b1b);
+  box-shadow: 0 0 20px rgba(239, 68, 68, 0.5);
+}
+
+.gem-obsidian {
+  background: radial-gradient(circle at 35% 35%, #a855f7, #4c1d95);
+  box-shadow: 0 0 20px rgba(168, 85, 247, 0.5);
+}
+
+.gem-container {
+  position: absolute;
+  width: 0;
+  height: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 @layer components {
   /**
    * Custom container utility that centers content and adds responsive padding.
