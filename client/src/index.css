@@ -218,6 +218,9 @@
 /* Single diagonal ring for hero gem */
 .gem-ring-single {
   position: absolute;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
   border-radius: 50%;
   border-style: solid;
   border-width: 2px;
@@ -234,19 +237,21 @@
 /* Hero background gem logo */
 .hero-gem-logo {
   position: absolute;
-  top: 30%;
+  top: 35%;
   left: 50%;
   transform: translate(-50%, -50%);
   width: 0;
   height: 0;
   z-index: 0;
-  transition: opacity 0.1s linear;
   pointer-events: none;
 }
 
 .hero-gem-logo .gem {
   width: 36px;
   height: 36px;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
 }
 
 /* Brand gem animation */

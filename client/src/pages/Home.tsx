@@ -22,7 +22,7 @@ export default function Home() {
     { label: "Total Packages", value: "77" },
   ];
 
-  const heroOpacity = Math.max(0, 1 - scrollY / 400);
+  const heroOpacity = Math.max(0.25, 1 - scrollY / 600);
 
   const iconColors = ["text-red-500", "text-purple-500", "text-orange-500", "text-sky-500", "text-emerald-500", "text-pink-500", "text-amber-500", "text-indigo-500"];
 
@@ -33,7 +33,7 @@ export default function Home() {
         {/* Background gem logo with rings — fades on scroll */}
         <div
           className="hero-gem-logo"
-          style={{ opacity: Math.max(0, Math.min(0.35, heroOpacity)) }}
+          style={{ opacity: heroOpacity }}
         >
           <div className="gem-container" style={{ top: 0, left: 0 }}>
             <div className="gem gem-duo" />
