@@ -3,5 +3,6 @@
   "outputDirectory": "dist/public",
   "devCommand": "pnpm dev",
   "framework": "vite",
-  "installCommand": "pnpm install"
+  "installCommand": "pnpm install",
+  "alias": ["omni-catalyst.vercel.app"]
 }
