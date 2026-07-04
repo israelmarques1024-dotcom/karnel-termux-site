@@ -1,10 +1,38 @@
+import { useState, useEffect } from "react";
 import { Link } from "wouter";
 import { ArrowRight, Zap, Code2, Cpu, Terminal, Brain, Rocket, Stethoscope, Eye, Mic, Database, Puzzle, Shield } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Layout from "@/components/Layout";
 import CodeBlock from "@/components/CodeBlock";
 
+const lerp = (a: number, b: number, t: number) => a + (b - a) * t;
+
 export default function Home() {
+  const [p, setP] = useState(0);
+
+  useEffect(() => {
+    const DISTANCE = 700;
+    let raf: number | null = null;
+    const onScroll = () => {
+      if (raf !== null) return;
+      raf = requestAnimationFrame(() => {
+        setP(Math.min(window.scrollY / DISTANCE, 1));
+        raf = null;
+      });
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      if (raf !== null) cancelAnimationFrame(raf);
+    };
+  }, []);
+
+  const bgWhite = 1 - p;
+  const logoVis = 0.25 * (1 - p);
+  const fg = `rgb(${lerp(25, 235, p) | 0}, ${lerp(25, 235, p) | 0}, ${lerp(25, 235, p) | 0})`;
+  const accent = `rgb(${lerp(160, 235, p) | 0}, ${lerp(35, 85, p) | 0}, ${lerp(30, 75, p) | 0})`;
+  const muted = `rgb(${lerp(90, 155, p) | 0}, ${lerp(90, 155, p) | 0}, ${lerp(95, 160, p) | 0})`;
 
   const stats = [
     { label: "AI Agents", value: "28" },
@@ -20,30 +48,49 @@ export default function Home() {
   return (
     <Layout>
       {/* Hero Banner */}
-      <section className="relative min-h-screen py-24 px-4 bg-gradient-to-b from-accent/5 via-background to-background overflow-hidden">
-        {/* Background logo watermark */}
+      <section className="relative min-h-screen py-24 px-4 overflow-hidden">
+        {/* Permanent gradient background */}
+        <div className="absolute inset-0 bg-gradient-to-b from-accent/5 via-background to-background pointer-events-none z-0" />
+
+        {/* White overlay — fades out as user scrolls */}
+        {p < 1 && (
+          <div
+            className="absolute inset-0 z-0 pointer-events-none"
+            style={{ backgroundColor: `rgba(255,255,255,${bgWhite})` }}
+          />
+        )}
+
+        {/* Background logo watermark — fades out with scroll */}
         <img
           src="/omni-logo-pixel.svg"
           alt=""
           className="hero-bg-logo"
+          style={{ opacity: logoVis }}
         />
 
-        <div className="relative max-w-5xl mx-auto text-center">
-          <div className="inline-block mb-6 px-4 py-1.5 bg-accent/10 border border-accent/20 rounded-full">
-            <span className="text-accent font-mono text-sm font-semibold">
+        <div className="relative max-w-5xl mx-auto text-center z-10">
+          <div className="inline-block mb-6 px-4 py-1.5 rounded-full"
+            style={{
+              backgroundColor: `rgba(255,255,255,${0.15 * (1 - p)})`,
+              borderColor: `rgba(0,0,0,${0.15 * (1 - p)})`,
+              borderWidth: 1,
+              borderStyle: "solid",
+            }}
+          >
+            <span style={{ color: accent, fontFamily: "monospace", fontSize: "0.875rem", fontWeight: 600 }}>
               Omni Catalyst v1.0.1 — Android + Termux
             </span>
           </div>
 
-          <h1 className="text-5xl lg:text-6xl font-bold font-mono mb-6 text-foreground leading-tight tracking-tight">
+          <h1 className="text-5xl lg:text-6xl font-bold font-mono mb-6 leading-tight tracking-tight" style={{ color: fg }}>
             Your Dev Environment
             <br />
-            <span className="text-accent">
+            <span style={{ color: accent }}>
               One Command Away
             </span>
           </h1>
 
-          <p className="text-lg text-muted-foreground mb-10 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-lg mb-10 max-w-2xl mx-auto leading-relaxed" style={{ color: muted }}>
             Transform your Android phone into a full-featured development workstation.
             Install 28 AI agents, 8 programming languages, 4 databases, 19 dev tools,
             and 3 deployment CLIs — all in seconds.
@@ -70,12 +117,16 @@ export default function Home() {
             {stats.map((stat) => (
               <div
                 key={stat.label}
-                className="bg-card border border-border/50 rounded-lg p-4 hover:border-accent/30 transition-colors"
+                className="rounded-lg p-4 transition-colors"
+                style={{
+                  backgroundColor: p < 1 ? `rgba(255,255,255,${0.8 * (1 - p)})` : undefined,
+                  border: p < 1 ? `1px solid rgba(0,0,0,${0.1 * (1 - p)})` : undefined,
+                }}
               >
-                <div className="text-2xl font-bold text-accent font-mono">
+                <div className="text-2xl font-bold font-mono" style={{ color: accent }}>
                   {stat.value}
                 </div>
-                <div className="text-xs text-muted-foreground mt-1 font-medium">
+                <div className="text-xs mt-1 font-medium" style={{ color: muted }}>
                   {stat.label}
                 </div>
               </div>
