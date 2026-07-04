@@ -1,9 +1,11 @@
 import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import NotFound from "@/pages/NotFound";
-import { Route, Switch } from "wouter";
+import { Route, Switch, Router } from "wouter";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
+import useTransitionLocation from "./hooks/useTransitionLocation";
+import TransitionOverlay from "./components/TransitionOverlay";
 import Home from "./pages/Home";
 import Termux from "./pages/Termux";
 import TermuxAPI from "./pages/TermuxAPI";
@@ -20,7 +22,7 @@ import PG from "./pages/PG";
 import Init from "./pages/Init";
 import Env from "./pages/Env";
 
-function Router() {
+function RouterOutlet() {
   return (
     <Switch>
       <Route path={"/"} component={Home} />
@@ -49,8 +51,11 @@ function App() {
     <ErrorBoundary>
       <ThemeProvider defaultTheme="dark">
         <TooltipProvider>
-          <Toaster />
-          <Router />
+          <Router hook={useTransitionLocation}>
+            <Toaster />
+            <RouterOutlet />
+            <TransitionOverlay />
+          </Router>
         </TooltipProvider>
       </ThemeProvider>
     </ErrorBoundary>
