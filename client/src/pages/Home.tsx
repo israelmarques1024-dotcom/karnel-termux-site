@@ -21,25 +21,12 @@ export default function Home() {
     <Layout>
       {/* Hero Banner */}
       <section className="relative min-h-screen py-24 px-4 bg-gradient-to-b from-accent/5 via-background to-background overflow-hidden">
-        {/* Background gem: Ruby (left) */}
-        <div className="hero-gem hero-gem-left">
-          <div className="gem-container">
-            <div className="gem gem-ruby" />
-            <div className="gem-ring" />
-            <div className="gem-ring" style={{ width: "180px", height: "60px", borderColor: "transparent #a855f7 transparent transparent", animationDuration: "7s", animationDirection: "reverse" }} />
-            <div className="gem-ring" style={{ width: "140px", height: "46px", borderColor: "transparent transparent #111 transparent", animationDuration: "4s" }} />
-          </div>
-        </div>
-
-        {/* Background gem: Obsidian (right) */}
-        <div className="hero-gem hero-gem-right">
-          <div className="gem-container">
-            <div className="gem gem-obsidian" />
-            <div className="gem-ring" style={{ borderColor: "#a855f7 transparent transparent transparent" }} />
-            <div className="gem-ring" style={{ width: "170px", height: "56px", borderColor: "transparent #dc2626 transparent transparent", animationDuration: "6s", animationDirection: "reverse" }} />
-            <div className="gem-ring" style={{ width: "130px", height: "42px", borderColor: "transparent transparent #111 transparent", animationDuration: "5s" }} />
-          </div>
-        </div>
+        {/* Background logo watermark */}
+        <img
+          src="/omni-logo-pixel.svg"
+          alt=""
+          className="hero-bg-logo"
+        />
 
         <div className="relative max-w-5xl mx-auto text-center">
           <div className="inline-block mb-6 px-4 py-1.5 bg-accent/10 border border-accent/20 rounded-full">

@@ -140,77 +140,17 @@
 
 
 
-/* Gem rings */
-.gem-ring {
+/* Hero background logo watermark */
+.hero-bg-logo {
   position: absolute;
   top: 50%;
   left: 50%;
-  translate: -50% -50%;
-  width: 120px;
-  height: 40px;
-  border-radius: 50%;
-  border: 2px solid #dc2626;
-  border-color: #dc2626 transparent transparent transparent;
-  transform-style: preserve-3d;
-  animation: spin-ring 5s linear infinite;
-}
-
-@keyframes spin-ring {
-  0% { transform: rotateX(65deg) rotateZ(0deg); }
-  100% { transform: rotateX(65deg) rotateZ(360deg); }
-}
-
-.gem {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  translate: -50% -50%;
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  z-index: 10;
-}
-
-.gem-ruby {
-  background: radial-gradient(circle at 35% 35%, #ef4444, #991b1b);
-  box-shadow: 0 0 30px rgba(239, 68, 68, 0.6);
-}
-
-.gem-obsidian {
-  background: radial-gradient(circle at 35% 35%, #a855f7, #4c1d95);
-  box-shadow: 0 0 30px rgba(168, 85, 247, 0.6);
-}
-
-.gem-container {
-  position: absolute;
-}
-
-/* Hero background gems */
-.hero-gem {
-  position: absolute;
+  transform: translate(-50%, -50%);
+  width: 300px;
+  height: 300px;
   z-index: 0;
+  opacity: 0.08;
   pointer-events: none;
-}
-
-.hero-gem .gem {
-  width: 60px;
-  height: 60px;
-}
-
-.hero-gem .gem-ring {
-  width: 220px;
-  height: 74px;
-  border-width: 3px;
-}
-
-.hero-gem-left {
-  top: 20%;
-  left: 8%;
-}
-
-.hero-gem-right {
-  bottom: 25%;
-  right: 8%;
 }
 
 
