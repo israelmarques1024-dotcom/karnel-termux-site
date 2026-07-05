@@ -142,13 +142,16 @@ omni reinstall dev --gh --fzf               # Reinstalar apenas gh e fzf`}
           <div className="bg-card border border-border rounded-lg p-6 mb-6">
             <h3 className="font-bold font-mono text-accent mb-2">omni voice</h3>
             <p className="text-muted-foreground mb-4">
-              Capturar voz do microfone, revisar no nvim e iniciar um agente de IA.
+              Capture voz do microfone, revise no nvim e dispare qualquer agente de IA.
+              Suporta 13 agentes, seleção de idioma, modo raw e clipboard automático.
             </p>
             <CodeBlock
-              code={`omni voice                    # Mostrar ajuda
-omni voice <agent>            # Capturar → nvim → iniciar agente
-omni voice text               # Capturar → nvim → imprimir no stdout
-omni voice !                  # Atalho para 'text'`}
+              code={`omni voice                     # Mostrar ajuda
+ omni voice opencode             # Capturar → nvim → opencode run
+ omni voice text                 # Capturar → nvim → stdout
+ omni voice '!'                  # Atalho para "text"
+ omni voice claude-code --lang pt-BR  # Português → claude
+ omni voice opencode --raw       # Captura direta, sem edição`}
               language="bash"
               title="terminal"
             />
