@@ -40,7 +40,7 @@ export default function Home() {
     { label: "Bancos", value: "4" },
     { label: "Ferramentas Dev", value: "19" },
     { label: "CLIs Deploy", value: "3" },
-    { label: "Total Pacotes", value: "77" },
+    { label: "Total Pacotes", value: "89" },
   ];
 
   const iconColors = ["text-red-500", "text-purple-500", "text-orange-500", "text-sky-500", "text-emerald-500", "text-pink-500", "text-amber-500", "text-indigo-500"];
