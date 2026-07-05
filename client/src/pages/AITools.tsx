@@ -25,7 +25,6 @@ export default function AITools() {
     { name: "Command Code", bin: "command-code", flag: "--command-code" },
     { name: "Freebuff", bin: "freebuff", flag: "--freebuff" },
     { name: "Kilo Code CLI", bin: "kilo", flag: "--kilocode-cli" },
-    { name: "Kiro CLI", bin: "kiro", flag: "--kiro-cli" },
     { name: "HeyGen CLI", bin: "heygen", flag: "--heygen" },
     { name: "Seedance CLI", bin: "seedance", flag: "--seedance" },
     { name: "Veo 3 SDK", bin: "veo3", flag: "--veo3" },
