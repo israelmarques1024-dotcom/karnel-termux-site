@@ -49,7 +49,7 @@ export default function Home() {
     { q: "É de graça?", a: "Sim! O Omni é 100% gratuito e open source (MIT)." },
     { q: "Precisa de root?", a: "Não. O Omni funciona em qualquer Android com Termux, sem root." },
     { q: "Funciona em qualquer Android?", a: "Sim, Android 11+ recomendado. Dispositivos com 4GB+ de RAM têm melhor performance." },
-    { q: "Como o Omni se sustenta?", a: "A CLI Omni Catalyst não exibe anúncios nem coleta dados. Futuramente, recursos premium podem ser oferecidos, mas o core permanecerá gratuito e open source." },
+    { q: "Como o Omni se sustenta?", a: "A CLI Omni Catalyst não exibe anúncios nem coleta dados. Futuramente, recursos premium podem ser oferecidos, mas o Omni permanecerá gratuito e open source." },
     { q: "Precisa de internet?", a: "Sim, pra instalar os pacotes. Depois de instalado, a maioria das ferramentas funciona offline." },
     { q: "Dá pra usar sem saber Linux?", a: "Sim! O Omni foi feito pra ser simples. Comandos em português e assistente integrado." },
   ];

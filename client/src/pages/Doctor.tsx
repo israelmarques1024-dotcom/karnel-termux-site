@@ -83,7 +83,7 @@ export default function Doctor() {
                 "Vincular armazenamento compartilhado via termux-setup-storage",
                 "Instalar pacotes ausentes via pkg install",
                 "Corrigir estado quebrado do dpkg/apt",
-                "Recriar symlinks da CLI para core/omni",
+                "Recriar symlinks da CLI para omni",
                 "Corrigir permissões do diretório global do NPM",
                 "Inicializar e iniciar PostgreSQL",
                 "Gerar chave SSH para GitHub",
