@@ -78,13 +78,7 @@ export default function Home() {
 
 
         <div className="relative max-w-5xl mx-auto text-center z-10">
-          <div className="mb-8 flex justify-center">
-            <img
-              src="/omni-logo-pixel.svg"
-              alt="Omni"
-              className="w-24 h-24 md:w-28 md:h-28 drop-shadow-[0_0_20px_rgba(168,85,247,0.6)]"
-            />
-          </div>
+
 
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold font-mono mb-6 leading-tight tracking-tight" style={{ color: fg }}>
             Seu Ambiente Dev
