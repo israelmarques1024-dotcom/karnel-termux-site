@@ -28,7 +28,7 @@ export default function Home() {
     };
   }, []);
 
-  const bgWhite = 1 - p;
+
 
   const fg = `rgb(${lerp(25, 235, p) | 0}, ${lerp(25, 235, p) | 0}, ${lerp(25, 235, p) | 0})`;
   const accent = `rgb(${lerp(160, 235, p) | 0}, ${lerp(35, 85, p) | 0}, ${lerp(30, 75, p) | 0})`;
@@ -63,17 +63,6 @@ export default function Home() {
           className="absolute inset-0 bg-cover bg-center bg-no-repeat pointer-events-none z-0"
           style={{ backgroundImage: "url(/omni-banner.svg)" }}
         />
-
-        {/* Gradient overlay for readability */}
-        <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/50 to-background pointer-events-none z-0" />
-
-        {/* White overlay — fades out as user scrolls */}
-        {p < 1 && (
-          <div
-            className="absolute inset-0 z-0 pointer-events-none"
-            style={{ backgroundColor: `rgba(255,255,255,${bgWhite})` }}
-          />
-        )}
 
 
 
