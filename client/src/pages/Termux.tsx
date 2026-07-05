@@ -88,7 +88,7 @@ export default function Termux() {
                 {[
                   { feature: "Configuração com um comando", termux: false },
                   { feature: "Sistema de módulos & CLI framework", termux: false },
-                  { feature: "28 agentes de IA pré-configurados", termux: false },
+                  { feature: "27 agentes de IA pré-configurados", termux: false },
                   { feature: "Neovim + LSP (20+ linguagens)", termux: false },
                   { feature: "ZSH + plugins + memória persistente", termux: false },
                   { feature: "Deploy direto (Vercel, Railway, Netlify)", termux: false },

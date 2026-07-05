@@ -12,7 +12,7 @@ export default function Doctor() {
     { num: 7, title: "Ambiente Python", desc: "Detecção do interpretador Python, disponibilidade do pip, módulo venv" },
     { num: 8, title: "Banco de Dados PostgreSQL", desc: "Instalação do PostgreSQL, diretório de dados, status de execução" },
     { num: 9, title: "Framework Omni", desc: "Versão do Omni, symlinks da CLI, instalação do banner na configuração do shell" },
-    { num: 10, title: "Status das Ferramentas de IA", desc: "Escaneia 30+ ferramentas de IA (opencode, claude, gemini, ollama, etc.)" },
+    { num: 10, title: "Status das Ferramentas de IA", desc: "Escaneia 27 ferramentas de IA (opencode, claude, gemini, ollama, etc.)" },
     { num: 11, title: "Configuração do Shell", desc: "Existência do arquivo de configuração ZSH/Bash, validação de sintaxe" },
     { num: 12, title: "Compatibilidade com Android", desc: "Detecção do Phantom Process Killer no Android 12+" },
     { num: 13, title: "Termux:API", desc: "Verificação de instalação do pacote Termux-API" },

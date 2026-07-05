@@ -35,12 +35,12 @@ export default function Home() {
   const muted = `rgb(${lerp(90, 155, p) | 0}, ${lerp(90, 155, p) | 0}, ${lerp(95, 160, p) | 0})`;
 
   const stats = [
-    { label: "Agentes de IA", value: "28" },
-    { label: "Linguagens", value: "8" },
+    { label: "Agentes de IA", value: "27" },
+    { label: "Linguagens", value: "7" },
     { label: "Bancos", value: "4" },
     { label: "Ferramentas Dev", value: "19" },
     { label: "CLIs Deploy", value: "3" },
-    { label: "Total Pacotes", value: "89" },
+    { label: "Total Pacotes", value: "88" },
   ];
 
   const iconColors = ["text-red-500", "text-purple-500", "text-orange-500", "text-sky-500", "text-emerald-500", "text-pink-500", "text-amber-500", "text-indigo-500"];
@@ -79,7 +79,7 @@ export default function Home() {
 
           <p className="text-lg mb-10 max-w-2xl mx-auto leading-relaxed" style={{ color: muted }}>
             Transforme seu Android em uma estação de desenvolvimento completa.
-            Instale 28 agentes de IA, 8 linguagens, 4 bancos de dados, 19 ferramentas
+            Instale 27 agentes de IA, 7 linguagens, 4 bancos de dados, 19 ferramentas
             e 3 CLIs de deploy — em segundos.
           </p>
 
@@ -179,7 +179,7 @@ export default function Home() {
               {
                 href: "/omni/ai",
                 icon: <Code2 size={22} />,
-                title: "28 Agentes de IA",
+                title: "27 Agentes de IA",
                 desc: "Claude, Gemini, OpenCode, Ollama e mais. Pré-configurados.",
               },
               {
