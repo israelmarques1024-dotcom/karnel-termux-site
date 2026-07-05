@@ -7,6 +7,9 @@ export default function Init() {
     { name: "react", desc: "React + Vite com estrutura moderna" },
     { name: "nest", desc: "NestJS com TypeORM e autenticação" },
     { name: "express", desc: "Express API com TypeScript + TypeORM + migrations" },
+    { name: "python", desc: "FastAPI com SQLModel ou SQLAlchemy" },
+    { name: "go", desc: "Gin/Fiber API com Docker support" },
+    { name: "rust", desc: "Axum/Actix Web com SQLx" },
   ];
 
   return (
