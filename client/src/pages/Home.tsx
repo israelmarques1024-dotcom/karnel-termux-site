@@ -29,7 +29,7 @@ export default function Home() {
   }, []);
 
   const bgWhite = 1 - p;
-  const logoVis = 0.25 * (1 - p);
+
   const fg = `rgb(${lerp(25, 235, p) | 0}, ${lerp(25, 235, p) | 0}, ${lerp(25, 235, p) | 0})`;
   const accent = `rgb(${lerp(160, 235, p) | 0}, ${lerp(35, 85, p) | 0}, ${lerp(30, 75, p) | 0})`;
   const muted = `rgb(${lerp(90, 155, p) | 0}, ${lerp(90, 155, p) | 0}, ${lerp(95, 160, p) | 0})`;
@@ -78,17 +78,12 @@ export default function Home() {
 
 
         <div className="relative max-w-5xl mx-auto text-center z-10">
-          <div className="inline-block mb-6 px-4 py-1.5 rounded-full"
-            style={{
-              backgroundColor: `rgba(255,255,255,${0.15 * (1 - p)})`,
-              borderColor: `rgba(0,0,0,${0.15 * (1 - p)})`,
-              borderWidth: 1,
-              borderStyle: "solid",
-            }}
-          >
-            <span style={{ color: accent, fontFamily: "monospace", fontSize: "0.875rem", fontWeight: 600 }}>
-              Omni Catalyst v1.0.1 — Android + Termux
-            </span>
+          <div className="mb-8 flex justify-center">
+            <img
+              src="/omni-logo-pixel.svg"
+              alt="Omni"
+              className="w-24 h-24 md:w-28 md:h-28 drop-shadow-[0_0_20px_rgba(168,85,247,0.6)]"
+            />
           </div>
 
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold font-mono mb-6 leading-tight tracking-tight" style={{ color: fg }}>
