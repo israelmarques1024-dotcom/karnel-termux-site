@@ -75,13 +75,7 @@ export default function Home() {
           />
         )}
 
-        {/* Background logo watermark — fades out with scroll */}
-        <img
-          src="/omni-logo.svg"
-          alt=""
-          className="hero-bg-logo"
-          style={{ opacity: logoVis }}
-        />
+
 
         <div className="relative max-w-5xl mx-auto text-center z-10">
           <div className="inline-block mb-6 px-4 py-1.5 rounded-full"
