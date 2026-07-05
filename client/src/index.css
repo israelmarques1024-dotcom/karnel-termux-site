@@ -142,18 +142,12 @@
 
 
 
-/* Hero background logo watermark */
-.hero-bg-logo {
-  position: absolute;
-  top: 30%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: min(280px, 70vw);
-  height: min(280px, 70vw);
-  z-index: 0;
-  pointer-events: none;
+/* Hide default details marker */
+details summary::-webkit-details-marker,
+details summary::marker {
+  display: none;
+  content: "";
 }
-
 
 /* Brand gem animation */
 .brand-gem-sidebar > .gem-spin,
