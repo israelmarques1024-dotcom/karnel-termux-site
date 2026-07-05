@@ -61,7 +61,7 @@ export default function Home() {
         {/* Banner background image */}
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat pointer-events-none z-0"
-          style={{ backgroundImage: "url(/omni-banner.jpg)" }}
+          style={{ backgroundImage: "url(/omni-banner.svg)" }}
         />
 
         {/* Gradient overlay for readability */}
