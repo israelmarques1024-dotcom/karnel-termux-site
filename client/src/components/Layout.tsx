@@ -80,7 +80,10 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                 const id = "support-project";
                 const el = document.getElementById(id);
                 if (el) {
-                  el.scrollIntoView({ behavior: "smooth" });
+                  window.scrollTo({ top: 0, behavior: "smooth" });
+                  setTimeout(() => {
+                    el.scrollIntoView({ behavior: "smooth" });
+                  }, 100);
                   window.history.pushState(null, "", `/#${id}`);
                 }
               }}

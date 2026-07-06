@@ -56,6 +56,9 @@ export default function Home() {
 
   return (
     <Layout>
+      {/* Support Project */}
+      <SupportProject />
+
       {/* Hero Banner */}
       <section className="relative min-h-screen py-16 md:py-24 px-4 overflow-hidden">
         {/* Banner background image */}
@@ -343,9 +346,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
-      {/* Support Project */}
-      <SupportProject />
 
       {/* CTA */}
       <section className="py-20 px-4 bg-card/50 border-t border-border">
