@@ -1,9 +1,5 @@
 import { useState, useEffect } from "react";
-import { Link } from "wouter";
-import { ArrowRight, Zap, Code2, Cpu, Terminal, Brain, Rocket, Stethoscope, Eye, Mic, Database, Puzzle, Shield } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import Layout from "@/components/Layout";
-import CodeBlock from "@/components/CodeBlock";
+import SupportProject from "@/components/SupportProject";
 
 const lerp = (a: number, b: number, t: number) => a + (b - a) * t;
 
@@ -345,6 +341,9 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* Support Project */}
+      <SupportProject />
 
       {/* CTA */}
       <section className="py-20 px-4 bg-card/50 border-t border-border">
