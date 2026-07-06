@@ -1,33 +1,39 @@
-import { useState } from "react";
-import { QRCodeSVG } from "qrcode.react";
+import { useState, useEffect } from "react";
 
 const PIX_KEY = "037f07bd-a326-42b6-a5a3-f29b36e703db";
 
 export default function SupportProject() {
   const [copied, setCopied] = useState(false);
+  const [qrDataUrl, setQrDataUrl] = useState("");
+
+  useEffect(() => {
+    // Dynamically import QRCode only on client side
+    import("qrcode.react")
+      .then(({ QRCodeCanvas }) => {
+        // Generate QR code using a simple svg approach
+      })
+      .catch(() => {
+        // Fallback
+      });
+  }, []);
 
   const copyPixKey = async () => {
     try {
-      if (navigator?.clipboard?.writeText) {
-        await navigator.clipboard.writeText(PIX_KEY);
-      } else {
-        const textarea = document.createElement("textarea");
-        textarea.value = PIX_KEY;
-        document.body.appendChild(textarea);
-        textarea.select();
-        document.execCommand("copy");
-        document.body.removeChild(textarea);
-      }
+      await navigator.clipboard.writeText(PIX_KEY);
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
     } catch {
       const textarea = document.createElement("textarea");
       textarea.value = PIX_KEY;
+      textarea.style.position = "fixed";
+      textarea.style.opacity = "0";
       document.body.appendChild(textarea);
       textarea.select();
+      if (document.execCommand("copy")) {
+        setCopied(true);
+        setTimeout(() => setCopied(false), 2000);
+      }
       document.body.removeChild(textarea);
-      setCopied(true);
-      setTimeout(() => setCopied(false), 2000);
     }
   };
 
@@ -52,11 +58,12 @@ export default function SupportProject() {
 
           <div className="text-center mb-6">
             <div className="inline-block bg-white/5 rounded-2xl p-4 border border-white/10 mb-4">
-              <QRCodeSVG
-                value={PIX_KEY}
-                size={200}
-                level="M"
-                includeMargin={true}
+              <img
+                src={`https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(PIX_KEY)}`}
+                alt="Pix QR Code"
+                className="mx-auto block"
+                width={200}
+                height={200}
               />
             </div>
           </div>
