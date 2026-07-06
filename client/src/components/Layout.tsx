@@ -73,11 +73,21 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 
           {/* Footer */}
           <div className="pt-6 border-t border-sidebar-border/50 space-y-3">
-            <Link href="/#support-project">
-              <a className="block text-center px-4 py-2 bg-accent/20 text-accent rounded-lg font-mono text-sm font-medium hover:bg-accent/30 transition-colors">
-                💙 Support Project
-              </a>
-            </Link>
+            <a
+              href="/"
+              onClick={(e) => {
+                e.preventDefault();
+                const id = "support-project";
+                const el = document.getElementById(id);
+                if (el) {
+                  el.scrollIntoView({ behavior: "smooth" });
+                  window.history.pushState(null, "", `/#${id}`);
+                }
+              }}
+              className="block text-center px-4 py-2 bg-accent/20 text-accent rounded-lg font-mono text-sm font-medium hover:bg-accent/30 transition-colors"
+            >
+              💙 Support Project
+            </a>
             <p className="text-xs text-muted-foreground font-mono">
               <span className="text-accent">v4.7.1</span> • Android + Termux
             </p>
