@@ -1,4 +1,9 @@
 import { useState, useEffect } from "react";
+import { Link } from "wouter";
+import { ArrowRight, Zap, Code2, Cpu, Terminal, Brain, Rocket, Stethoscope, Eye, Mic, Database, Puzzle, Shield } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import Layout from "@/components/Layout";
+import CodeBlock from "@/components/CodeBlock";
 import SupportProject from "@/components/SupportProject";
 
 const lerp = (a: number, b: number, t: number) => a + (b - a) * t;
@@ -25,29 +30,28 @@ export default function Home() {
   }, []);
 
 
-
   const fg = `rgb(${lerp(25, 235, p) | 0}, ${lerp(25, 235, p) | 0}, ${lerp(25, 235, p) | 0})`;
   const accent = `rgb(${lerp(160, 235, p) | 0}, ${lerp(35, 85, p) | 0}, ${lerp(30, 75, p) | 0})`;
   const muted = `rgb(${lerp(90, 155, p) | 0}, ${lerp(90, 155, p) | 0}, ${lerp(95, 160, p) | 0})`;
 
   const stats = [
-    { label: "Agentes de IA", value: "27" },
-    { label: "Linguagens", value: "7" },
-    { label: "Bancos", value: "4" },
-    { label: "Ferramentas Dev", value: "19" },
-    { label: "CLIs Deploy", value: "3" },
-    { label: "Total Pacotes", value: "88" },
+    { label: "AI Agents", value: "27" },
+    { label: "Languages", value: "7" },
+    { label: "Databases", value: "4" },
+    { label: "Dev Tools", value: "19" },
+    { label: "Deploy CLIs", value: "3" },
+    { label: "Total Packages", value: "88" },
   ];
 
   const iconColors = ["text-red-500", "text-purple-500", "text-orange-500", "text-sky-500", "text-emerald-500", "text-pink-500", "text-amber-500", "text-indigo-500"];
 
   const faqs = [
-    { q: "É de graça?", a: "Sim! O Omni é 100% gratuito e open source (MIT)." },
-    { q: "Precisa de root?", a: "Não. O Omni funciona em qualquer Android com Termux, sem root." },
-    { q: "Funciona em qualquer Android?", a: "Sim, Android 11+ recomendado. Dispositivos com 4GB+ de RAM têm melhor performance." },
-    { q: "Como o Omni se sustenta?", a: "A CLI Omni Catalyst não exibe anúncios nem coleta dados. Futuramente, recursos premium podem ser oferecidos, mas o Omni permanecerá gratuito e open source." },
-    { q: "Precisa de internet?", a: "Sim, pra instalar os pacotes. Depois de instalado, a maioria das ferramentas funciona offline." },
-    { q: "Dá pra usar sem saber Linux?", a: "Sim! O Omni foi feito pra ser simples. Comandos em português e assistente integrado." },
+    { q: "Is it free?", a: "Yes! Omni is 100% free and open source (MIT)." },
+    { q: "Requires root?", a: "No. Omni works on any Android with Termux, no root needed." },
+    { q: "Works on any Android?", a: "Yes, Android 11+ recommended. Devices with 4GB+ RAM have better performance." },
+    { q: "Is Omni open source?", a: "Yes! Omni is open source. In the future I plan to add ads similar to freebuff, but for now it's supported only through Pix donations." },
+    { q: "Need internet?", a: "Yes, to install packages. After installation, most tools work offline." },
+    { q: "Can use without Linux knowledge?", a: "Yes! Omni is designed to be simple. Portuguese commands and integrated assistant." },
   ];
 
   return (
@@ -61,36 +65,34 @@ export default function Home() {
         />
 
 
-
         <div className="relative max-w-5xl mx-auto text-center z-10">
 
-
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold font-mono mb-6 leading-tight tracking-tight" style={{ color: fg }}>
-            Seu Ambiente Dev
+            Your Dev Environment
             <br />
             <span style={{ color: accent }}>
-              Em Um Comando
+              In One Command
             </span>
           </h1>
 
           <p className="text-lg mb-10 max-w-2xl mx-auto leading-relaxed" style={{ color: muted }}>
-            Transforme seu Android em uma estação de desenvolvimento completa.
-            Instale 27 agentes de IA, 7 linguagens, 4 bancos de dados, 19 ferramentas
-            e 3 CLIs de deploy — em segundos.
+            Transform your Android into a complete development station.
+            Install 27 AI agents, 7 languages, 4 databases, 19 tools
+            and 3 deploy CLIs — in seconds.
           </p>
 
           <div className="flex gap-4 justify-center mb-16 flex-wrap">
             <Link href="/termux">
               <a>
                 <Button size="lg" className="gap-2 font-semibold text-base">
-                  Começar <ArrowRight size={20} />
+                  Get Started <ArrowRight size={20} />
                 </Button>
               </a>
             </Link>
             <Link href="/omni">
               <a>
                 <Button size="lg" variant="outline" className="font-semibold text-base">
-                  Explorar Docs
+                  Explore Docs
                 </Button>
               </a>
             </Link>
@@ -118,15 +120,15 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Instalação */}
+      {/* Installation */}
       <section className="py-16 md:py-20 px-4 bg-background">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-8 md:mb-12">
             <h2 className="text-3xl font-bold font-mono mb-3">
-              Instale em Uma Linha
+              Install In One Line
             </h2>
             <p className="text-muted-foreground">
-              Sem dependências. Sem bloat. Só poder de desenvolvimento puro.
+              No dependencies. No bloat. Pure development power.
             </p>
           </div>
           <div className="space-y-3">
@@ -135,13 +137,13 @@ export default function Home() {
               language="bash"
               title="quick install"
             />
-            <p className="text-center text-xs text-muted-foreground">ou</p>
+            <p className="text-center text-xs text-muted-foreground">or</p>
             <CodeBlock
               code={`npm install -g omni-catalyst`}
               language="bash"
               title="npm install"
             />
-            <p className="text-center text-xs text-muted-foreground">ou</p>
+            <p className="text-center text-xs text-muted-foreground">or</p>
             <CodeBlock
               code={`pnpm add -g omni-catalyst`}
               language="bash"
@@ -149,19 +151,19 @@ export default function Home() {
             />
           </div>
           <p className="text-center text-muted-foreground text-sm mt-6">
-            Funciona em qualquer Termux Android. Leva menos de 2 minutos.
+            Works on any Termux Android. Takes less than 2 minutes.
           </p>
         </div>
       </section>
 
-      {/* Por que Omni */}
+      {/* Why Omni */}
       <section className="py-16 md:py-20 px-4 bg-card/30 border-t border-border">
         <div className="max-w-5xl mx-auto">
           <h2 className="text-3xl font-bold font-mono mb-3 text-center">
-            Por que Desenvolvedores Escolhem o Omni
+            Why Developers Choose Omni
           </h2>
           <p className="text-center text-muted-foreground mb-14">
-            Feito por desenvolvedores, para desenvolvedores que codam onde estiverem.
+            Built by developers, for developers coding anywhere.
           </p>
 
           <div className="grid md:grid-cols-2 gap-6">
@@ -169,74 +171,74 @@ export default function Home() {
               {
                 href: "/omni",
                 icon: <Zap size={22} />,
-                title: "Arquitetura Modular",
-                desc: "Instale só o que precisa. Sem conflitos entre ferramentas.",
+                title: "Modular Architecture",
+                desc: "Install only what you need. No tool conflicts.",
               },
               {
                 href: "/omni/ai",
                 icon: <Code2 size={22} />,
-                title: "27 Agentes de IA",
-                desc: "Claude, Gemini, OpenCode, Ollama e mais. Pré-configurados.",
+                title: "27 AI Agents",
+                desc: "Claude, Gemini, OpenCode, Ollama and more. Pre-configured.",
               },
               {
                 href: "/omni/editor",
                 icon: <Terminal size={22} />,
-                title: "Editor Profissional",
-                desc: "Neovim + NvChad com LSP pra 20+ linguagens. Copilot incluso.",
+                title: "Professional Editor",
+                desc: "Neovim + NvChad with LSP for 20+ languages. Copilot included.",
               },
               {
                 href: "/omni/linux",
                 icon: <Cpu size={22} />,
-                title: "Stack Linux Completa",
-                desc: "PostgreSQL, MongoDB, Node.js, Python, Go, Rust. Tudo que precisa.",
+                title: "Linux Stack",
+                desc: "PostgreSQL, MongoDB, Node.js, Python, Go, Rust. Everything you need.",
               },
               {
                 href: "/omni/brain",
                 icon: <Brain size={22} />,
-                title: "Segundo Cérebro",
-                desc: "Memória integrada com busca por IA e grafo de ideias.",
+                title: "Second Brain",
+                desc: "Integrated memory with AI search and idea graph.",
               },
               {
                 href: "/omni/deploy",
                 icon: <Rocket size={22} />,
-                title: "Deploy Direto",
-                desc: "Vercel, Railway, Netlify. Publique do seu celular.",
+                title: "Direct Deploy",
+                desc: "Vercel, Railway, Netlify. Deploy from your phone.",
               },
               {
                 href: "/omni/doctor",
                 icon: <Stethoscope size={22} />,
                 title: "omni doctor",
-                desc: "Diagnostique o ambiente com 20 verificações automáticas.",
+                desc: "Diagnose your environment with 20 automatic checks.",
               },
               {
                 href: "/omni/show",
                 icon: <Eye size={22} />,
                 title: "omni show",
-                desc: "Veja documentação de qualquer ferramenta sem sair do terminal.",
+                desc: "View any tool documentation without leaving terminal.",
               },
               {
                 href: "/omni/voice",
                 icon: <Mic size={22} />,
                 title: "omni voice",
-                desc: "Fale com seus agentes de IA. Codificação mãos-livres.",
+                desc: "Talk to your AI agents. Hands-free coding.",
               },
               {
                 href: "/omni/pg",
                 icon: <Database size={22} />,
                 title: "omni pg",
-                desc: "Gerencie PostgreSQL: init, start, stop, shell — um comando só.",
+                desc: "Manage PostgreSQL: init, start, stop, shell — one command.",
               },
               {
                 href: "/omni/init",
                 icon: <Puzzle size={22} />,
                 title: "omni init",
-                desc: "Crie projetos Next.js, Express e outros em segundos.",
+                desc: "Create Next.js, Express and other projects in seconds.",
               },
               {
                 href: "/omni/env",
                 icon: <Shield size={22} />,
                 title: "omni env",
-                desc: "Gerencie chaves de API com segurança. Nunca hardcode secrets.",
+                desc: "Manage API keys securely. Never hardcode secrets.",
               },
             ].map((feature, i) => (
               <Link key={i} href={feature.href}>
@@ -259,10 +261,10 @@ export default function Home() {
       <section className="py-16 md:py-20 px-4 bg-background border-t border-border">
         <div className="max-w-3xl mx-auto">
           <h2 className="text-3xl font-bold font-mono mb-3 text-center">
-            Perguntas Frequentes
+            Frequently Asked Questions
           </h2>
           <p className="text-center text-muted-foreground mb-14">
-            Tire suas dúvidas sobre o Omni Catalyst.
+            Get your questions answered about Omni Catalyst.
           </p>
 
           <div className="space-y-3">
@@ -290,7 +292,7 @@ export default function Home() {
               <svg viewBox="0 0 16 16" className="w-6 h-6" fill="currentColor">
                 <path d="M8 .25a.75.75 0 0 1 .673.418l1.882 3.815 4.21.612a.75.75 0 0 1 .416 1.279l-3.046 2.97.719 4.192a.751.751 0 0 1-1.088.791L8 12.347l-3.766 1.98a.75.75 0 0 1-1.088-.79l.72-4.194L.818 6.374a.75.75 0 0 1 .416-1.28l4.21-.611L7.327.668A.75.75 0 0 1 8 .25z" />
               </svg>
-              Dar uma estrela no GitHub
+              Star on GitHub
             </a>
           </div>
         </div>
@@ -300,30 +302,30 @@ export default function Home() {
       <section className="py-20 px-4 bg-background">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-3xl font-bold font-mono mb-12 text-center">
-            Comece Rápido
+            Quick Start
           </h2>
 
           <div className="space-y-8">
             {[
               {
                 step: "1",
-                title: "Baixe o Termux",
-                desc: "Instale o Termux pelo GitHub ou F-Droid.",
+                title: "Install Termux",
+                desc: "Install Termux from GitHub or F-Droid.",
               },
               {
                 step: "2",
-                title: "Execute o Instalador",
-                desc: "Cole o comando de instalação e deixe o Omni configurar tudo.",
+                title: "Run Installer",
+                desc: "Paste the install command and let Omni configure everything.",
               },
               {
                 step: "3",
-                title: "Escolha Suas Ferramentas",
-                desc: "Use 'omni install' pra adicionar agentes de IA, bancos, editores e mais.",
+                title: "Choose Your Tools",
+                desc: "Use 'omni install' to add AI agents, databases, editors and more.",
               },
               {
                 step: "4",
-                title: "Comece a Codar",
-                desc: "Abra o Neovim, conecte no banco e construa projetos reais.",
+                title: "Start Coding",
+                desc: "Open Neovim, connect to database and build real projects.",
               },
             ].map((item, i) => (
               <div key={i} className="flex gap-6 items-start">
@@ -349,16 +351,16 @@ export default function Home() {
       <section className="py-20 px-4 bg-card/50 border-t border-border">
         <div className="max-w-3xl mx-auto text-center">
           <h2 className="text-3xl font-bold font-mono mb-4">
-            Pronto pra Codar no Seu Celular?
+            Ready to Code on Your Phone?
           </h2>
           <p className="text-muted-foreground mb-8">
-            Junte-se a milhares de desenvolvedores construindo aplicativos reais com Omni.
+            Join thousands of developers building real apps with Omni.
           </p>
           <div className="flex gap-4 justify-center flex-wrap">
             <Link href="/termux">
               <a>
                 <Button size="lg" className="gap-2 font-semibold">
-                  Começar Agora <ArrowRight size={20} />
+                  Get Started Now <ArrowRight size={20} />
                 </Button>
               </a>
             </Link>
@@ -368,7 +370,7 @@ export default function Home() {
               rel="noopener noreferrer"
             >
               <Button size="lg" variant="outline" className="font-semibold">
-                Ver no GitHub
+                View on GitHub
               </Button>
             </a>
           </div>

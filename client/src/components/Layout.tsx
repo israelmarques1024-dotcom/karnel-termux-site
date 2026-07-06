@@ -4,17 +4,18 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 
 const navItems = [
-  { label: "Comece Aqui", href: "/" },
+  { label: "Get Started", href: "/" },
+  { label: "Support Project", href: "/#support-project" },
   { label: "Termux", href: "/termux" },
   { label: "Termux:API", href: "/termux/api" },
   { label: "Omni", href: "/omni" },
-  { label: "Ferramentas IA", href: "/omni/ai" },
+  { label: "AI Tools", href: "/omni/ai" },
   { label: "Editor", href: "/omni/editor" },
-  { label: "Stack Linux", href: "/omni/linux" },
-  { label: "Segundo Cérebro", href: "/omni/brain" },
-  { label: "Voz", href: "/omni/voice" },
+  { label: "Linux Stack", href: "/omni/linux" },
+  { label: "Second Brain", href: "/omni/brain" },
+  { label: "Voice", href: "/omni/voice" },
   { label: "PG", href: "/omni/pg" },
-  { label: "Inicialização", href: "/omni/init" },
+  { label: "Init", href: "/omni/init" },
   { label: "Env", href: "/omni/env" },
   { label: "Deploy", href: "/omni/deploy" },
   { label: "Doctor", href: "/omni/doctor" },
@@ -71,11 +72,16 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           </nav>
 
           {/* Footer */}
-          <div className="pt-6 border-t border-sidebar-border/50">
+          <div className="pt-6 border-t border-sidebar-border/50 space-y-3">
+            <Link href="/#support-project">
+              <a className="block text-center px-4 py-2 bg-accent/20 text-accent rounded-lg font-mono text-sm font-medium hover:bg-accent/30 transition-colors">
+                💙 Support Project
+              </a>
+            </Link>
             <p className="text-xs text-muted-foreground font-mono">
               <span className="text-accent">v4.7.1</span> • Android + Termux
             </p>
-            <p className="text-xs text-muted-foreground/60 mt-2">Feito para desenvolvedores</p>
+            <p className="text-xs text-muted-foreground/60 mt-2">Built for developers</p>
           </div>
         </div>
       </aside>
@@ -113,7 +119,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         {/* Footer */}
         <footer className="bg-card border-t border-border p-6 text-center text-sm text-muted-foreground">
           <p>
-            Omni Catalyst — Feito com ❤️ por{" "}
+            Omni Catalyst — Built with ❤️ by{" "}
             <a
               href="https://github.com/israel676767"
               target="_blank"
