@@ -47,3 +47,13 @@ pnpm dev
 ## Licença
 
 MIT © israel marques
+
+---
+
+## 💙 Apoie este Projeto
+
+Você pode apoiar o Omni Catalyst via Pix. Use a chave abaixo:
+
+`037f07bd-a326-42b6-a5a3-f29b36e703db`
+
+Também disponível diretamente no site, na seção **Support Project**.
