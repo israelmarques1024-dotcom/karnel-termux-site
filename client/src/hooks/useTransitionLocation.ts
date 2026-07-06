@@ -1,7 +1,10 @@
-import { useCallback, useEffect, useSyncExternalStore } from "react";
+import { useEffect, useCallback, useSyncExternalStore } from "react";
 import { transitionControllerRef } from "./transitionController";
 
-let currentLocation = window.location.pathname;
+const getLocationPath = () =>
+  typeof window !== "undefined" ? window.location.pathname : "/";
+
+let currentLocation = getLocationPath();
 let navigating = false;
 const listeners = new Set<() => void>();
 
@@ -26,38 +29,41 @@ export default function useTransitionLocation(): [string, (to: string) => void] 
       if (to === currentLocation || navigating) return;
       navigating = true;
 
-      window.history.pushState(null, "", to);
+      if (typeof window !== "undefined") {
+        window.history.pushState(null, "", to);
 
-      const ctrl = transitionControllerRef.current;
-      if (!ctrl) {
-        currentLocation = to;
-        emitChange();
-        navigating = false;
-        return;
+        const ctrl = transitionControllerRef.current;
+        if (!ctrl) {
+          currentLocation = to;
+          emitChange();
+          navigating = false;
+          return;
+        }
+
+        ctrl
+          .cover()
+          .then(() => {
+            currentLocation = to;
+            emitChange();
+            return ctrl.reveal();
+          })
+          .then(() => {
+            navigating = false;
+          })
+          .catch(() => {
+            currentLocation = to;
+            emitChange();
+            navigating = false;
+          });
       }
-
-      ctrl
-        .cover()
-        .then(() => {
-          currentLocation = to;
-          emitChange();
-          return ctrl.reveal();
-        })
-        .then(() => {
-          navigating = false;
-        })
-        .catch(() => {
-          currentLocation = to;
-          emitChange();
-          navigating = false;
-        });
     },
     []
   );
 
   useEffect(() => {
+    if (typeof window === "undefined") return;
     const onPop = () => {
-      const newLoc = window.location.pathname;
+      const newLoc = getLocationPath();
       if (newLoc !== currentLocation) {
         currentLocation = newLoc;
         emitChange();
