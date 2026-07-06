@@ -81,10 +81,9 @@ export default function SupportProject() {
             <p className="text-sm font-semibold text-purple-300 mb-2">
               Pagamento com Nubank
             </p>
-            <a
-              href="https://api.nubank.com.br/pix/qrcode/v1/037f07bd-a326-42b6-a5a3-f29b36e703db"
-              target="_blank"
-              rel="noopener noreferrer"
+            <button
+              type="button"
+              onClick={copyPixKey}
               className="inline-flex items-center gap-2 px-4 py-2 bg-purple-600 text-white rounded-lg font-medium hover:bg-purple-500 transition-colors"
             >
               <svg
@@ -92,6 +91,7 @@ export default function SupportProject() {
                 viewBox="0 0 24 24"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
+                aria-hidden="true"
               >
                 <rect width="24" height="24" rx="6" fill="#8A2BE2" />
                 <path
@@ -102,10 +102,10 @@ export default function SupportProject() {
                   strokeLinejoin="round"
                 />
               </svg>
-              Pay with Nubank
-            </a>
+              Copiar Pix para o Nubank
+            </button>
             <p className="text-xs text-gray-400 mt-2">
-              Click to open in your Nubank app
+              Abra o app do Nubank e cole o Pix Copia e Cola
             </p>
           </div>
 
