@@ -73,7 +73,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           {/* Footer */}
           <div className="pt-6 border-t border-sidebar-border/50">
             <p className="text-xs text-muted-foreground font-mono">
-              <span className="text-accent">v1.0.1</span> • Android + Termux
+              <span className="text-accent">v4.7.1</span> • Android + Termux
             </p>
             <p className="text-xs text-muted-foreground/60 mt-2">Feito para desenvolvedores</p>
           </div>
