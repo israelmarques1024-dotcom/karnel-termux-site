@@ -199,7 +199,7 @@ export default function SupportProject() {
               <div
                 onClick={handleCopy}
                 onKeyDown={(e) => {
-                  if (e.key === "Enter") {
+                  if (e.key === "Enter" || e.key === " ") {
                     e.preventDefault();
                     handleCopy();
                   }
