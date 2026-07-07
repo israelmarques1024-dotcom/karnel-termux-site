@@ -2,9 +2,43 @@ import { useState } from "react";
 
 const PIX_KEY = "037f07bd-a326-42b6-a5a3-f29b36e703db";
 
-const PIX_PAYLOAD = `00020126580014br.gov.bcb.pix0136${PIX_KEY}52040000530398654051.005802BR5913OMNI CATALYST6009SAO PAULO62070503***6304`;
+// CRC16 for PIX
+function crc16(str: string): string {
+  const crcTable = new Uint16Array(256);
+  for (let i = 0; i < 256; i++) {
+    let crc = i;
+    for (let j = 0; j < 8; j++) {
+      crc = (crc & 1) ? (crc >> 1) ^ 0x8408 : crc >> 1;
+    }
+    crcTable[i] = crc;
+  }
+  let crc = 0xFFFF;
+  for (let i = 0; i < str.length; i++) {
+    crc = (crc >> 8) ^ crcTable[(crc ^ str.charCodeAt(i)) & 0xff];
+  }
+  return (crc ^ 0xFFFF).toString(16).toUpperCase().padStart(4, "0");
+}
 
-// QR code via API (works in all environments, no SSR issues)
+// TLV format
+const tlv = (tag: string, value: string): string => tag + value.length.toString().padStart(2, "0") + value;
+
+// Generate valid Pix Copia & Cola (EMV format)
+const PIX_PAYLOAD = (() => {
+  const merchantAccount = tlv("26", tlv("00", "br.gov.bcb.pix") + tlv("01", PIX_KEY));
+  const payload =
+    tlv("00", "01") +
+    merchantAccount +
+    tlv("52", "0000") +
+    tlv("53", "986") +
+    tlv("58", "BR") +
+    tlv("59", "OMNICATALYST") +
+    tlv("60", "SAOPAULO") +
+    tlv("62", tlv("05", "TEST")) +
+    "6304";
+
+  return payload + crc16(payload);
+})();
+
 const QR_CODE_URL = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(PIX_PAYLOAD)}`;
 
 export default function SupportProject() {
@@ -64,11 +98,11 @@ export default function SupportProject() {
           </div>
 
           <div className="text-center mb-6">
-            <p className="mb-2 font-mono text-sm">Pix Key:</p>
+            <p className="mb-2 font-mono text-sm">Pix Copia & Cola:</p>
             <code
               className="px-4 py-2 bg-gray-900/50 rounded-xl font-mono text-cyan-300 border border-gray-700/50 break-all inline-block mb-3"
             >
-              {PIX_KEY}
+              {PIX_PAYLOAD}
             </code>
             <br />
             <button
@@ -108,7 +142,7 @@ export default function SupportProject() {
               Copiar Pix para o Nubank
             </button>
             <p className="text-xs text-gray-400 mt-2">
-              Abra o app do Nubank e cole o Pix Copia e Cola
+              Abra o app do Nubank e cole o Pix Copia & Cola
             </p>
           </div>
 
