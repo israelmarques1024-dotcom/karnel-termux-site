@@ -30,6 +30,7 @@ export default function AITools() {
     { name: "Veo 3 SDK", bin: "veo3", flag: "--veo3" },
     { name: "Odysseus", bin: "odysseus", flag: "--odysseus" },
     { name: "Kimchi CLI", bin: "kimchi", flag: "--kimchi-code" },
+    { name: "omniRoute", bin: "omni-route", flag: "--omni-route" },
   ];
 
   return (

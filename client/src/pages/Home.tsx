@@ -35,7 +35,7 @@ export default function Home() {
   const muted = `rgb(${lerp(90, 155, p) | 0}, ${lerp(90, 155, p) | 0}, ${lerp(95, 160, p) | 0})`;
 
   const stats = [
-    { label: "AI Agents", value: "27" },
+    { label: "AI Agents", value: "28" },
     { label: "Languages", value: "7" },
     { label: "Databases", value: "4" },
     { label: "Dev Tools", value: "19" },
@@ -80,7 +80,7 @@ export default function Home() {
 
           <p className="text-lg mb-10 max-w-2xl mx-auto leading-relaxed" style={{ color: muted }}>
             Transform your Android into a complete development station.
-            Install 27 AI agents, 7 languages, 4 databases, 19 tools
+            Install 28 AI agents, 7 languages, 4 databases, 19 tools
             and 3 deploy CLIs — in seconds.
           </p>
 
@@ -180,7 +180,7 @@ export default function Home() {
               {
                 href: "/omni/ai",
                 icon: <Code2 size={22} />,
-                title: "27 AI Agents",
+                title: "28 AI Agents",
                 desc: "Claude, Gemini, OpenCode, Ollama and more. Pre-configured.",
               },
               {
