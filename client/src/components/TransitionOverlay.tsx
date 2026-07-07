@@ -77,29 +77,26 @@ export default function TransitionOverlay() {
   const textStop2Ref = useRef<SVGStopElement>(null);
   const textStop3Ref = useRef<SVGStopElement>(null);
 
-  function setGradientColors(palette: ColorPalette) {
+  const setGradientColors = (palette: ColorPalette) => {
     stop1Ref.current?.setAttribute("stop-color", palette.s1);
     stop2Ref.current?.setAttribute("stop-color", palette.s2);
     stop3Ref.current?.setAttribute("stop-color", palette.s3);
     stop4Ref.current?.setAttribute("stop-color", palette.s4);
-  }
+  };
 
-  function lerpPalette(a: ColorPalette, b: ColorPalette, t: number): ColorPalette {
-    return {
-      s1: lerpColor(a.s1, b.s1, t),
-      s2: lerpColor(a.s2, b.s2, t),
-      s3: lerpColor(a.s3, b.s3, t),
-      s4: lerpColor(a.s4, b.s4, t),
-    };
-  }
+  const lerpPalette = (a: ColorPalette, b: ColorPalette, t: number): ColorPalette => ({
+    s1: lerpColor(a.s1, b.s1, t),
+    s2: lerpColor(a.s2, b.s2, t),
+    s3: lerpColor(a.s3, b.s3, t),
+    s4: lerpColor(a.s4, b.s4, t),
+  });
 
   useEffect(() => {
-    // Set initial dark gradient
     setGradientColors(COVER_START);
 
     transitionControllerRef.current = {
       cover() {
-        return new Promise((resolve) => {
+        return new Promise<void>((resolve) => {
           try {
             const path = pathRef.current;
             const textGroup = textGroupRef.current;
@@ -109,40 +106,28 @@ export default function TransitionOverlay() {
               resolve();
               return;
             }
-
-            if (overlayRef.current) overlayRef.current.style.opacity = "1";
-
+            const overlay = overlayRef.current;
+            if (overlay) overlay.style.opacity = "1";
             const DURATION = 1200;
             const start = performance.now();
-
-            path.style.transformOrigin = "50% 100%";
             path.style.transform = "scale(0)";
             textGroup.style.opacity = "0";
             textReveal.setAttribute("width", "0");
-
-            function tick(now: number) {
+            glow.style.opacity = "0";
+            const tick = (now: number) => {
               try {
                 const t = Math.min((now - start) / DURATION, 1);
-
-                // Animate gradient: dark → vibrant (completes by 60%)
                 const gradT = ease(Math.min(t / 0.6, 1));
                 const palette = lerpPalette(COVER_START, COVER_PEAK, gradT);
                 setGradientColors(palette);
-
-                // Blob: grows from 0→3 during first 60%
                 const blobT = Math.min(t / 0.6, 1);
                 path.style.transform = `scale(${ease(blobT) * 3})`;
-
-                // Text reveal: left-to-right, starts at 25%, finishes at 85%
                 const revealT = Math.max(0, Math.min((t - 0.25) / 0.6, 1));
                 const textWidth = ease(revealT) * 120;
                 textReveal.setAttribute("width", String(textWidth));
                 textGroup.style.opacity = String(revealT < 0.01 ? 0 : Math.min(revealT * 1.5, 1));
-
-                // Glow intensity
                 const glowOpacity = t < 0.3 ? 0 : (t - 0.3) / 0.3;
                 glow.style.opacity = String(Math.min(glowOpacity, 0.7));
-
                 if (t < 1) {
                   rafRef.current = requestAnimationFrame(tick);
                 } else {
@@ -151,17 +136,15 @@ export default function TransitionOverlay() {
               } catch {
                 resolve();
               }
-            }
-
+            };
             rafRef.current = requestAnimationFrame(tick);
           } catch {
             resolve();
           }
         });
       },
-
       reveal() {
-        return new Promise((resolve) => {
+        return new Promise<void>((resolve) => {
           try {
             const path = pathRef.current;
             const textGroup = textGroupRef.current;
@@ -171,36 +154,24 @@ export default function TransitionOverlay() {
               resolve();
               return;
             }
-
             const DURATION = 1000;
             const start = performance.now();
-
-            path.style.transformOrigin = "50% 0%";
             path.style.transform = "scale(3)";
             textGroup.style.opacity = "1";
             textReveal.setAttribute("width", "120");
-
-            function tick(now: number) {
+            glow.style.opacity = "0.7";
+            const tick = (now: number) => {
               try {
                 const t = Math.min((now - start) / DURATION, 1);
-
-                // Gradient fades from vibrant back to dark
                 const gradT = ease(Math.min(t / 0.4, 1));
                 const palette = lerpPalette(COVER_PEAK, REVEAL_END, gradT);
                 setGradientColors(palette);
-
-                // Text fades out first (0→40%)
                 const textT = Math.min(t / 0.4, 1);
                 textGroup.style.opacity = String(1 - ease(textT));
                 textReveal.setAttribute("width", String(120 * (1 - ease(textT))));
-
-                // Glow fades
                 glow.style.opacity = String(0.7 * (1 - ease(Math.min(t / 0.3, 1))));
-
-                // Blob shrinks (starts at 30%, finishes at 100%)
                 const blobT = Math.max(0, Math.min((t - 0.3) / 0.7, 1));
                 path.style.transform = `scale(${3 * (1 - ease(blobT))})`;
-
                 if (t < 1) {
                   rafRef.current = requestAnimationFrame(tick);
                 } else {
@@ -210,8 +181,7 @@ export default function TransitionOverlay() {
               } catch {
                 resolve();
               }
-            }
-
+            };
             rafRef.current = requestAnimationFrame(tick);
           } catch {
             resolve();
@@ -231,33 +201,27 @@ export default function TransitionOverlay() {
       ref={overlayRef}
       aria-hidden="true"
       style={{
-        position: "fixed",
+        position: "fixed" as const,
         inset: 0,
         zIndex: 9999,
-        pointerEvents: "none",
-        overflow: "hidden",
+        pointerEvents: "none" as const,
+        overflow: "hidden" as const,
         opacity: 0,
       }}
     >
-      {/* Dark background matching site theme */}
       <div className="absolute inset-0" style={{ backgroundColor: "#0a0a0f" }} />
-
-      {/* SVG liquid layer */}
       <svg
         viewBox="0 0 100 100"
         preserveAspectRatio="xMidYMid slice"
         className="absolute inset-0 w-full h-full"
       >
         <defs>
-          {/* Animated liquid gradient: red → purple */}
           <linearGradient id="liquid-grad" x1="0" y1="1" x2="0.3" y2="0">
             <stop ref={stop1Ref} offset="0%" stopColor="#1a0028" />
             <stop ref={stop2Ref} offset="40%" stopColor="#0d001a" />
             <stop ref={stop3Ref} offset="70%" stopColor="#080010" />
             <stop ref={stop4Ref} offset="100%" stopColor="#040008" />
           </linearGradient>
-
-          {/* Glow filter */}
           <filter id="liquid-glow" x="-50%" y="-50%" width="200%" height="200%">
             <feGaussianBlur in="SourceGraphic" stdDeviation="3" result="blur1" />
             <feGaussianBlur in="SourceGraphic" stdDeviation="6" result="blur2" />
@@ -267,82 +231,29 @@ export default function TransitionOverlay() {
               <feMergeNode in="SourceGraphic" />
             </feMerge>
           </filter>
-
-          {/* Text fill gradient: rises from bottom */}
           <linearGradient id="text-fill-grad" x1="0" y1="1" x2="0" y2="0">
             <stop ref={textStop1Ref} offset="20%" stopColor="#FF2D55" />
             <stop ref={textStop2Ref} offset="60%" stopColor="#8B5CF6" />
             <stop ref={textStop3Ref} offset="100%" stopColor="#A855F7" />
           </linearGradient>
-
-          {/* Main mask: blob + text */}
           <mask id="paint-mask">
-            {/* Black = transparent (page visible) */}
             <rect width="100" height="100" fill="black" />
-
-            {/* Organic blob (white = liquid visible) */}
-            <g transformOrigin="50 100">
+            <g style={{ transformOrigin: "50% 100%" }}>
               <path ref={pathRef} d={BLOB_PATH} fill="white" />
             </g>
-
-            {/* Text revealed left-to-right */}
             <g ref={textGroupRef}>
               <mask id="text-reveal-mask">
-                <rect
-                  ref={textRevealRef}
-                  x="0"
-                  y="0"
-                  width="0"
-                  height="100"
-                  fill="white"
-                />
+                <rect ref={textRevealRef} x="0" y="0" width="0" height="100" fill="white" />
               </mask>
               <g mask="url(#text-reveal-mask)" fill="white">
-                <text
-                  x="50"
-                  y="42"
-                  textAnchor="middle"
-                  fontFamily="monospace, sans-serif"
-                  fontWeight="900"
-                  fontSize="22"
-                  letterSpacing="1"
-                >
-                  OMNI
-                </text>
-                <text
-                  x="50"
-                  y="60"
-                  textAnchor="middle"
-                  fontFamily="monospace, sans-serif"
-                  fontWeight="700"
-                  fontSize="14"
-                  letterSpacing="1.5"
-                >
-                  CATALYST
-                </text>
+                <text x="50" y="42" textAnchor="middle" fontFamily="monospace, sans-serif" fontWeight="900" fontSize="22" letterSpacing="1">OMNI</text>
+                <text x="50" y="60" textAnchor="middle" fontFamily="monospace, sans-serif" fontWeight="700" fontSize="14" letterSpacing="1.5">CATALYST</text>
               </g>
             </g>
           </mask>
         </defs>
-
-        {/* Main liquid color visible through mask */}
-        <rect
-          width="100"
-          height="100"
-          fill="url(#liquid-grad)"
-          mask="url(#paint-mask)"
-        />
-
-        {/* Glow layer */}
-        <rect
-          ref={glowRef}
-          width="100"
-          height="100"
-          fill="url(#liquid-grad)"
-          mask="url(#paint-mask)"
-          filter="url(#liquid-glow)"
-          opacity="0"
-        />
+        <rect width="100" height="100" fill="url(#liquid-grad)" mask="url(#paint-mask)" />
+        <rect ref={glowRef} width="100" height="100" fill="url(#liquid-grad)" mask="url(#paint-mask)" filter="url(#liquid-glow)" opacity="0" />
       </svg>
     </div>
   );
