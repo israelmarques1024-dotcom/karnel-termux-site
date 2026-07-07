@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 
 const navItems = [
   { label: "Get Started", href: "/" },
+  { label: "Support Project", href: "/#support-project" },
   { label: "Termux", href: "/termux" },
   { label: "Termux:API", href: "/termux/api" },
   { label: "Omni", href: "/omni" },
@@ -72,6 +73,11 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 
           {/* Footer */}
           <div className="pt-6 border-t border-sidebar-border/50 space-y-3">
+            <Link href="/">
+              <a className="block text-center px-4 py-2 bg-accent/20 text-accent rounded-lg font-mono text-sm font-medium hover:bg-accent/30 transition-colors">
+                💙 Support Project
+              </a>
+            </Link>
             <p className="text-xs text-muted-foreground font-mono">
               <span className="text-accent">v4.7.1</span> • Android + Termux
             </p>
