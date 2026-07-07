@@ -40,7 +40,7 @@ const PIX_PAYLOAD = (() => {
 
 const QR_CODE_URL = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(PIX_PAYLOAD)}`;
 
-// Link direto HTTPS do Nubank — funciona em qualquer dispositivo (abre no browser/app)
+// Link direto HTTPS do Nubank — funciona em qualquer dispositivo
 const PIX_LINK = `https://nubank.com.br/pagar/${PIX_KEY}`;
 
 async function copyToClipboard(text: string): Promise<boolean> {
@@ -112,7 +112,7 @@ export default function SupportProject() {
             <div className="inline-block bg-white/5 rounded-2xl p-4 border border-white/10 mb-2">
               <img
                 src={QR_CODE_URL}
-                alt="Pix QR Code \u2014 escaneie com seu app de banco"
+                alt="Pix QR Code — escaneie com seu app de banco"
                 width={200}
                 height={200}
                 className="rounded-lg"
@@ -123,7 +123,7 @@ export default function SupportProject() {
 
           {/* Pix Copia & Cola */}
           <div className="text-center mb-6">
-            <p className="mb-2 font-mono text-sm text-gray-400">Ou copie o c\u00f3digo Pix:</p>
+            <p className="mb-2 font-mono text-sm text-gray-400">Ou copie o código Pix:</p>
             <div
               onClick={copyPixCode}
               onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") copyPixCode(); }}
@@ -141,7 +141,7 @@ export default function SupportProject() {
               className="mt-2 inline-flex items-center gap-2 px-5 py-2.5 bg-cyan-600 text-white rounded-xl font-semibold hover:bg-cyan-500 active:bg-cyan-700 transition-all active:scale-95"
             >
               {copied ? (
-                <><span>\u2705</span> Copiado!</>
+                <><span>✅</span> Copiado!</>
               ) : (
                 <><svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" /></svg> Copiar</>
               )}
@@ -155,10 +155,10 @@ export default function SupportProject() {
             <div className="flex-1 h-px bg-gray-700/50" />
           </div>
 
-          {/* Payment Link \u2014 Nubank */}
+          {/* Payment Link — Nubank */}
           <div className="text-center p-6 rounded-xl bg-gradient-to-r from-purple-500/20 to-purple-600/20 border border-purple-500/30">
             <p className="text-sm font-semibold text-purple-300 mb-4">
-              \ud83d\udcb3 Pagar com Nubank
+              💳 Pagar com Nubank
             </p>
 
             {/* Link principal: abre nubank.com.br/pagar/... em nova aba */}
@@ -179,7 +179,7 @@ export default function SupportProject() {
             </a>
 
             <p className="text-xs text-gray-400 mt-3">
-              Abre a p\u00e1gina de pagamento do Nubank no seu navegador ou app
+              Abre a página de pagamento do Nubank no seu navegador ou app
             </p>
 
             {/* Copiar link do Pix */}
@@ -193,7 +193,7 @@ export default function SupportProject() {
                 className="inline-flex items-center gap-2 px-4 py-2 bg-purple-900/40 text-purple-300 rounded-lg text-sm hover:bg-purple-900/60 active:scale-95 transition-all border border-purple-500/20"
               >
                 {linkCopied ? (
-                  <><span>\u2705</span> Link copiado!</>
+                  <><span>✅</span> Link copiado!</>
                 ) : (
                   <><svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" /></svg> Copiar link</>
                 )}
@@ -202,7 +202,7 @@ export default function SupportProject() {
           </div>
 
           <p className="mt-10 text-center text-xs text-gray-500 font-mono">
-            Omni Catalyst Project \u00a9 2026 \u2014 Built by israel marques
+            Omni Catalyst Project © 2026 — Built by israel marques
           </p>
         </div>
       </div>
