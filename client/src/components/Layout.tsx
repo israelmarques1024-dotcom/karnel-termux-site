@@ -3,9 +3,18 @@ import { Menu, X } from "lucide-react";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 
+const scrollToSupport = () => {
+  if (window.location.pathname !== "/") {
+    window.location.href = "/#support-project";
+  } else {
+    const el = document.getElementById("support-project");
+    el?.scrollIntoView({ behavior: "smooth" });
+  }
+};
+
 const navItems = [
   { label: "Get Started", href: "/" },
-  { label: "Support Project", href: "/#support-project" },
+  { label: "Support Project", action: scrollToSupport },
   { label: "Termux", href: "/termux" },
   { label: "Termux:API", href: "/termux/api" },
   { label: "Omni", href: "/omni" },
@@ -53,9 +62,25 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           {/* Navigation */}
           <nav className="flex-1 space-y-1">
             {navItems.map((item) => {
-              const isActive = location === item.href;
-              return (
-                <Link key={item.href} href={item.href}>
+              const isActive = item.href && location === item.href;
+              const isAction = !item.href && item.action;
+              return isAction ? (
+                <button
+                  key={item.label}
+                  onClick={(e) => {
+                    item.action?.();
+                    setSidebarOpen(false);
+                  }}
+                  className={`block w-full text-left px-4 py-2.5 rounded-md transition-all duration-200 font-mono text-sm font-medium ${
+                    isActive
+                      ? "bg-gradient-to-r from-accent/20 to-accent/10 text-accent border-l-2 border-accent shadow-sm shadow-accent/20"
+                      : "text-sidebar-foreground hover:bg-sidebar-primary/15 hover:text-accent/80"
+                  }`}
+                >
+                  {item.label}
+                </button>
+              ) : (
+                <Link key={item.href} href={item.href || "/"}>
                   <a
                     className={`block px-4 py-2.5 rounded-md transition-all duration-200 font-mono text-sm font-medium ${
                       isActive
@@ -73,11 +98,15 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 
           {/* Footer */}
           <div className="pt-6 border-t border-sidebar-border/50 space-y-3">
-            <Link href="/">
-              <a className="block text-center px-4 py-2 bg-accent/20 text-accent rounded-lg font-mono text-sm font-medium hover:bg-accent/30 transition-colors">
-                💙 Support Project
-              </a>
-            </Link>
+            <button
+              onClick={() => {
+                scrollToSupport();
+                setSidebarOpen(false);
+              }}
+              className="block w-full text-center px-4 py-2 bg-accent/20 text-accent rounded-lg font-mono text-sm font-medium hover:bg-accent/30 transition-colors"
+            >
+              💙 Support Project
+            </button>
             <p className="text-xs text-muted-foreground font-mono">
               <span className="text-accent">v4.7.1</span> • Android + Termux
             </p>
