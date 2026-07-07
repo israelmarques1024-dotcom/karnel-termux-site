@@ -1,9 +1,11 @@
 import { useState } from "react";
-import { QRCodeCanvas } from "qrcode.react";
 
 const PIX_KEY = "037f07bd-a326-42b6-a5a3-f29b36e703db";
 
 const PIX_PAYLOAD = `00020126580014br.gov.bcb.pix0136${PIX_KEY}52040000530398654051.005802BR5913OMNI CATALYST6009SAO PAULO62070503***6304`;
+
+// QR code via API (works in all environments, no SSR issues)
+const QR_CODE_URL = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(PIX_PAYLOAD)}`;
 
 export default function SupportProject() {
   const [copied, setCopied] = useState(false);
@@ -51,11 +53,12 @@ export default function SupportProject() {
 
           <div className="text-center mb-6">
             <div className="inline-block bg-white/5 rounded-2xl p-4 border border-white/10 mb-4">
-              <QRCodeCanvas
-                value={PIX_PAYLOAD}
-                size={200}
-                level="M"
-                includeMargin={true}
+              <img
+                src={QR_CODE_URL}
+                alt="Pix QR Code"
+                width={200}
+                height={200}
+                className="rounded-lg"
               />
             </div>
           </div>
