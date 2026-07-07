@@ -46,17 +46,24 @@ export default function SupportProject() {
 
   const copyPixKey = async () => {
     try {
+      // Try clipboard API first
       if (navigator?.clipboard?.writeText) {
         await navigator.clipboard.writeText(PIX_PAYLOAD);
       } else {
-        const textarea = document.createElement("textarea");
-        textarea.value = PIX_PAYLOAD;
-        textarea.style.position = "fixed";
-        textarea.style.opacity = "0";
-        document.body.appendChild(textarea);
-        textarea.select();
-        document.execCommand("copy");
-        document.body.removeChild(textarea);
+        // Fallback: select text and show instruction
+        const el = document.querySelector("code");
+        if (el) {
+          const range = document.createRange();
+          range.selectNode(el);
+          const sel = window.getSelection();
+          sel?.removeAllRanges();
+          sel?.addRange(range);
+        }
+        // Show toast
+        setCopied(true);
+        setTimeout(() => setCopied(false), 2000);
+        alert("Pix Copia & Cola selecionado! Pressione Ctrl+C para copiar.");
+        return;
       }
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
@@ -100,7 +107,9 @@ export default function SupportProject() {
           <div className="text-center mb-6">
             <p className="mb-2 font-mono text-sm">Pix Copia & Cola:</p>
             <code
-              className="px-4 py-2 bg-gray-900/50 rounded-xl font-mono text-cyan-300 border border-gray-700/50 break-all inline-block mb-3"
+              className="px-4 py-2 bg-gray-900/50 rounded-xl font-mono text-cyan-300 border border-gray-700/50 break-all inline-block mb-3 cursor-pointer"
+              onClick={() => navigator.clipboard?.writeText(PIX_PAYLOAD).then(() => setCopied(true)).catch(() => {})}
+              title="Clique para copiar"
             >
               {PIX_PAYLOAD}
             </code>
@@ -108,7 +117,7 @@ export default function SupportProject() {
             <button
               type="button"
               onClick={copyPixKey}
-              className="mt-2 px-4 py-2 bg-cyan-600 text-white rounded-xl font-semibold"
+              className="mt-2 px-4 py-2 bg-cyan-600 text-white rounded-xl font-semibold hover:bg-cyan-500 transition-colors"
             >
               {copied ? "✅ Copied!" : "📋 Copy"}
             </button>
@@ -142,7 +151,7 @@ export default function SupportProject() {
               Copiar Pix para o Nubank
             </button>
             <p className="text-xs text-gray-400 mt-2">
-              Abra o app do Nubank e cole o Pix Copia & Cola
+              Escaneie o QR Code ou clique no código acima para copiar
             </p>
           </div>
 
