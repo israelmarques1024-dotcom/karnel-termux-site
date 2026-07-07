@@ -4,7 +4,6 @@ import { ArrowRight, Zap, Code2, Cpu, Terminal, Brain, Rocket, Stethoscope, Eye,
 import { Button } from "@/components/ui/button";
 import Layout from "@/components/Layout";
 import CodeBlock from "@/components/CodeBlock";
-import SupportProject from "@/components/SupportProject";
 
 const lerp = (a: number, b: number, t: number) => a + (b - a) * t;
 
@@ -49,16 +48,13 @@ export default function Home() {
     { q: "Is it free?", a: "Yes! Omni is 100% free and open source (MIT)." },
     { q: "Requires root?", a: "No. Omni works on any Android with Termux, no root needed." },
     { q: "Works on any Android?", a: "Yes, Android 11+ recommended. Devices with 4GB+ RAM have better performance." },
-    { q: "Is Omni open source?", a: "Yes! Omni is open source. In the future I plan to add ads similar to freebuff, but for now it's supported only through Pix donations." },
+    { q: "Is Omni open source?", a: "Yes! Omni is 100% free and open source (MIT)." },
     { q: "Need internet?", a: "Yes, to install packages. After installation, most tools work offline." },
     { q: "Can use without Linux knowledge?", a: "Yes! Omni is designed to be simple. Portuguese commands and integrated assistant." },
   ];
 
   return (
     <Layout>
-      {/* Support Project */}
-      <SupportProject />
-
       {/* Hero Banner */}
       <section className="relative min-h-screen py-16 md:py-24 px-4 overflow-hidden">
         {/* Banner background image */}
