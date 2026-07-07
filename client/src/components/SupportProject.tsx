@@ -1,6 +1,9 @@
 import { useState, useCallback } from "react";
+
+// ===== Pix Key =====
 const PIX_KEY = "037f07bd-a326-42b6-a5a3-f29b36e703db";
-// ============ EMV Payload generation (for QR Code only) ============
+
+// ===== EMV Payload (for QR Code - required by bank apps) =====
 function crc16(str: string): string {
   const crcTable = new Uint16Array(256);
   for (let i = 0; i < 256; i++) {
@@ -16,9 +19,13 @@ function crc16(str: string): string {
   }
   return (crc ^ 0xFFFF).toString(16).toUpperCase().padStart(4, "0");
 }
-const tlv = (tag: string, value: string): string => tag + value.length.toString().padStart(2, "0") + value;
+
+const tlv = (tag: string, value: string): string =>
+  tag + value.length.toString().padStart(2, "0") + value;
+
 const PIX_PAYLOAD = (() => {
-  const merchantAccount = tlv("26", tlv("00", "br.gov.bcb.pix") + tlv("01", PIX_KEY));
+  const merchantAccount =
+    tlv("26", tlv("00", "br.gov.bcb.pix") + tlv("01", PIX_KEY));
   const payload =
     tlv("00", "01") +
     merchantAccount +
@@ -31,17 +38,16 @@ const PIX_PAYLOAD = (() => {
     "6304";
   return payload + crc16(payload);
 })();
-// QR Code uses EMV payload (required for bank apps to recognize)
+
 const QR_CODE_URL = `https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=${encodeURIComponent(PIX_PAYLOAD)}`;
-// ============ Clipboard ============
+
+// ===== Clipboard helper =====
 async function copyToClipboard(text: string): Promise<boolean> {
-  if (navigator?.clipboard?.writeText) {
-    try {
-      await navigator.clipboard.writeText(text);
-      return true;
-    } catch {
-      // fallback
-    }
+  try {
+    await navigator.clipboard.writeText(text);
+    return true;
+  } catch {
+    // fallback to legacy execCommand
   }
   try {
     const ta = document.createElement("textarea");
@@ -57,172 +63,252 @@ async function copyToClipboard(text: string): Promise<boolean> {
     ta.select();
     const ok = document.execCommand("copy");
     document.body.removeChild(ta);
-    if (ok) return true;
+    return ok;
   } catch {
-    // silent
+    return false;
   }
-  return false;
 }
-// ============ Nubank Logo SVG ============
-function NubankLogo() {
+
+// ===== More accurate Nubank logo SVG =====
+function NubankLogoSvg() {
   return (
-    <svg viewBox="0 0 120 40" className="inline-block w-20 h-auto" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Nubank">
-      <rect width="120" height="40" rx="8" fill="#8A05BE" />
-      <path d="M28 12h4l6 10V12h4v16h-4l-6-10v10h-4V12z" fill="white" />
-      <path d="M52 14c-3.3 0-6 2.5-6 6s2.7 6 6 6 6-2.5 6-6-2.7-6-6-6zm0 10c-2.2 0-4-1.8-4-4s1.8-4 4-4 4 1.8 4 4-1.8 4-4 4z" fill="white" />
-      <path d="M64 14v4h3v3h-3v6h-4V14h4z" fill="white" />
-      <path d="M75 14c-3.3 0-6 2.5-6 6s2.7 6 6 6c2.2 0 4-1.1 5.2-2.8l-3.2-2c-.5.8-1.2 1.2-2 1.2-1.1 0-2-.9-2-2.4 0-1.5.9-2.4 2-2.4.8 0 1.5.4 2 1.2l3.2-2C79 15.1 77.2 14 75 14z" fill="white" />
-      <path d="M84 14v16h4v-6h2l2 6h4l-2-6c2-.5 3-2.5 3-4 0-3-2-6-5-6h-8zm4 3h3c1 0 2 .8 2 2 0 1.2-1 2-2 2h-3v-4z" fill="white" />
+    <svg
+      viewBox="0 0 36 36"
+      className="inline-block w-9 h-9"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      aria-label="Nubank"
+    >
+      <circle cx="18" cy="18" r="18" fill="#8A05BE" />
+      <path
+        d="M10 26V12l4 7V12h3v14h-3l-4-7v7h-2zm8 0V12l4 7V12h3v14h-3l-4-7v7h-2z"
+        fill="white"
+      />
     </svg>
   );
 }
+
 const BANKS = [
-  { name: "Itau", emoji: "🏦" },
-  { name: "Bradesco", emoji: "🏛️" },
-  { name: "Santander", emoji: "🏗️" },
-  { name: "BB", emoji: "🌐" },
-  { name: "Caixa", emoji: "🏧" },
-  { name: "Inter", emoji: "🔷" },
-  { name: "C6", emoji: "⚫" },
-  { name: "PicPay", emoji: "🟢" },
-  { name: "Mercado Pago", emoji: "🟡" },
+  { name: "Itaú", icon: "🏦" },
+  { name: "Bradesco", icon: "🏛️" },
+  { name: "Santander", icon: "🏗️" },
+  { name: "Banco do Brasil", icon: "🌐" },
+  { name: "Caixa", icon: "🏧" },
+  { name: "Inter", icon: "🔷" },
+  { name: "C6 Bank", icon: "⚫" },
+  { name: "PicPay", icon: "🟢" },
+  { name: "Mercado Pago", icon: "🟡" },
+  { name: "Original", icon: "🟣" },
+  { name: "Neon", icon: "💚" },
+  { name: "PagBank", icon: "🟤" },
 ];
+
 export default function SupportProject() {
   const [copied, setCopied] = useState(false);
-  const [copyError, setCopyError] = useState(false);
+  const [copyErr, setCopyErr] = useState(false);
+
   const handleCopy = useCallback(async () => {
-    setCopyError(false);
+    setCopyErr(false);
     const ok = await copyToClipboard(PIX_KEY);
     if (ok) {
       setCopied(true);
-      setCopyError(false);
       setTimeout(() => setCopied(false), 3000);
     } else {
-      setCopyError(true);
-      setTimeout(() => setCopyError(false), 4000);
+      setCopyErr(true);
+      setTimeout(() => setCopyErr(false), 4000);
     }
   }, []);
+
   return (
     <section
       id="support-project"
       className="relative py-24 px-4 overflow-hidden"
       aria-labelledby="support-title"
     >
-      {/* Background decoration */}
-      <div className="absolute inset-0 bg-gradient-to-br from-purple-900/20 via-gray-900/30 to-cyan-900/20" />
-      <div className="absolute top-20 left-10 w-72 h-72 bg-purple-500/10 rounded-full blur-3xl" />
-      <div className="absolute bottom-20 right-10 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl" />
-      <div className="relative max-w-2xl mx-auto">
-        <div className="rounded-3xl p-8 sm:p-10 bg-gray-900/60 backdrop-blur-xl border border-white/10 shadow-2xl shadow-purple-900/20">
+      {/* Ambient background glow */}
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 bg-gradient-to-br from-purple-950/30 via-gray-950 to-cyan-950/20"
+      />
+      <div
+        aria-hidden="true"
+        className="absolute top-16 left-8 w-80 h-80 bg-purple-600/10 rounded-full blur-[100px]"
+      />
+      <div
+        aria-hidden="true"
+        className="absolute bottom-16 right-8 w-80 h-80 bg-cyan-600/10 rounded-full blur-[100px]"
+      />
+
+      <div className="relative max-w-lg mx-auto">
+        <div className="rounded-2xl bg-gray-900/70 backdrop-blur-xl border border-white/[0.06] shadow-2xl shadow-black/40 overflow-hidden">
           {/* Header */}
-          <div className="text-center mb-10">
-            <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-purple-500 to-cyan-400 mb-4 shadow-lg shadow-purple-500/30">
-              <span className="text-2xl">💙</span>
+          <div className="px-6 pt-8 pb-6 text-center border-b border-white/[0.06]">
+            <div className="mx-auto mb-3 flex items-center justify-center w-14 h-14 rounded-xl bg-gradient-to-br from-purple-500 to-pink-500 shadow-lg shadow-purple-600/30">
+              <span className="text-xl" role="img" aria-label="coração">
+                ❤️
+              </span>
             </div>
             <h2
               id="support-title"
-              className="text-3xl sm:text-4xl font-bold bg-gradient-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent"
+              className="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-purple-300 via-pink-300 to-cyan-300 bg-clip-text text-transparent"
             >
               Apoie o Projeto
             </h2>
-            <p className="mt-3 text-gray-400 max-w-md mx-auto text-sm sm:text-base">
-              Sua contribuicao ajuda a manter este projeto vivo. Qualquer valor e bem-vindo!
+            <p className="mt-2 text-sm text-gray-500 leading-relaxed">
+              Sua contribuição ajuda a manter este projeto
+              <br />
+              vivo e crescendo. Qualquer valor é bem-vindo!
             </p>
           </div>
-          {/* QR Code */}
-          <div className="text-center mb-8">
-            <div className="inline-block bg-white/5 rounded-2xl p-4 border border-white/10 shadow-lg hover:shadow-purple-500/10 hover:border-purple-500/30 transition-all duration-300">
-              <img
-                src={QR_CODE_URL}
-                alt="Pix QR Code - escaneie com seu app de banco"
-                width={220}
-                height={220}
-                className="rounded-xl"
-              />
+
+          {/* Body */}
+          <div className="px-6 py-6 space-y-6">
+            {/* QR Code */}
+            <div className="flex flex-col items-center">
+              <div className="bg-white/[0.03] rounded-xl p-3 border border-white/[0.06]">
+                <img
+                  src={QR_CODE_URL}
+                  alt="QR Code Pix"
+                  width={200}
+                  height={200}
+                  className="rounded-lg"
+                  loading="lazy"
+                />
+              </div>
+              <p className="mt-2 text-xs text-gray-600">
+                Escaneie com qualquer app de banco
+              </p>
             </div>
-            <p className="mt-3 text-sm text-gray-500">
-              Escaneie com o app do seu banco
-            </p>
-          </div>
-          {/* Divider */}
-          <div className="flex items-center gap-4 mb-6">
-            <div className="flex-1 h-px bg-gradient-to-r from-transparent via-gray-700/50 to-transparent" />
-            <span className="text-xs text-gray-600 font-mono px-2">ou</span>
-            <div className="flex-1 h-px bg-gradient-to-r from-transparent via-gray-700/50 to-transparent" />
-          </div>
-          {/* Pix Key */}
-          <div className="mb-8">
-            <p className="text-center text-sm text-gray-400 mb-3">
-              Copie a chave Pix:
-            </p>
-            <div className="relative group">
+
+            {/* Divider */}
+            <div className="flex items-center gap-3" role="separator" aria-orientation="horizontal">
+              <div className="flex-1 h-px bg-gradient-to-r from-transparent via-white/[0.06] to-transparent" />
+              <span className="text-xs text-gray-700 font-mono tracking-widest uppercase">
+                ou
+              </span>
+              <div className="flex-1 h-px bg-gradient-to-r from-transparent via-white/[0.06] to-transparent" />
+            </div>
+
+            {/* Pix Key */}
+            <div>
+              <p className="text-center text-xs text-gray-600 mb-2">
+                Copie a chave Pix abaixo
+              </p>
+
+              {/* Clickable key display */}
               <div
-                className="px-5 py-4 bg-gray-800/80 rounded-xl font-mono text-sm text-cyan-300 border border-gray-700/50 text-center select-all cursor-pointer hover:border-purple-500/50 hover:bg-gray-800 transition-all duration-200 active:scale-[0.99]"
                 onClick={handleCopy}
-                onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); handleCopy(); } }}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter") {
+                    e.preventDefault();
+                    handleCopy();
+                  }
+                }}
                 role="button"
                 tabIndex={0}
                 aria-label="Copiar chave Pix"
                 title="Clique para copiar"
+                className="relative px-4 py-3.5 rounded-xl bg-gray-800/60 border border-white/[0.06] text-center
+                          font-mono text-sm text-cyan-300/90 select-all cursor-pointer
+                          hover:border-purple-500/40 hover:bg-gray-800/80
+                          transition-colors duration-200"
               >
-                <span className="text-cyan-300/70">PIX: </span>
+                <span className="text-gray-600 text-xs mr-2 select-none">
+                  chave:
+                </span>
                 {PIX_KEY}
               </div>
+
+              {/* Copy button */}
               <div className="flex justify-center mt-3">
                 <button
                   type="button"
                   onClick={handleCopy}
-                  className={`
-                    inline-flex items-center gap-2 px-6 py-2.5 rounded-xl font-semibold text-sm
-                    transition-all duration-200 active:scale-95
+                  className={`inline-flex items-center gap-2 px-5 py-2 rounded-lg text-sm font-medium
+                    transition-all duration-200 active:scale-[0.97]
                     ${copied
-                      ? "bg-emerald-600 text-white shadow-lg shadow-emerald-600/30"
-                      : copyError
-                        ? "bg-red-600/80 text-white shadow-lg shadow-red-600/20"
-                        : "bg-gradient-to-r from-purple-600 to-cyan-600 text-white hover:from-purple-500 hover:to-cyan-500 shadow-lg shadow-purple-600/25"
-                    }
-                  `}
+                      ? "bg-emerald-600 text-white shadow-sm shadow-emerald-600/30"
+                      : copyErr
+                        ? "bg-red-600/70 text-white"
+                        : "bg-white/[0.08] text-gray-300 hover:bg-white/[0.12] border border-white/[0.06]"
+                    }`}
                 >
                   {copied ? (
-                    <><svg className="w-4 h-4" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" /></svg> Chave copiada!</>
-                  ) : copyError ? (
-                    <><svg className="w-4 h-4" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clipRule="evenodd" /></svg> Selecione a chave acima</>
+                    <>
+                      <svg className="w-4 h-4" viewBox="0 0 20 20" fill="currentColor">
+                        <path
+                          fillRule="evenodd"
+                          d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                          clipRule="evenodd"
+                        />
+                      </svg>
+                      Copiado!
+                    </>
+                  ) : copyErr ? (
+                    <>
+                      <svg className="w-4 h-4" viewBox="0 0 20 20" fill="currentColor">
+                        <path
+                          fillRule="evenodd"
+                          d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z"
+                          clipRule="evenodd"
+                        />
+                      </svg>
+                      Selecione manualmente
+                    </>
                   ) : (
-                    <><svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" /></svg> Copiar chave Pix</>
+                    <>
+                      <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"
+                        />
+                      </svg>
+                      Copiar chave
+                    </>
                   )}
                 </button>
               </div>
+
+              {/* Error help text */}
+              {copyErr && (
+                <p className="mt-2 text-center text-xs text-gray-600">
+                  Seu navegador não permitiu copiar automaticamente.
+                  <br />
+                  Selecione a chave acima e copie manualmente (Ctrl+C / Cmd+C).
+                </p>
+              )}
             </div>
           </div>
-          {/* Bank badges with Nubank logo */}
-          <div className="text-center mb-6 p-5 rounded-2xl bg-gradient-to-r from-purple-900/20 to-gray-900/30 border border-purple-500/10">
-            <p className="text-xs text-gray-500 mb-4">
-              Compativel com todos os bancos:
-            </p>
-            {/* Nubank Logo destacado */}
-            <div className="flex items-center justify-center gap-3 mb-4 p-3 rounded-xl bg-purple-950/30 border border-purple-500/20">
-              <NubankLogo />
-              <span className="text-sm text-purple-300 font-semibold">Nubank</span>
-              <span className="text-xs text-gray-500">|</span>
-              <span className="text-xs text-gray-400">e demais bancos:</span>
+
+          {/* Bank badges footer */}
+          <div className="px-6 py-4 bg-white/[0.02] border-t border-white/[0.06]">
+            <div className="flex items-center justify-center gap-2 mb-3">
+              <NubankLogoSvg />
+              <span className="text-sm text-purple-400/80 font-medium">Nubank</span>
+              <span className="text-xs text-gray-700">·</span>
+              <span className="text-xs text-gray-600">Compatível com todos os bancos</span>
             </div>
-            <div className="flex flex-wrap justify-center gap-2">
-              {BANKS.filter(b => b.name !== "Nubank").map((bank) => (
+            <div className="flex flex-wrap justify-center gap-1.5">
+              {BANKS.map((bank) => (
                 <span
                   key={bank.name}
-                  className="inline-flex items-center gap-1 px-3 py-1.5 bg-gray-800/50 rounded-full text-xs text-gray-400 border border-gray-700/30"
+                  className="inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-white/[0.04] text-xs text-gray-500 border border-white/[0.04]"
                   title={bank.name}
                 >
-                  <span className="text-sm">{bank.emoji}</span>
+                  <span className="text-sm">{bank.icon}</span>
                   <span className="hidden sm:inline">{bank.name}</span>
                 </span>
               ))}
             </div>
           </div>
+
           {/* Footer */}
-          <p className="text-center text-xs text-gray-600 font-mono">
-            Omni Catalyst Project &copy; 2026 &mdash; Feito por israel marques
-          </p>
+          <div className="px-6 py-3 text-center">
+            <p className="text-[11px] text-gray-700 font-mono">
+              Omni Catalyst Project &copy; 2026 &mdash; Feito por israel marques
+            </p>
+          </div>
         </div>
       </div>
     </section>
