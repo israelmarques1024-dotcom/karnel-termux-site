@@ -1,34 +1,33 @@
-import { useState, useCallback } from "react";
+import { useState, useCallback, useRef } from "react";
 
-// ===== Pix Key =====
+// ===== Configuration =====
 const PIX_KEY = "037f07bd-a326-42b6-a5a3-f29b36e703db";
 
-// ===== EMV Payload (for QR Code - required by bank apps) =====
+// ===== EMV Payload (for QR code — required by ALL Brazilian bank apps) =====
 function crc16(str: string): string {
-  const crcTable = new Uint16Array(256);
+  const table = new Uint16Array(256);
   for (let i = 0; i < 256; i++) {
-    let crc = i;
+    let c = i;
     for (let j = 0; j < 8; j++) {
-      crc = (crc & 1) ? (crc >> 1) ^ 0x8408 : crc >> 1;
+      c = (c & 1) ? (c >> 1) ^ 0x8408 : c >> 1;
     }
-    crcTable[i] = crc;
+    table[i] = c;
   }
-  let crc = 0xFFFF;
+  let crc = 0xffff;
   for (let i = 0; i < str.length; i++) {
-    crc = (crc >> 8) ^ crcTable[(crc ^ str.charCodeAt(i)) & 0xff];
+    crc = (crc >> 8) ^ table[(crc ^ str.charCodeAt(i)) & 0xff];
   }
-  return (crc ^ 0xFFFF).toString(16).toUpperCase().padStart(4, "0");
+  return (crc ^ 0xffff).toString(16).toUpperCase().padStart(4, "0");
 }
 
-const tlv = (tag: string, value: string): string =>
-  tag + value.length.toString().padStart(2, "0") + value;
+const tlv = (tag: string, val: string): string =>
+  tag + val.length.toString().padStart(2, "0") + val;
 
-const PIX_PAYLOAD = (() => {
-  const merchantAccount =
-    tlv("26", tlv("00", "br.gov.bcb.pix") + tlv("01", PIX_KEY));
-  const payload =
+const PIX_EMV = (() => {
+  const merchant = tlv("26", tlv("00", "br.gov.bcb.pix") + tlv("01", PIX_KEY));
+  const body =
     tlv("00", "01") +
-    merchantAccount +
+    merchant +
     tlv("52", "0000") +
     tlv("53", "986") +
     tlv("58", "BR") +
@@ -36,278 +35,194 @@ const PIX_PAYLOAD = (() => {
     tlv("60", "SAOPAULO") +
     tlv("62", tlv("05", "TEST")) +
     "6304";
-  return payload + crc16(payload);
+  return body + crc16(body);
 })();
 
-const QR_CODE_URL = `https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=${encodeURIComponent(PIX_PAYLOAD)}`;
+const QR_URL = `https://api.qrserver.com/v1/create-qr-code/?size=240x240&data=${encodeURIComponent(PIX_EMV)}`;
 
-// ===== Clipboard helper =====
-async function copyToClipboard(text: string): Promise<boolean> {
+// ===== Clipboard =====
+async function copy(text: string): Promise<boolean> {
   try {
     await navigator.clipboard.writeText(text);
     return true;
-  } catch {
-    // fallback to legacy execCommand
-  }
+  } catch { /**/ }
   try {
-    const ta = document.createElement("textarea");
-    ta.value = text;
-    ta.style.position = "fixed";
-    ta.style.left = "-9999px";
-    ta.style.top = "-9999px";
-    ta.style.width = "1px";
-    ta.style.height = "1px";
-    ta.style.opacity = "0";
-    document.body.appendChild(ta);
-    ta.focus();
-    ta.select();
+    const el = document.createElement("textarea");
+    el.value = text;
+    el.style.cssText = "position:fixed;left:-9999px;top:-9999px;width:1px;height:1px;opacity:0";
+    document.body.appendChild(el);
+    el.focus();
+    el.select();
     const ok = document.execCommand("copy");
-    document.body.removeChild(ta);
+    document.body.removeChild(el);
     return ok;
   } catch {
     return false;
   }
 }
 
-// ===== More accurate Nubank logo SVG =====
-function NubankLogoSvg() {
+// ===== Official Nubank logo (CDN with SVG fallback) =====
+function NubankLogo({ onError, src }: { onError: () => void; src: string }) {
   return (
-    <svg
-      viewBox="0 0 36 36"
-      className="inline-block w-9 h-9"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      aria-label="Nubank"
-    >
+    <img
+      src={src}
+      alt="Nubank"
+      width={36}
+      height={36}
+      className="w-9 h-9 rounded-full"
+      onError={onError}
+    />
+  );
+}
+
+// ===== Fallback SVG approximation of Nubank logo =====
+function NubankFallback() {
+  return (
+    <svg viewBox="0 0 36 36" className="w-9 h-9" fill="none" aria-label="Nubank">
       <circle cx="18" cy="18" r="18" fill="#8A05BE" />
-      <path
-        d="M10 26V12l4 7V12h3v14h-3l-4-7v7h-2zm8 0V12l4 7V12h3v14h-3l-4-7v7h-2z"
-        fill="white"
-      />
+      <path d="M11 26V12l3.5 7V12H18v14h-3.5L11 19v7H9zm8 0V12l3.5 7V12H26v14h-3.5L19 19v7h-2z" fill="white" />
     </svg>
   );
 }
 
 const BANKS = [
-  { name: "Itaú", icon: "🏦" },
-  { name: "Bradesco", icon: "🏛️" },
-  { name: "Santander", icon: "🏗️" },
-  { name: "Banco do Brasil", icon: "🌐" },
-  { name: "Caixa", icon: "🏧" },
-  { name: "Inter", icon: "🔷" },
-  { name: "C6 Bank", icon: "⚫" },
-  { name: "PicPay", icon: "🟢" },
-  { name: "Mercado Pago", icon: "🟡" },
-  { name: "Original", icon: "🟣" },
-  { name: "Neon", icon: "💚" },
-  { name: "PagBank", icon: "🟤" },
+  { n: "Itaú", i: "🏦" },
+  { n: "Bradesco", i: "🏛️" },
+  { n: "Santander", i: "🏗️" },
+  { n: "Banco do Brasil", i: "🌐" },
+  { n: "Caixa", i: "🏧" },
+  { n: "Inter", i: "🔷" },
+  { n: "C6 Bank", i: "⚫" },
+  { n: "PicPay", i: "🟢" },
+  { n: "Mercado Pago", i: "🟡" },
+  { n: "Original", i: "🟣" },
+  { n: "Neon", i: "💚" },
+  { n: "PagBank", i: "🟤" },
 ];
 
 export default function SupportProject() {
-  const [copied, setCopied] = useState(false);
-  const [copyErr, setCopyErr] = useState(false);
+  const [st, setSt] = useState<"idle" | "copied" | "error">("idle");
+  const [logoFailed, setLogoFailed] = useState(false);
+  const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-  const handleCopy = useCallback(async () => {
-    setCopyErr(false);
-    const ok = await copyToClipboard(PIX_KEY);
-    if (ok) {
-      setCopied(true);
-      setTimeout(() => setCopied(false), 3000);
-    } else {
-      setCopyErr(true);
-      setTimeout(() => setCopyErr(false), 4000);
+  const doCopy = useCallback(async () => {
+    // Clear any previous timeout to avoid state flicker on rapid clicks
+    if (timerRef.current !== null) {
+      clearTimeout(timerRef.current);
+      timerRef.current = null;
     }
+    const ok = await copy(PIX_KEY);
+    setSt(ok ? "copied" : "error");
+    timerRef.current = setTimeout(() => {
+      setSt("idle");
+      timerRef.current = null;
+    }, ok ? 3000 : 5000);
   }, []);
 
   return (
-    <section
-      id="support-project"
-      className="relative py-24 px-4 overflow-hidden"
-      aria-labelledby="support-title"
-    >
-      {/* Ambient background glow */}
-      <div
-        aria-hidden="true"
-        className="absolute inset-0 bg-gradient-to-br from-purple-950/30 via-gray-950 to-cyan-950/20"
-      />
-      <div
-        aria-hidden="true"
-        className="absolute top-16 left-8 w-80 h-80 bg-purple-600/10 rounded-full blur-[100px]"
-      />
-      <div
-        aria-hidden="true"
-        className="absolute bottom-16 right-8 w-80 h-80 bg-cyan-600/10 rounded-full blur-[100px]"
-      />
+    <section id="support" className="relative py-28 px-4 overflow-hidden" aria-labelledby="sp-title">
+      {/* Glow background */}
+      <div aria-hidden className="absolute inset-0 bg-gradient-to-br from-purple-950/40 via-gray-950 to-cyan-950/20" />
+      <div aria-hidden className="absolute top-20 left-1/4 w-96 h-96 bg-purple-600/10 rounded-full blur-[120px]" />
+      <div aria-hidden className="absolute bottom-20 right-1/4 w-96 h-96 bg-cyan-600/10 rounded-full blur-[120px]" />
 
-      <div className="relative max-w-lg mx-auto">
-        <div className="rounded-2xl bg-gray-900/70 backdrop-blur-xl border border-white/[0.06] shadow-2xl shadow-black/40 overflow-hidden">
-          {/* Header */}
-          <div className="px-6 pt-8 pb-6 text-center border-b border-white/[0.06]">
-            <div className="mx-auto mb-3 flex items-center justify-center w-14 h-14 rounded-xl bg-gradient-to-br from-purple-500 to-pink-500 shadow-lg shadow-purple-600/30">
-              <span className="text-xl" role="img" aria-label="coração">
-                ❤️
-              </span>
+      <div className="relative max-w-md mx-auto">
+        <div className="rounded-2xl bg-gray-900/70 backdrop-blur-xl border border-white/[0.06] shadow-2xl shadow-black/40">
+          {/* === HEADER === */}
+          <div className="px-6 pt-10 pb-6 text-center border-b border-white/[0.06]">
+            <div className="mx-auto mb-4 flex items-center justify-center w-14 h-14 rounded-xl bg-gradient-to-br from-purple-500 to-pink-500 shadow-lg">
+              <span className="text-xl">❤️</span>
             </div>
-            <h2
-              id="support-title"
-              className="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-purple-300 via-pink-300 to-cyan-300 bg-clip-text text-transparent"
-            >
+            <h2 id="sp-title" className="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-purple-300 via-pink-300 to-cyan-300 bg-clip-text text-transparent">
               Apoie o Projeto
             </h2>
-            <p className="mt-2 text-sm text-gray-500 leading-relaxed">
-              Sua contribuição ajuda a manter este projeto
-              <br />
-              vivo e crescendo. Qualquer valor é bem-vindo!
-            </p>
+            <p className="mt-2 text-sm text-gray-500">Qualquer valor ajuda a manter o projeto vivo.</p>
           </div>
 
-          {/* Body */}
+          {/* === BODY === */}
           <div className="px-6 py-6 space-y-6">
             {/* QR Code */}
-            <div className="flex flex-col items-center">
+            <div className="flex flex-col items-center gap-2">
               <div className="bg-white/[0.03] rounded-xl p-3 border border-white/[0.06]">
-                <img
-                  src={QR_CODE_URL}
-                  alt="QR Code Pix"
-                  width={200}
-                  height={200}
-                  className="rounded-lg"
-                  loading="lazy"
-                />
+                <img src={QR_URL} alt="QR Code Pix" width={210} height={210} className="rounded-lg" loading="lazy" />
               </div>
-              <p className="mt-2 text-xs text-gray-600">
-                Escaneie com qualquer app de banco
-              </p>
+              <p className="text-xs text-gray-600">Escaneie com qualquer app de banco</p>
             </div>
 
             {/* Divider */}
-            <div className="flex items-center gap-3" role="separator" aria-orientation="horizontal">
+            <div className="flex items-center gap-3" role="separator">
               <div className="flex-1 h-px bg-gradient-to-r from-transparent via-white/[0.06] to-transparent" />
-              <span className="text-xs text-gray-700 font-mono tracking-widest uppercase">
-                ou
-              </span>
+              <span className="text-xs text-gray-700 font-mono tracking-widest uppercase">ou</span>
               <div className="flex-1 h-px bg-gradient-to-r from-transparent via-white/[0.06] to-transparent" />
             </div>
 
-            {/* Pix Key */}
-            <div>
-              <p className="text-center text-xs text-gray-600 mb-2">
-                Copie a chave Pix abaixo
-              </p>
+            {/* Pix key */}
+            <div className="flex flex-col items-center gap-3">
+              <p className="text-xs text-gray-600">Copie a chave Pix:</p>
 
-              {/* Clickable key display */}
               <div
-                onClick={handleCopy}
-                onKeyDown={(e) => {
-                  if (e.key === "Enter" || e.key === " ") {
-                    e.preventDefault();
-                    handleCopy();
-                  }
-                }}
+                onClick={doCopy}
+                onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); doCopy(); } }}
                 role="button"
                 tabIndex={0}
                 aria-label="Copiar chave Pix"
-                title="Clique para copiar"
-                className="relative px-4 py-3.5 rounded-xl bg-gray-800/60 border border-white/[0.06] text-center
-                          font-mono text-sm text-cyan-300/90 select-all cursor-pointer
-                          hover:border-purple-500/40 hover:bg-gray-800/80
-                          transition-colors duration-200"
+                className="w-full px-4 py-3.5 rounded-xl bg-gray-800/60 border border-white/[0.06] text-center font-mono text-sm text-cyan-300/90 select-all cursor-pointer hover:border-purple-500/40 hover:bg-gray-800/80 transition-colors"
               >
-                <span className="text-gray-600 text-xs mr-2 select-none">
-                  chave:
-                </span>
+                <span className="text-gray-600 text-xs mr-2 select-none">chave:</span>
                 {PIX_KEY}
               </div>
 
-              {/* Copy button */}
-              <div className="flex justify-center mt-3">
-                <button
-                  type="button"
-                  onClick={handleCopy}
-                  className={`inline-flex items-center gap-2 px-5 py-2 rounded-lg text-sm font-medium
-                    transition-all duration-200 active:scale-[0.97]
-                    ${copied
-                      ? "bg-emerald-600 text-white shadow-sm shadow-emerald-600/30"
-                      : copyErr
-                        ? "bg-red-600/70 text-white"
-                        : "bg-white/[0.08] text-gray-300 hover:bg-white/[0.12] border border-white/[0.06]"
-                    }`}
-                >
-                  {copied ? (
-                    <>
-                      <svg className="w-4 h-4" viewBox="0 0 20 20" fill="currentColor">
-                        <path
-                          fillRule="evenodd"
-                          d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                          clipRule="evenodd"
-                        />
-                      </svg>
-                      Copiado!
-                    </>
-                  ) : copyErr ? (
-                    <>
-                      <svg className="w-4 h-4" viewBox="0 0 20 20" fill="currentColor">
-                        <path
-                          fillRule="evenodd"
-                          d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z"
-                          clipRule="evenodd"
-                        />
-                      </svg>
-                      Selecione manualmente
-                    </>
-                  ) : (
-                    <>
-                      <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"
-                        />
-                      </svg>
-                      Copiar chave
-                    </>
-                  )}
-                </button>
-              </div>
+              <button
+                type="button"
+                onClick={doCopy}
+                disabled={st === "copied"}
+                className={`inline-flex items-center gap-2 px-5 py-2.5 rounded-lg text-sm font-medium transition-all active:scale-[0.97] disabled:opacity-80 ${st === "copied" ? "bg-emerald-600 text-white" : st === "error" ? "bg-red-600/70 text-white" : "bg-white/[0.08] text-gray-300 hover:bg-white/[0.12] border border-white/[0.06]"}`}
+              >
+                {st === "copied" ? (
+                  <><svg className="w-4 h-4" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" /></svg> Copiado!</>
+                ) : st === "error" ? (
+                  <><svg className="w-4 h-4" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clipRule="evenodd" /></svg> Selecionar manualmente</>
+                ) : (
+                  <><svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" /></svg> Copiar chave Pix</>
+                )}
+              </button>
 
-              {/* Error help text */}
-              {copyErr && (
-                <p className="mt-2 text-center text-xs text-gray-600">
-                  Seu navegador não permitiu copiar automaticamente.
-                  <br />
-                  Selecione a chave acima e copie manualmente (Ctrl+C / Cmd+C).
+              {st === "error" && (
+                <p className="text-xs text-gray-600 text-center">
+                  Copia automática indisponível. Selecione a chave acima e use Ctrl+C / Cmd+C.
                 </p>
               )}
             </div>
           </div>
 
-          {/* Bank badges footer */}
+          {/* === BANKS === */}
           <div className="px-6 py-4 bg-white/[0.02] border-t border-white/[0.06]">
             <div className="flex items-center justify-center gap-2 mb-3">
-              <NubankLogoSvg />
+              {logoFailed ? (
+                <NubankFallback />
+              ) : (
+                <NubankLogo
+                  src="https://nubank.com.br/favicon.ico"
+                  onError={() => setLogoFailed(true)}
+                />
+              )}
               <span className="text-sm text-purple-400/80 font-medium">Nubank</span>
               <span className="text-xs text-gray-700">·</span>
               <span className="text-xs text-gray-600">Compatível com todos os bancos</span>
             </div>
             <div className="flex flex-wrap justify-center gap-1.5">
-              {BANKS.map((bank) => (
-                <span
-                  key={bank.name}
-                  className="inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-white/[0.04] text-xs text-gray-500 border border-white/[0.04]"
-                  title={bank.name}
-                >
-                  <span className="text-sm">{bank.icon}</span>
-                  <span className="hidden sm:inline">{bank.name}</span>
+              {BANKS.map((b) => (
+                <span key={b.n} className="inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-white/[0.04] text-xs text-gray-500 border border-white/[0.04]">
+                  <span className="text-sm">{b.i}</span>
+                  <span className="hidden sm:inline">{b.n}</span>
                 </span>
               ))}
             </div>
           </div>
 
-          {/* Footer */}
+          {/* === FOOTER === */}
           <div className="px-6 py-3 text-center">
-            <p className="text-[11px] text-gray-700 font-mono">
-              Omni Catalyst Project &copy; 2026 &mdash; Feito por israel marques
-            </p>
+            <p className="text-[11px] text-gray-700 font-mono">Omni Catalyst Project &copy; 2026</p>
           </div>
         </div>
       </div>

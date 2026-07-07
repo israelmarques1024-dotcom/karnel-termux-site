@@ -3,6 +3,7 @@ import CodeBlock from "@/components/CodeBlock";
 
 export default function AITools() {
   const aiTools = [
+    { name: "Cline CLI", bin: "cline", flag: "--cline" },
     { name: "Qwen Code", bin: "qwen", flag: "--qwen-code" },
     { name: "Gemini CLI", bin: "gemini", flag: "--gemini-cli" },
     { name: "Claude Code", bin: "claude", flag: "--claude-code" },
