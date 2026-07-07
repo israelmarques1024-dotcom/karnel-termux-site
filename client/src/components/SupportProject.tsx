@@ -61,63 +61,171 @@ async function copy(text: string): Promise<boolean> {
   }
 }
 
-// ===== Official Nubank logo (CDN with SVG fallback) =====
-function NubankLogo({ onError, src }: { onError: () => void; src: string }) {
-  return (
-    <img
-      src={src}
-      alt="Nubank"
-      width={36}
-      height={36}
-      className="w-9 h-9 rounded-full"
-      onError={onError}
-    />
-  );
-}
+// ===== Bank Logo SVGs (faithful inline approximations) =====
 
-// ===== Fallback SVG approximation of Nubank logo =====
-function NubankFallback() {
+function LogoNubank({ size = 36 }: { size?: number }) {
   return (
-    <svg viewBox="0 0 36 36" className="w-9 h-9" fill="none" aria-label="Nubank">
-      <circle cx="18" cy="18" r="18" fill="#8A05BE" />
-      <path d="M11 26V12l3.5 7V12H18v14h-3.5L11 19v7H9zm8 0V12l3.5 7V12H26v14h-3.5L19 19v7h-2z" fill="white" />
+    <svg viewBox="0 0 36 36" width={size} height={size} fill="none" aria-label="Nubank">
+      <rect width="36" height="36" rx="18" fill="#8A05BE" />
+      <path d="M11 27V12l3.5 7.5V12H18v15h-3.5L11 19.5V27H9zm8 0V12l3.5 7.5V12H26v15h-3.5L19 19.5V27h-2z" fill="white" />
     </svg>
   );
 }
 
-const BANKS = [
-  { n: "Itaú", i: "🏦" },
-  { n: "Bradesco", i: "🏛️" },
-  { n: "Santander", i: "🏗️" },
-  { n: "Banco do Brasil", i: "🌐" },
-  { n: "Caixa", i: "🏧" },
-  { n: "Inter", i: "🔷" },
-  { n: "C6 Bank", i: "⚫" },
-  { n: "PicPay", i: "🟢" },
-  { n: "Mercado Pago", i: "🟡" },
-  { n: "Original", i: "🟣" },
-  { n: "Neon", i: "💚" },
-  { n: "PagBank", i: "🟤" },
+function LogoItau({ size = 36 }: { size?: number }) {
+  return (
+    <svg viewBox="0 0 36 36" width={size} height={size} fill="none" aria-label="Itaú">
+      <rect width="36" height="36" rx="6" fill="#EC7000" />
+      <text x="18" y="24" textAnchor="middle" fill="white" fontFamily="Arial,sans-serif" fontWeight="700" fontSize="14">itaú</text>
+    </svg>
+  );
+}
+
+function LogoBradesco({ size = 36 }: { size?: number }) {
+  return (
+    <svg viewBox="0 0 36 36" width={size} height={size} fill="none" aria-label="Bradesco">
+      <rect width="36" height="36" rx="4" fill="#CC092F" />
+      <text x="18" y="24" textAnchor="middle" fill="white" fontFamily="Arial,sans-serif" fontWeight="700" fontSize="16">B</text>
+    </svg>
+  );
+}
+
+function LogoSantander({ size = 36 }: { size?: number }) {
+  return (
+    <svg viewBox="0 0 36 36" width={size} height={size} fill="none" aria-label="Santander">
+      <circle cx="18" cy="18" r="18" fill="#EC0000" />
+      <path d="M18 8c-1.5 0-2.5.8-2.5 2v2h5v-2c0-1.2-1-2-2.5-2zM12 16v5c0 3.3 2.7 6 6 6s6-2.7 6-6v-5h-3v5c0 1.7-1.3 3-3 3s-3-1.3-3-3v-5h-3z" fill="white" />
+    </svg>
+  );
+}
+
+function LogoBB({ size = 36 }: { size?: number }) {
+  return (
+    <svg viewBox="0 0 36 36" width={size} height={size} fill="none" aria-label="Banco do Brasil">
+      <rect width="36" height="36" rx="6" fill="#002FA7" />
+      <text x="10" y="24" fontFamily="Arial,sans-serif" fontWeight="800" fontSize="16" fill="#FFCC00">BB</text>
+    </svg>
+  );
+}
+
+function LogoCaixa({ size = 36 }: { size?: number }) {
+  return (
+    <svg viewBox="0 0 36 36" width={size} height={size} fill="none" aria-label="Caixa">
+      <rect width="36" height="36" rx="4" fill="#003A75" />
+      <text x="18" y="23" textAnchor="middle" fill="white" fontFamily="Arial,sans-serif" fontWeight="700" fontSize="10">CAIXA</text>
+    </svg>
+  );
+}
+
+function LogoInter({ size = 36 }: { size?: number }) {
+  return (
+    <svg viewBox="0 0 36 36" width={size} height={size} fill="none" aria-label="Inter">
+      <circle cx="18" cy="18" r="18" fill="#FF6600" />
+      <text x="18" y="24" textAnchor="middle" fill="white" fontFamily="Arial,sans-serif" fontWeight="700" fontSize="18">@</text>
+    </svg>
+  );
+}
+
+function LogoC6({ size = 36 }: { size?: number }) {
+  return (
+    <svg viewBox="0 0 36 36" width={size} height={size} fill="none" aria-label="C6 Bank">
+      <rect width="36" height="36" rx="6" fill="#000000" />
+      <text x="18" y="24" textAnchor="middle" fill="white" fontFamily="Arial,sans-serif" fontWeight="700" fontSize="14">C6</text>
+    </svg>
+  );
+}
+
+function LogoPicPay({ size = 36 }: { size?: number }) {
+  return (
+    <svg viewBox="0 0 36 36" width={size} height={size} fill="none" aria-label="PicPay">
+      <circle cx="18" cy="18" r="18" fill="#21C25E" />
+      <text x="18" y="24" textAnchor="middle" fill="white" fontFamily="Arial,sans-serif" fontWeight="700" fontSize="18">P</text>
+    </svg>
+  );
+}
+
+function LogoMercadoPago({ size = 36 }: { size?: number }) {
+  return (
+    <svg viewBox="0 0 36 36" width={size} height={size} fill="none" aria-label="Mercado Pago">
+      <rect width="36" height="36" rx="6" fill="#00B5E2" />
+      <text x="18" y="24" textAnchor="middle" fill="white" fontFamily="Arial,sans-serif" fontWeight="700" fontSize="12">MP</text>
+    </svg>
+  );
+}
+
+function LogoOriginal({ size = 36 }: { size?: number }) {
+  return (
+    <svg viewBox="0 0 36 36" width={size} height={size} fill="none" aria-label="Original">
+      <circle cx="18" cy="18" r="18" fill="#5C2D91" />
+      <text x="18" y="24" textAnchor="middle" fill="white" fontFamily="Arial,sans-serif" fontWeight="700" fontSize="16">O</text>
+    </svg>
+  );
+}
+
+function LogoNeon({ size = 36 }: { size?: number }) {
+  return (
+    <svg viewBox="0 0 36 36" width={size} height={size} fill="none" aria-label="Neon">
+      <rect width="36" height="36" rx="6" fill="#00A859" />
+      <path d="M20 10l-6 9h4l-2 7 6-9h-4l2-7z" fill="white" />
+    </svg>
+  );
+}
+
+function LogoPagBank({ size = 36 }: { size?: number }) {
+  return (
+    <svg viewBox="0 0 36 36" width={size} height={size} fill="none" aria-label="PagBank">
+      <rect width="36" height="36" rx="6" fill="#003D7A" />
+      <text x="18" y="23" textAnchor="middle" fill="white" fontFamily="Arial,sans-serif" fontWeight="700" fontSize="8">PagBank</text>
+    </svg>
+  );
+}
+
+// ===== Bank definitions =====
+
+interface BankInfo {
+  id: string;
+  name: string;
+  logo: (props: { size?: number }) => React.ReactNode;
+}
+
+const BANKS: BankInfo[] = [
+  { id: "nubank", name: "Nubank", logo: LogoNubank },
+  { id: "itau", name: "Itaú", logo: LogoItau },
+  { id: "bradesco", name: "Bradesco", logo: LogoBradesco },
+  { id: "santander", name: "Santander", logo: LogoSantander },
+  { id: "bb", name: "Banco do Brasil", logo: LogoBB },
+  { id: "caixa", name: "Caixa", logo: LogoCaixa },
+  { id: "inter", name: "Inter", logo: LogoInter },
+  { id: "c6", name: "C6 Bank", logo: LogoC6 },
+  { id: "picpay", name: "PicPay", logo: LogoPicPay },
+  { id: "mercadopago", name: "Mercado Pago", logo: LogoMercadoPago },
+  { id: "original", name: "Original", logo: LogoOriginal },
+  { id: "neon", name: "Neon", logo: LogoNeon },
+  { id: "pagbank", name: "PagBank", logo: LogoPagBank },
 ];
+
+// ===== Main Component =====
 
 export default function SupportProject() {
   const [st, setSt] = useState<"idle" | "copied" | "error">("idle");
-  const [logoFailed, setLogoFailed] = useState(false);
+  const [activeBank, setActiveBank] = useState<string | null>(null);
   const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-  const doCopy = useCallback(async () => {
-    // Clear any previous timeout to avoid state flicker on rapid clicks
+  const doCopy = useCallback(async (bankId?: string) => {
     if (timerRef.current !== null) {
       clearTimeout(timerRef.current);
       timerRef.current = null;
     }
     const ok = await copy(PIX_KEY);
     setSt(ok ? "copied" : "error");
+    setActiveBank(bankId ?? null);
     timerRef.current = setTimeout(() => {
       setSt("idle");
-      timerRef.current = null;
-    }, ok ? 3000 : 5000);
+      setActiveBank(null);
+    }, ok ? 2000 : 4000);
   }, []);
+
+  const [nubank, ...otherBanks] = BANKS;
 
   return (
     <section id="support" className="relative py-28 px-4 overflow-hidden" aria-labelledby="sp-title">
@@ -126,7 +234,7 @@ export default function SupportProject() {
       <div aria-hidden className="absolute top-20 left-1/4 w-96 h-96 bg-purple-600/10 rounded-full blur-[120px]" />
       <div aria-hidden className="absolute bottom-20 right-1/4 w-96 h-96 bg-cyan-600/10 rounded-full blur-[120px]" />
 
-      <div className="relative max-w-md mx-auto">
+      <div className="relative max-w-lg mx-auto">
         <div className="rounded-2xl bg-gray-900/70 backdrop-blur-xl border border-white/[0.06] shadow-2xl shadow-black/40">
           {/* === HEADER === */}
           <div className="px-6 pt-10 pb-6 text-center border-b border-white/[0.06]">
@@ -161,7 +269,7 @@ export default function SupportProject() {
               <p className="text-xs text-gray-600">Copie a chave Pix:</p>
 
               <div
-                onClick={doCopy}
+                onClick={() => doCopy()}
                 onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); doCopy(); } }}
                 role="button"
                 tabIndex={0}
@@ -174,7 +282,7 @@ export default function SupportProject() {
 
               <button
                 type="button"
-                onClick={doCopy}
+                onClick={() => doCopy()}
                 disabled={st === "copied"}
                 className={`inline-flex items-center gap-2 px-5 py-2.5 rounded-lg text-sm font-medium transition-all active:scale-[0.97] disabled:opacity-80 ${st === "copied" ? "bg-emerald-600 text-white" : st === "error" ? "bg-red-600/70 text-white" : "bg-white/[0.08] text-gray-300 hover:bg-white/[0.12] border border-white/[0.06]"}`}
               >
@@ -195,28 +303,56 @@ export default function SupportProject() {
             </div>
           </div>
 
-          {/* === BANKS === */}
-          <div className="px-6 py-4 bg-white/[0.02] border-t border-white/[0.06]">
-            <div className="flex items-center justify-center gap-2 mb-3">
-              {logoFailed ? (
-                <NubankFallback />
+          {/* === BANK CARDS === */}
+          <div className="px-6 py-5 bg-white/[0.02] border-t border-white/[0.06]">
+            <p className="text-center text-xs text-gray-600 mb-4">
+              Clique no seu banco para copiar a chave Pix:
+            </p>
+
+            {/* Nubank — featured card */}
+            <button
+              type="button"
+              onClick={() => doCopy(nubank.id)}
+              className={`w-full flex items-center gap-4 px-5 py-4 rounded-xl border transition-all duration-200 active:scale-[0.98] ${activeBank === nubank.id && st === "copied" ? "border-purple-500/60 bg-purple-500/10" : "border-purple-500/30 bg-purple-500/[0.06] hover:bg-purple-500/[0.10] hover:border-purple-500/50"}`}
+            >
+              <LogoNubank size={44} />
+              <div className="flex-1 text-left">
+                <span className="text-sm font-medium text-purple-300">Nubank</span>
+                <p className="text-xs text-gray-600">Recomendado — Pagamento via Pix</p>
+              </div>
+              {activeBank === nubank.id && st === "copied" ? (
+                <span className="text-emerald-400 text-xs font-medium">✓ Copiado!</span>
               ) : (
-                <NubankLogo
-                  src="https://nubank.com.br/favicon.ico"
-                  onError={() => setLogoFailed(true)}
-                />
+                <svg className="w-4 h-4 text-gray-700" viewBox="0 0 20 20" fill="currentColor"><path d="M8 2a1 1 0 000 2h2a1 1 0 100-2H8z"/><path fillRule="evenodd" d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm3 4a1 1 0 000 2h.01a1 1 0 100-2H7zm3 0a1 1 0 000 2h3a1 1 0 100-2h-3zm-3 4a1 1 0 100 2h.01a1 1 0 100-2H7zm3 0a1 1 0 100 2h3a1 1 0 100-2h-3z" clipRule="evenodd" /></svg>
               )}
-              <span className="text-sm text-purple-400/80 font-medium">Nubank</span>
-              <span className="text-xs text-gray-700">·</span>
-              <span className="text-xs text-gray-600">Compatível com todos os bancos</span>
+            </button>
+
+            {/* Divider */}
+            <div className="flex items-center gap-3 my-4" role="separator">
+              <div className="flex-1 h-px bg-gradient-to-r from-transparent via-white/[0.06] to-transparent" />
+              <span className="text-xs text-gray-700 font-mono tracking-widest uppercase">outros bancos</span>
+              <div className="flex-1 h-px bg-gradient-to-r from-transparent via-white/[0.06] to-transparent" />
             </div>
-            <div className="flex flex-wrap justify-center gap-1.5">
-              {BANKS.map((b) => (
-                <span key={b.n} className="inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-white/[0.04] text-xs text-gray-500 border border-white/[0.04]">
-                  <span className="text-sm">{b.i}</span>
-                  <span className="hidden sm:inline">{b.n}</span>
-                </span>
-              ))}
+
+            {/* Bank grid */}
+            <div className="grid grid-cols-3 sm:grid-cols-4 gap-2">
+              {otherBanks.map((bank) => {
+                const isActive = activeBank === bank.id && st === "copied";
+                const Logo = bank.logo;
+                return (
+                  <button
+                    key={bank.id}
+                    type="button"
+                    onClick={() => doCopy(bank.id)}
+                    className={`flex flex-col items-center gap-1.5 px-2 py-3 rounded-xl border transition-all duration-200 active:scale-[0.95] ${isActive ? "border-emerald-500/40 bg-emerald-500/10" : "border-white/[0.06] bg-white/[0.03] hover:bg-white/[0.06] hover:border-white/[0.10]"}`}
+                  >
+                    <Logo size={28} />
+                    <span className="text-[10px] text-gray-500 font-medium leading-tight text-center">
+                      {isActive ? "Copiado!" : bank.name}
+                    </span>
+                  </button>
+                );
+              })}
             </div>
           </div>
 
