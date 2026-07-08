@@ -53,14 +53,14 @@ export default function CodeEditor() {
   ];
 
   const languages = [
-    { lang: "JavaScript/TypeScript", lsp: "ts_ls", formatter: "Prettier", features: "Autocompletar, diagnósticos, dicas inlay" },
-    { lang: "Python", lsp: "pyright", formatter: "black", features: "Autocompletar, diagnósticos" },
-    { lang: "Go", lsp: "gopls", formatter: "gofmt/goimports", features: "Autocompletar, diagnósticos" },
+    { lang: "JavaScript/TypeScript", lsp: "TypeScript", formatter: "Prettier extension", features: "Autocompletar, diagnósticos, dicas inlay" },
+    { lang: "Python", lsp: "Python", formatter: "Python Formatter", features: "Autocompletar, diagnósticos" },
+    { lang: "Go", lsp: "Go", formatter: "gofmt/goimports", features: "Autocompletar, diagnósticos" },
     { lang: "Rust", lsp: "rust_analyzer", formatter: "rustfmt", features: "Autocompletar, diagnósticos" },
-    { lang: "Lua", lsp: "lua-language-server", formatter: "stylua", features: "Autocompletar, diagnósticos" },
+    { lang: "Lua", lsp: "lua-language-server", formatter: "Lua Formatter", features: "Autocompletar, diagnósticos" },
     { lang: "Bash", lsp: "bashls", formatter: "shfmt", features: "Formatação de shell" },
-    { lang: "HTML", lsp: "html-lsp", formatter: "Prettier", features: "Auto-tags, completar" },
-    { lang: "CSS/Tailwind", lsp: "cssls", formatter: "Prettier", features: "Autocompletar, suporte a Tailwind" },
+    { lang: "HTML", lsp: "html-lsp", formatter: "Prettier extension", features: "Auto-tags, completar" },
+    { lang: "CSS/Tailwind", lsp: "cssls", formatter: "Prettier extension", features: "Autocompletar, suporte a Tailwind" },
   ];
 
   return (
@@ -89,9 +89,9 @@ export default function CodeEditor() {
             {[
               { title: "Integração com IA", desc: "GitHub Copilot extension + AI Chat extension com Mistral, OpenAI e Anthropic" },
               { title: "Suporte LSP", desc: "20+ linguagens com instalação sob demanda" },
-              { title: "Formatação de Código", desc: "Prettier, stylua, shfmt, pg_format, black, gofmt, rustfmt" },
-              { title: "Telescope", desc: "Buscador fuzzy para arquivos, texto e buffers" },
-              { title: "Treesitter", desc: "Destaque de sintaxe avançado + seleção incremental" },
+              { title: "Formatação de Código", desc: "Prettier extension, Lua Formatter, shfmt, pg_format, Python Formatter, gofmt, rustfmt" },
+              { title: "Quick Open", desc: "Buscador fuzzy para arquivos, texto e buffers" },
+              { title: "Syntax Highlighting", desc: "Destaque de sintaxe avançado + seleção incremental" },
               { title: "Interface Bonita", desc: "Tema Eldritch, lualine, bufferline, scrollbar" },
             ].map((feature, i) => (
               <div key={i} className="bg-background border border-border rounded p-4">
@@ -173,7 +173,7 @@ export default function CodeEditor() {
           <div className="bg-card border border-border rounded-lg p-6 mb-6">
             <h3 className="font-bold font-mono mb-2">Instalação Completa</h3>
             <p className="text-muted-foreground mb-4">
-              Instala code-server, code-server, Mason LSPs e todos os plugins.
+              Instala code-server, code-server, VS Code extensions e todos os plugins.
             </p>
             <CodeBlock code="omni install editor" language="bash" title="terminal" />
           </div>
@@ -200,7 +200,7 @@ omni install editor # Ambos (igual à instalação completa)`}
             <CodeBlock
               code={`Extensions panel                          # Abrir interface Mason
 Extensions panelInstall lua-language-server  # Instalar LSP específico
-Extensions panelUninstall pyright            # Remover LSP`}
+Extensions panelUninstall Python            # Remover LSP`}
               language="vim"
               title="code-server"
             />
@@ -223,8 +223,8 @@ return {
   "stevearc/conform.code-server",
   opts = {
     formatters_by_ft = {
-      lua = { "stylua" },
-      python = { "black" },
+      lua = { "Lua Formatter" },
+      python = { "Python Formatter" },
     },
   },
 }`},
@@ -256,7 +256,7 @@ return {
                   {[
                     { path: "$HOME/.config/code-server/", purpose: "Diretório principal de configuração do code-server" },
                     { path: "code-server/config.yaml", purpose: "Ponto de entrada, bootstrap do lazy.code-server" },
-                    { path: "code-server/lua/chadrc.lua", purpose: "Tema e configurações de UI do code-server" },
+                    { path: "code-server/lua/settings.json", purpose: "Tema e configurações de UI do code-server" },
                     { path: "code-server/lua/settings.json", purpose: "Atalhos de teclado personalizados" },
                     { path: "code-server/lua/argv.json", purpose: "Opções principais do code-server" },
                     { path: "code-server/lua/configs/lspconfig.lua", purpose: "Configurações dos servidores LSP" },
@@ -282,7 +282,7 @@ return {
             {[
               {
                 title: "LSP não está iniciando",
-                desc: "Abra o Mason (Extensions panel) e verifique se o LSP está instalado. Execute :LspInfo para ver clientes ativos.",
+                desc: "Abra o Mason (Extensions panel) e verifique se o LSP está instalado. Execute Extensions panel para ver clientes ativos.",
                 fix: "Extensions panelInstall <lsp-name>    # Instalar LSP ausente",
               },
               {
@@ -292,8 +292,8 @@ return {
               },
               {
                 title: "Problemas de desempenho em dispositivos básicos",
-                desc: "Desative plugins pesados ou reduza os parsers do Treesitter para apenas linguagens necessárias.",
-                fix: `-- Em argv.json ou chadrc.lua
+                desc: "Desative plugins pesados ou reduza os parsers do Syntax Highlighting para apenas linguagens necessárias.",
+                fix: `-- Em argv.json ou settings.json
 -- Desativar animações
 vim.g.code-server = false`,
               },
@@ -324,7 +324,7 @@ omni reinstall editor --code-server --code-server`,
 ├── config.yaml                    # Entrada principal, bootstrap lazy.code-server
 ├── lazy-lock.json             # Arquivo de bloqueio de plugins
 └── lua/
-    ├── chadrc.lua             # Tema e configurações VS Code themes
+    ├── settings.json             # Tema e configurações VS Code themes
     ├── settings.json           # Atalhos de teclado personalizados
     ├── argv.json            # Opções do code-server
     ├── configs/
