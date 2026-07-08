@@ -186,8 +186,8 @@ export default function Home() {
               {
                 href: "/omni/editor",
                 icon: <Terminal size={22} />,
-                title: "Professional Editor",
-                desc: "Neovim + NvChad with LSP for 20+ languages. Copilot included.",
+                title: "VS Code Editor",
+                desc: "code-server (VS Code in browser) for 20+ languages. Copilot included.",
               },
               {
                 href: "/omni/linux",
@@ -328,7 +328,7 @@ export default function Home() {
               {
                 step: "4",
                 title: "Start Coding",
-                desc: "Open Neovim, connect to database and build real projects.",
+                desc: "Open code-server, connect to database and build real projects.",
               },
             ].map((item, i) => (
               <div key={i} className="flex gap-6 items-start">

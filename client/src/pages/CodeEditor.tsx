@@ -47,7 +47,7 @@ export default function CodeEditor() {
       { key: "<leader>wa", mode: "Normal", desc: "Adicionar pasta de workspace (LSP)" },
       { key: "<leader>wr", mode: "Normal", desc: "Remover pasta de workspace (LSP)" },
       { key: "<leader>wl", mode: "Normal", desc: "Listar pastas de workspace (LSP)" },
-      { key: "<leader>cc", mode: "Normal", desc: "Alternar chat do Copilot" },
+      { key: "<leader>cc", mode: "Normal", desc: "Alternar chat do GitHub Copilot extension" },
       { key: "<leader>cq", mode: "Normal", desc: "Pergunta rápida para IA" },
     ]},
   ];
@@ -69,7 +69,7 @@ export default function CodeEditor() {
         <div className="max-w-4xl mx-auto">
           <h1 className="text-4xl font-bold font-mono mb-4">code-server</h1>
           <p className="text-lg text-muted-foreground mb-8">
-            Uma configuração completa do Neovim otimizada para Termux no Android.
+            Uma configuração completa do code-server otimizada para Termux no Android.
             Servidores de linguagem pré-configurados, assistentes de IA, formatadores de código e uma
             interface bonita.
           </p>
@@ -87,7 +87,7 @@ export default function CodeEditor() {
           <h2 className="text-2xl font-bold font-mono mb-6">Funcionalidades</h2>
           <div className="grid md:grid-cols-2 gap-4 mb-12">
             {[
-              { title: "Integração com IA", desc: "Copilot + CodeCompanion com Mistral, OpenAI e Anthropic" },
+              { title: "Integração com IA", desc: "GitHub Copilot extension + AI Chat extension com Mistral, OpenAI e Anthropic" },
               { title: "Suporte LSP", desc: "20+ linguagens com instalação sob demanda" },
               { title: "Formatação de Código", desc: "Prettier, stylua, shfmt, pg_format, black, gofmt, rustfmt" },
               { title: "Telescope", desc: "Buscador fuzzy para arquivos, texto e buffers" },
@@ -173,7 +173,7 @@ export default function CodeEditor() {
           <div className="bg-card border border-border rounded-lg p-6 mb-6">
             <h3 className="font-bold font-mono mb-2">Instalação Completa</h3>
             <p className="text-muted-foreground mb-4">
-              Instala Neovim, NvChad, Mason LSPs e todos os plugins.
+              Instala code-server, code-server, Mason LSPs e todos os plugins.
             </p>
             <CodeBlock code="omni install editor" language="bash" title="terminal" />
           </div>
@@ -184,8 +184,8 @@ export default function CodeEditor() {
               Instale apenas o que você precisa para uma configuração mais leve.
             </p>
             <CodeBlock
-              code={`omni install editor          # Apenas binário Neovim
-omni install editor          # Apenas configuração NvChad
+              code={`omni install editor          # Apenas binário code-server
+omni install editor          # Apenas configuração code-server
 omni install editor # Ambos (igual à instalação completa)`}
               language="bash"
               title="terminal"
@@ -195,14 +195,14 @@ omni install editor # Ambos (igual à instalação completa)`}
           <div className="bg-card border border-border rounded-lg p-6 mb-12">
             <h3 className="font-bold font-mono mb-2">LSPs Pós-Instalação</h3>
             <p className="text-muted-foreground mb-4">
-              Servidores de linguagem adicionais podem ser instalados via Mason dentro do Neovim:
+              Servidores de linguagem adicionais podem ser instalados via Mason dentro do code-server:
             </p>
             <CodeBlock
-              code={`:Mason                          # Abrir interface Mason
-:MasonInstall lua-language-server  # Instalar LSP específico
-:MasonUninstall pyright            # Remover LSP`}
+              code={`Extensions panel                          # Abrir interface Mason
+Extensions panelInstall lua-language-server  # Instalar LSP específico
+Extensions panelUninstall pyright            # Remover LSP`}
               language="vim"
-              title="neovim"
+              title="code-server"
             />
           </div>
 
@@ -211,16 +211,16 @@ omni install editor # Ambos (igual à instalação completa)`}
 
           <div className="bg-card border border-border rounded-lg p-6 mb-6">
             <p className="text-muted-foreground mb-4">
-              O editor usa <code className="text-accent">lazy.nvim</code> como gerenciador de plugins.
-              Os plugins são organizados por categoria em <code className="text-accent">nvim/lua/plugins/</code>.
+              O editor usa <code className="text-accent">lazy.code-server</code> como gerenciador de plugins.
+              Os plugins são organizados por categoria em <code className="text-accent">code-server/lua/plugins/</code>.
             </p>
           </div>
 
           <div className="grid md:grid-cols-2 gap-6 mb-12">
             {[
-              { title: "Adicionar um Plugin", code: `-- nvim/lua/plugins/formatting/conform.lua
+              { title: "Adicionar um Plugin", code: `-- code-server/lua/plugins/formatting/conform.lua
 return {
-  "stevearc/conform.nvim",
+  "stevearc/conform.code-server",
   opts = {
     formatters_by_ft = {
       lua = { "stylua" },
@@ -235,7 +235,7 @@ return {
             ].map((item, i) => (
               <div key={i} className="bg-card border border-border rounded-lg p-6">
                 <h3 className="font-bold font-mono mb-4">{item.title}</h3>
-                <CodeBlock code={item.code} language="lua" title="lazy.nvim" />
+                <CodeBlock code={item.code} language="lua" title="lazy.code-server" />
               </div>
             ))}
           </div>
@@ -254,16 +254,16 @@ return {
                 </thead>
                 <tbody>
                   {[
-                    { path: "$HOME/.config/nvim/", purpose: "Diretório principal de configuração do Neovim" },
-                    { path: "nvim/init.lua", purpose: "Ponto de entrada, bootstrap do lazy.nvim" },
-                    { path: "nvim/lua/chadrc.lua", purpose: "Tema e configurações de UI do NvChad" },
-                    { path: "nvim/lua/mappings.lua", purpose: "Atalhos de teclado personalizados" },
-                    { path: "nvim/lua/options.lua", purpose: "Opções principais do Neovim" },
-                    { path: "nvim/lua/configs/lspconfig.lua", purpose: "Configurações dos servidores LSP" },
-                    { path: "nvim/lua/configs/cmp.lua", purpose: "Autocompletar (nvim-cmp)" },
-                    { path: "nvim/lua/configs/conform.lua", purpose: "Configurações do formatador de código" },
-                    { path: "nvim/lua/plugins/", purpose: "Especificações de plugins por categoria" },
-                    { path: "nvim/lazy-lock.json", purpose: "Arquivo de bloqueio de versão de plugins" },
+                    { path: "$HOME/.config/code-server/", purpose: "Diretório principal de configuração do code-server" },
+                    { path: "code-server/config.yaml", purpose: "Ponto de entrada, bootstrap do lazy.code-server" },
+                    { path: "code-server/lua/chadrc.lua", purpose: "Tema e configurações de UI do code-server" },
+                    { path: "code-server/lua/settings.json", purpose: "Atalhos de teclado personalizados" },
+                    { path: "code-server/lua/argv.json", purpose: "Opções principais do code-server" },
+                    { path: "code-server/lua/configs/lspconfig.lua", purpose: "Configurações dos servidores LSP" },
+                    { path: "code-server/lua/configs/cmp.lua", purpose: "Autocompletar (code-server-cmp)" },
+                    { path: "code-server/lua/configs/conform.lua", purpose: "Configurações do formatador de código" },
+                    { path: "code-server/lua/plugins/", purpose: "Especificações de plugins por categoria" },
+                    { path: "code-server/lazy-lock.json", purpose: "Arquivo de bloqueio de versão de plugins" },
                   ].map((item, i) => (
                     <tr key={i} className="border-b border-border hover:bg-secondary/20 transition-colors">
                       <td className="py-3 px-4 font-mono text-accent text-xs">{item.path}</td>
@@ -282,8 +282,8 @@ return {
             {[
               {
                 title: "LSP não está iniciando",
-                desc: "Abra o Mason (:Mason) e verifique se o LSP está instalado. Execute :LspInfo para ver clientes ativos.",
-                fix: ":MasonInstall <lsp-name>    # Instalar LSP ausente",
+                desc: "Abra o Mason (Extensions panel) e verifique se o LSP está instalado. Execute :LspInfo para ver clientes ativos.",
+                fix: "Extensions panelInstall <lsp-name>    # Instalar LSP ausente",
               },
               {
                 title: "Erros em plugins após atualização",
@@ -293,20 +293,20 @@ return {
               {
                 title: "Problemas de desempenho em dispositivos básicos",
                 desc: "Desative plugins pesados ou reduza os parsers do Treesitter para apenas linguagens necessárias.",
-                fix: `-- Em options.lua ou chadrc.lua
+                fix: `-- Em argv.json ou chadrc.lua
 -- Desativar animações
 vim.g.code-server = false`,
               },
               {
-                title: "Copilot não está funcionando",
-                desc: "Certifique-se de estar autenticado com o GitHub Copilot no Neovim.",
-                fix: ":Copilot auth              # Autenticar com GitHub",
+                title: "GitHub Copilot extension não está funcionando",
+                desc: "Certifique-se de estar autenticado com o GitHub GitHub Copilot extension no code-server.",
+                fix: ":GitHub Copilot extension auth              # Autenticar com GitHub",
               },
               {
                 title: "Reinstalar do zero",
-                desc: "Faça backup da configuração, remova o diretório nvim e reinstale.",
-                fix: `mv ~/.config/nvim ~/.config/nvim.bak
-omni reinstall editor --neovim --nvchad`,
+                desc: "Faça backup da configuração, remova o diretório code-server e reinstale.",
+                fix: `mv ~/.config/code-server ~/.config/code-server.bak
+omni reinstall editor --code-server --code-server`,
               },
             ].map((item, i) => (
               <div key={i} className="bg-card border border-border rounded-lg p-6">
@@ -320,13 +320,13 @@ omni reinstall editor --neovim --nvchad`,
           {/* Configuration */}
           <h2 className="text-2xl font-bold font-mono mb-6">Estrutura de Configuração</h2>
           <CodeBlock
-            code={`nvim/
-├── init.lua                    # Entrada principal, bootstrap lazy.nvim
+            code={`code-server/
+├── config.yaml                    # Entrada principal, bootstrap lazy.code-server
 ├── lazy-lock.json             # Arquivo de bloqueio de plugins
 └── lua/
-    ├── chadrc.lua             # Tema e configurações base46
-    ├── mappings.lua           # Atalhos de teclado personalizados
-    ├── options.lua            # Opções do Neovim
+    ├── chadrc.lua             # Tema e configurações VS Code themes
+    ├── settings.json           # Atalhos de teclado personalizados
+    ├── argv.json            # Opções do code-server
     ├── configs/
     │   ├── cmp.lua            # Configuração de autocompletar
     │   ├── conform.lua        # Configuração do formatador de código
@@ -339,7 +339,7 @@ omni reinstall editor --neovim --nvchad`,
         ├── lsp/               # Plugins LSP
         └── ui/                # Plugins de interface`}
             language="bash"
-            title="nvim structure"
+            title="code-server structure"
           />
         </div>
       </section>

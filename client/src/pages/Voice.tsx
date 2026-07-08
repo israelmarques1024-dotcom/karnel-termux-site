@@ -19,7 +19,7 @@ const agents = [
 
 const steps = [
   { num: "1", title: "Captura", desc: "Fale o prompt no microfone. O Android transcreve com speech-to-text." },
-  { num: "2", title: "Revisão", desc: "Texto transcrito abre no Neovim para corrigir erros e ajustar." },
+  { num: "2", title: "Revisão", desc: "Texto transcrito abre no code-server para corrigir erros e ajustar." },
   { num: "3", title: "Clipboard", desc: "Prompt revisado é copiado para a área de transferência automaticamente." },
   { num: "4", title: "Disparo", desc: "Agente de AI é executado com o prompt — mãos-livres." },
 ];
@@ -31,7 +31,7 @@ export default function Voice() {
         <div className="max-w-4xl mx-auto">
           <h1 className="text-4xl font-bold font-mono mb-4">omni voice — Speech-to-Agent</h1>
           <p className="text-lg text-muted-foreground mb-8">
-            Capture áudio pelo microfone, revise no Neovim, copie para a área de
+            Capture áudio pelo microfone, revise no code-server, copie para a área de
             transferência e dispare qualquer agente de IA com o prompt transcrito.
             Tudo em um comando.
           </p>
@@ -40,8 +40,8 @@ export default function Voice() {
             <h3 className="font-bold font-mono mb-4">Uso Básico</h3>
             <CodeBlock
               code={`omni voice                     # Mostra ajuda
-omni voice opencode             # Captura → nvim → opencode run
-omni voice text                 # Captura → nvim → stdout
+omni voice opencode             # Captura → code-server → opencode run
+omni voice text                 # Captura → code-server → stdout
 omni voice '!'                  # Atalho para "text"
 omni voice claude-code --lang pt-BR  # Fala em português → claude`}
               language="bash"
@@ -100,7 +100,7 @@ omni voice claude-code --lang pt-BR  # Fala em português → claude`}
                 </tr>
                 <tr className="border-b border-border/50">
                   <td className="p-3 font-mono">--raw</td>
-                  <td className="p-3 text-muted-foreground">Pula edição no nvim, usa captura direta</td>
+                  <td className="p-3 text-muted-foreground">Pula edição no code-server, usa captura direta</td>
                 </tr>
                 <tr className="border-b border-border/50">
                   <td className="p-3 font-mono">--no-clip</td>
@@ -143,7 +143,7 @@ omni voice claude-code --lang pt-BR  # Fala em português → claude`}
             <ul className="space-y-2 text-sm text-muted-foreground">
               <li className="flex gap-2"><span className="text-accent">•</span> <strong>Termux:API package:</strong> <code className="text-accent">pkg install termux-api</code></li>
               <li className="flex gap-2"><span className="text-accent">•</span> <strong>Termux:API app:</strong> <a href="/termux/api" className="text-accent underline">Download APK</a></li>
-              <li className="flex gap-2"><span className="text-accent">•</span> <strong>Neovim:</strong> <code className="text-accent">omni install editor</code> (opcional com <code className="text-accent">--raw</code>)</li>
+              <li className="flex gap-2"><span className="text-accent">•</span> <strong>code-server:</strong> <code className="text-accent">omni install editor</code> (opcional com <code className="text-accent">--raw</code>)</li>
               <li className="flex gap-2"><span className="text-accent">•</span> <strong>Microfone:</strong> permitir nas Config. Android &gt; Apps &gt; Termux &gt; Permissões</li>
               <li className="flex gap-2"><span className="text-accent">•</span> <strong>Agente de IA:</strong> <code className="text-accent">omni install ai</code></li>
             </ul>
@@ -161,7 +161,7 @@ omni voice claude-code --lang pt-BR  # Fala em português → claude`}
                 <p>Use <code className="text-accent">--lang pt-BR</code> para forçar o idioma.</p>
               </div>
               <div>
-                <h3 className="font-bold font-mono text-foreground mb-1">Neovim não abre</h3>
+                <h3 className="font-bold font-mono text-foreground mb-1">code-server não abre</h3>
                 <p>Use <code className="text-accent">--raw</code> para pular a edição quando não há TTY.</p>
               </div>
               <div>

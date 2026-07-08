@@ -8,7 +8,7 @@ export default function OmniDocs() {
     { name: "Pacotes de Linguagem", desc: "Node, Python, Perl, PHP, Rust, C/C++, Go", cmd: "omni install lang" },
     { name: "Bancos de Dados", desc: "PostgreSQL, MariaDB, SQLite, MongoDB", cmd: "omni install db" },
     { name: "Ferramentas de IA", desc: "OpenCode, Gentle AI, Claude Code, etc.", cmd: "omni install ai" },
-    { name: "Editor de Código", desc: "Neovim + NvChad + Plugins", cmd: "omni install editor" },
+    { name: "Editor de Código", desc: "code-server (VS Code in browser)", cmd: "omni install editor" },
     { name: "Ferramentas de Desenvolvimento", desc: "GitHub CLI, wget, curl, fzf, etc.", cmd: "omni install dev" },
     { name: "Módulos Node.js", desc: "Pacotes npm globais do Node.js", cmd: "omni install npm" },
     { name: "Shell ZSH", desc: "ZSH + Oh My Zsh + 10 plugins", cmd: "omni install shell" },
@@ -142,13 +142,13 @@ omni reinstall dev --gh --fzf               # Reinstalar apenas gh e fzf`}
           <div className="bg-card border border-border rounded-lg p-6 mb-6">
             <h3 className="font-bold font-mono text-accent mb-2">omni voice</h3>
             <p className="text-muted-foreground mb-4">
-              Capture voz do microfone, revise no nvim e dispare qualquer agente de IA.
+              Capture voz do microfone, revise no code-server e dispare qualquer agente de IA.
               Suporta 13 agentes, seleção de idioma, modo raw e clipboard automático.
             </p>
             <CodeBlock
               code={`omni voice                     # Mostrar ajuda
- omni voice opencode             # Capturar → nvim → opencode run
- omni voice text                 # Capturar → nvim → stdout
+ omni voice opencode             # Capturar → code-server → opencode run
+ omni voice text                 # Capturar → code-server → stdout
  omni voice '!'                  # Atalho para "text"
  omni voice claude-code --lang pt-BR  # Português → claude
  omni voice opencode --raw       # Captura direta, sem edição`}
