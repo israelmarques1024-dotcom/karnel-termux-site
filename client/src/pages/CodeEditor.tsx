@@ -67,7 +67,7 @@ export default function CodeEditor() {
     <Layout>
       <section className="py-12 px-4">
         <div className="max-w-4xl mx-auto">
-          <h1 className="text-4xl font-bold font-mono mb-4">Neovim + NvChad</h1>
+          <h1 className="text-4xl font-bold font-mono mb-4">code-server</h1>
           <p className="text-lg text-muted-foreground mb-8">
             Uma configuração completa do Neovim otimizada para Termux no Android.
             Servidores de linguagem pré-configurados, assistentes de IA, formatadores de código e uma
@@ -184,9 +184,9 @@ export default function CodeEditor() {
               Instale apenas o que você precisa para uma configuração mais leve.
             </p>
             <CodeBlock
-              code={`omni install editor --neovim          # Apenas binário Neovim
-omni install editor --nvchad          # Apenas configuração NvChad
-omni install editor --neovim --nvchad # Ambos (igual à instalação completa)`}
+              code={`omni install editor          # Apenas binário Neovim
+omni install editor          # Apenas configuração NvChad
+omni install editor # Ambos (igual à instalação completa)`}
               language="bash"
               title="terminal"
             />
@@ -295,7 +295,7 @@ return {
                 desc: "Desative plugins pesados ou reduza os parsers do Treesitter para apenas linguagens necessárias.",
                 fix: `-- Em options.lua ou chadrc.lua
 -- Desativar animações
-vim.g.nvchad_ui_animation = false`,
+vim.g.code-server = false`,
               },
               {
                 title: "Copilot não está funcionando",
