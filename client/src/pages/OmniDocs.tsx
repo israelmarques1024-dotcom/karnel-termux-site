@@ -23,7 +23,7 @@ export default function OmniDocs() {
     { cmd: "omni env", desc: "Gerenciar variáveis de ambiente" },
     { cmd: "omni install", desc: "Instalar módulos e pacotes" },
     { cmd: "omni show", desc: "Mostrar documentação de qualquer ferramenta" },
-    { cmd: "omni doctor", desc: "Diagnosticar ambiente Termux & Omni (20 verificações)" },
+    { cmd: "omni doctor", desc: "Diagnosticar ambiente Termux & Omni (30+ verificações)" },
     { cmd: "omni update", desc: "Atualizar módulos ou framework" },
     { cmd: "omni uninstall", desc: "Remover módulos instalados" },
     { cmd: "omni reinstall", desc: "Desinstalar + instalar módulos" },
