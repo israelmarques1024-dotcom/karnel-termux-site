@@ -26,10 +26,13 @@ export default function AITools() {
     { name: "Command Code", bin: "command-code", flag: "--command-code" },
     { name: "Freebuff", bin: "freebuff", flag: "--freebuff" },
     { name: "Kilo Code CLI", bin: "kilocode", flag: "--kilocode-cli" },
+    { name: "Kiro CLI", bin: "kiro", flag: "--kiro" },
     { name: "Crush CLI", bin: "crush", flag: "--crush" },
     { name: "Odysseus", bin: "odysseus", flag: "--odysseus" },
     { name: "Kimchi CLI", bin: "kimchi", flag: "--kimchi-code" },
     { name: "omniRoute", bin: "omni-route", flag: "--omni-route" },
+    { name: "Context7", bin: "ctx7", flag: "--ctx7" },
+    { name: "OpenSpec", bin: "openspec", flag: "--openspec" },
   ];
 
   return (

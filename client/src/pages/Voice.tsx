@@ -1,3 +1,4 @@
+import { Link } from "wouter";
 import Layout from "@/components/Layout";
 import CodeBlock from "@/components/CodeBlock";
 
@@ -14,6 +15,8 @@ const agents = [
   { name: "openclaude", cmd: "openclaude --bg \"...\"" },
   { name: "pi", cmd: "pi -p \"...\"" },
   { name: "qwen-code", cmd: "qwen -p \"...\"" },
+  { name: "crush", cmd: "crush \"...\"" },
+  { name: "kiro", cmd: "kiro-cli \"...\"" },
   { name: "text", cmd: "stdout (no agent)" },
 ];
 
@@ -64,8 +67,9 @@ omni voice claude-code --lang pt-BR  # Fala em português → claude`}
             ))}
           </div>
 
-          <h2 className="text-2xl font-bold font-mono mb-6">Agentes Suportados (13)</h2>
+          <h2 className="text-2xl font-bold font-mono mb-6">Agentes Suportados (15)</h2>
           <div className="bg-card border border-border rounded-lg overflow-hidden mb-12">
+            <div className="overflow-x-auto">
             <table className="w-full text-sm">
               <thead>
                 <tr className="border-b border-border">
@@ -82,10 +86,12 @@ omni voice claude-code --lang pt-BR  # Fala em português → claude`}
                 ))}
               </tbody>
             </table>
+            </div>
           </div>
 
           <h2 className="text-2xl font-bold font-mono mb-6">Opções</h2>
           <div className="bg-card border border-border rounded-lg overflow-hidden mb-12">
+            <div className="overflow-x-auto">
             <table className="w-full text-sm">
               <thead>
                 <tr className="border-b border-border">
@@ -108,6 +114,7 @@ omni voice claude-code --lang pt-BR  # Fala em português → claude`}
                 </tr>
               </tbody>
             </table>
+            </div>
           </div>
 
           <h2 className="text-2xl font-bold font-mono mb-6">Exemplos</h2>
@@ -142,7 +149,7 @@ omni voice claude-code --lang pt-BR  # Fala em português → claude`}
           <div className="bg-card border border-border rounded-lg p-6 mb-12">
             <ul className="space-y-2 text-sm text-muted-foreground">
               <li className="flex gap-2"><span className="text-accent">•</span> <strong>Termux:API package:</strong> <code className="text-accent">pkg install termux-api</code></li>
-              <li className="flex gap-2"><span className="text-accent">•</span> <strong>Termux:API app:</strong> <a href="/termux/api" className="text-accent underline">Download APK</a></li>
+              <li className="flex gap-2"><span className="text-accent">•</span> <strong>Termux:API app:</strong> <Link href="/termux/api" className="text-accent underline">Download APK</Link></li>
               <li className="flex gap-2"><span className="text-accent">•</span> <strong>code-server:</strong> <code className="text-accent">omni install editor</code> (opcional com <code className="text-accent">--raw</code>)</li>
               <li className="flex gap-2"><span className="text-accent">•</span> <strong>Microfone:</strong> permitir nas Config. Android &gt; Apps &gt; Termux &gt; Permissões</li>
               <li className="flex gap-2"><span className="text-accent">•</span> <strong>Agente de IA:</strong> <code className="text-accent">omni install ai</code></li>

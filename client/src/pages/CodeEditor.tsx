@@ -106,7 +106,7 @@ export default function CodeEditor() {
           <p className="text-muted-foreground mb-6">Tecla Líder: <code className="bg-background px-2 py-1 rounded text-accent">Space</code></p>
 
           <Tabs defaultValue="Geral" className="mb-12">
-            <TabsList className="grid w-full grid-cols-6">
+            <TabsList className="grid w-full grid-cols-3 lg:grid-cols-6">
               {keybindings.map((cat) => (
                 <TabsTrigger key={cat.category} value={cat.category}>
                   {cat.category}

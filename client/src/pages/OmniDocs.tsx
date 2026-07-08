@@ -143,7 +143,7 @@ omni reinstall dev --gh --fzf               # Reinstalar apenas gh e fzf`}
             <h3 className="font-bold font-mono text-accent mb-2">omni voice</h3>
             <p className="text-muted-foreground mb-4">
               Capture voz do microfone, revise no code-server e dispare qualquer agente de IA.
-              Suporta 13 agentes, seleção de idioma, modo raw e clipboard automático.
+              Suporta 15 agentes, seleção de idioma, modo raw e clipboard automático.
             </p>
             <CodeBlock
               code={`omni voice                     # Mostrar ajuda
