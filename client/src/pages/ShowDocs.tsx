@@ -109,7 +109,7 @@ gemini            Google Gemini CLI`}
                     { mod: "db", cmd: "omni show db --postgresql", tools: "postgresql, mariadb, sqlite, mongodb" },
                     { mod: "dev", cmd: "omni show dev --gh", tools: "gh, wget, curl, fzf" },
                     { mod: "npm", cmd: "omni show npm --typescript", tools: "typescript, prettier, eslint" },
-                    { mod: "editor", cmd: "omni show editor --code-server", tools: "code-server, code-server" },
+                    { mod: "editor", cmd: "omni show editor --code-server", tools: "code-server" },
                     { mod: "deploy", cmd: "omni show deploy --vercel", tools: "vercel, railway, netlify" },
                   ].map((row, i) => (
                     <tr key={i} className="border-b border-border hover:bg-secondary/20 transition-colors">

@@ -173,7 +173,7 @@ export default function CodeEditor() {
           <div className="bg-card border border-border rounded-lg p-6 mb-6">
             <h3 className="font-bold font-mono mb-2">Instalação Completa</h3>
             <p className="text-muted-foreground mb-4">
-              Instala code-server, code-server, VS Code extensions e todos os plugins.
+              Instala code-server, VS Code extensions e todos os plugins.
             </p>
             <CodeBlock code="omni install editor" language="bash" title="terminal" />
           </div>
@@ -184,60 +184,38 @@ export default function CodeEditor() {
               Instale apenas o que você precisa para uma configuração mais leve.
             </p>
             <CodeBlock
-              code={`omni install editor          # Apenas binário code-server
-omni install editor          # Apenas configuração code-server
-omni install editor # Ambos (igual à instalação completa)`}
+              code={`omni install editor          # Instala code-server completo
+omni start editor            # Inicia o servidor na porta 8080`}
               language="bash"
               title="terminal"
             />
           </div>
 
           <div className="bg-card border border-border rounded-lg p-6 mb-12">
-            <h3 className="font-bold font-mono mb-2">LSPs Pós-Instalação</h3>
+            <h3 className="font-bold font-mono mb-2">Extensões VS Code</h3>
             <p className="text-muted-foreground mb-4">
-              Servidores de linguagem adicionais podem ser instalados via Mason dentro do code-server:
+              Instale extensões diretamente pelo painel de extensões do code-server:
             </p>
             <CodeBlock
-              code={`Extensions panel                          # Abrir interface Mason
-Extensions panelInstall lua-language-server  # Instalar LSP específico
-Extensions panelUninstall Python            # Remover LSP`}
-              language="vim"
-              title="code-server"
+              code={`# Abrir painel de extensões: Ctrl+Shift+X
+# Buscar e instalar extensões como:
+#   - Python (ms-python)
+#   - TypeScript (ms-vscode)
+#   - ESLint
+#   - Prettier`}
+              language="bash"
+              title="code-server extensions"
             />
           </div>
 
-          {/* Plugin Management */}
-          <h2 className="text-2xl font-bold font-mono mb-6">Gerenciamento de Plugins</h2>
+          {/* Configuration */}
+          <h2 className="text-2xl font-bold font-mono mb-6">Configuração</h2>
 
           <div className="bg-card border border-border rounded-lg p-6 mb-6">
             <p className="text-muted-foreground mb-4">
-              O editor usa <code className="text-accent">lazy.code-server</code> como gerenciador de plugins.
-              Os plugins são organizados por categoria em <code className="text-accent">code-server/lua/plugins/</code>.
+              O code-server usa <code className="text-accent">~/.config/code-server/config.yaml</code> para configuração.
+              As configurações de extensões ficam em <code className="text-accent">~/.local/share/code-server/</code>.
             </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-6 mb-12">
-            {[
-              { title: "Adicionar um Plugin", code: `-- code-server/lua/plugins/formatting/conform.lua
-return {
-  "stevearc/conform.code-server",
-  opts = {
-    formatters_by_ft = {
-      lua = { "Lua Formatter" },
-      python = { "Python Formatter" },
-    },
-  },
-}`},
-              { title: "Comandos Lazy", code: `:Lazy                # Abrir interface Lazy
-:Lazy update          # Atualizar todos os plugins
-:Lazy clean           # Remover plugins não utilizados
-:Lazy sync            # Sincronizar estado dos plugins`},
-            ].map((item, i) => (
-              <div key={i} className="bg-card border border-border rounded-lg p-6">
-                <h3 className="font-bold font-mono mb-4">{item.title}</h3>
-                <CodeBlock code={item.code} language="lua" title="lazy.code-server" />
-              </div>
-            ))}
           </div>
 
           {/* Configuration Paths */}
@@ -254,16 +232,11 @@ return {
                 </thead>
                 <tbody>
                   {[
-                    { path: "$HOME/.config/code-server/", purpose: "Diretório principal de configuração do code-server" },
-                    { path: "code-server/config.yaml", purpose: "Ponto de entrada, bootstrap do lazy.code-server" },
-                    { path: "code-server/lua/settings.json", purpose: "Tema e configurações de UI do code-server" },
-                    { path: "code-server/lua/settings.json", purpose: "Atalhos de teclado personalizados" },
-                    { path: "code-server/lua/argv.json", purpose: "Opções principais do code-server" },
-                    { path: "code-server/lua/configs/lspconfig.lua", purpose: "Configurações dos servidores LSP" },
-                    { path: "code-server/lua/configs/cmp.lua", purpose: "Autocompletar (code-server-cmp)" },
-                    { path: "code-server/lua/configs/conform.lua", purpose: "Configurações do formatador de código" },
-                    { path: "code-server/lua/plugins/", purpose: "Especificações de plugins por categoria" },
-                    { path: "code-server/lazy-lock.json", purpose: "Arquivo de bloqueio de versão de plugins" },
+                    { path: "$HOME/.config/code-server/", purpose: "Diretório principal de configuração" },
+                    { path: "config.yaml", purpose: "Configurações do servidor (porta, auth, etc.)" },
+                    { path: "$HOME/.local/share/code-server/", purpose: "Dados e extensões instaladas" },
+                    { path: "$HOME/.local/share/code-server/extensions/", purpose: "Extensões VS Code instaladas" },
+                    { path: "$HOME/.code-server/", purpose: "Dados de sessão e estado" },
                   ].map((item, i) => (
                     <tr key={i} className="border-b border-border hover:bg-secondary/20 transition-colors">
                       <td className="py-3 px-4 font-mono text-accent text-xs">{item.path}</td>
@@ -281,32 +254,30 @@ return {
           <div className="space-y-6 mb-12">
             {[
               {
-                title: "LSP não está iniciando",
-                desc: "Abra o Mason (Extensions panel) e verifique se o LSP está instalado. Execute Extensions panel para ver clientes ativos.",
-                fix: "Extensions panelInstall <lsp-name>    # Instalar LSP ausente",
+                title: "Extensão não está funcionando",
+                desc: "Verifique se a extensão está instalada e habilitada no painel de extensões (Ctrl+Shift+X).",
+                fix: "# Reinstale a extensão pelo painel ou via CLI:\ncode-server --install-extension <ext-id>",
               },
               {
-                title: "Erros em plugins após atualização",
-                desc: "Algumas atualizações de plugins podem quebrar a compatibilidade. Reverta ou limpe e reinstale.",
-                fix: ":Lazy clean && :Lazy sync  # Reiniciar estado dos plugins",
+                title: "Erros após atualização",
+                desc: "Algumas atualizacoes podem quebrar a compatibilidade. Limpe o cache e reinstale.",
+                fix: "rm -rf ~/.local/share/code-server/cachedExtensionVSIXs/\nomni reinstall editor",
               },
               {
-                title: "Problemas de desempenho em dispositivos básicos",
-                desc: "Desative plugins pesados ou reduza os parsers do Syntax Highlighting para apenas linguagens necessárias.",
-                fix: `-- Em argv.json ou settings.json
--- Desativar animações
-vim.g.code-server = false`,
+                title: "Problemas de desempenho",
+                desc: "Desative extensoes pesadas ou reduza extensoes para apenas linguagens necessarias.",
+                fix: "# Em config.yaml ou settings.json, desative extensoes desnecessarias",
               },
               {
-                title: "GitHub Copilot extension não está funcionando",
-                desc: "Certifique-se de estar autenticado com o GitHub GitHub Copilot extension no code-server.",
-                fix: ":GitHub Copilot extension auth              # Autenticar com GitHub",
+                title: "GitHub Copilot nao esta funcionando",
+                desc: "Certifique-se de estar autenticado com o GitHub na extensao Copilot.",
+                fix: "# Abra o code-server e faca login via extensao GitHub Copilot",
               },
               {
                 title: "Reinstalar do zero",
-                desc: "Faça backup da configuração, remova o diretório code-server e reinstale.",
+                desc: "Facca backup da configuracao, remova o diretorio code-server e reinstale.",
                 fix: `mv ~/.config/code-server ~/.config/code-server.bak
-omni reinstall editor --code-server --code-server`,
+omni reinstall editor`,
               },
             ].map((item, i) => (
               <div key={i} className="bg-card border border-border rounded-lg p-6">
@@ -320,24 +291,16 @@ omni reinstall editor --code-server --code-server`,
           {/* Configuration */}
           <h2 className="text-2xl font-bold font-mono mb-6">Estrutura de Configuração</h2>
           <CodeBlock
-            code={`code-server/
-├── config.yaml                    # Entrada principal, bootstrap lazy.code-server
-├── lazy-lock.json             # Arquivo de bloqueio de plugins
-└── lua/
-    ├── settings.json             # Tema e configurações VS Code themes
-    ├── settings.json           # Atalhos de teclado personalizados
-    ├── argv.json            # Opções do code-server
-    ├── configs/
-    │   ├── cmp.lua            # Configuração de autocompletar
-    │   ├── conform.lua        # Configuração do formatador de código
-    │   ├── lspconfig.lua      # Instalador LSP
-    │   └── snippets.lua       # Snippets personalizados
-    └── plugins/
-        ├── ai/                # Plugins de IA
-        ├── completion/        # Plugins de completar
-        ├── formatting/        # Plugins de formatação
-        ├── lsp/               # Plugins LSP
-        └── ui/                # Plugins de interface`}
+            code={`~/.config/code-server/
+└── config.yaml                    # Configuracoes do servidor
+
+~/.local/share/code-server/
+├── extensions/                    # Extensoes VS Code instaladas
+├── cachedExtensionVSIXs/         # Cache de extensoes
+└── workspaceStorage/             # Dados por workspace
+
+~/.code-server/
+└── ../                            # Dados de sessao e estado`}
             language="bash"
             title="code-server structure"
           />
