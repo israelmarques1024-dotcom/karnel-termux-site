@@ -88,7 +88,7 @@ export default function CodeEditor() {
           <div className="grid md:grid-cols-2 gap-4 mb-12">
             {[
               { title: "Integração com IA", desc: "GitHub Copilot extension + AI Chat extension com Mistral, OpenAI e Anthropic" },
-              { title: "Suporte LSP", desc: "20+ linguagens com instalação sob demanda" },
+              { title: "Suporte LSP", desc: "8 linguagens com instalação sob demanda (JS, Python, Go, Rust, Lua, Bash, HTML, CSS)" },
               { title: "Formatação de Código", desc: "Prettier extension, Lua Formatter, shfmt, pg_format, Python Formatter, gofmt, rustfmt" },
               { title: "Quick Open", desc: "Buscador fuzzy para arquivos, texto e buffers" },
               { title: "Syntax Highlighting", desc: "Destaque de sintaxe avançado + seleção incremental" },

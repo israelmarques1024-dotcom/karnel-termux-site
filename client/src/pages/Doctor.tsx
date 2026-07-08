@@ -31,7 +31,7 @@ export default function Doctor() {
         <div className="max-w-4xl mx-auto">
           <h1 className="text-4xl font-bold font-mono mb-4">omni doctor</h1>
           <p className="text-lg text-muted-foreground mb-8">
-            Diagnostique seu ambiente Termux e Omni. Executa 20 verificações em recursos
+            Diagnostique seu ambiente Termux e Omni. Executa 30+ verificações em recursos
             do sistema, runtimes de linguagens, bancos de dados, ferramentas de IA, configuração do shell e mais.
           </p>
 
