@@ -7,6 +7,9 @@ export default function Linux() {
     { name: "Python", desc: "Python 3.12 com pip e venv", pkg: "python" },
     { name: "Go", desc: "Linguagem compilada da Google", pkg: "golang" },
     { name: "Rust", desc: "Linguagem de sistemas segura e rápida", pkg: "rust" },
+    { name: "C/C++", desc: "Clang compiler para C e C++", pkg: "clang" },
+    { name: "PHP", desc: "Linguagem para web backend", pkg: "php" },
+    { name: "Perl", desc: "Linguagem de scripting e text processing", pkg: "perl" },
     { name: "PostgreSQL", desc: "Banco relacional avançado", pkg: "postgresql" },
     { name: "MongoDB", desc: "Banco NoSQL orientado a documentos", pkg: "mongodb" },
     { name: "MariaDB", desc: "Banco relacional compatível com MySQL", pkg: "mariadb" },
@@ -39,7 +42,7 @@ export default function Linux() {
 
           <h2 className="text-2xl font-bold font-mono mb-6">Linguagens</h2>
           <div className="grid md:grid-cols-2 gap-4 mb-12">
-            {stacks.slice(0, 4).map((item, i) => (
+            {stacks.slice(0, 7).map((item, i) => (
               <div key={i} className="bg-card border border-border rounded-lg p-5">
                 <h3 className="font-bold font-mono text-accent mb-1">{item.name}</h3>
                 <p className="text-sm text-muted-foreground mb-3">{item.desc}</p>
@@ -50,7 +53,7 @@ export default function Linux() {
 
           <h2 className="text-2xl font-bold font-mono mb-6">Bancos de Dados</h2>
           <div className="grid md:grid-cols-2 gap-4 mb-12">
-            {stacks.slice(4).map((item, i) => (
+            {stacks.slice(7).map((item, i) => (
               <div key={i} className="bg-card border border-border rounded-lg p-5">
                 <h3 className="font-bold font-mono text-accent mb-1">{item.name}</h3>
                 <p className="text-sm text-muted-foreground mb-3">{item.desc}</p>

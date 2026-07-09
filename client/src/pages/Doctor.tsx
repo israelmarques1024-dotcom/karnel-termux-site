@@ -23,6 +23,16 @@ export default function Doctor() {
     { num: 18, title: "Saúde do Disco", desc: "Aviso de espaço em disco baixo (abaixo de 500MB)" },
     { num: 19, title: "Integridade dos Dados Omni", desc: "Verifica diretórios OMNI_CONFIG, OMNI_CACHE, OMNI_DATA" },
     { num: 20, title: "Geração de Relatório", desc: "Salva um relatório detalhado em Markdown em OMNI_DATA/doctor_reports/" },
+    { num: 21, title: "Plugins ZSH", desc: "Verifica integração do Omni com ZSH plugins" },
+    { num: 22, title: "GPU e Hardware", desc: "Detecção de GPU e aceleração de hardware" },
+    { num: 23, title: "Locale e Encoding", desc: "Verificação de UTF-8 e configuração de idioma" },
+    { num: 24, title: "Bateria e Energia", desc: "Status da bateria e otimizações de energia" },
+    { num: 25, title: "Chaves de API", desc: "Verifica chaves de API configuradas no ambiente" },
+    { num: 26, title: "Saúde dos Processos", desc: "Detecta processos zumbi e órfãos" },
+    { num: 27, title: "I/O do Armazenamento", desc: "Teste de velocidade de leitura/escrita" },
+    { num: 28, title: "Qualidade da Rede", desc: "Latência, DNS e conectividade" },
+    { num: 29, title: "Privacidade do Shell", desc: "Verifica dados sensíveis no histórico" },
+    { num: 30, title: "USB e Externo", desc: "Detecta dispositivos USB e armazenamento externo" },
   ];
 
   return (
@@ -40,7 +50,7 @@ export default function Doctor() {
             <CodeBlock code="omni doctor" language="bash" title="terminal" />
           </div>
 
-          <h2 className="text-2xl font-bold font-mono mb-6">As 20 Verificações</h2>
+          <h2 className="text-2xl font-bold font-mono mb-6">As 30+ Verificações</h2>
           <p className="text-muted-foreground mb-6">
             Cada verificação relata um status — sucesso, aviso ou erro — e pode
             opcionalmente ser corrigida automaticamente.

@@ -80,7 +80,7 @@ export default function SupportProject() {
   }, []);
 
   return (
-    <section id="support" className="relative py-28 px-4 overflow-hidden" aria-labelledby="sp-title">
+    <section id="support-project" className="relative py-28 px-4 overflow-hidden" aria-labelledby="sp-title">
       {/* Glow background */}
       <div aria-hidden className="absolute inset-0 bg-gradient-to-br from-purple-950/40 via-gray-950 to-cyan-950/20" />
       <div aria-hidden className="absolute top-20 left-1/4 w-96 h-96 bg-purple-600/10 rounded-full blur-[120px]" />

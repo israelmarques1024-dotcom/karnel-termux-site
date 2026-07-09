@@ -215,6 +215,9 @@ omni init <template>          # Configurar com template específico`}
                 { name: "react", desc: "React + Vite com estrutura moderna" },
                 { name: "nest", desc: "NestJS com TypeORM e autenticação" },
                 { name: "express", desc: "Express API com TypeScript + TypeORM + migrations" },
+                { name: "python", desc: "FastAPI com SQLModel/SQLAlchemy" },
+                { name: "go", desc: "Go com Gin ou Fiber" },
+                { name: "rust", desc: "Rust com Axum ou Actix Web" },
               ].map((tpl) => (
                 <div key={tpl.name} className="bg-background border border-border rounded p-3">
                   <span className="font-mono text-accent font-bold">{tpl.name}</span>
