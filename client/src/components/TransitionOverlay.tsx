@@ -247,7 +247,7 @@ export default function TransitionOverlay() {
               </mask>
               <g mask="url(#text-reveal-mask)" fill="white">
                 <text x="50" y="42" textAnchor="middle" fontFamily="monospace, sans-serif" fontWeight="900" fontSize="18" letterSpacing="1">KERNELTERMUX</text>
-                <text x="50" y="60" textAnchor="middle" fontFamily="monospace, sans-serif" fontWeight="700" fontSize="14" letterSpacing="1.5">CATALYST</text>
+                <text x="50" y="60" textAnchor="middle" fontFamily="monospace, sans-serif" fontWeight="700" fontSize="14" letterSpacing="1.5">TERMUX</text>
               </g>
             </g>
           </mask>

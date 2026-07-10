@@ -53,12 +53,12 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           >
             <img
               src="/karnel-logo-pixel.svg"
-              alt="Karnel Catalyst"
+              alt="Karnel Termux"
               className="w-12 h-12 drop-shadow-[0_0_12px_rgba(168,85,247,0.5)] group-hover:drop-shadow-[0_0_20px_rgba(168,85,247,0.8)] transition-all duration-300"
             />
             <div>
               <h1 className="font-bold text-lg font-mono text-foreground group-hover:text-accent transition-colors">KARNEL</h1>
-              <p className="text-xs text-muted-foreground group-hover:text-accent/70 transition-colors">CATALYST</p>
+              <p className="text-xs text-muted-foreground group-hover:text-accent/70 transition-colors">TERMUX</p>
             </div>
           </Link>
 
@@ -129,7 +129,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             >
               <img
                 src="/karnel-logo-pixel.svg"
-                alt="Karnel Catalyst"
+                alt="Karnel Termux"
                 className="w-9 h-9 drop-shadow-[0_0_8px_rgba(168,85,247,0.4)]"
               />
               <span className="font-bold font-mono text-sm">KARNEL</span>
@@ -152,7 +152,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         {/* Footer */}
         <footer className="bg-card border-t border-border p-6 text-center text-sm text-muted-foreground">
           <p>
-            Karnel Catalyst — Built by{" "}
+            Karnel Termux — Built by{" "}
             <a
               href="https://github.com/israel676767"
               target="_blank"
