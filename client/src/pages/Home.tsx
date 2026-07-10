@@ -21,7 +21,7 @@ const stats = [
   { label: "Databases", value: 4 },
   { label: "Dev Tools", value: 19 },
   { label: "Deploy CLIs", value: 3 },
-  { label: "Total Packages", value: 88, suffix: "+" },
+  { label: "Total Packages", value: 90, suffix: "+" },
 ];
 
 const installOptions = [
@@ -46,12 +46,12 @@ const features = [
 ];
 
 const faqs = [
-  { q: "Is it free?", a: "Yes! KernelTermux is 100% free and open source (MIT)." },
-  { q: "Requires root?", a: "No. KernelTermux works on any Android with Termux, no root needed." },
+  { q: "Is it free?", a: "Yes! Karnel Termux is 100% free and open source (MIT)." },
+  { q: "Requires root?", a: "No. Karnel Termux works on any Android with Termux, no root needed." },
   { q: "Works on any Android?", a: "Yes, Android 11+ recommended. Devices with 4GB+ RAM have better performance." },
-  { q: "Is KernelTermux open source?", a: "Yes! KernelTermux is open source. In the future I plan to add ads similar to freebuff, but for now it's supported only through Pix donations." },
+  { q: "Is Karnel Termux open source?", a: "Yes! Karnel Termux is open source. In the future I plan to add ads similar to freebuff, but for now it's supported only through Pix donations." },
   { q: "Need internet?", a: "Yes, to install packages. After installation, most tools work offline." },
-  { q: "Can use without Linux knowledge?", a: "Yes! KernelTermux is designed to be simple. Portuguese commands and integrated assistant." },
+  { q: "Can use without Linux knowledge?", a: "Yes! Karnel Termux is designed to be simple. Portuguese commands and integrated assistant." },
 ];
 
 const steps = [
@@ -222,7 +222,7 @@ export default function Home() {
         <div className="max-w-6xl mx-auto">
           <AnimatedSection className="text-center mb-14">
             <h2 className="text-3xl sm:text-4xl font-bold mb-3">
-              Why Developers Choose <span className="text-gradient-accent">KernelTermux</span>
+              Why Developers Choose <span className="text-gradient-accent">Karnel Termux</span>
             </h2>
             <p className="text-muted-foreground">
               Built by developers, for developers coding anywhere.
@@ -263,7 +263,7 @@ export default function Home() {
               Frequently Asked <span className="text-gradient-accent">Questions</span>
             </h2>
             <p className="text-muted-foreground">
-              Get your questions answered about KernelTermux.
+              Get your questions answered about Karnel Termux.
             </p>
           </AnimatedSection>
 
@@ -375,7 +375,7 @@ export default function Home() {
 
           <AnimatedSection delay={200}>
             <p className="text-muted-foreground mb-10 text-lg">
-              Join thousands of developers building real apps with KernelTermux.
+              Join thousands of developers building real apps with Karnel Termux.
             </p>
           </AnimatedSection>
 

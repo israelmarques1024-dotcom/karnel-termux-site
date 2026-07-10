@@ -32,7 +32,7 @@ const PIX_EMV = (() => {
     tlv("52", "0000") +
     tlv("53", "986") +
     tlv("58", "BR") +
-    tlv("59", "KERNELTERMUX") +
+    tlv("59", "KARNELTERMUX") +
     tlv("60", "SAOPAULO") +
     tlv("62", tlv("05", "TEST")) +
     "6304";
@@ -165,7 +165,7 @@ export default function SupportProject() {
 
           {/* === FOOTER === */}
           <div className="px-6 py-3 text-center border-t border-white/[0.06]">
-            <p className="text-[11px] text-gray-700 font-mono">KernelTermux Project &copy; 2026</p>
+            <p className="text-[11px] text-gray-700 font-mono">Karnel Termux Project &copy; 2026</p>
           </div>
         </div>
       </div>

@@ -51,7 +51,7 @@ export default function KarnelDocs() {
       <section className="py-12 px-4">
         <div className="max-w-4xl mx-auto">
           <AnimatedSection>
-            <h1 className="text-4xl font-bold font-mono mb-4">KERNEL TERMUX</h1>
+            <h1 className="text-4xl font-bold font-mono mb-4">KARNEL TERMUX</h1>
             <p className="text-lg text-muted-foreground mb-8">
               Ambiente de Desenvolvimento Modular para Termux (Android). Automatize instalações,
               atualizações e configurações com comandos simples.
@@ -186,7 +186,7 @@ export default function KarnelDocs() {
             <div className="card-hover bg-card border border-border rounded-xl p-8 text-center">
               <h3 className="text-xl font-bold font-mono mb-4">Ver Documentação Completa</h3>
               <p className="text-muted-foreground mb-6">
-                Explore o repositório completo do KernelTermux no GitHub para documentação detalhada e exemplos.
+                Explore o repositório completo do Karnel Termux no GitHub para documentação detalhada e exemplos.
               </p>
               <a
                 href="https://github.com/israel676767/karnel-termux"
