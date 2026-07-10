@@ -35,6 +35,9 @@ importers:
       '@tailwindcss/postcss':
         specifier: ^4.3.2
         version: 4.3.2
+      '@tailwindcss/vite':
+        specifier: ^4.1.14
+        version: 4.3.2(vite@7.1.9(@types/node@24.7.0)(jiti@2.7.0)(lightningcss@1.32.0)(tsx@4.20.6))
       class-variance-authority:
         specifier: ^0.7.1
         version: 0.7.1
@@ -929,6 +932,11 @@ packages:
     resolution: {integrity: sha512-w31dd8HOx3k9vPtcQh5QHP9GwKcgbMp87j58qi6xgiBnFFtKEAgCWnDw4qUT8aHwkCp8bKvb/KGKWWHedP0AAg==}
     peerDependencies:
       tailwindcss: '>=3.0.0 || insiders || >=4.0.0-alpha.20 || >=4.0.0-beta.1'
+
+  '@tailwindcss/vite@4.3.2':
+    resolution: {integrity: sha512-eHpMeX4JXfVNJDEcsouTeCBubJBTcTLigeaw/NTUW6PB5ATKKXdyonnXgTBX2VuRbjz1hjfz6C5XAhr52ImQXA==}
+    peerDependencies:
+      vite: ^5.2.0 || ^6 || ^7 || ^8
 
   '@types/babel__core@7.20.5':
     resolution: {integrity: sha512-qoQprZvz5wQFJwMDqeseRXWv3rqMvhgpbXFfVyWhbx9X47POIA6i/+dXefEmZKoAgOaTdaIgNSMqMIU61yRyzA==}
@@ -2196,6 +2204,13 @@ snapshots:
     dependencies:
       postcss-selector-parser: 6.0.10
       tailwindcss: 4.1.14
+
+  '@tailwindcss/vite@4.3.2(vite@7.1.9(@types/node@24.7.0)(jiti@2.7.0)(lightningcss@1.32.0)(tsx@4.20.6))':
+    dependencies:
+      '@tailwindcss/node': 4.3.2
+      '@tailwindcss/oxide': 4.3.2
+      tailwindcss: 4.3.2
+      vite: 7.1.9(@types/node@24.7.0)(jiti@2.7.0)(lightningcss@1.32.0)(tsx@4.20.6)
 
   '@types/babel__core@7.20.5':
     dependencies:
