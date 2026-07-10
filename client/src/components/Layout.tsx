@@ -28,7 +28,7 @@ const navLinks = [
 ];
 
 const socialLinks = [
-  { href: "https://github.com", icon: RiGithubLine, label: "GitHub" },
+  { href: "https://github.com/israel676767/omni", icon: RiGithubLine, label: "GitHub" },
   { href: "https://discord.com", icon: RiDiscordLine, label: "Discord" },
   { href: "https://twitter.com", icon: RiTwitterXLine, label: "Twitter" },
 ];
@@ -178,7 +178,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           <div className="hidden lg:flex lg:flex-1" />
 
           <a
-            href="https://github.com"
+            href="https://github.com/israel676767/omni"
             target="_blank"
             rel="noopener noreferrer"
             className="star-btn group flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-semibold transition-all duration-200"
