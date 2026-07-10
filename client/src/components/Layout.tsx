@@ -23,18 +23,18 @@ export default function Layout({ children }: { children: React.ReactNode }) {
     { label: "Support Project", action: scrollToSupport },
     { label: "Termux", href: "/termux" },
     { label: "Termux:API", href: "/termux/api" },
-    { label: "Omni", href: "/omni" },
-    { label: "AI Tools", href: "/omni/ai" },
-    { label: "Editor", href: "/omni/editor" },
-    { label: "Linux Stack", href: "/omni/linux" },
-    { label: "Second Brain", href: "/omni/brain" },
-    { label: "Voice", href: "/omni/voice" },
-    { label: "PG", href: "/omni/pg" },
-    { label: "Init", href: "/omni/init" },
-    { label: "Env", href: "/omni/env" },
-    { label: "Deploy", href: "/omni/deploy" },
-    { label: "Doctor", href: "/omni/doctor" },
-    { label: "Show", href: "/omni/show" },
+    { label: "Karnel", href: "/karnel" },
+    { label: "AI Tools", href: "/karnel/ai" },
+    { label: "Editor", href: "/karnel/editor" },
+    { label: "Linux Stack", href: "/karnel/linux" },
+    { label: "Second Brain", href: "/karnel/brain" },
+    { label: "Voice", href: "/karnel/voice" },
+    { label: "PG", href: "/karnel/pg" },
+    { label: "Init", href: "/karnel/init" },
+    { label: "Env", href: "/karnel/env" },
+    { label: "Deploy", href: "/karnel/deploy" },
+    { label: "Doctor", href: "/karnel/doctor" },
+    { label: "Show", href: "/karnel/show" },
   ];
 
   return (
@@ -52,12 +52,12 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             className="flex items-center gap-3 mb-8 hover:opacity-90 transition-all duration-300 group"
           >
             <img
-              src="/omni-logo-pixel.svg"
-              alt="Omni Catalyst"
+              src="/karnel-logo-pixel.svg"
+              alt="Karnel Catalyst"
               className="w-12 h-12 drop-shadow-[0_0_12px_rgba(168,85,247,0.5)] group-hover:drop-shadow-[0_0_20px_rgba(168,85,247,0.8)] transition-all duration-300"
             />
             <div>
-              <h1 className="font-bold text-lg font-mono text-foreground group-hover:text-accent transition-colors">OMNI</h1>
+              <h1 className="font-bold text-lg font-mono text-foreground group-hover:text-accent transition-colors">KARNEL</h1>
               <p className="text-xs text-muted-foreground group-hover:text-accent/70 transition-colors">CATALYST</p>
             </div>
           </Link>
@@ -128,11 +128,11 @@ export default function Layout({ children }: { children: React.ReactNode }) {
               className="flex items-center gap-2"
             >
               <img
-                src="/omni-logo-pixel.svg"
-                alt="Omni Catalyst"
+                src="/karnel-logo-pixel.svg"
+                alt="Karnel Catalyst"
                 className="w-9 h-9 drop-shadow-[0_0_8px_rgba(168,85,247,0.4)]"
               />
-              <span className="font-bold font-mono text-sm">OMNI</span>
+              <span className="font-bold font-mono text-sm">KARNEL</span>
             </Link>
             <Button
               variant="ghost"
@@ -152,7 +152,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         {/* Footer */}
         <footer className="bg-card border-t border-border p-6 text-center text-sm text-muted-foreground">
           <p>
-            Omni Catalyst — Built by{" "}
+            Karnel Catalyst — Built by{" "}
             <a
               href="https://github.com/israel676767"
               target="_blank"
@@ -169,12 +169,12 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           </p>
           <p className="mt-3">
             <a
-              href="https://github.com/israel676767/omni"
+              href="https://github.com/israel676767/karnel"
               target="_blank"
               rel="noopener noreferrer"
               className="text-accent hover:underline"
             >
-              Omni Repo
+              Karnel Repo
             </a>
             {" · "}
             <a
@@ -187,7 +187,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             </a>
             {" · "}
             <a
-              href="https://github.com/israel676767/omni/blob/main/LICENSE"
+              href="https://github.com/israel676767/karnel/blob/main/LICENSE"
               target="_blank"
               rel="noopener noreferrer"
               className="text-accent hover:underline"

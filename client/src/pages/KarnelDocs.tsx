@@ -3,36 +3,36 @@ import CodeBlock from "@/components/CodeBlock";
 import { AnimatedSection } from "@/components/AnimatedSection";
 
 const modules = [
-  { name: "Pacotes de Linguagem", desc: "Node, Python, Perl, PHP, Rust, C/C++, Go", cmd: "omni install lang" },
-  { name: "Bancos de Dados", desc: "PostgreSQL, MariaDB, SQLite, MongoDB", cmd: "omni install db" },
-  { name: "Ferramentas de IA", desc: "30 agentes (OpenCode, Claude, Gemini, Ollama, etc.)", cmd: "omni install ai" },
-  { name: "Editor de Código", desc: "code-server (VS Code no navegador)", cmd: "omni install editor" },
-  { name: "Ferramentas de Desenvolvimento", desc: "GitHub CLI, wget, curl, fzf, etc.", cmd: "omni install dev" },
-  { name: "Módulos Node.js", desc: "Pacotes npm globais (TypeScript, NestJS, Prettier)", cmd: "omni install npm" },
-  { name: "Shell ZSH", desc: "ZSH + Oh My Zsh + 10 plugins", cmd: "omni install shell" },
-  { name: "Interface Termux", desc: "Fonte, Cursor, Extra-keys, Banner", cmd: "omni install ui" },
-  { name: "Comando de Voz", desc: "Speech-to-agent com Termux:API", cmd: "omni install voice" },
-  { name: "Automação", desc: "n8n e ferramentas de automação", cmd: "omni install auto" },
-  { name: "CLIs de Deploy", desc: "Vercel, Railway, Netlify", cmd: "omni install deploy" },
+  { name: "Pacotes de Linguagem", desc: "Node, Python, Perl, PHP, Rust, C/C++, Go", cmd: "karnel install lang" },
+  { name: "Bancos de Dados", desc: "PostgreSQL, MariaDB, SQLite, MongoDB", cmd: "karnel install db" },
+  { name: "Ferramentas de IA", desc: "30 agentes (OpenCode, Claude, Gemini, Ollama, etc.)", cmd: "karnel install ai" },
+  { name: "Editor de Código", desc: "code-server (VS Code no navegador)", cmd: "karnel install editor" },
+  { name: "Ferramentas de Desenvolvimento", desc: "GitHub CLI, wget, curl, fzf, etc.", cmd: "karnel install dev" },
+  { name: "Módulos Node.js", desc: "Pacotes npm globais (TypeScript, NestJS, Prettier)", cmd: "karnel install npm" },
+  { name: "Shell ZSH", desc: "ZSH + Oh My Zsh + 10 plugins", cmd: "karnel install shell" },
+  { name: "Interface Termux", desc: "Fonte, Cursor, Extra-keys, Banner", cmd: "karnel install ui" },
+  { name: "Comando de Voz", desc: "Speech-to-agent com Termux:API", cmd: "karnel install voice" },
+  { name: "Automação", desc: "n8n e ferramentas de automação", cmd: "karnel install auto" },
+  { name: "CLIs de Deploy", desc: "Vercel, Railway, Netlify", cmd: "karnel install deploy" },
 ];
 
 const commands = [
-  { cmd: "omni --version", desc: "Mostrar versão atual" },
-  { cmd: "omni brain", desc: "Segundo cérebro — salvar e pesquisar memórias" },
-  { cmd: "omni env", desc: "Gerenciar variáveis de ambiente" },
-  { cmd: "omni ia", desc: "Gerenciar agentes de IA, sessões e rotas" },
-  { cmd: "omni install", desc: "Instalar módulos e pacotes" },
-  { cmd: "omni show", desc: "Mostrar documentação de qualquer ferramenta" },
-  { cmd: "omni doctor", desc: "Diagnosticar ambiente Termux & Omni (30+ verificações)" },
-  { cmd: "omni start", desc: "Iniciar serviços (editor, etc.)" },
-  { cmd: "omni update", desc: "Atualizar módulos ou framework" },
-  { cmd: "omni uninstall", desc: "Remover módulos instalados" },
-  { cmd: "omni reinstall", desc: "Desinstalar + instalar módulos" },
-  { cmd: "omni voice", desc: "Fala-para-agente via microfone" },
-  { cmd: "omni open", desc: "Abrir documentação no navegador" },
-  { cmd: "omni list", desc: "Listar ferramentas disponíveis nos módulos" },
-  { cmd: "omni pg", desc: "Gerenciador de banco de dados PostgreSQL" },
-  { cmd: "omni init", desc: "Inicializar projetos com templates" },
+  { cmd: "karnel --version", desc: "Mostrar versão atual" },
+  { cmd: "karnel brain", desc: "Segundo cérebro — salvar e pesquisar memórias" },
+  { cmd: "karnel env", desc: "Gerenciar variáveis de ambiente" },
+  { cmd: "karnel ia", desc: "Gerenciar agentes de IA, sessões e rotas" },
+  { cmd: "karnel install", desc: "Instalar módulos e pacotes" },
+  { cmd: "karnel show", desc: "Mostrar documentação de qualquer ferramenta" },
+  { cmd: "karnel doctor", desc: "Diagnosticar ambiente Termux & Karnel (30+ verificações)" },
+  { cmd: "karnel start", desc: "Iniciar serviços (editor, etc.)" },
+  { cmd: "karnel update", desc: "Atualizar módulos ou framework" },
+  { cmd: "karnel uninstall", desc: "Remover módulos instalados" },
+  { cmd: "karnel reinstall", desc: "Desinstalar + instalar módulos" },
+  { cmd: "karnel voice", desc: "Fala-para-agente via microfone" },
+  { cmd: "karnel open", desc: "Abrir documentação no navegador" },
+  { cmd: "karnel list", desc: "Listar ferramentas disponíveis nos módulos" },
+  { cmd: "karnel pg", desc: "Gerenciador de banco de dados PostgreSQL" },
+  { cmd: "karnel init", desc: "Inicializar projetos com templates" },
 ];
 
 const templates = [
@@ -45,7 +45,7 @@ const templates = [
   { name: "rust", desc: "Rust com Axum ou Actix Web" },
 ];
 
-export default function OmniDocs() {
+export default function KarnelDocs() {
   return (
     <Layout>
       <section className="py-12 px-4">
@@ -126,31 +126,31 @@ export default function OmniDocs() {
 
           {[
             {
-              title: "omni reinstall",
+              title: "karnel reinstall",
               desc: "Reinstalar módulos ou ferramentas específicas — desinstala e instala do zero.",
-              code: `omni reinstall                # Mostrar ajuda\nomni reinstall <target>       # Reinstalar alvo específico\nomni reinstall <target> --tool1 --tool2  # Reinstalar ferramentas específicas`,
-              extra: { label: "Exemplos:", code: `omni reinstall ai --opencode --ollama       # Reinstalar apenas OpenCode e Ollama\nomni reinstall db --postgresql --sqlite     # Reinstalar apenas PostgreSQL e SQLite\nomni reinstall dev --gh --fzf               # Reinstalar apenas gh e fzf` }
+              code: `karnel reinstall                # Mostrar ajuda\nkarnel reinstall <target>       # Reinstalar alvo específico\nkarnel reinstall <target> --tool1 --tool2  # Reinstalar ferramentas específicas`,
+              extra: { label: "Exemplos:", code: `karnel reinstall ai --opencode --ollama       # Reinstalar apenas OpenCode e Ollama\nkarnel reinstall db --postgresql --sqlite     # Reinstalar apenas PostgreSQL e SQLite\nkarnel reinstall dev --gh --fzf               # Reinstalar apenas gh e fzf` }
             },
             {
-              title: "omni voice",
+              title: "karnel voice",
               desc: "Capture voz do microfone, revise no code-server e dispare qualquer agente de IA. Suporta 15 agentes, seleção de idioma, modo raw e clipboard automático.",
-              code: `omni voice                     # Mostrar ajuda\nomni voice opencode             # Capturar → code-server → opencode run\nomni voice text                 # Capturar → code-server → stdout\nomni voice '!'                  # Atalho para "text"\nomni voice claude-code --lang pt-BR  # Português → claude\nomni voice opencode --raw       # Captura direta, sem edição`
+              code: `karnel voice                     # Mostrar ajuda\nkarnel voice opencode             # Capturar → code-server → opencode run\nkarnel voice text                 # Capturar → code-server → stdout\nkarnel voice '!'                  # Atalho para "text"\nkarnel voice claude-code --lang pt-BR  # Português → claude\nkarnel voice opencode --raw       # Captura direta, sem edição`
             },
             {
-              title: "omni open",
+              title: "karnel open",
               desc: "Abrir documentação oficial no navegador.",
-              code: `omni open                     # Mostrar ajuda\nomni open <target>            # Abrir documentação oficial no navegador\nomni open omni                # Abre https://kerneltermux.vercel.app`,
+              code: `karnel open                     # Mostrar ajuda\nkarnel open <target>            # Abrir documentação oficial no navegador\nkarnel open karnel                # Abre https://kerneltermux.vercel.app`,
               extra: { label: null, code: null }
             },
             {
-              title: "omni pg",
+              title: "karnel pg",
               desc: "Gerenciador de banco de dados PostgreSQL.",
-              code: `omni pg                       # Mostrar ajuda\nomni pg start                 # Iniciar servidor\nomni pg stop                  # Parar servidor\nomni pg restart               # Reiniciar servidor\nomni pg status                # Verificar status\nomni pg init                  # Inicializar banco de dados\nomni pg create <name>         # Criar banco de dados\nomni pg drop <name>           # Remover banco de dados\nomni pg list                  # Listar bancos de dados\nomni pg shell                 # Abrir console psql`
+              code: `karnel pg                       # Mostrar ajuda\nkarnel pg start                 # Iniciar servidor\nkarnel pg stop                  # Parar servidor\nkarnel pg restart               # Reiniciar servidor\nkarnel pg status                # Verificar status\nkarnel pg init                  # Inicializar banco de dados\nkarnel pg create <name>         # Criar banco de dados\nkarnel pg drop <name>           # Remover banco de dados\nkarnel pg list                  # Listar bancos de dados\nkarnel pg shell                 # Abrir console psql`
             },
             {
-              title: "omni init",
+              title: "karnel init",
               desc: "Configurar projetos existentes com dependências, estrutura de pastas e ferramentas predefinidas.",
-              code: `omni init                     # Detectar tipo de projeto automaticamente e configurar\nomni init <template>          # Configurar com template específico`,
+              code: `karnel init                     # Detectar tipo de projeto automaticamente e configurar\nkarnel init <template>          # Configurar com template específico`,
               hasTemplates: true
             },
           ].map((section, i) => (

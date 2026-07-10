@@ -80,7 +80,7 @@ const troubleshooting = [
   {
     title: "Erros após atualização",
     desc: "Algumas atualizações podem quebrar a compatibilidade. Limpe o cache e reinstale.",
-    fix: "rm -rf ~/.local/share/code-server/cachedExtensionVSIXs/\nomni reinstall editor",
+    fix: "rm -rf ~/.local/share/code-server/cachedExtensionVSIXs/\nkarnel reinstall editor",
   },
   {
     title: "Problemas de desempenho",
@@ -95,7 +95,7 @@ const troubleshooting = [
   {
     title: "Reinstalar do zero",
     desc: "Faça backup da configuração, remova o diretório code-server e reinstale.",
-    fix: `mv ~/.config/code-server ~/.config/code-server.bak\nomni reinstall editor`,
+    fix: `mv ~/.config/code-server ~/.config/code-server.bak\nkarnel reinstall editor`,
   },
 ];
 
@@ -125,7 +125,7 @@ export default function CodeEditor() {
           <AnimatedSection delay={100}>
             <div className="card-hover bg-card border border-accent/50 rounded-lg p-6 mb-12">
               <h3 className="font-bold font-mono mb-4">Instalação Rápida</h3>
-              <CodeBlock code={`omni install editor`} language="bash" title="terminal" />
+              <CodeBlock code={`karnel install editor`} language="bash" title="terminal" />
             </div>
           </AnimatedSection>
 
@@ -219,8 +219,8 @@ export default function CodeEditor() {
           </AnimatedSection>
 
           {[
-            { title: "Instalação Completa", desc: "Instala code-server, VS Code extensions e todos os plugins.", code: "omni install editor" },
-            { title: "Componentes Individuais", desc: "Instale apenas o que você precisa para uma configuração mais leve.", code: "omni install editor          # Instala code-server completo\nomni start editor            # Inicia o servidor na porta 8080" },
+            { title: "Instalação Completa", desc: "Instala code-server, VS Code extensions e todos os plugins.", code: "karnel install editor" },
+            { title: "Componentes Individuais", desc: "Instale apenas o que você precisa para uma configuração mais leve.", code: "karnel install editor          # Instala code-server completo\nkarnel start editor            # Inicia o servidor na porta 8080" },
             { title: "Extensões VS Code", desc: "Instale extensões via CLI (recomendado no celular) ou pelo painel de extensões:", code: "# Via CLI (recomendado para mobile):\ncode-server --install-extension ms-python.python\ncode-server --install-extension esbenp.prettier-vscode\n\n# Ou pelo painel: Ctrl+Shift+X" },
           ].map((item, i) => (
             <AnimatedSection key={i} delay={900 + i * 80}>

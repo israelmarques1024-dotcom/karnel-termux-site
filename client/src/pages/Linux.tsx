@@ -24,7 +24,7 @@ export default function Linux() {
           <AnimatedSection>
             <h1 className="text-4xl font-bold font-mono mb-4">Stack Linux Completa</h1>
             <p className="text-lg text-muted-foreground mb-8">
-              O Omni transforma seu Android num ambiente Linux completo com
+              O Karnel transforma seu Android num ambiente Linux completo com
               linguagens, bancos de dados e ferramentas de desenvolvimento.
             </p>
           </AnimatedSection>
@@ -32,12 +32,12 @@ export default function Linux() {
           <AnimatedSection delay={100}>
             <div className="card-hover bg-card border border-accent/50 rounded-lg p-6 mb-12">
               <h3 className="font-bold font-mono mb-4">Instalação Rápida</h3>
-              <CodeBlock code="omni install lang" language="bash" title="terminal" />
+              <CodeBlock code="karnel install lang" language="bash" title="terminal" />
               <p className="text-sm text-muted-foreground mt-3">
                 Instala Node.js, Python, Go, Rust, C/C++ e mais.
               </p>
               <div className="mt-3">
-                <CodeBlock code="omni install db" language="bash" title="terminal" />
+                <CodeBlock code="karnel install db" language="bash" title="terminal" />
                 <p className="text-sm text-muted-foreground mt-3">
                   Instala PostgreSQL, MariaDB, SQLite e MongoDB.
                 </p>
@@ -55,7 +55,7 @@ export default function Linux() {
                 <div className="card-hover bg-card border border-border rounded-lg p-5">
                   <h3 className="font-bold font-mono text-accent mb-1">{item.name}</h3>
                   <p className="text-sm text-muted-foreground mb-3">{item.desc}</p>
-                  <CodeBlock code={`omni install lang --${item.pkg}`} language="bash" />
+                  <CodeBlock code={`karnel install lang --${item.pkg}`} language="bash" />
                 </div>
               </AnimatedSection>
             ))}
@@ -71,7 +71,7 @@ export default function Linux() {
                 <div className="card-hover bg-card border border-border rounded-lg p-5">
                   <h3 className="font-bold font-mono text-accent mb-1">{item.name}</h3>
                   <p className="text-sm text-muted-foreground mb-3">{item.desc}</p>
-                  <CodeBlock code={`omni install db --${item.pkg}`} language="bash" />
+                  <CodeBlock code={`karnel install db --${item.pkg}`} language="bash" />
                 </div>
               </AnimatedSection>
             ))}
@@ -81,7 +81,7 @@ export default function Linux() {
             <h2 className="text-2xl font-bold font-mono mb-6">Por que isso importa</h2>
             <div className="card-hover bg-card border border-border rounded-lg p-6">
               <p className="text-muted-foreground mb-4">
-                Com o Omni, seu dispositivo Android vira um ambiente de desenvolvimento
+                Com o Karnel, seu dispositivo Android vira um ambiente de desenvolvimento
                 completo. Você pode:
               </p>
               <ul className="space-y-2 text-sm text-muted-foreground">

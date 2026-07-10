@@ -34,7 +34,7 @@ export default function Voice() {
       <section className="py-12 px-4">
         <div className="max-w-4xl mx-auto">
           <AnimatedSection>
-            <h1 className="text-4xl font-bold font-mono mb-4">omni voice — Speech-to-Agent</h1>
+            <h1 className="text-4xl font-bold font-mono mb-4">karnel voice — Speech-to-Agent</h1>
             <p className="text-lg text-muted-foreground mb-8">
               Capture áudio pelo microfone, revise no code-server, copie para a área de
               transferência e dispare qualquer agente de IA com o prompt transcrito.
@@ -46,11 +46,11 @@ export default function Voice() {
             <div className="card-hover bg-card border border-accent/50 rounded-lg p-6 mb-12">
               <h3 className="font-bold font-mono mb-4">Uso Básico</h3>
               <CodeBlock
-                code={`omni voice                     # Mostra ajuda
-omni voice opencode             # Captura → code-server → opencode run
-omni voice text                 # Captura → code-server → stdout
-omni voice '!'                  # Atalho para "text"
-omni voice claude-code --lang pt-BR  # Fala em português → claude`}
+                code={`karnel voice                     # Mostra ajuda
+karnel voice opencode             # Captura → code-server → opencode run
+karnel voice text                 # Captura → code-server → stdout
+karnel voice '!'                  # Atalho para "text"
+karnel voice claude-code --lang pt-BR  # Fala em português → claude`}
                 language="bash"
                 title="terminal"
               />
@@ -146,9 +146,9 @@ omni voice claude-code --lang pt-BR  # Fala em português → claude`}
 
           <div className="space-y-6 mb-12">
             {[
-              { title: "Desenvolvimento com Voz", code: "omni voice claude-code --lang en-US", desc: "Fale \"Create a React component with a counter\" e o Claude gera o código." },
-              { title: "Código em Português", code: "omni voice opencode --lang pt-BR", desc: "Descreva uma feature em português e o opencode implementa." },
-              { title: "Anotações Rápidas", code: "omni voice text --raw --no-clip >> ideias.txt", desc: "Transcreve direto para um arquivo sem edição nem clipboard." },
+              { title: "Desenvolvimento com Voz", code: "karnel voice claude-code --lang en-US", desc: "Fale \"Create a React component with a counter\" e o Claude gera o código." },
+              { title: "Código em Português", code: "karnel voice opencode --lang pt-BR", desc: "Descreva uma feature em português e o opencode implementa." },
+              { title: "Anotações Rápidas", code: "karnel voice text --raw --no-clip >> ideias.txt", desc: "Transcreve direto para um arquivo sem edição nem clipboard." },
             ].map((ex, i) => (
               <AnimatedSection key={i} delay={900 + i * 80}>
                 <div className="card-hover bg-card border border-border rounded-lg p-6">
@@ -166,9 +166,9 @@ omni voice claude-code --lang pt-BR  # Fala em português → claude`}
               <ul className="space-y-2 text-sm text-muted-foreground">
                 <li className="flex gap-2"><span className="text-accent">•</span> <strong>Termux:API package:</strong> <code className="text-accent">pkg install termux-api</code></li>
                 <li className="flex gap-2"><span className="text-accent">•</span> <strong>Termux:API app:</strong> <Link href="/termux/api" className="text-accent underline">Download APK</Link></li>
-                <li className="flex gap-2"><span className="text-accent">•</span> <strong>code-server:</strong> <code className="text-accent">omni install editor</code> (opcional com <code className="text-accent">--raw</code>)</li>
+                <li className="flex gap-2"><span className="text-accent">•</span> <strong>code-server:</strong> <code className="text-accent">karnel install editor</code> (opcional com <code className="text-accent">--raw</code>)</li>
                 <li className="flex gap-2"><span className="text-accent">•</span> <strong>Microfone:</strong> permitir nas Config. Android &gt; Apps &gt; Termux &gt; Permissões</li>
-                <li className="flex gap-2"><span className="text-accent">•</span> <strong>Agente de IA:</strong> <code className="text-accent">omni install ai</code></li>
+                <li className="flex gap-2"><span className="text-accent">•</span> <strong>Agente de IA:</strong> <code className="text-accent">karnel install ai</code></li>
               </ul>
             </div>
           </AnimatedSection>

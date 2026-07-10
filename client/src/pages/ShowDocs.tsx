@@ -3,12 +3,12 @@ import CodeBlock from "@/components/CodeBlock";
 import { AnimatedSection } from "@/components/AnimatedSection";
 
 const examples = [
-  { cmd: "omni show ai --opencode", desc: "Mostrar README do OpenCode no módulo de IA" },
-  { cmd: "omni show ai --ollama", desc: "Mostrar documentação do Ollama" },
-  { cmd: "omni show db --postgresql", desc: "Mostrar guia de configuração do PostgreSQL" },
-  { cmd: "omni show dev --gh", desc: "Mostrar docs do GitHub CLI" },
-  { cmd: "omni show npm --typescript", desc: "Mostrar guia do pacote npm TypeScript" },
-  { cmd: "omni show all --<tool>", desc: "Pesquisar uma ferramenta em todos os módulos" },
+  { cmd: "karnel show ai --opencode", desc: "Mostrar README do OpenCode no módulo de IA" },
+  { cmd: "karnel show ai --ollama", desc: "Mostrar documentação do Ollama" },
+  { cmd: "karnel show db --postgresql", desc: "Mostrar guia de configuração do PostgreSQL" },
+  { cmd: "karnel show dev --gh", desc: "Mostrar docs do GitHub CLI" },
+  { cmd: "karnel show npm --typescript", desc: "Mostrar guia do pacote npm TypeScript" },
+  { cmd: "karnel show all --<tool>", desc: "Pesquisar uma ferramenta em todos os módulos" },
 ];
 
 const renderers = [
@@ -18,17 +18,17 @@ const renderers = [
 ];
 
 const modules = [
-  { mod: "ai", cmd: "omni show ai --opencode", tools: "opencode, ollama, claude, gemini" },
-  { mod: "lang", cmd: "omni show lang --nodejs", tools: "nodejs, python, rust, golang" },
-  { mod: "db", cmd: "omni show db --postgresql", tools: "postgresql, mariadb, sqlite, mongodb" },
-  { mod: "dev", cmd: "omni show dev --gh", tools: "gh, wget, curl, fzf" },
-  { mod: "npm", cmd: "omni show npm --typescript", tools: "typescript, nestjs, prettier" },
-  { mod: "shell", cmd: "omni show shell --powerlevel10k", tools: "powerlevel10k, zsh-syntax-highlighting" },
-  { mod: "editor", cmd: "omni show editor --code-server", tools: "code-server" },
-  { mod: "deploy", cmd: "omni show deploy --vercel", tools: "vercel, railway, netlify" },
-  { mod: "ui", cmd: "omni show ui --font", tools: "font, cursor, extra-keys, banner" },
-  { mod: "auto", cmd: "omni show auto --n8n", tools: "n8n" },
-  { mod: "voice", cmd: "omni show voice --termux-api", tools: "termux-api" },
+  { mod: "ai", cmd: "karnel show ai --opencode", tools: "opencode, ollama, claude, gemini" },
+  { mod: "lang", cmd: "karnel show lang --nodejs", tools: "nodejs, python, rust, golang" },
+  { mod: "db", cmd: "karnel show db --postgresql", tools: "postgresql, mariadb, sqlite, mongodb" },
+  { mod: "dev", cmd: "karnel show dev --gh", tools: "gh, wget, curl, fzf" },
+  { mod: "npm", cmd: "karnel show npm --typescript", tools: "typescript, nestjs, prettier" },
+  { mod: "shell", cmd: "karnel show shell --powerlevel10k", tools: "powerlevel10k, zsh-syntax-highlighting" },
+  { mod: "editor", cmd: "karnel show editor --code-server", tools: "code-server" },
+  { mod: "deploy", cmd: "karnel show deploy --vercel", tools: "vercel, railway, netlify" },
+  { mod: "ui", cmd: "karnel show ui --font", tools: "font, cursor, extra-keys, banner" },
+  { mod: "auto", cmd: "karnel show auto --n8n", tools: "n8n" },
+  { mod: "voice", cmd: "karnel show voice --termux-api", tools: "termux-api" },
 ];
 
 export default function ShowDocs() {
@@ -37,9 +37,9 @@ export default function ShowDocs() {
       <section className="py-12 px-4">
         <div className="max-w-4xl mx-auto">
           <AnimatedSection>
-            <h1 className="text-4xl font-bold font-mono mb-4">omni show</h1>
+            <h1 className="text-4xl font-bold font-mono mb-4">karnel show</h1>
             <p className="text-lg text-muted-foreground mb-8">
-              Exibe documentação README para qualquer ferramenta instalada via Omni. Suporta
+              Exibe documentação README para qualquer ferramenta instalada via Karnel. Suporta
               renderização via glow (quando disponível), pygmentize ou cat simples.
             </p>
           </AnimatedSection>
@@ -47,9 +47,9 @@ export default function ShowDocs() {
           <AnimatedSection delay={100}>
             <div className="card-hover bg-card border border-accent/50 rounded-lg p-6 mb-12">
               <h3 className="font-bold font-mono mb-4">Uso</h3>
-              <CodeBlock code={"omni show <module> --<tool>"} language="bash" title="terminal" />
+              <CodeBlock code={"karnel show <module> --<tool>"} language="bash" title="terminal" />
               <p className="text-sm text-muted-foreground mt-4">
-                Execute <code className="text-accent">omni list &lt;module&gt;</code> primeiro para ver as ferramentas
+                Execute <code className="text-accent">karnel list &lt;module&gt;</code> primeiro para ver as ferramentas
                 disponíveis em um módulo.
               </p>
             </div>
@@ -62,7 +62,7 @@ export default function ShowDocs() {
           <AnimatedSection delay={250}>
             <div className="card-hover bg-card border border-border rounded-lg p-6 mb-12">
               <p className="text-muted-foreground mb-6">
-                O comando procura <code className="text-accent">$OMNI_PATH/tools/&lt;module&gt;/&lt;tool&gt;/README.md</code>
+                O comando procura <code className="text-accent">$KARNEL_PATH/tools/&lt;module&gt;/&lt;tool&gt;/README.md</code>
                 e o exibe. Se o <code className="text-accent">glow</code> estiver instalado, ele renderiza
                 com destaque de sintaxe. Caso contrário, usa pygmentize ou cat simples.
               </p>
@@ -99,11 +99,11 @@ export default function ShowDocs() {
           <AnimatedSection delay={850}>
             <div className="card-hover bg-card border border-border rounded-lg p-6 mb-12">
               <p className="text-muted-foreground mb-4">
-                Execute <code className="text-accent">omni show &lt;module&gt;</code> sem uma flag de ferramenta para listar
+                Execute <code className="text-accent">karnel show &lt;module&gt;</code> sem uma flag de ferramenta para listar
                 todas as ferramentas disponíveis nesse módulo:
               </p>
               <CodeBlock
-                code={`omni show ai
+                code={`karnel show ai
 
 ── ai - Available Tools ──
 opencode          OpenCode - AI coding agent

@@ -5,13 +5,13 @@ import { AnimatedSection } from "@/components/AnimatedSection";
 const checks = [
   { num: 1, title: "Informações do Sistema", desc: "Versão do Android, versão do Termux, arquitetura da CPU" },
   { num: 2, title: "Recursos do Sistema", desc: "Espaço em disco disponível, RAM total e disponível, avisos de pouca memória" },
-  { num: 3, title: "Armazenamento e Permissões", desc: "Acessibilidade do armazenamento compartilhado, permissões de gravação no caminho do Omni, integridade do diretório Omni" },
+  { num: 3, title: "Armazenamento e Permissões", desc: "Acessibilidade do armazenamento compartilhado, permissões de gravação no caminho do Karnel, integridade do diretório Karnel" },
   { num: 4, title: "Linguagens e Ferramentas Críticas", desc: "Verifica git, ripgrep, jq, curl, tar, Node.js, Python, Rust, Go, Clang, Make" },
   { num: 5, title: "Saúde do Gerenciador de Pacotes", desc: "Auditoria dpkg, pacotes retidos, validação de fontes APT" },
   { num: 6, title: "Node.js e NPM", desc: "Versão do Node, versão do NPM, permissões do prefixo global, tamanho do cache" },
   { num: 7, title: "Ambiente Python", desc: "Detecção do interpretador Python, disponibilidade do pip, módulo venv" },
   { num: 8, title: "Banco de Dados PostgreSQL", desc: "Instalação do PostgreSQL, diretório de dados, status de execução" },
-  { num: 9, title: "Framework Omni", desc: "Versão do Omni, symlinks da CLI, instalação do banner na configuração do shell" },
+  { num: 9, title: "Framework Karnel", desc: "Versão do Karnel, symlinks da CLI, instalação do banner na configuração do shell" },
   { num: 10, title: "Status das Ferramentas de IA", desc: "Escaneia 30 ferramentas de IA (opencode, claude, gemini, ollama, etc.)" },
   { num: 11, title: "Configuração do Shell", desc: "Existência do arquivo de configuração ZSH/Bash, validação de sintaxe" },
   { num: 12, title: "Compatibilidade com Android", desc: "Detecção do Phantom Process Killer no Android 12+" },
@@ -21,9 +21,9 @@ const checks = [
   { num: 16, title: "Conectividade de Rede", desc: "Acessibilidade HTTP ao GitHub" },
   { num: 17, title: "Servidor OpenSSH", desc: "Disponibilidade do SSHD (opcional)" },
   { num: 18, title: "Saúde do Disco", desc: "Aviso de espaço em disco baixo (abaixo de 500MB)" },
-  { num: 19, title: "Integridade dos Dados Omni", desc: "Verifica diretórios OMNI_CONFIG, OMNI_CACHE, OMNI_DATA" },
-  { num: 20, title: "Geração de Relatório", desc: "Salva um relatório detalhado em Markdown em OMNI_DATA/doctor_reports/" },
-  { num: 21, title: "Plugins ZSH", desc: "Verifica integração do Omni com ZSH plugins" },
+  { num: 19, title: "Integridade dos Dados Karnel", desc: "Verifica diretórios KARNEL_CONFIG, KARNEL_CACHE, KARNEL_DATA" },
+  { num: 20, title: "Geração de Relatório", desc: "Salva um relatório detalhado em Markdown em KARNEL_DATA/doctor_reports/" },
+  { num: 21, title: "Plugins ZSH", desc: "Verifica integração do Karnel com ZSH plugins" },
   { num: 22, title: "GPU e Hardware", desc: "Detecção de GPU e aceleração de hardware" },
   { num: 23, title: "Locale e Encoding", desc: "Verificação de UTF-8 e configuração de idioma" },
   { num: 24, title: "Bateria e Energia", desc: "Status da bateria e otimizações de energia" },
@@ -39,11 +39,11 @@ const autoFixes = [
   "Vincular armazenamento compartilhado via termux-setup-storage",
   "Instalar pacotes ausentes via pkg install",
   "Corrigir estado quebrado do dpkg/apt",
-  "Recriar symlinks da CLI para omni",
+  "Recriar symlinks da CLI para karnel",
   "Corrigir permissões do diretório global do NPM",
   "Inicializar e iniciar PostgreSQL",
   "Gerar chave SSH para GitHub",
-  "Instalar banner do Omni na configuração do shell",
+  "Instalar banner do Karnel na configuração do shell",
   "Limpar cache e pacotes não utilizados",
 ];
 
@@ -53,9 +53,9 @@ export default function Doctor() {
       <section className="py-12 px-4">
         <div className="max-w-4xl mx-auto">
           <AnimatedSection>
-            <h1 className="text-4xl font-bold font-mono mb-4">omni doctor</h1>
+            <h1 className="text-4xl font-bold font-mono mb-4">karnel doctor</h1>
             <p className="text-lg text-muted-foreground mb-8">
-              Diagnostique seu ambiente Termux e Omni. Executa 30+ verificações em recursos
+              Diagnostique seu ambiente Termux e Karnel. Executa 30+ verificações em recursos
               do sistema, runtimes de linguagens, bancos de dados, ferramentas de IA, configuração do shell e mais.
             </p>
           </AnimatedSection>
@@ -63,7 +63,7 @@ export default function Doctor() {
           <AnimatedSection delay={100}>
             <div className="card-hover bg-card border border-accent/50 rounded-lg p-6 mb-12">
               <h3 className="font-bold font-mono mb-4">Uso</h3>
-              <CodeBlock code="omni doctor" language="bash" title="terminal" />
+              <CodeBlock code="karnel doctor" language="bash" title="terminal" />
             </div>
           </AnimatedSection>
 
@@ -107,7 +107,7 @@ export default function Doctor() {
           <AnimatedSection delay={350}>
             <div className="card-hover bg-card border border-border rounded-lg p-6 mb-12">
               <p className="text-muted-foreground mb-4">
-                Após executar todas as verificações, o <code className="text-accent">omni doctor</code> apresenta problemas detectados e
+                Após executar todas as verificações, o <code className="text-accent">karnel doctor</code> apresenta problemas detectados e
                 pergunta se você deseja aplicar as correções automáticas. Cada problema tem uma correção
                 predefinida ou comando shell.
               </p>
@@ -132,7 +132,7 @@ export default function Doctor() {
                 Um relatório detalhado em Markdown é salvo em:
               </p>
               <CodeBlock
-                code={"$OMNI_DATA/doctor_reports/doctor_report_latest.md"}
+                code={"$KARNEL_DATA/doctor_reports/doctor_report_latest.md"}
                 language="bash"
                 title="report path"
               />
@@ -150,7 +150,7 @@ export default function Doctor() {
           <AnimatedSection delay={550}>
             <div className="card-hover bg-card border border-border rounded-lg p-6">
               <CodeBlock
-                code={`◈ OMNI DOCTOR ◈
+                code={`◈ KARNEL DOCTOR ◈
 
 [✓] Android Version: 14
 [✓] Termux Version: 0.118.0
@@ -168,7 +168,7 @@ export default function Doctor() {
 
 ── Summary ──
 [✓] Diagnostics completed!
-Report saved: /data/data/com.termux/files/home/.local/share/omni/doctor_reports/doctor_report_latest.md
+Report saved: /data/data/com.termux/files/home/.local/share/karnel/doctor_reports/doctor_report_latest.md
 Found 1 warning(s). System is functional but can be optimized.
 
 ── Auto-Fix Options ──

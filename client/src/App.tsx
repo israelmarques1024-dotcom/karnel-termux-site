@@ -11,7 +11,7 @@ import TransitionOverlay from "./components/TransitionOverlay";
 const Home = lazy(() => import("@/pages/Home"));
 const Termux = lazy(() => import("@/pages/Termux"));
 const TermuxAPI = lazy(() => import("@/pages/TermuxAPI"));
-const OmniDocs = lazy(() => import("@/pages/OmniDocs"));
+const KarnelDocs = lazy(() => import("@/pages/KarnelDocs"));
 const AITools = lazy(() => import("@/pages/AITools"));
 const CodeEditor = lazy(() => import("@/pages/CodeEditor"));
 const Deploy = lazy(() => import("@/pages/Deploy"));
@@ -31,18 +31,18 @@ function RouterOutlet() {
         <Route path={"/"} component={Home} />
         <Route path={"/termux"} component={Termux} />
         <Route path={"/termux/api"} component={TermuxAPI} />
-        <Route path={"/omni"} component={OmniDocs} />
-        <Route path={"/omni/ai"} component={AITools} />
-        <Route path={"/omni/editor"} component={CodeEditor} />
-        <Route path={"/omni/deploy"} component={Deploy} />
-        <Route path={"/omni/doctor"} component={Doctor} />
-        <Route path={"/omni/show"} component={ShowDocs} />
-        <Route path={"/omni/linux"} component={Linux} />
-        <Route path={"/omni/brain"} component={Brain} />
-        <Route path={"/omni/voice"} component={Voice} />
-        <Route path={"/omni/pg"} component={PG} />
-        <Route path={"/omni/init"} component={Init} />
-        <Route path={"/omni/env"} component={Env} />
+        <Route path={"/karnel"} component={KarnelDocs} />
+        <Route path={"/karnel/ai"} component={AITools} />
+        <Route path={"/karnel/editor"} component={CodeEditor} />
+        <Route path={"/karnel/deploy"} component={Deploy} />
+        <Route path={"/karnel/doctor"} component={Doctor} />
+        <Route path={"/karnel/show"} component={ShowDocs} />
+        <Route path={"/karnel/linux"} component={Linux} />
+        <Route path={"/karnel/brain"} component={Brain} />
+        <Route path={"/karnel/voice"} component={Voice} />
+        <Route path={"/karnel/pg"} component={PG} />
+        <Route path={"/karnel/init"} component={Init} />
+        <Route path={"/karnel/env"} component={Env} />
         <Route path={"/404"} component={NotFound} />
         <Route component={NotFound} />
       </Switch>

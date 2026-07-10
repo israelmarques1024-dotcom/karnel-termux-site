@@ -17,17 +17,17 @@ const comparisons = [
   { feature: "ZSH + plugins + memória persistente", termux: false },
   { feature: "Deploy direto (Vercel, Railway, Netlify)", termux: false },
   { feature: "Assistente de voz integrado", termux: false },
-  { feature: "PostgreSQL gerenciado (omni pg)", termux: false },
-  { feature: "Diagnóstico automático (omni doctor)", termux: false },
-  { feature: "Gerenciamento de secrets (omni env)", termux: false },
+  { feature: "PostgreSQL gerenciado (karnel pg)", termux: false },
+  { feature: "Diagnóstico automático (karnel doctor)", termux: false },
+  { feature: "Gerenciamento de secrets (karnel env)", termux: false },
   { feature: "Multi-linguagem (Python, Node, Go, Rust)", termux: false },
   { feature: "Git + GitHub CLI pré-configurados", termux: false },
   { feature: "Mecanismo de atualização centralizado", termux: false },
-  { feature: "Segundo cérebro (omni brain)", termux: false },
-  { feature: "Inicialização de projetos (omni init)", termux: false },
+  { feature: "Segundo cérebro (karnel brain)", termux: false },
+  { feature: "Inicialização de projetos (karnel init)", termux: false },
   { feature: "Ambiente configurado em segundos", termux: false },
   { feature: "Gerenciamento de variáveis de ambiente", termux: false },
-  { feature: "Documentação interativa (omni show)", termux: false },
+  { feature: "Documentação interativa (karnel show)", termux: false },
 ];
 
 export default function Termux() {
@@ -70,9 +70,9 @@ export default function Termux() {
           </div>
 
           <AnimatedSection delay={500}>
-            <h2 className="text-2xl font-bold font-mono mb-6">Por que Usar o Omni?</h2>
+            <h2 className="text-2xl font-bold font-mono mb-6">Por que Usar o Karnel?</h2>
             <p className="text-muted-foreground mb-6">
-              Embora o Termux funcione muito bem pronto para uso, o Omni melhora sua
+              Embora o Termux funcione muito bem pronto para uso, o Karnel melhora sua
               experiência com automação e ferramentas avançadas.
             </p>
           </AnimatedSection>
@@ -85,7 +85,7 @@ export default function Termux() {
                     <tr className="border-b border-border">
                       <th className="text-left py-3 px-4 font-mono font-bold">Funcionalidade</th>
                       <th className="text-center py-3 px-4 font-mono font-bold">Apenas Termux</th>
-                      <th className="text-center py-3 px-4 font-mono font-bold">Omni</th>
+                      <th className="text-center py-3 px-4 font-mono font-bold">Karnel</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -114,7 +114,7 @@ export default function Termux() {
             <div className="card-hover bg-card border border-border rounded-xl p-8">
               <h3 className="text-xl font-bold font-mono mb-4">Pronto para Começar?</h3>
               <p className="text-muted-foreground mb-6">
-                Baixe o Termux primeiro, depois instale o Omni para desbloquear todo o
+                Baixe o Termux primeiro, depois instale o Karnel para desbloquear todo o
                 potencial do seu ambiente de desenvolvimento Android.
               </p>
               <div className="flex gap-4 flex-wrap">

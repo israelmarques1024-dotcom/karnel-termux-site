@@ -31,18 +31,18 @@ const installOptions = [
 ];
 
 const features = [
-  { href: "/omni", icon: <Zap size={22} />, title: "Modular Architecture", desc: "Install only what you need. No tool conflicts." },
-  { href: "/omni/ai", icon: <Code2 size={22} />, title: "30 AI Agents", desc: "Claude, Gemini, OpenCode, Ollama and more. Pre-configured." },
-  { href: "/omni/editor", icon: <Terminal size={22} />, title: "VS Code Editor", desc: "code-server (VS Code in browser) for 20+ languages. Copilot included." },
-  { href: "/omni/linux", icon: <Cpu size={22} />, title: "Linux Stack", desc: "PostgreSQL, MongoDB, Node.js, Python, Go, Rust. Everything you need." },
-  { href: "/omni/brain", icon: <Brain size={22} />, title: "Second Brain", desc: "Integrated memory with AI search and idea graph." },
-  { href: "/omni/deploy", icon: <Rocket size={22} />, title: "Direct Deploy", desc: "Vercel, Railway, Netlify. Deploy from your phone." },
-  { href: "/omni/doctor", icon: <Stethoscope size={22} />, title: "omni doctor", desc: "Diagnose your environment with 30+ automatic checks." },
-  { href: "/omni/show", icon: <Eye size={22} />, title: "omni show", desc: "View any tool documentation without leaving terminal." },
-  { href: "/omni/voice", icon: <Mic size={22} />, title: "omni voice", desc: "Talk to your AI agents. Hands-free coding." },
-  { href: "/omni/pg", icon: <Database size={22} />, title: "omni pg", desc: "Manage PostgreSQL: init, start, stop, shell — one command." },
-  { href: "/omni/init", icon: <Puzzle size={22} />, title: "omni init", desc: "Create Next.js, Express and other projects in seconds." },
-  { href: "/omni/env", icon: <Shield size={22} />, title: "omni env", desc: "Manage API keys securely. Never hardcode secrets." },
+  { href: "/karnel", icon: <Zap size={22} />, title: "Modular Architecture", desc: "Install only what you need. No tool conflicts." },
+  { href: "/karnel/ai", icon: <Code2 size={22} />, title: "30 AI Agents", desc: "Claude, Gemini, OpenCode, Ollama and more. Pre-configured." },
+  { href: "/karnel/editor", icon: <Terminal size={22} />, title: "VS Code Editor", desc: "code-server (VS Code in browser) for 20+ languages. Copilot included." },
+  { href: "/karnel/linux", icon: <Cpu size={22} />, title: "Linux Stack", desc: "PostgreSQL, MongoDB, Node.js, Python, Go, Rust. Everything you need." },
+  { href: "/karnel/brain", icon: <Brain size={22} />, title: "Second Brain", desc: "Integrated memory with AI search and idea graph." },
+  { href: "/karnel/deploy", icon: <Rocket size={22} />, title: "Direct Deploy", desc: "Vercel, Railway, Netlify. Deploy from your phone." },
+  { href: "/karnel/doctor", icon: <Stethoscope size={22} />, title: "karnel doctor", desc: "Diagnose your environment with 30+ automatic checks." },
+  { href: "/karnel/show", icon: <Eye size={22} />, title: "karnel show", desc: "View any tool documentation without leaving terminal." },
+  { href: "/karnel/voice", icon: <Mic size={22} />, title: "karnel voice", desc: "Talk to your AI agents. Hands-free coding." },
+  { href: "/karnel/pg", icon: <Database size={22} />, title: "karnel pg", desc: "Manage PostgreSQL: init, start, stop, shell — one command." },
+  { href: "/karnel/init", icon: <Puzzle size={22} />, title: "karnel init", desc: "Create Next.js, Express and other projects in seconds." },
+  { href: "/karnel/env", icon: <Shield size={22} />, title: "karnel env", desc: "Manage API keys securely. Never hardcode secrets." },
 ];
 
 const faqs = [
@@ -56,8 +56,8 @@ const faqs = [
 
 const steps = [
   { step: "1", title: "Install Termux", desc: "Install Termux from GitHub or F-Droid." },
-  { step: "2", title: "Run Installer", desc: "Paste the install command and let Omni configure everything." },
-  { step: "3", title: "Choose Your Tools", desc: "Use 'omni install' to add AI agents, databases, editors and more." },
+  { step: "2", title: "Run Installer", desc: "Paste the install command and let Karnel configure everything." },
+  { step: "3", title: "Choose Your Tools", desc: "Use 'karnel install' to add AI agents, databases, editors and more." },
   { step: "4", title: "Start Coding", desc: "Open code-server, connect to database and build real projects." },
 ];
 
@@ -106,7 +106,7 @@ export default function Home() {
 
       {/* Hero */}
       <section className="relative min-h-[90dvh] flex items-center justify-center overflow-hidden px-4 py-24">
-        <div className="absolute inset-0 bg-[url(/omni-banner.svg)] bg-cover bg-center bg-no-repeat opacity-40" />
+        <div className="absolute inset-0 bg-[url(/karnel-banner.svg)] bg-cover bg-center bg-no-repeat opacity-40" />
         <div className="absolute inset-0 bg-gradient-to-b from-background/0 via-background/50 to-background" />
 
         <div className="relative z-10 max-w-5xl mx-auto text-center">
@@ -148,7 +148,7 @@ export default function Home() {
                 <ArrowRight size={18} className="transition-transform duration-300 group-hover:translate-x-1" />
               </Link>
               <Link
-                href="/omni"
+                href="/karnel"
                 className="group inline-flex items-center gap-2 rounded-xl border border-border bg-card/50 px-6 py-3 text-sm font-semibold text-foreground transition-all duration-300 hover:border-accent/30 hover:bg-accent/5 hover:scale-105 active:scale-95"
               >
                 Explore Docs

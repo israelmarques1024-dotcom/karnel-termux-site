@@ -18,7 +18,7 @@ export default function Init() {
       <section className="py-12 px-4">
         <div className="max-w-4xl mx-auto">
           <AnimatedSection>
-            <h1 className="text-4xl font-bold font-mono mb-4">omni init — Inicialização de Projetos</h1>
+            <h1 className="text-4xl font-bold font-mono mb-4">karnel init — Inicialização de Projetos</h1>
             <p className="text-lg text-muted-foreground mb-8">
               Configure projetos existentes com dependências, estrutura de pastas e
               ferramentas pré-definidas. Comece a codar em segundos.
@@ -29,8 +29,8 @@ export default function Init() {
             <div className="card-hover bg-card border border-accent/50 rounded-lg p-6 mb-12">
               <h3 className="font-bold font-mono mb-4">Uso</h3>
               <CodeBlock
-                code={`omni init                     # Detecta tipo de projeto e configura
-omni init <template>          # Configura com template específico`}
+                code={`karnel init                     # Detecta tipo de projeto e configura
+karnel init <template>          # Configura com template específico`}
                 language="bash"
                 title="terminal"
               />
@@ -48,7 +48,7 @@ omni init <template>          # Configura com template específico`}
                   <span className="font-mono text-accent font-bold text-lg">{tpl.name}</span>
                   <p className="text-sm text-muted-foreground mt-2">{tpl.desc}</p>
                   <div className="mt-3">
-                    <CodeBlock code={`omni init ${tpl.name}`} language="bash" />
+                    <CodeBlock code={`karnel init ${tpl.name}`} language="bash" />
                   </div>
                 </div>
               </AnimatedSection>
@@ -59,7 +59,7 @@ omni init <template>          # Configura com template específico`}
             <h2 className="text-2xl font-bold font-mono mb-6">Exemplo</h2>
             <div className="card-hover bg-card border border-border rounded-lg p-6">
               <CodeBlock
-                code={`mkdir meu-projeto && cd meu-projeto && omni init next`}
+                code={`mkdir meu-projeto && cd meu-projeto && karnel init next`}
                 language="bash"
                 title="terminal"
               />

@@ -24,9 +24,9 @@ export default function Deploy() {
           <AnimatedSection delay={100}>
             <div className="card-hover bg-card border border-accent/50 rounded-lg p-6 mb-12">
               <h3 className="font-bold font-mono mb-4">Instalação Rápida</h3>
-              <CodeBlock code={`omni install deploy`} language="bash" title="terminal" />
+              <CodeBlock code={`karnel install deploy`} language="bash" title="terminal" />
               <p className="text-sm text-muted-foreground mt-4">
-                Instalar específicos: <code className="text-accent">omni install deploy --vercel --railway</code>
+                Instalar específicos: <code className="text-accent">karnel install deploy --vercel --railway</code>
               </p>
             </div>
           </AnimatedSection>

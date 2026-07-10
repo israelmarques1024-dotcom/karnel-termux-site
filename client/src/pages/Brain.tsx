@@ -3,12 +3,12 @@ import CodeBlock from "@/components/CodeBlock";
 import { AnimatedSection } from "@/components/AnimatedSection";
 
 const commands = [
-  { cmd: "omni brain add <text>", desc: "Salva um novo pensamento ou ideia" },
-  { cmd: "omni brain search <query>", desc: "Busca na memória com IA semântica" },
-  { cmd: "omni brain list", desc: "Lista todas as entradas salvas" },
-  { cmd: "omni brain graph", desc: "Visualiza conexões entre ideias num grafo" },
-  { cmd: "omni brain delete <id>", desc: "Remove uma entrada específica" },
-  { cmd: "omni brain clear", desc: "Limpa todas as entradas" },
+  { cmd: "karnel brain add <text>", desc: "Salva um novo pensamento ou ideia" },
+  { cmd: "karnel brain search <query>", desc: "Busca na memória com IA semântica" },
+  { cmd: "karnel brain list", desc: "Lista todas as entradas salvas" },
+  { cmd: "karnel brain graph", desc: "Visualiza conexões entre ideias num grafo" },
+  { cmd: "karnel brain delete <id>", desc: "Remove uma entrada específica" },
+  { cmd: "karnel brain clear", desc: "Limpa todas as entradas" },
 ];
 
 export default function Brain() {
@@ -17,7 +17,7 @@ export default function Brain() {
       <section className="py-12 px-4">
         <div className="max-w-4xl mx-auto">
           <AnimatedSection>
-            <h1 className="text-4xl font-bold font-mono mb-4">omni brain — Segundo Cérebro</h1>
+            <h1 className="text-4xl font-bold font-mono mb-4">karnel brain — Segundo Cérebro</h1>
             <p className="text-lg text-muted-foreground mb-8">
               Sistema de memória integrado com busca por IA e visualização em grafo.
               Salve ideias, comandos, trechos de código e encontre tudo rapidamente.
@@ -27,7 +27,7 @@ export default function Brain() {
           <AnimatedSection delay={100}>
             <div className="card-hover bg-card border border-accent/50 rounded-lg p-6 mb-12">
               <h3 className="font-bold font-mono mb-4">Uso</h3>
-              <CodeBlock code={"omni brain <action> [args]"} language="bash" title="terminal" />
+              <CodeBlock code={"karnel brain <action> [args]"} language="bash" title="terminal" />
             </div>
           </AnimatedSection>
 
@@ -64,9 +64,9 @@ export default function Brain() {
 
           <div className="space-y-6 mb-12">
             {[
-              { code: `omni brain add "Ideia: app de tarefas usando Electron + SQLite"`, desc: "Salva uma ideia no cérebro." },
-              { code: `omni brain search "como configurar postgres"`, desc: "Busca inteligente por contexto, não por palavra exata." },
-              { code: `omni brain graph`, desc: "Gera um grafo mostrando como suas ideias se conectam." },
+              { code: `karnel brain add "Ideia: app de tarefas usando Electron + SQLite"`, desc: "Salva uma ideia no cérebro." },
+              { code: `karnel brain search "como configurar postgres"`, desc: "Busca inteligente por contexto, não por palavra exata." },
+              { code: `karnel brain graph`, desc: "Gera um grafo mostrando como suas ideias se conectam." },
             ].map((ex, i) => (
               <AnimatedSection key={i} delay={400 + i * 80}>
                 <div className="card-hover bg-card border border-border rounded-lg p-6">
@@ -81,8 +81,8 @@ export default function Brain() {
             <h2 className="text-2xl font-bold font-mono mb-6">Como Funciona</h2>
             <div className="card-hover bg-card border border-border rounded-lg p-6">
               <p className="text-muted-foreground mb-4">
-                O <code className="text-accent">omni brain</code> armazena suas entradas em um banco local
-                (<code className="text-accent">$OMNI_DATA/brain/</code>) e usa embeddings de IA para
+                O <code className="text-accent">karnel brain</code> armazena suas entradas em um banco local
+                (<code className="text-accent">$KARNEL_DATA/brain/</code>) e usa embeddings de IA para
                 buscar por similaridade semântica. O grafo mostra conexões entre ideias
                 baseadas em palavras-chave e contexto compartilhado.
               </p>
