@@ -2,35 +2,26 @@ import { useState, useEffect } from "react";
 import { Link, useLocation } from "wouter";
 import {
   RiMenu3Line,
-  RiCloseLine,
   RiStarLine,
   RiHome4Line,
   RiBook3Line,
   RiCodeBoxLine,
-  RiCommandLine,
-  RiGroupLine,
   RiTerminalBoxLine,
-  RiBriefcaseLine,
+  RiBrainLine,
+  RiMicLine,
+  RiDatabase2Line,
   RiArrowUpLine,
   RiGithubLine,
-  RiDiscordLine,
-  RiTwitterXLine,
 } from "@remixicon/react";
 
 const navLinks = [
   { to: "/", icon: RiHome4Line, label: "Início" },
-  { to: "/docs", icon: RiBook3Line, label: "Documentação" },
-  { to: "/api", icon: RiCodeBoxLine, label: "API" },
-  { to: "/cli", icon: RiCommandLine, label: "CLI" },
-  { to: "/community", icon: RiGroupLine, label: "Comunidade" },
-  { to: "/playground", icon: RiTerminalBoxLine, label: "Playground" },
-  { to: "/changelog", icon: RiBriefcaseLine, label: "Changelog" },
-];
-
-const socialLinks = [
-  { href: "https://github.com/israel676767/omni", icon: RiGithubLine, label: "GitHub" },
-  { href: "https://discord.com", icon: RiDiscordLine, label: "Discord" },
-  { href: "https://twitter.com", icon: RiTwitterXLine, label: "Twitter" },
+  { to: "/omni", icon: RiBook3Line, label: "Documentação" },
+  { to: "/omni/ai", icon: RiCodeBoxLine, label: "IA" },
+  { to: "/termux", icon: RiTerminalBoxLine, label: "Termux" },
+  { to: "/omni/brain", icon: RiBrainLine, label: "Brain" },
+  { to: "/omni/voice", icon: RiMicLine, label: "Voice" },
+  { to: "/omni/pg", icon: RiDatabase2Line, label: "PostgreSQL" },
 ];
 
 function ScrollToTop() {
@@ -138,23 +129,20 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         </nav>
 
         <div className="border-t border-border px-4 py-4">
-          <div className="flex items-center justify-center gap-4">
-            {socialLinks.map((link) => {
-              const Icon = link.icon;
-              return (
-                <a
-                  key={link.label}
-                  href={link.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-muted-foreground transition-all duration-200 hover:text-accent hover:scale-110"
-                  aria-label={link.label}
-                >
-                  <Icon size={18} />
-                </a>
-              );
-            })}
+          <div className="flex items-center justify-center gap-3">
+            <a
+              href="https://github.com/israel676767/omni"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-muted-foreground transition-all duration-200 hover:text-accent hover:scale-110"
+              aria-label="GitHub"
+            >
+              <RiGithubLine size={18} />
+            </a>
           </div>
+          <p className="mt-2 text-center text-[10px] text-muted-foreground/60">
+            Omni Catalyst — MIT
+          </p>
         </div>
       </aside>
 

@@ -104,7 +104,7 @@ pkg install termux-api`}
                     Baixe e instale o aplicativo Termux:API do GitHub.
                   </p>
                   <a
-                    href="https://github.com/termux/termux-api/releases/download/v0.53.0/termux-api-app_v0.53.0+github.debug.apk"
+                    href="https://github.com/termux/termux-api/releases/latest"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="group inline-flex items-center gap-2 rounded-xl bg-accent px-5 py-2.5 text-sm font-semibold text-accent-foreground shadow-lg shadow-accent/25 transition-all duration-300 hover:scale-105 hover:shadow-xl active:scale-95"

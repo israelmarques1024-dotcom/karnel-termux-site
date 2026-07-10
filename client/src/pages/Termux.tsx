@@ -47,7 +47,7 @@ export default function Termux() {
           <AnimatedSection delay={100}>
             <div className="flex gap-4 mb-12">
               <a
-                href="https://github.com/termux/termux-app/releases/download/v0.118.3/termux-app_v0.118.3+github-debug_universal.apk"
+                href="https://github.com/termux/termux-app/releases/latest"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group inline-flex items-center gap-2 rounded-xl bg-accent px-6 py-3 text-sm font-semibold text-accent-foreground shadow-lg shadow-accent/25 transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-accent/40 active:scale-95"
@@ -119,7 +119,7 @@ export default function Termux() {
               </p>
               <div className="flex gap-4 flex-wrap">
                 <a
-                  href="https://github.com/termux/termux-app/releases/download/v0.118.3/termux-app_v0.118.3+github-debug_universal.apk"
+                  href="https://github.com/termux/termux-app/releases/latest"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="group inline-flex items-center gap-2 rounded-xl bg-accent px-5 py-2.5 text-sm font-semibold text-accent-foreground shadow-lg shadow-accent/25 transition-all duration-300 hover:scale-105 hover:shadow-xl active:scale-95"
