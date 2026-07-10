@@ -169,7 +169,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           </p>
           <p className="mt-3">
             <a
-              href="https://github.com/israel676767/karnel"
+              href="https://github.com/israel676767/karnel-termux"
               target="_blank"
               rel="noopener noreferrer"
               className="text-accent hover:underline"
@@ -187,7 +187,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             </a>
             {" · "}
             <a
-              href="https://github.com/israel676767/karnel/blob/main/LICENSE"
+              href="https://github.com/israel676767/karnel-termux/blob/main/LICENSE"
               target="_blank"
               rel="noopener noreferrer"
               className="text-accent hover:underline"
