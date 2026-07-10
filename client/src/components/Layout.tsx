@@ -47,18 +47,19 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       >
         <div className="flex flex-col h-full p-6">
           {/* Logo */}
-          <Link href="/">
-            <a className="flex items-center gap-3 mb-8 hover:opacity-90 transition-all duration-300 group">
-              <img
-                src="/omni-logo-pixel.svg"
-                alt="Omni Catalyst"
-                className="w-12 h-12 drop-shadow-[0_0_12px_rgba(168,85,247,0.5)] group-hover:drop-shadow-[0_0_20px_rgba(168,85,247,0.8)] transition-all duration-300"
-              />
-              <div>
-                <h1 className="font-bold text-lg font-mono text-foreground group-hover:text-accent transition-colors">OMNI</h1>
-                <p className="text-xs text-muted-foreground group-hover:text-accent/70 transition-colors">CATALYST</p>
-              </div>
-            </a>
+          <Link
+            href="/"
+            className="flex items-center gap-3 mb-8 hover:opacity-90 transition-all duration-300 group"
+          >
+            <img
+              src="/omni-logo-pixel.svg"
+              alt="Omni Catalyst"
+              className="w-12 h-12 drop-shadow-[0_0_12px_rgba(168,85,247,0.5)] group-hover:drop-shadow-[0_0_20px_rgba(168,85,247,0.8)] transition-all duration-300"
+            />
+            <div>
+              <h1 className="font-bold text-lg font-mono text-foreground group-hover:text-accent transition-colors">OMNI</h1>
+              <p className="text-xs text-muted-foreground group-hover:text-accent/70 transition-colors">CATALYST</p>
+            </div>
           </Link>
 
           {/* Navigation */}
@@ -82,17 +83,17 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                   {item.label}
                 </button>
               ) : (
-                <Link key={item.href} href={item.href || "/"}>
-                  <a
-                    className={`block px-4 py-2.5 rounded-md transition-all duration-200 font-mono text-sm font-medium ${
-                      isActive
-                        ? "bg-gradient-to-r from-accent/20 to-accent/10 text-accent border-l-2 border-accent shadow-sm shadow-accent/20"
-                        : "text-sidebar-foreground hover:bg-sidebar-primary/15 hover:text-accent/80"
-                    }`}
-                    onClick={() => setSidebarOpen(false)}
-                  >
-                    {item.label}
-                  </a>
+                <Link
+                  key={item.href}
+                  href={item.href || "/"}
+                  className={`block px-4 py-2.5 rounded-md transition-all duration-200 font-mono text-sm font-medium ${
+                    isActive
+                      ? "bg-gradient-to-r from-accent/20 to-accent/10 text-accent border-l-2 border-accent shadow-sm shadow-accent/20"
+                      : "text-sidebar-foreground hover:bg-sidebar-primary/15 hover:text-accent/80"
+                  }`}
+                  onClick={() => setSidebarOpen(false)}
+                >
+                  {item.label}
                 </Link>
               );
             })}
@@ -107,8 +108,8 @@ export default function Layout({ children }: { children: React.ReactNode }) {
               }}
               className="block w-full text-center px-4 py-2 bg-accent/20 text-accent rounded-lg font-mono text-sm font-medium hover:bg-accent/30 transition-colors"
             >
-              💙 Support Project
-            </button>
+              Support Project
+             </button>
             <p className="text-xs text-muted-foreground font-mono">
               <span className="text-accent">v1.0.0</span> • Android + Termux
             </p>
@@ -122,15 +123,16 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         {/* Header */}
         <header className="sticky top-0 z-30 bg-card border-b border-border">
           <div className="flex items-center justify-between p-4 lg:hidden">
-            <Link href="/">
-              <a className="flex items-center gap-2">
-                <img
-                  src="/omni-logo-pixel.svg"
-                  alt="Omni Catalyst"
-                  className="w-9 h-9 drop-shadow-[0_0_8px_rgba(168,85,247,0.4)]"
-                />
-                <span className="font-bold font-mono text-sm">OMNI</span>
-              </a>
+            <Link
+              href="/"
+              className="flex items-center gap-2"
+            >
+              <img
+                src="/omni-logo-pixel.svg"
+                alt="Omni Catalyst"
+                className="w-9 h-9 drop-shadow-[0_0_8px_rgba(168,85,247,0.4)]"
+              />
+              <span className="font-bold font-mono text-sm">OMNI</span>
             </Link>
             <Button
               variant="ghost"
@@ -150,7 +152,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         {/* Footer */}
         <footer className="bg-card border-t border-border p-6 text-center text-sm text-muted-foreground">
           <p>
-            Omni Catalyst — Built with ❤️ by{" "}
+            Omni Catalyst — Built by{" "}
             <a
               href="https://github.com/israel676767"
               target="_blank"
