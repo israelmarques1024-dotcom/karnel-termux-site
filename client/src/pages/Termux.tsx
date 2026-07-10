@@ -1,4 +1,4 @@
-import { Check, X } from "lucide-react";
+import { Check, X, Lock, Zap, Shield, Wrench } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Layout from "@/components/Layout";
 
@@ -28,22 +28,22 @@ export default function Termux() {
           <div className="grid md:grid-cols-2 gap-6 mb-12">
             {[
               {
-                icon: "🔒",
+                icon: <Lock size={28} />,
                 title: "Seguro",
                 desc: "Ambiente Linux isolado com recursos de segurança integrados",
               },
               {
-                icon: "⚡",
+                icon: <Zap size={28} />,
                 title: "Rápido",
                 desc: "Terminal leve que funciona perfeitamente em qualquer Android",
               },
               {
-                icon: "💪",
+                icon: <Shield size={28} />,
                 title: "Poderoso",
                 desc: "Acesso a um shell Linux completo com gerenciador de pacotes",
               },
               {
-                icon: "🔧",
+                icon: <Wrench size={28} />,
                 title: "Flexível",
                 desc: "Instale Python, Node.js, Git e milhares de outros pacotes",
               },
@@ -88,21 +88,21 @@ export default function Termux() {
                   { feature: "Configuração com um comando", termux: false },
                   { feature: "Sistema de módulos & CLI framework", termux: false },
                   { feature: "30 agentes de IA pré-configurados", termux: false },
-                  { feature: "code-server (20+ linguagens)", termux: false },
+                  { feature: "code-server (VS Code no navegador)", termux: false },
                   { feature: "ZSH + plugins + memória persistente", termux: false },
                   { feature: "Deploy direto (Vercel, Railway, Netlify)", termux: false },
                   { feature: "Assistente de voz integrado", termux: false },
-                  { feature: "Banco PostgreSQL + Redis gerenciados", termux: false },
+                  { feature: "PostgreSQL gerenciado (omni pg)", termux: false },
                   { feature: "Diagnóstico automático (omni doctor)", termux: false },
                   { feature: "Gerenciamento de secrets (omni env)", termux: false },
                   { feature: "Multi-linguagem (Python, Node, Go, Rust)", termux: false },
                   { feature: "Git + GitHub CLI pré-configurados", termux: false },
                   { feature: "Mecanismo de atualização centralizado", termux: false },
-                  { feature: "Instalação automatizada de pacotes", termux: false },
-                  { feature: "Editor profissional (code-server)", termux: false },
+                  { feature: "Segundo cérebro (omni brain)", termux: false },
+                  { feature: "Inicialização de projetos (omni init)", termux: false },
                   { feature: "Ambiente configurado em segundos", termux: false },
-                  { feature: "Shell aprimorado (ZSH + plugins)", termux: false },
-                  { feature: "Diagnóstico integrado", termux: false },
+                  { feature: "Gerenciamento de variáveis de ambiente", termux: false },
+                  { feature: "Documentação interativa (omni show)", termux: false },
                 ].map((row, i) => (
                   <tr
                     key={i}

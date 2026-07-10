@@ -106,11 +106,16 @@ gemini            Google Gemini CLI`}
                 <tbody>
                   {[
                     { mod: "ai", cmd: "omni show ai --opencode", tools: "opencode, ollama, claude, gemini" },
+                    { mod: "lang", cmd: "omni show lang --nodejs", tools: "nodejs, python, rust, golang" },
                     { mod: "db", cmd: "omni show db --postgresql", tools: "postgresql, mariadb, sqlite, mongodb" },
                     { mod: "dev", cmd: "omni show dev --gh", tools: "gh, wget, curl, fzf" },
-                    { mod: "npm", cmd: "omni show npm --typescript", tools: "typescript, prettier, eslint" },
+                    { mod: "npm", cmd: "omni show npm --typescript", tools: "typescript, nestjs, prettier" },
+                    { mod: "shell", cmd: "omni show shell --powerlevel10k", tools: "powerlevel10k, zsh-syntax-highlighting" },
                     { mod: "editor", cmd: "omni show editor --code-server", tools: "code-server" },
                     { mod: "deploy", cmd: "omni show deploy --vercel", tools: "vercel, railway, netlify" },
+                    { mod: "ui", cmd: "omni show ui --font", tools: "font, cursor, extra-keys, banner" },
+                    { mod: "auto", cmd: "omni show auto --n8n", tools: "n8n" },
+                    { mod: "voice", cmd: "omni show voice --termux-api", tools: "termux-api" },
                   ].map((row, i) => (
                     <tr key={i} className="border-b border-border hover:bg-secondary/20 transition-colors">
                       <td className="py-3 px-4 font-mono font-bold">{row.mod}</td>

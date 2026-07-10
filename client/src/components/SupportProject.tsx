@@ -91,7 +91,7 @@ export default function SupportProject() {
           {/* === HEADER === */}
           <div className="px-6 pt-10 pb-6 text-center border-b border-white/[0.06]">
             <div className="mx-auto mb-4 flex items-center justify-center w-14 h-14 rounded-xl bg-gradient-to-br from-purple-500 to-pink-500 shadow-lg">
-              <span className="text-xl">❤️</span>
+              <span className="text-xl">+</span>
             </div>
             <h2 id="sp-title" className="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-purple-300 via-pink-300 to-cyan-300 bg-clip-text text-transparent">
               Apoie o Projeto

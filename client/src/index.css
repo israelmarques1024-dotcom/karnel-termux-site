@@ -236,7 +236,7 @@ details summary::marker {
     padding-right: 1rem;
   }
 
-  .flex {
+  .flex-safe {
     min-height: 0;
     min-width: 0;
   }

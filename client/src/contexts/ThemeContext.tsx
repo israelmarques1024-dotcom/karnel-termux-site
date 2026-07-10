@@ -15,11 +15,9 @@ const ThemeContext = createContext<ThemeContextType>({
 export function ThemeProvider({
   children,
   defaultTheme = "dark",
-  switchable,
 }: {
   children: React.ReactNode;
   defaultTheme?: Theme;
-  switchable?: boolean;
 }) {
   const [theme, setTheme] = useState<Theme>(
     () => (localStorage.getItem("theme") as Theme) || defaultTheme

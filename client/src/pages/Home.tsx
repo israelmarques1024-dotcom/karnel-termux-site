@@ -86,18 +86,14 @@ export default function Home() {
 
           <div className="flex gap-4 justify-center mb-16 flex-wrap">
             <Link href="/termux">
-              <a>
-                <Button size="lg" className="gap-2 font-semibold text-base">
-                  Get Started <ArrowRight size={20} />
-                </Button>
-              </a>
+              <Button size="lg" className="gap-2 font-semibold text-base">
+                Get Started <ArrowRight size={20} />
+              </Button>
             </Link>
             <Link href="/omni">
-              <a>
-                <Button size="lg" variant="outline" className="font-semibold text-base">
-                  Explore Docs
-                </Button>
-              </a>
+              <Button size="lg" variant="outline" className="font-semibold text-base">
+                Explore Docs
+              </Button>
             </Link>
           </div>
 
@@ -244,16 +240,14 @@ export default function Home() {
                 desc: "Manage API keys securely. Never hardcode secrets.",
               },
             ].map((feature, i) => (
-              <Link key={i} href={feature.href}>
-                <a className="block bg-background border border-border rounded-lg p-6 hover:border-accent/30 transition-colors cursor-pointer">
-                  <div className={`mb-3 ${iconColors[i % iconColors.length]}`}>{feature.icon}</div>
-                  <h3 className="text-base font-bold font-mono mb-2">
-                    {feature.title}
-                  </h3>
-                  <p className="text-sm text-muted-foreground leading-relaxed">
-                    {feature.desc}
-                  </p>
-                </a>
+              <Link key={i} href={feature.href} className="block bg-background border border-border rounded-lg p-6 hover:border-accent/30 transition-colors cursor-pointer">
+                <div className={`mb-3 ${iconColors[i % iconColors.length]}`}>{feature.icon}</div>
+                <h3 className="text-base font-bold font-mono mb-2">
+                  {feature.title}
+                </h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  {feature.desc}
+                </p>
               </Link>
             ))}
           </div>
@@ -358,11 +352,9 @@ export default function Home() {
           </p>
           <div className="flex gap-4 justify-center flex-wrap">
             <Link href="/termux">
-              <a>
-                <Button size="lg" className="gap-2 font-semibold">
-                  Get Started Now <ArrowRight size={20} />
-                </Button>
-              </a>
+              <Button size="lg" className="gap-2 font-semibold">
+                Get Started Now <ArrowRight size={20} />
+              </Button>
             </Link>
             <a
               href="https://github.com/israel676767/omni"

@@ -6,13 +6,14 @@ export default function OmniDocs() {
   const modules = [
     { name: "Pacotes de Linguagem", desc: "Node, Python, Perl, PHP, Rust, C/C++, Go", cmd: "omni install lang" },
     { name: "Bancos de Dados", desc: "PostgreSQL, MariaDB, SQLite, MongoDB", cmd: "omni install db" },
-    { name: "Ferramentas de IA", desc: "OpenCode, Gentle AI, Claude Code, etc.", cmd: "omni install ai" },
-    { name: "Editor de Código", desc: "code-server (VS Code in browser)", cmd: "omni install editor" },
+    { name: "Ferramentas de IA", desc: "30 agentes (OpenCode, Claude, Gemini, Ollama, etc.)", cmd: "omni install ai" },
+    { name: "Editor de Código", desc: "code-server (VS Code no navegador)", cmd: "omni install editor" },
     { name: "Ferramentas de Desenvolvimento", desc: "GitHub CLI, wget, curl, fzf, etc.", cmd: "omni install dev" },
-    { name: "Módulos Node.js", desc: "Pacotes npm globais do Node.js", cmd: "omni install npm" },
+    { name: "Módulos Node.js", desc: "Pacotes npm globais (TypeScript, NestJS, Prettier)", cmd: "omni install npm" },
     { name: "Shell ZSH", desc: "ZSH + Oh My Zsh + 10 plugins", cmd: "omni install shell" },
     { name: "Interface Termux", desc: "Fonte, Cursor, Extra-keys, Banner", cmd: "omni install ui" },
-    { name: "Automação", desc: "Ferramentas de Automação (n8n)", cmd: "omni install auto" },
+    { name: "Comando de Voz", desc: "Speech-to-agent com Termux:API", cmd: "omni install voice" },
+    { name: "Automação", desc: "n8n e ferramentas de automação", cmd: "omni install auto" },
     { name: "CLIs de Deploy", desc: "Vercel, Railway, Netlify", cmd: "omni install deploy" },
   ];
 
@@ -20,9 +21,11 @@ export default function OmniDocs() {
     { cmd: "omni --version", desc: "Mostrar versão atual" },
     { cmd: "omni brain", desc: "Segundo cérebro — salvar e pesquisar memórias" },
     { cmd: "omni env", desc: "Gerenciar variáveis de ambiente" },
+    { cmd: "omni ia", desc: "Gerenciar agentes de IA, sessões e rotas" },
     { cmd: "omni install", desc: "Instalar módulos e pacotes" },
     { cmd: "omni show", desc: "Mostrar documentação de qualquer ferramenta" },
     { cmd: "omni doctor", desc: "Diagnosticar ambiente Termux & Omni (30+ verificações)" },
+    { cmd: "omni start", desc: "Iniciar serviços (editor, etc.)" },
     { cmd: "omni update", desc: "Atualizar módulos ou framework" },
     { cmd: "omni uninstall", desc: "Remover módulos instalados" },
     { cmd: "omni reinstall", desc: "Desinstalar + instalar módulos" },
@@ -30,7 +33,7 @@ export default function OmniDocs() {
     { cmd: "omni open", desc: "Abrir documentação no navegador" },
     { cmd: "omni list", desc: "Listar ferramentas disponíveis nos módulos" },
     { cmd: "omni pg", desc: "Gerenciador de banco de dados PostgreSQL" },
-    { cmd: "omni init", desc: "Configurar projetos existentes" },
+    { cmd: "omni init", desc: "Inicializar projetos com templates" },
   ];
 
   return (
@@ -146,11 +149,11 @@ omni reinstall dev --gh --fzf               # Reinstalar apenas gh e fzf`}
             </p>
             <CodeBlock
               code={`omni voice                     # Mostrar ajuda
- omni voice opencode             # Capturar → code-server → opencode run
- omni voice text                 # Capturar → code-server → stdout
- omni voice '!'                  # Atalho para "text"
- omni voice claude-code --lang pt-BR  # Português → claude
- omni voice opencode --raw       # Captura direta, sem edição`}
+omni voice opencode             # Capturar → code-server → opencode run
+omni voice text                 # Capturar → code-server → stdout
+omni voice '!'                  # Atalho para "text"
+omni voice claude-code --lang pt-BR  # Português → claude
+omni voice opencode --raw       # Captura direta, sem edição`}
               language="bash"
               title="terminal"
             />

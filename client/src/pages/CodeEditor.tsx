@@ -194,15 +194,14 @@ omni start editor            # Inicia o servidor na porta 8080`}
           <div className="bg-card border border-border rounded-lg p-6 mb-12">
             <h3 className="font-bold font-mono mb-2">Extensões VS Code</h3>
             <p className="text-muted-foreground mb-4">
-              Instale extensões diretamente pelo painel de extensões do code-server:
+              Instale extensões via CLI (recomendado no celular) ou pelo painel de extensões:
             </p>
             <CodeBlock
-              code={`# Abrir painel de extensões: Ctrl+Shift+X
-# Buscar e instalar extensões como:
-#   - Python (ms-python)
-#   - TypeScript (ms-vscode)
-#   - ESLint
-#   - Prettier`}
+              code={`# Via CLI (recomendado para mobile):
+code-server --install-extension ms-python.python
+code-server --install-extension esbenp.prettier-vscode
+
+# Ou pelo painel: Ctrl+Shift+X`}
               language="bash"
               title="code-server extensions"
             />
@@ -260,22 +259,22 @@ omni start editor            # Inicia o servidor na porta 8080`}
               },
               {
                 title: "Erros após atualização",
-                desc: "Algumas atualizacoes podem quebrar a compatibilidade. Limpe o cache e reinstale.",
+                desc: "Algumas atualizações podem quebrar a compatibilidade. Limpe o cache e reinstale.",
                 fix: "rm -rf ~/.local/share/code-server/cachedExtensionVSIXs/\nomni reinstall editor",
               },
               {
                 title: "Problemas de desempenho",
-                desc: "Desative extensoes pesadas ou reduza extensoes para apenas linguagens necessarias.",
-                fix: "# Em config.yaml ou settings.json, desative extensoes desnecessarias",
+                desc: "Desative extensões pesadas ou reduza extensões para apenas linguagens necessárias.",
+                fix: "# Em config.yaml ou settings.json, desative extensões desnecessárias",
               },
               {
-                title: "GitHub Copilot nao esta funcionando",
-                desc: "Certifique-se de estar autenticado com o GitHub na extensao Copilot.",
-                fix: "# Abra o code-server e faca login via extensao GitHub Copilot",
+                title: "GitHub Copilot não está funcionando",
+                desc: "Certifique-se de estar autenticado com o GitHub na extensão Copilot.",
+                fix: "# Abra o code-server e faça login via extensão GitHub Copilot",
               },
               {
                 title: "Reinstalar do zero",
-                desc: "Facca backup da configuracao, remova o diretorio code-server e reinstale.",
+                desc: "Faça backup da configuração, remova o diretório code-server e reinstale.",
                 fix: `mv ~/.config/code-server ~/.config/code-server.bak
 omni reinstall editor`,
               },
@@ -292,15 +291,15 @@ omni reinstall editor`,
           <h2 className="text-2xl font-bold font-mono mb-6">Estrutura de Configuração</h2>
           <CodeBlock
             code={`~/.config/code-server/
-└── config.yaml                    # Configuracoes do servidor
+└── config.yaml                    # Configurações do servidor
 
 ~/.local/share/code-server/
-├── extensions/                    # Extensoes VS Code instaladas
-├── cachedExtensionVSIXs/         # Cache de extensoes
+├── extensions/                    # Extensões VS Code instaladas
+├── cachedExtensionVSIXs/         # Cache de extensões
 └── workspaceStorage/             # Dados por workspace
 
 ~/.code-server/
-└── ../                            # Dados de sessao e estado`}
+└── ../                            # Dados de sessão e estado`}
             language="bash"
             title="code-server structure"
           />
