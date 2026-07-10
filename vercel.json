@@ -1,5 +1,4 @@
 {
-  "node": "22.x",
   "buildCommand": "pnpm build",
   "outputDirectory": "dist/public",
   "devCommand": "pnpm dev",
