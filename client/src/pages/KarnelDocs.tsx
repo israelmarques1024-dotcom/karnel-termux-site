@@ -63,13 +63,13 @@ export default function KarnelDocs() {
               <h3 className="font-bold font-mono mb-4">Instalação Rápida</h3>
               <div className="space-y-3">
                 <CodeBlock
-                  code={`bash -c "$(curl -fsSL https://raw.githubusercontent.com/israel676767/kerneltermux/main/install.sh)"`}
+                  code={`bash -c "$(curl -fsSL https://raw.githubusercontent.com/israel676767/karnel-termux/main/install.sh)"`}
                   language="bash"
                   title="quick install"
                 />
                 <p className="text-center text-xs text-muted-foreground">ou</p>
                 <CodeBlock
-                  code={`npm install -g kerneltermux`}
+                  code={`npm install -g karnel-termux`}
                   language="bash"
                   title="npm install"
                 />
@@ -189,7 +189,7 @@ export default function KarnelDocs() {
                 Explore o repositório completo do KernelTermux no GitHub para documentação detalhada e exemplos.
               </p>
               <a
-                href="https://github.com/israel676767/kerneltermux"
+                href="https://github.com/israel676767/karnel-termux"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group inline-flex items-center gap-2 rounded-xl bg-accent px-6 py-3 text-sm font-semibold text-accent-foreground shadow-lg shadow-accent/25 transition-all duration-300 hover:scale-105 hover:shadow-xl active:scale-95"

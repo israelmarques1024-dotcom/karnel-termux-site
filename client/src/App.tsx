@@ -7,6 +7,7 @@ import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import useTransitionLocation from "./hooks/useTransitionLocation";
 import TransitionOverlay from "./components/TransitionOverlay";
+import Layout from "@/components/Layout";
 
 const Home = lazy(() => import("@/pages/Home"));
 const Termux = lazy(() => import("@/pages/Termux"));
@@ -57,7 +58,9 @@ function App() {
         <TooltipProvider>
           <Router hook={useTransitionLocation}>
             <Toaster />
-            <RouterOutlet />
+            <Layout>
+              <RouterOutlet />
+            </Layout>
             <TransitionOverlay />
           </Router>
         </TooltipProvider>

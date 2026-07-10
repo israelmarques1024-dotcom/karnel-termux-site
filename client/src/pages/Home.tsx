@@ -25,9 +25,9 @@ const stats = [
 ];
 
 const installOptions = [
-  { name: "curl", code: `bash -c "$(curl -fsSL https://raw.githubusercontent.com/israel676767/kerneltermux/main/install.sh)"` },
-  { name: "npm", code: "npm install -g kerneltermux" },
-  { name: "pnpm", code: "pnpm add -g kerneltermux" },
+  { name: "curl", code: `bash -c "$(curl -fsSL https://raw.githubusercontent.com/israel676767/karnel-termux/main/install.sh)"` },
+  { name: "npm", code: "npm install -g karnel-termux" },
+  { name: "pnpm", code: "pnpm add -g karnel-termux" },
 ];
 
 const features = [
@@ -304,7 +304,7 @@ export default function Home() {
           <AnimatedSection delay={500}>
             <div className="text-center mt-12">
               <a
-                href="https://github.com/israel676767/kerneltermux"
+                href="https://github.com/israel676767/karnel-termux"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="star-btn inline-flex items-center gap-2 sm:gap-3 px-5 sm:px-8 py-3 sm:py-4 rounded-xl font-bold text-sm sm:text-base"
@@ -389,7 +389,7 @@ export default function Home() {
                 <ArrowRight size={18} className="transition-transform duration-300 group-hover:translate-x-1" />
               </Link>
               <a
-                href="https://github.com/israel676767/kerneltermux"
+                href="https://github.com/israel676767/karnel-termux"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group inline-flex items-center gap-2 rounded-xl border border-border bg-card/50 px-7 py-3.5 text-sm font-semibold text-foreground transition-all duration-300 hover:border-accent/30 hover:bg-accent/5 hover:scale-105 active:scale-95"
