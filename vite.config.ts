@@ -1,23 +1,39 @@
 import react from "@vitejs/plugin-react";
-import tailwindcss from "@tailwindcss/vite";
 import path from "node:path";
-import { fileURLToPath } from "node:url";
 import { defineConfig } from "vite";
 
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
-
 export default defineConfig({
-  plugins: [tailwindcss(), react()],
+  plugins: [react()],
   resolve: {
     alias: {
-      "@": path.resolve(__dirname, "client", "src"),
+      "@": path.resolve(import.meta.dirname, "client", "src"),
     },
   },
-  envDir: path.resolve(__dirname),
-  root: path.resolve(__dirname, "client"),
+  envDir: path.resolve(import.meta.dirname),
+  root: path.resolve(import.meta.dirname, "client"),
   build: {
-    outDir: path.resolve(__dirname, "dist/public"),
+    outDir: path.resolve(import.meta.dirname, "dist/public"),
     emptyOutDir: true,
+    chunkSizeWarningLimit: 700,
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          react: ["react", "react-dom"],
+          router: ["wouter"],
+          radix: [
+            "@radix-ui/react-dialog",
+            "@radix-ui/react-label",
+            "@radix-ui/react-separator",
+            "@radix-ui/react-slot",
+            "@radix-ui/react-tabs",
+            "@radix-ui/react-toggle",
+            "@radix-ui/react-tooltip",
+          ],
+          icons: ["lucide-react"],
+          qrcode: ["qrcode"],
+        },
+      },
+    },
   },
   server: {
     port: 3000,

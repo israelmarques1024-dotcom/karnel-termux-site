@@ -1,4 +1,5 @@
-import { useState, useCallback, useRef } from "react";
+import { useState, useCallback, useRef, useEffect } from "react";
+import QRCode from "qrcode";
 
 // ===== Configuration =====
 const PIX_KEY = "037f07bd-a326-42b6-a5a3-f29b36e703db";
@@ -38,8 +39,6 @@ const PIX_EMV = (() => {
   return body + crc16(body);
 })();
 
-const QR_URL = `https://api.qrserver.com/v1/create-qr-code/?size=240x240&data=${encodeURIComponent(PIX_EMV)}`;
-
 // ===== Clipboard =====
 async function copy(text: string): Promise<boolean> {
   try {
@@ -65,7 +64,16 @@ async function copy(text: string): Promise<boolean> {
 
 export default function SupportProject() {
   const [st, setSt] = useState<"idle" | "copied" | "error">("idle");
+  const [qrDataUrl, setQrDataUrl] = useState<string>("");
   const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  useEffect(() => {
+    let active = true;
+    QRCode.toDataURL(PIX_EMV, { width: 210, margin: 1, color: { dark: "#0a0a0a", light: "#ffffff" } })
+      .then((url) => { if (active) setQrDataUrl(url); })
+      .catch(() => { if (active) setQrDataUrl(""); });
+    return () => { active = false; };
+  }, []);
 
   const doCopy = useCallback(async () => {
     if (timerRef.current !== null) {
@@ -104,7 +112,7 @@ export default function SupportProject() {
             {/* QR Code */}
             <div className="flex flex-col items-center gap-2">
               <div className="bg-white/[0.03] rounded-xl p-3 border border-white/[0.06]">
-                <img src={QR_URL} alt="QR Code Pix" width={210} height={210} className="rounded-lg" loading="lazy" />
+                <img src={qrDataUrl} alt="QR Code Pix" width={210} height={210} className="rounded-lg" loading="lazy" />
               </div>
               <p className="text-xs text-gray-600">Escaneie com qualquer app de banco</p>
             </div>

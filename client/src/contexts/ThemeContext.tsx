@@ -19,9 +19,10 @@ export function ThemeProvider({
   children: React.ReactNode;
   defaultTheme?: Theme;
 }) {
-  const [theme, setTheme] = useState<Theme>(
-    () => (localStorage.getItem("theme") as Theme) || defaultTheme
-  );
+  const [theme, setTheme] = useState<Theme>(() => {
+    const stored = localStorage.getItem("theme");
+    return stored === "light" || stored === "dark" ? stored : defaultTheme;
+  });
 
   useEffect(() => {
     document.documentElement.classList.toggle("dark", theme === "dark");

@@ -1,190 +1,208 @@
-import { useState, useEffect } from "react";
 import { Link, useLocation } from "wouter";
-import {
-  RiMenu3Line,
-  RiStarLine,
-  RiHome4Line,
-  RiBook3Line,
-  RiCodeBoxLine,
-  RiTerminalBoxLine,
-  RiBrainLine,
-  RiMicLine,
-  RiDatabase2Line,
-  RiArrowUpLine,
-  RiGithubLine,
-} from "@remixicon/react";
-
-const navLinks = [
-  { to: "/", icon: RiHome4Line, label: "Início" },
-  { to: "/omni", icon: RiBook3Line, label: "Documentação" },
-  { to: "/omni/ai", icon: RiCodeBoxLine, label: "IA" },
-  { to: "/termux", icon: RiTerminalBoxLine, label: "Termux" },
-  { to: "/omni/brain", icon: RiBrainLine, label: "Brain" },
-  { to: "/omni/voice", icon: RiMicLine, label: "Voice" },
-  { to: "/omni/pg", icon: RiDatabase2Line, label: "PostgreSQL" },
-];
-
-function ScrollToTop() {
-  const [visible, setVisible] = useState(false);
-
-  useEffect(() => {
-    const onScroll = () => setVisible(window.scrollY > 400);
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
-  return (
-    <button
-      onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-      className={`fixed bottom-6 right-6 z-50 flex h-11 w-11 items-center justify-center rounded-full bg-accent text-accent-foreground shadow-lg shadow-accent/20 transition-all duration-400 hover:scale-110 hover:shadow-xl hover:shadow-accent/30 active:scale-95 ${
-        visible
-          ? "translate-y-0 opacity-100"
-          : "pointer-events-none translate-y-4 opacity-0"
-      }`}
-      aria-label="Voltar ao topo"
-    >
-      <RiArrowUpLine size={20} />
-    </button>
-  );
-}
+import { Menu, X } from "lucide-react";
+import { useState } from "react";
+import { Button } from "@/components/ui/button";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
+  const [location, navigate] = useLocation();
   const [sidebarOpen, setSidebarOpen] = useState(false);
-  const [pathname] = useLocation();
 
-  useEffect(() => {
-    setSidebarOpen(false);
-  }, [pathname]);
+  const scrollToSupport = () => {
+    if (location !== "/") {
+      navigate("/");
+      setTimeout(() => {
+        document.getElementById("support-project")?.scrollIntoView({ behavior: "smooth" });
+      }, 120);
+    } else {
+      document.getElementById("support-project")?.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
+  const navItems = [
+    { label: "Get Started", href: "/" },
+    { label: "Support Project", action: scrollToSupport },
+    { label: "Termux", href: "/termux" },
+    { label: "Termux:API", href: "/termux/api" },
+    { label: "Omni", href: "/omni" },
+    { label: "AI Tools", href: "/omni/ai" },
+    { label: "Editor", href: "/omni/editor" },
+    { label: "Linux Stack", href: "/omni/linux" },
+    { label: "Second Brain", href: "/omni/brain" },
+    { label: "Voice", href: "/omni/voice" },
+    { label: "PG", href: "/omni/pg" },
+    { label: "Init", href: "/omni/init" },
+    { label: "Env", href: "/omni/env" },
+    { label: "Deploy", href: "/omni/deploy" },
+    { label: "Doctor", href: "/omni/doctor" },
+    { label: "Show", href: "/omni/show" },
+  ];
 
   return (
-    <div className="flex min-h-dvh">
+    <div className="flex min-h-screen bg-background text-foreground">
+      {/* Sidebar */}
       <aside
-        className={`fixed inset-y-0 left-0 z-40 flex w-64 flex-col border-r border-border bg-sidebar transition-transform duration-300 ease-in-out lg:translate-x-0 ${
+        className={`fixed left-0 top-0 z-40 h-screen w-64 bg-sidebar border-r border-sidebar-border transition-transform duration-300 lg:relative lg:translate-x-0 ${
           sidebarOpen ? "translate-x-0" : "-translate-x-full"
         }`}
       >
-        <div className="flex h-16 items-center gap-2.5 border-b border-border px-5">
-          <div className="brand-gem-sidebar relative flex h-8 w-8 shrink-0 items-center justify-center">
-            <div className="absolute inset-0 rounded-lg bg-gradient-to-br from-accent to-purple-600 opacity-20 blur-sm" />
-            <div className="relative z-10 text-sm font-bold text-accent">O</div>
-            <div
-              className="gem-spin"
-              style={{
-                width: 32,
-                height: 32,
-                borderColor: "oklch(0.62 0.22 15 / 0.4)",
-              }}
-            />
-            <div
-              className="gem-spin"
-              style={{
-                width: 24,
-                height: 24,
-                borderColor: "oklch(0.62 0.22 15 / 0.25)",
-                animationDirection: "reverse",
-                animationDuration: "3s",
-              }}
-            />
-          </div>
-          <span className="text-base font-semibold tracking-tight">
-            Kernel<span className="text-accent">Termux</span>
-          </span>
-        </div>
+        <div className="flex flex-col h-full p-6">
+          {/* Logo */}
+          <Link href="/">
+            <a className="flex items-center gap-3 mb-8 hover:opacity-90 transition-all duration-300 group">
+              <img
+                src="/omni-logo-pixel.svg"
+                alt="Omni Catalyst"
+                className="w-12 h-12 drop-shadow-[0_0_12px_rgba(168,85,247,0.5)] group-hover:drop-shadow-[0_0_20px_rgba(168,85,247,0.8)] transition-all duration-300"
+              />
+              <div>
+                <h1 className="font-bold text-lg font-mono text-foreground group-hover:text-accent transition-colors">OMNI</h1>
+                <p className="text-xs text-muted-foreground group-hover:text-accent/70 transition-colors">CATALYST</p>
+              </div>
+            </a>
+          </Link>
 
-        <nav className="flex-1 overflow-y-auto px-3 py-4">
-          <ul className="space-y-1">
-            {navLinks.map((link) => {
-              const Icon = link.icon;
-              const isActive = link.to === "/"
-                ? pathname === "/"
-                : pathname.startsWith(link.to);
-
-              return (
-                <li key={link.to}>
-                  <Link
-                    to={link.to}
-                    className={`group flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition-all duration-200 ${
+          {/* Navigation */}
+          <nav className="flex-1 space-y-1">
+            {navItems.map((item) => {
+              const isActive = item.href && location === item.href;
+              const isAction = !item.href && item.action;
+              return isAction ? (
+                <button
+                  key={item.label}
+                  onClick={(e) => {
+                    item.action?.();
+                    setSidebarOpen(false);
+                  }}
+                  className={`block w-full text-left px-4 py-2.5 rounded-md transition-all duration-200 font-mono text-sm font-medium ${
+                    isActive
+                      ? "bg-gradient-to-r from-accent/20 to-accent/10 text-accent border-l-2 border-accent shadow-sm shadow-accent/20"
+                      : "text-sidebar-foreground hover:bg-sidebar-primary/15 hover:text-accent/80"
+                  }`}
+                >
+                  {item.label}
+                </button>
+              ) : (
+                <Link key={item.href} href={item.href || "/"}>
+                  <a
+                    className={`block px-4 py-2.5 rounded-md transition-all duration-200 font-mono text-sm font-medium ${
                       isActive
-                        ? "bg-accent/10 text-accent"
-                        : "text-muted-foreground hover:bg-accent/5 hover:text-foreground"
+                        ? "bg-gradient-to-r from-accent/20 to-accent/10 text-accent border-l-2 border-accent shadow-sm shadow-accent/20"
+                        : "text-sidebar-foreground hover:bg-sidebar-primary/15 hover:text-accent/80"
                     }`}
+                    onClick={() => setSidebarOpen(false)}
                   >
-                    <Icon
-                      size={18}
-                      className={`transition-all duration-200 ${
-                        isActive
-                          ? "text-accent"
-                          : "text-muted-foreground group-hover:text-foreground"
-                      }`}
-                    />
-                    <span>{link.label}</span>
-                    {isActive && (
-                      <span className="ml-auto h-1.5 w-1.5 rounded-full bg-accent" />
-                    )}
-                  </Link>
-                </li>
+                    {item.label}
+                  </a>
+                </Link>
               );
             })}
-          </ul>
-        </nav>
+          </nav>
 
-        <div className="border-t border-border px-4 py-4">
-          <div className="flex items-center justify-center gap-3">
-            <a
-              href="https://github.com/israel676767/kerneltermux"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-muted-foreground transition-all duration-200 hover:text-accent hover:scale-110"
-              aria-label="GitHub"
+          {/* Footer */}
+          <div className="pt-6 border-t border-sidebar-border/50 space-y-3">
+            <button
+              onClick={() => {
+                scrollToSupport();
+                setSidebarOpen(false);
+              }}
+              className="block w-full text-center px-4 py-2 bg-accent/20 text-accent rounded-lg font-mono text-sm font-medium hover:bg-accent/30 transition-colors"
             >
-              <RiGithubLine size={18} />
-            </a>
+              💙 Support Project
+            </button>
+            <p className="text-xs text-muted-foreground font-mono">
+              <span className="text-accent">v1.0.0</span> • Android + Termux
+            </p>
+            <p className="text-xs text-muted-foreground/60 mt-2">Built for developers</p>
           </div>
-          <p className="mt-2 text-center text-[10px] text-muted-foreground/60">
-            KernelTermux — MIT
-          </p>
         </div>
       </aside>
 
-      {sidebarOpen && (
-        <div
-          className="fixed inset-0 z-30 bg-black/50 backdrop-blur-sm lg:hidden"
-          onClick={() => setSidebarOpen(false)}
-        />
-      )}
-
-      <div className="flex flex-1 flex-col lg:pl-64">
-        <header className="glass sticky top-0 z-20 flex h-16 items-center justify-between border-b border-border px-4 sm:px-6 lg:px-8">
-          <button
-            onClick={() => setSidebarOpen(true)}
-            className="flex items-center justify-center rounded-lg p-2 text-muted-foreground hover:bg-accent/5 hover:text-foreground lg:hidden"
-            aria-label="Abrir menu"
-          >
-            <RiMenu3Line size={22} />
-          </button>
-
-          <div className="hidden lg:flex lg:flex-1" />
-
-          <a
-            href="https://github.com/israel676767/kerneltermux"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="star-btn group flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-semibold transition-all duration-200"
-          >
-            <RiStarLine size={16} />
-            <span className="hidden sm:inline">Estrela no</span>
-            <span>GitHub</span>
-          </a>
+      {/* Main Content */}
+      <div className="flex-1 flex flex-col">
+        {/* Header */}
+        <header className="sticky top-0 z-30 bg-card border-b border-border">
+          <div className="flex items-center justify-between p-4 lg:hidden">
+            <Link href="/">
+              <a className="flex items-center gap-2">
+                <img
+                  src="/omni-logo-pixel.svg"
+                  alt="Omni Catalyst"
+                  className="w-9 h-9 drop-shadow-[0_0_8px_rgba(168,85,247,0.4)]"
+                />
+                <span className="font-bold font-mono text-sm">OMNI</span>
+              </a>
+            </Link>
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={() => setSidebarOpen(!sidebarOpen)}
+            >
+              {sidebarOpen ? <X size={20} /> : <Menu size={20} />}
+            </Button>
+          </div>
         </header>
 
-        <main className="flex-1">{children}</main>
+        {/* Page Content */}
+        <main className="flex-1 overflow-auto">
+          <div className="max-w-6xl mx-auto">{children}</div>
+        </main>
 
-        <footer className="border-t border-border px-4 py-6 text-center text-xs text-muted-foreground sm:px-6 lg:px-8">
-          KernelTermux {new Date().getFullYear()} — Feito com ❤️ pela comunidade
+        {/* Footer */}
+        <footer className="bg-card border-t border-border p-6 text-center text-sm text-muted-foreground">
+          <p>
+            Omni Catalyst — Built with ❤️ by{" "}
+            <a
+              href="https://github.com/israel676767"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-accent hover:underline font-semibold"
+            >
+              israel marques
+            </a>
+          </p>
+          <p className="mt-2 text-xs">
+            <a href="mailto:israelmarques1024@gmail.com" className="text-accent/70 hover:text-accent transition-colors">
+              israelmarques1024@gmail.com
+            </a>
+          </p>
+          <p className="mt-3">
+            <a
+              href="https://github.com/israel676767/omni"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-accent hover:underline"
+            >
+              Omni Repo
+            </a>
+            {" · "}
+            <a
+              href="https://github.com/israel676767"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-accent hover:underline"
+            >
+              GitHub Profile
+            </a>
+            {" · "}
+            <a
+              href="https://github.com/israel676767/omni/blob/main/LICENSE"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-accent hover:underline"
+            >
+              MIT License
+            </a>
+          </p>
         </footer>
       </div>
 
-      <ScrollToTop />
+      {/* Overlay for mobile */}
+      {sidebarOpen && (
+        <div
+          className="fixed inset-0 z-30 bg-black/50 lg:hidden"
+          onClick={() => setSidebarOpen(false)}
+        />
+      )}
     </div>
   );
 }
