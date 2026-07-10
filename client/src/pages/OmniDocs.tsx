@@ -51,7 +51,7 @@ export default function OmniDocs() {
       <section className="py-12 px-4">
         <div className="max-w-4xl mx-auto">
           <AnimatedSection>
-            <h1 className="text-4xl font-bold font-mono mb-4">OMNI CATALYST</h1>
+            <h1 className="text-4xl font-bold font-mono mb-4">KERNEL TERMUX</h1>
             <p className="text-lg text-muted-foreground mb-8">
               Ambiente de Desenvolvimento Modular para Termux (Android). Automatize instalações,
               atualizações e configurações com comandos simples.
@@ -63,13 +63,13 @@ export default function OmniDocs() {
               <h3 className="font-bold font-mono mb-4">Instalação Rápida</h3>
               <div className="space-y-3">
                 <CodeBlock
-                  code={`bash -c "$(curl -fsSL https://raw.githubusercontent.com/israel676767/omni/main/install.sh)"`}
+                  code={`bash -c "$(curl -fsSL https://raw.githubusercontent.com/israel676767/kerneltermux/main/install.sh)"`}
                   language="bash"
                   title="quick install"
                 />
                 <p className="text-center text-xs text-muted-foreground">ou</p>
                 <CodeBlock
-                  code={`npm install -g omni-catalyst`}
+                  code={`npm install -g kerneltermux`}
                   language="bash"
                   title="npm install"
                 />
@@ -139,7 +139,7 @@ export default function OmniDocs() {
             {
               title: "omni open",
               desc: "Abrir documentação oficial no navegador.",
-              code: `omni open                     # Mostrar ajuda\nomni open <target>            # Abrir documentação oficial no navegador\nomni open omni                # Abre https://omni-catalyst.vercel.app`,
+              code: `omni open                     # Mostrar ajuda\nomni open <target>            # Abrir documentação oficial no navegador\nomni open omni                # Abre https://kerneltermux.vercel.app`,
               extra: { label: null, code: null }
             },
             {
@@ -186,10 +186,10 @@ export default function OmniDocs() {
             <div className="card-hover bg-card border border-border rounded-xl p-8 text-center">
               <h3 className="text-xl font-bold font-mono mb-4">Ver Documentação Completa</h3>
               <p className="text-muted-foreground mb-6">
-                Explore o repositório completo do Omni no GitHub para documentação detalhada e exemplos.
+                Explore o repositório completo do KernelTermux no GitHub para documentação detalhada e exemplos.
               </p>
               <a
-                href="https://github.com/israel676767/omni"
+                href="https://github.com/israel676767/kerneltermux"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group inline-flex items-center gap-2 rounded-xl bg-accent px-6 py-3 text-sm font-semibold text-accent-foreground shadow-lg shadow-accent/25 transition-all duration-300 hover:scale-105 hover:shadow-xl active:scale-95"

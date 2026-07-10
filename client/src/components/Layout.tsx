@@ -87,7 +87,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             />
           </div>
           <span className="text-base font-semibold tracking-tight">
-            Omni<span className="text-accent">.</span>
+            Kernel<span className="text-accent">Termux</span>
           </span>
         </div>
 
@@ -131,7 +131,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         <div className="border-t border-border px-4 py-4">
           <div className="flex items-center justify-center gap-3">
             <a
-              href="https://github.com/israel676767/omni"
+              href="https://github.com/israel676767/kerneltermux"
               target="_blank"
               rel="noopener noreferrer"
               className="text-muted-foreground transition-all duration-200 hover:text-accent hover:scale-110"
@@ -141,7 +141,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             </a>
           </div>
           <p className="mt-2 text-center text-[10px] text-muted-foreground/60">
-            Omni Catalyst — MIT
+            KernelTermux — MIT
           </p>
         </div>
       </aside>
@@ -166,7 +166,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           <div className="hidden lg:flex lg:flex-1" />
 
           <a
-            href="https://github.com/israel676767/omni"
+            href="https://github.com/israel676767/kerneltermux"
             target="_blank"
             rel="noopener noreferrer"
             className="star-btn group flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-semibold transition-all duration-200"
@@ -180,7 +180,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         <main className="flex-1">{children}</main>
 
         <footer className="border-t border-border px-4 py-6 text-center text-xs text-muted-foreground sm:px-6 lg:px-8">
-          Omni {new Date().getFullYear()} — Feito com ❤️ pela comunidade
+          KernelTermux {new Date().getFullYear()} — Feito com ❤️ pela comunidade
         </footer>
       </div>
 

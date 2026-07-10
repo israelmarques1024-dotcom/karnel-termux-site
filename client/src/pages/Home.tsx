@@ -25,9 +25,9 @@ const stats = [
 ];
 
 const installOptions = [
-  { name: "curl", code: `bash -c "$(curl -fsSL https://raw.githubusercontent.com/israel676767/omni/main/install.sh)"` },
-  { name: "npm", code: "npm install -g omni-catalyst" },
-  { name: "pnpm", code: "pnpm add -g omni-catalyst" },
+  { name: "curl", code: `bash -c "$(curl -fsSL https://raw.githubusercontent.com/israel676767/kerneltermux/main/install.sh)"` },
+  { name: "npm", code: "npm install -g kerneltermux" },
+  { name: "pnpm", code: "pnpm add -g kerneltermux" },
 ];
 
 const features = [
@@ -46,12 +46,12 @@ const features = [
 ];
 
 const faqs = [
-  { q: "Is it free?", a: "Yes! Omni is 100% free and open source (MIT)." },
-  { q: "Requires root?", a: "No. Omni works on any Android with Termux, no root needed." },
+  { q: "Is it free?", a: "Yes! KernelTermux is 100% free and open source (MIT)." },
+  { q: "Requires root?", a: "No. KernelTermux works on any Android with Termux, no root needed." },
   { q: "Works on any Android?", a: "Yes, Android 11+ recommended. Devices with 4GB+ RAM have better performance." },
-  { q: "Is Omni open source?", a: "Yes! Omni is open source. In the future I plan to add ads similar to freebuff, but for now it's supported only through Pix donations." },
+  { q: "Is KernelTermux open source?", a: "Yes! KernelTermux is open source. In the future I plan to add ads similar to freebuff, but for now it's supported only through Pix donations." },
   { q: "Need internet?", a: "Yes, to install packages. After installation, most tools work offline." },
-  { q: "Can use without Linux knowledge?", a: "Yes! Omni is designed to be simple. Portuguese commands and integrated assistant." },
+  { q: "Can use without Linux knowledge?", a: "Yes! KernelTermux is designed to be simple. Portuguese commands and integrated assistant." },
 ];
 
 const steps = [
@@ -113,7 +113,7 @@ export default function Home() {
           <AnimatedSection animation="fade-in-up">
             <div className="inline-flex items-center gap-2 rounded-full border border-accent/20 bg-accent/5 px-4 py-1.5 text-xs font-medium text-accent mb-8 animate-float">
               <RiFlashlightFill size={14} />
-              Open Source — MIT License
+              Open Source — MIT
             </div>
           </AnimatedSection>
 
@@ -222,7 +222,7 @@ export default function Home() {
         <div className="max-w-6xl mx-auto">
           <AnimatedSection className="text-center mb-14">
             <h2 className="text-3xl sm:text-4xl font-bold mb-3">
-              Why Developers Choose <span className="text-gradient-accent">Omni</span>
+              Why Developers Choose <span className="text-gradient-accent">KernelTermux</span>
             </h2>
             <p className="text-muted-foreground">
               Built by developers, for developers coding anywhere.
@@ -263,7 +263,7 @@ export default function Home() {
               Frequently Asked <span className="text-gradient-accent">Questions</span>
             </h2>
             <p className="text-muted-foreground">
-              Get your questions answered about Omni Catalyst.
+              Get your questions answered about KernelTermux.
             </p>
           </AnimatedSection>
 
@@ -304,7 +304,7 @@ export default function Home() {
           <AnimatedSection delay={500}>
             <div className="text-center mt-12">
               <a
-                href="https://github.com/israel676767/omni"
+                href="https://github.com/israel676767/kerneltermux"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="star-btn inline-flex items-center gap-2 sm:gap-3 px-5 sm:px-8 py-3 sm:py-4 rounded-xl font-bold text-sm sm:text-base"
@@ -375,7 +375,7 @@ export default function Home() {
 
           <AnimatedSection delay={200}>
             <p className="text-muted-foreground mb-10 text-lg">
-              Join thousands of developers building real apps with Omni.
+              Join thousands of developers building real apps with KernelTermux.
             </p>
           </AnimatedSection>
 
@@ -389,7 +389,7 @@ export default function Home() {
                 <ArrowRight size={18} className="transition-transform duration-300 group-hover:translate-x-1" />
               </Link>
               <a
-                href="https://github.com/israel676767/omni"
+                href="https://github.com/israel676767/kerneltermux"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group inline-flex items-center gap-2 rounded-xl border border-border bg-card/50 px-7 py-3.5 text-sm font-semibold text-foreground transition-all duration-300 hover:border-accent/30 hover:bg-accent/5 hover:scale-105 active:scale-95"
