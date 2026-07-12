@@ -1,4 +1,3 @@
-import Layout from "@/components/Layout";
 import CodeBlock from "@/components/CodeBlock";
 import { AnimatedSection } from "@/components/AnimatedSection";
 
@@ -47,7 +46,6 @@ const templates = [
 
 export default function KarnelDocs() {
   return (
-    <Layout>
       <section className="py-12 px-4">
         <div className="max-w-4xl mx-auto">
           <AnimatedSection>
@@ -63,7 +61,7 @@ export default function KarnelDocs() {
               <h3 className="font-bold font-mono mb-4">Instalação Rápida</h3>
               <div className="space-y-3">
                 <CodeBlock
-                  code={`bash -c "$(curl -fsSL https://raw.githubusercontent.com/israel676767/karnel-termux/main/install.sh)"`}
+                  code={`bash -c "$(curl -fsSL https://raw.githubusercontent.com/israelmarques1024-dotcom/karnel-termux/main/install.sh)"`}
                   language="bash"
                   title="quick install"
                 />
@@ -189,7 +187,7 @@ export default function KarnelDocs() {
                 Explore o repositório completo do Karnel Termux no GitHub para documentação detalhada e exemplos.
               </p>
               <a
-                href="https://github.com/israel676767/karnel-termux"
+                href="https://github.com/israelmarques1024-dotcom/karnel-termux"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group inline-flex items-center gap-2 rounded-xl bg-accent px-6 py-3 text-sm font-semibold text-accent-foreground shadow-lg shadow-accent/25 transition-all duration-300 hover:scale-105 hover:shadow-xl active:scale-95"
@@ -200,6 +198,5 @@ export default function KarnelDocs() {
           </AnimatedSection>
         </div>
       </section>
-    </Layout>
   );
 }

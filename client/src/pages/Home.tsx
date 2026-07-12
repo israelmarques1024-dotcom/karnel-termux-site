@@ -1,8 +1,8 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "wouter";
 import {
   ArrowRight, Zap, Code2, Cpu, Terminal, Brain, Rocket,
-  Stethoscope, Eye, Mic, Database, Puzzle, Shield, Check
+  Stethoscope, Eye, Mic, Database, Puzzle, Shield
 } from "lucide-react";
 import { RiStarLine, RiFlashlightFill } from "@remixicon/react";
 import CodeBlock from "@/components/CodeBlock";
@@ -25,7 +25,7 @@ const stats = [
 ];
 
 const installOptions = [
-  { name: "curl", code: `bash -c "$(curl -fsSL https://raw.githubusercontent.com/israel676767/karnel-termux/main/install.sh)"` },
+  { name: "curl", code: `bash -c "$(curl -fsSL https://raw.githubusercontent.com/israelmarques1024-dotcom/karnel-termux/main/install.sh)"` },
   { name: "npm", code: "npm install -g karnel-termux" },
   { name: "pnpm", code: "pnpm add -g karnel-termux" },
 ];
@@ -62,12 +62,13 @@ const steps = [
 ];
 
 function AnimatedStat({ label, value, suffix = "", delay = 0 }: { label: string; value: number; suffix?: string; delay?: number }) {
-  const { ref, inView } = useInView({ threshold: 0.5 });
+  const { ref, inView } = useInView({ threshold: 0.05 });
   const [count, setCount] = useState(0);
+  const [hasAnimated, setHasAnimated] = useState(false);
 
   useEffect(() => {
-    if (!inView) return;
-    let start = 0;
+    if (!inView || hasAnimated) return;
+    setHasAnimated(true);
     const duration = 1500;
     const startTime = performance.now();
     const tick = (now: number) => {
@@ -78,12 +79,12 @@ function AnimatedStat({ label, value, suffix = "", delay = 0 }: { label: string;
       if (progress < 1) requestAnimationFrame(tick);
     };
     requestAnimationFrame(tick);
-  }, [inView, value]);
+  }, [inView, value, hasAnimated]);
 
   return (
     <div
       ref={ref}
-      className="rounded-xl border border-border bg-card/50 p-4 text-center transition-all duration-500 hover:border-accent/30 hover:bg-card/80 hover:shadow-lg hover:shadow-accent/5"
+      className="rounded-xl border border-border bg-card/50 p-4 text-center transition-all duration-500 hover:border-accent/30 hover:bg-card/80 hover:shadow-lg hover:shadow-accent/5 hover:-translate-y-1"
       style={{ animationDelay: `${delay}ms` }}
     >
       <div className="text-2xl sm:text-3xl font-bold font-mono text-gradient-accent">
@@ -102,12 +103,12 @@ export default function Home() {
 
   return (
     <div>
-      <SupportProject />
-
       {/* Hero */}
       <section className="relative min-h-[90dvh] flex items-center justify-center overflow-hidden px-4 py-24">
-        <div className="absolute inset-0 bg-[url(/karnel-banner.svg)] bg-cover bg-center bg-no-repeat opacity-40" />
-        <div className="absolute inset-0 bg-gradient-to-b from-background/0 via-background/50 to-background" />
+        <div className="absolute inset-0 bg-[url(/karnel-bg.jpg)] bg-cover bg-center bg-no-repeat opacity-60" />
+        <div className="absolute inset-0 bg-gradient-to-b from-background/0 via-background/40 to-background" />
+        <div className="absolute inset-0 bg-gradient-to-t from-accent/5 via-transparent to-cyan-500/5" />
+        <div className="absolute inset-0 opacity-30 animate-gradient" style={{ background: 'linear-gradient(135deg, oklch(0.62 0.22 15 / 0.1), oklch(0.32 0.18 280 / 0.1), oklch(0.62 0.22 15 / 0.1))', backgroundSize: '200% 200%' }} />
 
         <div className="relative z-10 max-w-5xl mx-auto text-center">
           <AnimatedSection animation="fade-in-up">
@@ -171,6 +172,8 @@ export default function Home() {
         </div>
       </section>
 
+      <SupportProject />
+
       {/* Installation */}
       <section className="py-20 px-4 border-t border-border">
         <div className="max-w-4xl mx-auto">
@@ -230,27 +233,24 @@ export default function Home() {
           </AnimatedSection>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-            {features.map((feature, i) => {
-              const Icon = feature.icon;
-              return (
-                <AnimatedSection key={i} delay={i * 60} animation="fade-in-up">
-                  <Link
-                    href={feature.href}
-                    className="card-hover group block rounded-xl border border-border bg-card/30 p-6"
-                  >
-                    <div className={`mb-3 ${iconColors[i % iconColors.length]} transition-transform duration-300 group-hover:scale-110`}>
-                      {feature.icon}
-                    </div>
-                    <h3 className="text-base font-bold font-mono mb-2 group-hover:text-accent transition-colors">
-                      {feature.title}
-                    </h3>
-                    <p className="text-sm text-muted-foreground leading-relaxed">
-                      {feature.desc}
-                    </p>
-                  </Link>
-                </AnimatedSection>
-              );
-            })}
+            {features.map((feature, i) => (
+              <AnimatedSection key={i} delay={i * 60} animation="fade-in-up">
+                <Link
+                  href={feature.href}
+                  className="card-hover group block rounded-xl border border-border bg-card/30 p-6"
+                >
+                  <div className={`mb-3 ${iconColors[i % iconColors.length]} transition-transform duration-300 group-hover:scale-110`}>
+                    {feature.icon}
+                  </div>
+                  <h3 className="text-base font-bold font-mono mb-2 group-hover:text-accent transition-colors">
+                    {feature.title}
+                  </h3>
+                  <p className="text-sm text-muted-foreground leading-relaxed">
+                    {feature.desc}
+                  </p>
+                </Link>
+              </AnimatedSection>
+            ))}
           </div>
         </div>
       </section>
@@ -277,6 +277,8 @@ export default function Home() {
                 >
                   <button
                     onClick={() => setOpenFaq(openFaq === i ? null : i)}
+                    aria-expanded={openFaq === i}
+                    aria-controls={`faq-answer-${i}`}
                     className="flex w-full items-center justify-between gap-4 px-6 py-4 text-left font-semibold text-sm"
                   >
                     <span>{faq.q}</span>
@@ -288,6 +290,8 @@ export default function Home() {
                     />
                   </button>
                   <div
+                    id={`faq-answer-${i}`}
+                    role="region"
                     className={`overflow-hidden transition-all duration-300 ${
                       openFaq === i ? "max-h-40 opacity-100" : "max-h-0 opacity-0"
                     }`}
@@ -304,7 +308,7 @@ export default function Home() {
           <AnimatedSection delay={500}>
             <div className="text-center mt-12">
               <a
-                href="https://github.com/israel676767/karnel-termux"
+                href="https://github.com/israelmarques1024-dotcom/karnel-termux"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="star-btn inline-flex items-center gap-2 sm:gap-3 px-5 sm:px-8 py-3 sm:py-4 rounded-xl font-bold text-sm sm:text-base"
@@ -389,7 +393,7 @@ export default function Home() {
                 <ArrowRight size={18} className="transition-transform duration-300 group-hover:translate-x-1" />
               </Link>
               <a
-                href="https://github.com/israel676767/karnel-termux"
+                href="https://github.com/israelmarques1024-dotcom/karnel-termux"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group inline-flex items-center gap-2 rounded-xl border border-border bg-card/50 px-7 py-3.5 text-sm font-semibold text-foreground transition-all duration-300 hover:border-accent/30 hover:bg-accent/5 hover:scale-105 active:scale-95"

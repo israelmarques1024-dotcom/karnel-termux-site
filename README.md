@@ -1,25 +1,25 @@
 <p align="center">
-  <img src="https://kerneltermux.vercel.app/karnel-logo-pixel.svg" alt="KernelTermux Logo" width="400">
+  <img src="https://raw.githubusercontent.com/israelmarques1024-dotcom/karnel-termux/main/assets/images/logo.svg" alt="Karnel Termux Logo" width="400">
 </p>
 
 <p align="center">
-  <strong>🌐 Documentação do KernelTermux</strong>
+  <strong>🌐 Documentação do Karnel Termux</strong>
 </p>
 
 <p align="center">
   <a href="https://kerneltermux.vercel.app">
     <img src="https://img.shields.io/badge/Site-kerneltermux.vercel.app-0078D4?style=for-the-badge" alt="Site">
   </a>
-  <a href="https://github.com/israel676767/kerneltermux">
-    <img src="https://img.shields.io/badge/CLI%20Repo-israel676767%2Fkerneltermux-0078D4?style=for-the-badge" alt="CLI Repo">
+  <a href="https://github.com/israelmarques1024-dotcom/karnel-termux">
+    <img src="https://img.shields.io/badge/CLI%20Repo-karnel--termux-0078D4?style=for-the-badge" alt="CLI Repo">
   </a>
 </p>
 
 ---
 
-**KernelTermux** é um ambiente de desenvolvimento modular para Termux no Android.
+**Karnel Termux** é um ambiente de desenvolvimento modular para Termux no Android.
 
-Este site contém a documentação oficial da CLI KernelTermux.
+Este site contém a documentação oficial da CLI Karnel Termux.
 
 Criado por **israel marques** (tenho 12 anos).
 
@@ -52,7 +52,7 @@ MIT © israel marques
 
 ## 💙 Apoie este Projeto
 
-Você pode apoiar o KernelTermux via Pix. Use a chave abaixo:
+Você pode apoiar o Karnel Termux via Pix. Use a chave abaixo:
 
 `037f07bd-a326-42b6-a5a3-f29b36e703db`
 

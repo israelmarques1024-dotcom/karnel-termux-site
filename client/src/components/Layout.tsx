@@ -1,7 +1,5 @@
 import { Link, useLocation } from "wouter";
-import { Menu, X } from "lucide-react";
 import { useState } from "react";
-import { Button } from "@/components/ui/button";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   const [location, navigate] = useLocation();
@@ -52,7 +50,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             className="flex items-center gap-3 mb-8 hover:opacity-90 transition-all duration-300 group"
           >
             <img
-              src="/karnel-logo-pixel.svg"
+              src="/karnel-logo.png"
               alt="Karnel Termux"
               className="w-12 h-12 drop-shadow-[0_0_12px_rgba(168,85,247,0.5)] group-hover:drop-shadow-[0_0_20px_rgba(168,85,247,0.8)] transition-all duration-300"
             />
@@ -121,26 +119,26 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       {/* Main Content */}
       <div className="flex-1 flex flex-col">
         {/* Header */}
-        <header className="sticky top-0 z-30 bg-card border-b border-border">
-          <div className="flex items-center justify-between p-4 lg:hidden">
-            <Link
-              href="/"
-              className="flex items-center gap-2"
-            >
+        <header className="sticky top-0 z-30 bg-card border-b border-border lg:hidden">
+          <div className="flex items-center justify-between p-4">
+            <a href="/" className="flex items-center gap-2">
               <img
-                src="/karnel-logo-pixel.svg"
                 alt="Karnel Termux"
                 className="w-9 h-9 drop-shadow-[0_0_8px_rgba(168,85,247,0.4)]"
+                src="/karnel-logo.png"
               />
               <span className="font-bold font-mono text-sm">KARNEL</span>
-            </Link>
-            <Button
-              variant="ghost"
-              size="icon"
+            </a>
+            <button
               onClick={() => setSidebarOpen(!sidebarOpen)}
+              className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive hover:bg-accent dark:hover:bg-accent/50 size-9"
             >
-              {sidebarOpen ? <X size={20} /> : <Menu size={20} />}
-            </Button>
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-menu">
+                <line x1="4" x2="20" y1="12" y2="12" />
+                <line x1="4" x2="20" y1="6" y2="6" />
+                <line x1="4" x2="20" y1="18" y2="18" />
+              </svg>
+            </button>
           </div>
         </header>
 
@@ -154,7 +152,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           <p>
             Karnel Termux — Built by{" "}
             <a
-              href="https://github.com/israel676767"
+              href="https://github.com/israelmarques1024-dotcom"
               target="_blank"
               rel="noopener noreferrer"
               className="text-accent hover:underline font-semibold"
@@ -169,7 +167,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           </p>
           <p className="mt-3">
             <a
-              href="https://github.com/israel676767/karnel-termux"
+              href="https://github.com/israelmarques1024-dotcom/karnel-termux"
               target="_blank"
               rel="noopener noreferrer"
               className="text-accent hover:underline"
@@ -178,7 +176,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             </a>
             {" · "}
             <a
-              href="https://github.com/israel676767"
+              href="https://github.com/israelmarques1024-dotcom"
               target="_blank"
               rel="noopener noreferrer"
               className="text-accent hover:underline"
@@ -187,7 +185,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             </a>
             {" · "}
             <a
-              href="https://github.com/israel676767/karnel-termux/blob/main/LICENSE"
+              href="https://github.com/israelmarques1024-dotcom/karnel-termux/blob/main/LICENSE"
               target="_blank"
               rel="noopener noreferrer"
               className="text-accent hover:underline"
