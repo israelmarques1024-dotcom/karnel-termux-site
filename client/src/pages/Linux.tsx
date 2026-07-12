@@ -1,4 +1,3 @@
-import Layout from "@/components/Layout";
 import CodeBlock from "@/components/CodeBlock";
 import { AnimatedSection } from "@/components/AnimatedSection";
 
@@ -18,7 +17,6 @@ const stacks = [
 
 export default function Linux() {
   return (
-    <Layout>
       <section className="py-12 px-4">
         <div className="max-w-4xl mx-auto">
           <AnimatedSection>
@@ -95,6 +93,5 @@ export default function Linux() {
           </AnimatedSection>
         </div>
       </section>
-    </Layout>
   );
 }

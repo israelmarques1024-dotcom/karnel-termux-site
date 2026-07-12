@@ -1,5 +1,4 @@
 import { Check, X, Lock, Zap, Shield, Wrench } from "lucide-react";
-import Layout from "@/components/Layout";
 import { AnimatedSection } from "@/components/AnimatedSection";
 
 const features = [
@@ -32,7 +31,6 @@ const comparisons = [
 
 export default function Termux() {
   return (
-    <Layout>
       <section className="py-12 px-4">
         <div className="max-w-4xl mx-auto">
           <AnimatedSection>
@@ -131,6 +129,5 @@ export default function Termux() {
           </AnimatedSection>
         </div>
       </section>
-    </Layout>
   );
 }

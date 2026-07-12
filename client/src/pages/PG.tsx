@@ -1,10 +1,8 @@
-import Layout from "@/components/Layout";
 import CodeBlock from "@/components/CodeBlock";
 import { AnimatedSection } from "@/components/AnimatedSection";
 
 export default function PG() {
   return (
-    <Layout>
       <section className="py-12 px-4">
         <div className="max-w-4xl mx-auto">
           <AnimatedSection>
@@ -60,6 +58,5 @@ karnel pg shell                 # Abre o console psql`}
           </AnimatedSection>
         </div>
       </section>
-    </Layout>
   );
 }

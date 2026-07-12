@@ -1,4 +1,3 @@
-import Layout from "@/components/Layout";
 import CodeBlock from "@/components/CodeBlock";
 import { AnimatedSection } from "@/components/AnimatedSection";
 import { Link } from "wouter";
@@ -30,7 +29,6 @@ const steps = [
 
 export default function Voice() {
   return (
-    <Layout>
       <section className="py-12 px-4">
         <div className="max-w-4xl mx-auto">
           <AnimatedSection>
@@ -204,6 +202,5 @@ karnel voice claude-code --lang pt-BR  # Fala em português → claude`}
           </AnimatedSection>
         </div>
       </section>
-    </Layout>
   );
 }

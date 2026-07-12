@@ -1,4 +1,3 @@
-import Layout from "@/components/Layout";
 import CodeBlock from "@/components/CodeBlock";
 import { AnimatedSection } from "@/components/AnimatedSection";
 
@@ -13,7 +12,6 @@ const commands = [
 
 export default function Brain() {
   return (
-    <Layout>
       <section className="py-12 px-4">
         <div className="max-w-4xl mx-auto">
           <AnimatedSection>
@@ -90,6 +88,5 @@ export default function Brain() {
           </AnimatedSection>
         </div>
       </section>
-    </Layout>
   );
 }

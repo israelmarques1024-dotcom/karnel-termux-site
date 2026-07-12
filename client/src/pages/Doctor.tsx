@@ -1,4 +1,3 @@
-import Layout from "@/components/Layout";
 import CodeBlock from "@/components/CodeBlock";
 import { AnimatedSection } from "@/components/AnimatedSection";
 
@@ -49,7 +48,6 @@ const autoFixes = [
 
 export default function Doctor() {
   return (
-    <Layout>
       <section className="py-12 px-4">
         <div className="max-w-4xl mx-auto">
           <AnimatedSection>
@@ -150,7 +148,7 @@ export default function Doctor() {
           <AnimatedSection delay={550}>
             <div className="card-hover bg-card border border-border rounded-lg p-6">
               <CodeBlock
-                code={`◈ KARNEL DOCTOR ◈
+                code={`[ KARNEL DOCTOR ]
 
 [✓] Android Version: 14
 [✓] Termux Version: 0.118.0
@@ -183,6 +181,5 @@ Apply all auto-corrections? [y/N]`}
           </AnimatedSection>
         </div>
       </section>
-    </Layout>
   );
 }

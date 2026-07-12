@@ -1,10 +1,8 @@
-import Layout from "@/components/Layout";
 import CodeBlock from "@/components/CodeBlock";
 import { AnimatedSection } from "@/components/AnimatedSection";
 
 export default function Env() {
   return (
-    <Layout>
       <section className="py-12 px-4">
         <div className="max-w-4xl mx-auto">
           <AnimatedSection>
@@ -65,6 +63,5 @@ karnel env export               # Exporta tudo pro shell atual`}
           </AnimatedSection>
         </div>
       </section>
-    </Layout>
   );
 }

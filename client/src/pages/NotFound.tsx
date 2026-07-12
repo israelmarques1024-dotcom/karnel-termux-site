@@ -1,5 +1,6 @@
 import { AlertCircle, Home } from "lucide-react";
 import { Link } from "wouter";
+import { AnimatedSection } from "@/components/AnimatedSection";
 
 export default function NotFound() {
   return (
@@ -40,17 +41,6 @@ export default function NotFound() {
           </Link>
         </AnimatedSection>
       </div>
-    </div>
-  );
-}
-
-function AnimatedSection({ children, className = "", delay = 0, animation = "fade-in-up" }: { children: React.ReactNode; className?: string; delay?: number; animation?: string }) {
-  return (
-    <div
-      className={`${className} animate-${animation}`}
-      style={{ animationDelay: `${delay}ms` }}
-    >
-      {children}
     </div>
   );
 }

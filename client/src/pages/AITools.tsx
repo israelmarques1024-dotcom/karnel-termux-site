@@ -1,4 +1,3 @@
-import Layout from "@/components/Layout";
 import CodeBlock from "@/components/CodeBlock";
 import { AnimatedSection } from "@/components/AnimatedSection";
 
@@ -37,7 +36,6 @@ const aiTools = [
 
 export default function AITools() {
   return (
-    <Layout>
       <section className="py-12 px-4">
         <div className="max-w-5xl mx-auto">
           <AnimatedSection>
@@ -93,6 +91,5 @@ export default function AITools() {
           </AnimatedSection>
         </div>
       </section>
-    </Layout>
   );
 }

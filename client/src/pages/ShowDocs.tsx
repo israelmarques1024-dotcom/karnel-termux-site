@@ -1,4 +1,3 @@
-import Layout from "@/components/Layout";
 import CodeBlock from "@/components/CodeBlock";
 import { AnimatedSection } from "@/components/AnimatedSection";
 
@@ -33,7 +32,6 @@ const modules = [
 
 export default function ShowDocs() {
   return (
-    <Layout>
       <section className="py-12 px-4">
         <div className="max-w-4xl mx-auto">
           <AnimatedSection>
@@ -149,6 +147,5 @@ gemini            Google Gemini CLI`}
           </AnimatedSection>
         </div>
       </section>
-    </Layout>
   );
 }
