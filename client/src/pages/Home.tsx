@@ -18,7 +18,7 @@ const iconColors = [
 const stats = [
   { label: "AI Agents", value: 30, suffix: "+" },
   { label: "Languages", value: 7 },
-  { label: "Databases", value: 4 },
+  { label: "Databases", value: 5 },
   { label: "Dev Tools", value: 19 },
   { label: "Deploy CLIs", value: 3 },
   { label: "Total Packages", value: 90, suffix: "+" },
