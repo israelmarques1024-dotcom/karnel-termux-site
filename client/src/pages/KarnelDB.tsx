@@ -3,9 +3,9 @@ import { AnimatedSection } from "@/components/AnimatedSection";
 
 const databases = [
   { name: "PostgreSQL", flag: "--postgresql", desc: "Banco relacional avançado", cmds: ["karnel install db --postgresql", "karnel pg init", "karnel pg start", "psql -U postgres"] },
-  { name: "MariaDB", flag: "--mariadb", desc: "MySQL-compatível, robusto", cmd: "karnel install db --mariadb" },
-  { name: "SQLite", flag: "--sqlite", desc: "Banco embarcado e leve", cmd: "karnel install db --sqlite" },
-  { name: "MongoDB", flag: "--mongodb", desc: "Banco NoSQL documental", cmd: "karnel install db --mongodb" },
+  { name: "MariaDB", flag: "--mariadb", desc: "MySQL-compatível, robusto", cmds: ["karnel install db --mariadb"] },
+  { name: "SQLite", flag: "--sqlite", desc: "Banco embarcado e leve", cmds: ["karnel install db --sqlite"] },
+  { name: "MongoDB", flag: "--mongodb", desc: "Banco NoSQL documental", cmds: ["karnel install db --mongodb"] },
   { name: "Redis", flag: "--redis", desc: "Cache e message broker in-memory", cmds: ["karnel install db --redis", "redis-server --daemonize yes", "redis-cli"] },
 ];
 
@@ -38,7 +38,7 @@ export default function KarnelDB() {
                 <h3 className="font-bold font-mono mb-2">{db.name}</h3>
                 <p className="text-sm text-muted-foreground mb-4">{db.desc}</p>
                 <div className="space-y-2">
-                  {(db.cmds || [db.cmd]).map((c, j) => (
+                  {db.cmds.map((c, j) => (
                     <CodeBlock key={j} code={c} language="bash" />
                   ))}
                 </div>

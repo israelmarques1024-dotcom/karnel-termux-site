@@ -3,7 +3,7 @@ import { AnimatedSection } from "@/components/AnimatedSection";
 
 const modules = [
   { name: "Pacotes de Linguagem", desc: "Node, Python, Perl, PHP, Rust, C/C++, Go", cmd: "karnel install lang" },
-  { name: "Bancos de Dados", desc: "PostgreSQL, MariaDB, SQLite, MongoDB", cmd: "karnel install db" },
+  { name: "Bancos de Dados", desc: "PostgreSQL, MariaDB, SQLite, MongoDB, Redis", cmd: "karnel install db" },
   { name: "Ferramentas de IA", desc: "30 agentes (OpenCode, Claude, Gemini, Ollama, etc.)", cmd: "karnel install ai" },
   { name: "Editor de Código", desc: "code-server (VS Code no navegador)", cmd: "karnel install editor" },
   { name: "Ferramentas de Desenvolvimento", desc: "GitHub CLI, wget, curl, fzf, etc.", cmd: "karnel install dev" },

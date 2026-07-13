@@ -51,7 +51,7 @@ const faqs = [
   { q: "Works on any Android?", a: "Yes, Android 11+ recommended. Devices with 4GB+ RAM have better performance." },
   { q: "Is Karnel Termux open source?", a: "Yes! Karnel Termux is open source. In the future I plan to add ads similar to freebuff, but for now it's supported only through Pix donations." },
   { q: "Need internet?", a: "Only for installing and updating packages. After installation, most tools work fully offline. Internet is also required if you use AI agents (API calls) or clone remote repositories." },
-  { q: "Can use without Linux knowledge?", a: "Yes! Karnel Termux is designed to be simple. Portuguese commands and integrated assistant." },
+  { q: "Can I use it without Linux knowledge?", a: "Yes! Karnel Termux is designed to be simple. Portuguese commands and integrated assistant." },
 ];
 
 const steps = [

@@ -19,7 +19,7 @@ const renderers = [
 const modules = [
   { mod: "ai", cmd: "karnel show ai --opencode", tools: "opencode, ollama, claude, gemini" },
   { mod: "lang", cmd: "karnel show lang --nodejs", tools: "nodejs, python, rust, golang" },
-  { mod: "db", cmd: "karnel show db --postgresql", tools: "postgresql, mariadb, sqlite, mongodb" },
+  { mod: "db", cmd: "karnel show db --postgresql", tools: "postgresql, mariadb, sqlite, mongodb, redis" },
   { mod: "dev", cmd: "karnel show dev --gh", tools: "gh, wget, curl, fzf" },
   { mod: "npm", cmd: "karnel show npm --typescript", tools: "typescript, nestjs, prettier" },
   { mod: "shell", cmd: "karnel show shell --powerlevel10k", tools: "powerlevel10k, zsh-syntax-highlighting" },

@@ -37,7 +37,7 @@ export default function Linux() {
               <div className="mt-3">
                 <CodeBlock code="karnel install db" language="bash" title="terminal" />
                 <p className="text-sm text-muted-foreground mt-3">
-                  Instala PostgreSQL, MariaDB, SQLite e MongoDB.
+                   Instala PostgreSQL, MariaDB, SQLite, MongoDB e Redis.
                 </p>
               </div>
             </div>
