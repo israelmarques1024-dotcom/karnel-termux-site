@@ -259,6 +259,15 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           </p>
           <p className="mt-3">
             <a
+              href="https://kerneltermux.vercel.app"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-accent hover:underline"
+            >
+              Documentação
+            </a>
+            {" · "}
+            <a
               href="https://github.com/israelmarques1024-dotcom/karnel-termux"
               target="_blank"
               rel="noopener noreferrer"
