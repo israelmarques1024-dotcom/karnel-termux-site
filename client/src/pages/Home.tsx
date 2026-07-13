@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Link } from "wouter";
 import {
   ArrowRight, Zap, Code2, Cpu, Terminal, Brain, Rocket,
@@ -62,24 +62,27 @@ const steps = [
 ];
 
 function AnimatedStat({ label, value, suffix = "", delay = 0 }: { label: string; value: number; suffix?: string; delay?: number }) {
-  const { ref, inView } = useInView({ threshold: 0.05 });
+  const { ref } = useInView({ threshold: 0, once: true });
   const [count, setCount] = useState(0);
-  const [hasAnimated, setHasAnimated] = useState(false);
+  const hasStarted = useRef(false);
 
   useEffect(() => {
-    if (!inView || hasAnimated) return;
-    setHasAnimated(true);
-    const duration = 1500;
-    const startTime = performance.now();
-    const tick = (now: number) => {
-      const elapsed = now - startTime;
-      const progress = Math.min(elapsed / duration, 1);
-      const eased = 1 - Math.pow(1 - progress, 3);
-      setCount(Math.floor(eased * value));
-      if (progress < 1) requestAnimationFrame(tick);
-    };
-    requestAnimationFrame(tick);
-  }, [inView, value, hasAnimated]);
+    if (hasStarted.current) return;
+    const timeout = setTimeout(() => {
+      hasStarted.current = true;
+      const duration = 1500;
+      const startTime = performance.now();
+      const tick = (now: number) => {
+        const elapsed = now - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        setCount(Math.floor(eased * value));
+        if (progress < 1) requestAnimationFrame(tick);
+      };
+      requestAnimationFrame(tick);
+    }, delay + 300);
+    return () => clearTimeout(timeout);
+  }, [value, delay]);
 
   return (
     <div
