@@ -19,31 +19,16 @@ export default function KarnelAuto() {
           </div>
         </AnimatedSection>
 
-        <div className="grid md:grid-cols-2 gap-6 mb-12">
-          <AnimatedSection delay={200}>
-            <div className="card-hover bg-card border border-border rounded-lg p-6">
-              <h3 className="font-bold font-mono mb-2">n8n</h3>
-              <p className="text-sm text-muted-foreground mb-4">
-                Plataforma de automação de workflows. Conecte apps e serviços.
-              </p>
+        <AnimatedSection delay={200}>
+          <div className="card-hover bg-card border border-border rounded-lg p-6 mb-8">
+            <h3 className="font-bold font-mono mb-2">n8n</h3>
+            <p className="text-sm text-muted-foreground mb-4">
+              Plataforma de automação de workflows. Conecte apps e serviços com fluxos visuais.
+            </p>
+            <div className="space-y-2">
               <CodeBlock code="karnel install auto --n8n" language="bash" />
+              <CodeBlock code="# Após instalar:\nn8n start\n# Acessar UI: http://localhost:5678" language="bash" />
             </div>
-          </AnimatedSection>
-          <AnimatedSection delay={250}>
-            <div className="card-hover bg-card border border-border rounded-lg p-6">
-              <h3 className="font-bold font-mono mb-2">Task Runner</h3>
-              <p className="text-sm text-muted-foreground mb-4">
-                Automatize tarefas repetitivas com scripts pré-configurados.
-              </p>
-              <CodeBlock code="karnel install auto --task" language="bash" />
-            </div>
-          </AnimatedSection>
-        </div>
-
-        <AnimatedSection delay={300}>
-          <div className="card-hover bg-card border border-border rounded-lg p-6">
-            <h3 className="font-bold font-mono mb-4">Uso</h3>
-            <CodeBlock code="# Iniciar n8n\nn8n start\n\n# Acessar UI\n# http://localhost:5678" language="bash" />
           </div>
         </AnimatedSection>
       </div>

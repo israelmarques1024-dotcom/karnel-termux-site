@@ -136,7 +136,7 @@ export default function Home() {
               Transform your Android into a complete development station.
               Install <span className="text-accent font-semibold">30 AI agents</span>,{" "}
               <span className="text-accent font-semibold">7 languages</span>,{" "}
-              <span className="text-accent font-semibold">4 databases</span>,{" "}
+              <span className="text-accent font-semibold">5 databases</span>,{" "}
               <span className="text-accent font-semibold">19 tools</span>{" "}
               and <span className="text-accent font-semibold">3 deploy CLIs</span> — in seconds.
             </p>

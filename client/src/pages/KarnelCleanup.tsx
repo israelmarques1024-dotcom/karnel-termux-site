@@ -14,10 +14,10 @@ export default function KarnelCleanup() {
 
         <AnimatedSection delay={100}>
           <div className="card-hover bg-card border border-accent/50 rounded-lg p-6 mb-8">
-            <h3 className="font-bold font-mono mb-4">Limpar Tudo</h3>
-            <CodeBlock code="karnel open cleanup" language="bash" title="terminal" />
+            <h3 className="font-bold font-mono mb-4">Comando Karnel</h3>
+            <CodeBlock code="karnel cleanup" language="bash" title="terminal" />
             <p className="text-sm text-muted-foreground mt-2">
-              Abre esta página com as instruções completas.
+              Limpa caches, logs e arquivos temporários automaticamente.
             </p>
           </div>
         </AnimatedSection>

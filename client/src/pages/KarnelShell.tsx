@@ -2,13 +2,16 @@ import CodeBlock from "@/components/CodeBlock";
 import { AnimatedSection } from "@/components/AnimatedSection";
 
 const plugins = [
-  { name: "zsh-autosuggestions", desc: "Autocomplete ao estilo fish" },
-  { name: "zsh-syntax-highlighting", desc: "Destaque de sintaxe nos comandos" },
-  { name: "zsh-autocomplete", desc: "Autocomplete em tempo real" },
-  { name: "fast-syntax-highlighting", desc: "Syntax highlight otimizado" },
-  { name: "zsh-completions", desc: "Definições extras de completamento" },
-  { name: "you-should-use", desc: "Lembra de aliases existentes" },
-  { name: "zsh-history-substring-search", desc: "Busca no histórico like fish" },
+  { name: "powerlevel10k", flag: "--powerlevel10k", desc: "Tema ZSH mais rápido e bonito" },
+  { name: "zsh-defer", flag: "--zsh-defer", desc: "Carregamento assíncrono de plugins" },
+  { name: "zsh-autosuggestions", flag: "--zsh-autosuggestions", desc: "Autocomplete ao estilo fish" },
+  { name: "zsh-syntax-highlighting", flag: "--zsh-syntax-highlighting", desc: "Destaque de sintaxe nos comandos" },
+  { name: "zsh-history-substring-search", flag: "--history-substring", desc: "Busca no histórico como fish" },
+  { name: "zsh-completions", flag: "--zsh-completions", desc: "Definições extras de completamento" },
+  { name: "fzf-tab", flag: "--fzf-tab", desc: "Completamento fuzzy com fzf" },
+  { name: "zsh-you-should-use", flag: "--you-should-use", desc: "Lembra de aliases existentes" },
+  { name: "zsh-autopair", flag: "--zsh-autopair", desc: "Fecha parênteses/chaves automaticamente" },
+  { name: "zsh-better-npm-completion", flag: "--better-npm", desc: "Completamento melhorado para npm" },
 ];
 
 export default function KarnelShell() {
@@ -30,7 +33,7 @@ export default function KarnelShell() {
         </AnimatedSection>
 
         <AnimatedSection delay={200}>
-          <h2 className="text-2xl font-bold font-mono mb-6">Plugins Inclusos</h2>
+          <h2 className="text-2xl font-bold font-mono mb-6">Plugins Inclusos (10)</h2>
         </AnimatedSection>
 
         <div className="grid md:grid-cols-2 gap-4 mb-12">
@@ -38,7 +41,8 @@ export default function KarnelShell() {
             <AnimatedSection key={i} delay={250 + i * 40}>
               <div className="card-hover bg-card border border-border rounded-lg p-4">
                 <h3 className="font-bold font-mono mb-1">{p.name}</h3>
-                <p className="text-sm text-muted-foreground">{p.desc}</p>
+                <p className="text-sm text-muted-foreground mb-2">{p.desc}</p>
+                <CodeBlock code={`karnel install shell ${p.flag}`} language="bash" />
               </div>
             </AnimatedSection>
           ))}

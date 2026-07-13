@@ -2,10 +2,11 @@ import CodeBlock from "@/components/CodeBlock";
 import { AnimatedSection } from "@/components/AnimatedSection";
 
 const databases = [
-  { name: "PostgreSQL", flag: "--postgres", desc: "Banco relacional avançado", cmds: ["karnel install db --postgres", "karnel pg init", "karnel pg start", "psql -U postgres"] },
+  { name: "PostgreSQL", flag: "--postgresql", desc: "Banco relacional avançado", cmds: ["karnel install db --postgresql", "karnel pg init", "karnel pg start", "psql -U postgres"] },
   { name: "MariaDB", flag: "--mariadb", desc: "MySQL-compatível, robusto", cmd: "karnel install db --mariadb" },
   { name: "SQLite", flag: "--sqlite", desc: "Banco embarcado e leve", cmd: "karnel install db --sqlite" },
   { name: "MongoDB", flag: "--mongodb", desc: "Banco NoSQL documental", cmd: "karnel install db --mongodb" },
+  { name: "Redis", flag: "--redis", desc: "Cache e message broker in-memory", cmds: ["karnel install db --redis", "redis-server --daemonize yes", "redis-cli"] },
 ];
 
 export default function KarnelDB() {

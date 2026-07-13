@@ -2,13 +2,13 @@ import CodeBlock from "@/components/CodeBlock";
 import { AnimatedSection } from "@/components/AnimatedSection";
 
 const langs = [
-  { name: "Node.js", flag: "--node", pkg: "nodejs", desc: "Runtime JavaScript baseado em V8" },
+  { name: "Node.js LTS", flag: "--nodejs", pkg: "nodejs", desc: "Runtime JavaScript baseado em V8" },
   { name: "Python", flag: "--python", pkg: "python", desc: "Linguagem versátil para scripts e apps" },
-  { name: "Go", flag: "--golang", pkg: "golang", desc: "Linguagem compilada e concorrente" },
+  { name: "Perl", flag: "--perl", pkg: "perl", desc: "Processamento de texto e scripts" },
+  { name: "PHP", flag: "--php", pkg: "php", desc: "Linguagem para web servers" },
   { name: "Rust", flag: "--rust", pkg: "rust", desc: "Sistemas com performance e segurança" },
   { name: "C/C++", flag: "--clang", pkg: "clang", desc: "Compilação nativa com Clang/GCC" },
-  { name: "PHP", flag: "--php", pkg: "php", desc: "Linguagem para web servers" },
-  { name: "Perl", flag: "--perl", pkg: "perl", desc: "Processamento de texto e scripts" },
+  { name: "Go (golang)", flag: "--golang", pkg: "golang", desc: "Linguagem compilada e concorrente" },
 ];
 
 export default function KarnelLang() {
@@ -27,7 +27,7 @@ export default function KarnelLang() {
             <h3 className="font-bold font-mono mb-4">Instalação Rápida</h3>
             <CodeBlock code="karnel install lang" language="bash" title="terminal" />
             <p className="text-sm text-muted-foreground mt-2">
-              Instalar específicas: <code className="text-accent">karnel install lang --node --python --rust</code>
+              Instalar específicas: <code className="text-accent">karnel install lang --nodejs --python</code>
             </p>
           </div>
         </AnimatedSection>

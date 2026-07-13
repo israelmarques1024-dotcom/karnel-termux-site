@@ -2,16 +2,17 @@ import CodeBlock from "@/components/CodeBlock";
 import { AnimatedSection } from "@/components/AnimatedSection";
 
 const packages = [
-  { name: "TypeScript", flag: "--typescript", desc: "JavaScript com tipos" },
-  { name: "tsx", flag: "--tsx", desc: "Execução TypeScript direta" },
-  { name: "Vercel CLI", flag: "--vercel", desc: "Deploy na Vercel" },
-  { name: "pnpm", flag: "--pnpm", desc: "Gerenciador de pacotes rápido" },
-  { name: "yarn", flag: "--yarn", desc: "Gerenciador de pacotes alternativo" },
-  { name: "nodemon", flag: "--nodemon", desc: "Auto-restart em alterações" },
-  { name: "http-server", flag: "--http-server", desc: "Servidor HTTP simples" },
-  { name: "live-server", flag: "--live-server", desc: "Servidor com live reload" },
-  { name: "json-server", flag: "--json-server", desc: "API REST a partir de JSON" },
-  { name: "ngrok", flag: "--ngrok", desc: "Túneis públicos para localhost" },
+  { name: "TypeScript", flag: "--typescript", bin: "tsc", desc: "JavaScript com tipos" },
+  { name: "NestJS CLI", flag: "--nestjs", bin: "nest", desc: "Framework Node.js progressivo" },
+  { name: "Prettier", flag: "--prettier", bin: "prettier", desc: "Formatador de código" },
+  { name: "Live Server", flag: "--live-server", bin: "live-server", desc: "Servidor com live reload" },
+  { name: "Localtunnel", flag: "--localtunnel", bin: "lt", desc: "Túneis públicos para localhost" },
+  { name: "Vercel CLI", flag: "--vercel", bin: "vercel", desc: "Deploy na Vercel" },
+  { name: "Markserv", flag: "--markserv", bin: "markserv", desc: "Servidor de markdown" },
+  { name: "PSQL Format", flag: "--psqlformat", bin: "psqlformat", desc: "Formatador SQL" },
+  { name: "NPM Check Updates", flag: "--ncu", bin: "ncu", desc: "Verifica atualizações de pacotes" },
+  { name: "Ngrok", flag: "--ngrok", bin: "ngrok", desc: "Túneis públicos para localhost" },
+  { name: "Turbopack", flag: "--turbopack", bin: "turbo", desc: "Bundler Rust extremamente rápido" },
 ];
 
 export default function KarnelNpm() {
@@ -29,6 +30,9 @@ export default function KarnelNpm() {
           <div className="card-hover bg-card border border-accent/50 rounded-lg p-6 mb-12">
             <h3 className="font-bold font-mono mb-4">Instalação Rápida</h3>
             <CodeBlock code="karnel install npm" language="bash" title="terminal" />
+            <p className="text-sm text-muted-foreground mt-2">
+              Instalar específicos: <code className="text-accent">karnel install npm --typescript --prettier</code>
+            </p>
           </div>
         </AnimatedSection>
 
@@ -41,7 +45,8 @@ export default function KarnelNpm() {
             <AnimatedSection key={i} delay={300 + i * 50}>
               <div className="card-hover bg-card border border-border rounded-lg p-6">
                 <h3 className="font-bold font-mono mb-2">{pkg.name}</h3>
-                <p className="text-sm text-muted-foreground mb-4">{pkg.desc}</p>
+                <p className="text-sm text-muted-foreground mb-1">{pkg.desc}</p>
+                <p className="text-xs text-muted-foreground mb-3">Comando: <code className="text-accent">{pkg.bin}</code></p>
                 <CodeBlock code={`karnel install npm ${pkg.flag}`} language="bash" />
               </div>
             </AnimatedSection>
