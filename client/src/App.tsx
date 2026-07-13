@@ -24,6 +24,14 @@ const Voice = lazy(() => import("@/pages/Voice"));
 const PG = lazy(() => import("@/pages/PG"));
 const Init = lazy(() => import("@/pages/Init"));
 const Env = lazy(() => import("@/pages/Env"));
+const KarnelLang = lazy(() => import("@/pages/KarnelLang"));
+const KarnelDB = lazy(() => import("@/pages/KarnelDB"));
+const KarnelDev = lazy(() => import("@/pages/KarnelDev"));
+const KarnelNpm = lazy(() => import("@/pages/KarnelNpm"));
+const KarnelShell = lazy(() => import("@/pages/KarnelShell"));
+const KarnelUI = lazy(() => import("@/pages/KarnelUI"));
+const KarnelAuto = lazy(() => import("@/pages/KarnelAuto"));
+const KarnelCleanup = lazy(() => import("@/pages/KarnelCleanup"));
 
 function RouterOutlet() {
   return (
@@ -44,6 +52,14 @@ function RouterOutlet() {
         <Route path={"/karnel/pg"} component={PG} />
         <Route path={"/karnel/init"} component={Init} />
         <Route path={"/karnel/env"} component={Env} />
+        <Route path={"/karnel/lang"} component={KarnelLang} />
+        <Route path={"/karnel/db"} component={KarnelDB} />
+        <Route path={"/karnel/dev"} component={KarnelDev} />
+        <Route path={"/karnel/npm"} component={KarnelNpm} />
+        <Route path={"/karnel/shell"} component={KarnelShell} />
+        <Route path={"/karnel/ui"} component={KarnelUI} />
+        <Route path={"/karnel/auto"} component={KarnelAuto} />
+        <Route path={"/karnel/cleanup"} component={KarnelCleanup} />
         <Route path={"/404"} component={NotFound} />
         <Route component={NotFound} />
       </Switch>
