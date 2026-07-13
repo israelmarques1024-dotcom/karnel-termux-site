@@ -2,7 +2,8 @@ import { useState, useEffect, useRef } from "react";
 import { Link } from "wouter";
 import {
   ArrowRight, Zap, Code2, Cpu, Terminal, Brain, Rocket,
-  Stethoscope, Eye, Mic, Database, Puzzle, Shield
+  Stethoscope, Eye, Mic, Database, Puzzle, Shield,
+  Laptop, Smartphone
 } from "lucide-react";
 import { RiStarLine, RiFlashlightFill } from "@remixicon/react";
 import CodeBlock from "@/components/CodeBlock";
@@ -361,6 +362,199 @@ export default function Home() {
               </AnimatedSection>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="py-24 px-4 bg-card/50 border-t border-border">
+        <div className="max-w-3xl mx-auto text-center">
+          <AnimatedSection animation="scale-in">
+            <div className="inline-flex items-center gap-2 rounded-full border border-accent/20 bg-accent/5 px-4 py-1.5 text-xs font-medium text-accent mb-6">
+              <RiFlashlightFill size={14} />
+              Start building today
+            </div>
+          </AnimatedSection>
+
+          <AnimatedSection delay={100}>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 leading-tight">
+              Ready to Code on Your <span className="text-gradient-accent">Phone</span>?
+            </h2>
+          </AnimatedSection>
+
+          <AnimatedSection delay={200}>
+            <p className="text-muted-foreground mb-10 text-lg">
+              Join thousands of developers building real apps with Karnel Termux.
+            </p>
+          </AnimatedSection>
+
+          <AnimatedSection delay={300}>
+            <div className="flex gap-4 justify-center flex-wrap">
+              <Link
+                href="/termux"
+                className="group inline-flex items-center gap-2 rounded-xl bg-accent px-7 py-3.5 text-sm font-semibold text-accent-foreground shadow-lg shadow-accent/25 transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-accent/40 active:scale-95 animate-pulse-glow"
+              >
+                Get Started Now
+                <ArrowRight size={18} className="transition-transform duration-300 group-hover:translate-x-1" />
+              </Link>
+              <a
+                href="https://github.com/israelmarques1024-dotcom/karnel-termux"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group inline-flex items-center gap-2 rounded-xl border border-border bg-card/50 px-7 py-3.5 text-sm font-semibold text-foreground transition-all duration-300 hover:border-accent/30 hover:bg-accent/5 hover:scale-105 active:scale-95"
+              >
+                View on GitHub
+              </a>
+            </div>
+          </AnimatedSection>
+        </div>
+      </section>
+
+      {/* Desktop CLI Section */}
+      <section className="py-20 px-4 border-t border-border">
+        <div className="max-w-6xl mx-auto">
+          <AnimatedSection className="text-center mb-14">
+            <h2 className="text-3xl sm:text-4xl font-bold mb-3">
+              Also for <span className="text-gradient-accent">Desktop</span> (Linux, macOS, Windows)
+            </h2>
+            <p className="text-muted-foreground">
+              Single binary. Native package managers. Zero dependencies.
+            </p>
+          </AnimatedSection>
+
+          <AnimatedSection delay={100}>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {/* Mobile Card */}
+              <div className="card-hover bg-card border border-border rounded-xl p-6 relative">
+                <div className="absolute top-4 right-4 w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center">
+                  <Smartphone size={20} className="text-accent" />
+                </div>
+                <h3 className="text-xl font-bold font-mono mb-2">Karnel Mobile (Termux)</h3>
+                <p className="text-muted-foreground mb-4">
+                  Full development environment on Android. 30 AI agents, 7 languages, 5 databases, VS Code in browser.
+                </p>
+                <div className="space-y-2 mb-4">
+                  <CodeBlock code={`bash -c "$(curl -fsSL https://raw.githubusercontent.com/israelmarques1024-dotcom/karnel-termux/main/install.sh)"`} language="bash" title="install" />
+                  <CodeBlock code={`npm install -g karnel-termux`} language="bash" title="npm" />
+                </div>
+                <Link
+                  href="/karnel"
+                  className="inline-flex items-center gap-2 text-sm font-medium text-accent hover:underline transition-colors"
+                >
+                  View Mobile Docs →
+                </Link>
+              </div>
+
+              {/* Desktop Card */}
+              <div className="card-hover bg-card border border-accent/30 rounded-xl p-6 relative">
+                <div className="absolute top-4 right-4 w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center">
+                  <Laptop size={20} className="text-accent" />
+                </div>
+                <h3 className="text-xl font-bold font-mono mb-2 text-accent">Karnel Desktop CLI</h3>
+                <p className="text-muted-foreground mb-4">
+                  Cross-platform tool manager. Category installs, AI chat, second brain, PostgreSQL, cleanup, upgrade.
+                </p>
+                <div className="space-y-2 mb-4">
+                  <CodeBlock code={`# Download binary from GitHub Releases
+chmod +x karnel && sudo mv karnel /usr/local/bin/`} language="bash" title="install" />
+                </div>
+                <Link
+                  href="/desktop"
+                  className="inline-flex items-center gap-2 text-sm font-medium text-accent hover:underline transition-colors"
+                >
+                  View Desktop Docs →
+                </Link>
+              </div>
+            </div>
+          </AnimatedSection>
+
+          {/* Quick command comparison */}
+          <AnimatedSection delay={200}>
+            <h3 className="text-xl font-bold font-mono mb-6 text-center">Same Commands, Both Platforms</h3>
+            <div className="overflow-x-auto">
+              <table className="w-full text-sm">
+                <thead>
+                  <tr className="border-b border-border">
+                    <th className="py-3 px-4 text-left font-mono">Command</th>
+                    <th className="py-3 px-4 text-left text-muted-foreground">Mobile (Termux)</th>
+                    <th className="py-3 px-4 text-left text-muted-foreground">Desktop (Linux/macOS/Win)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr className="border-b border-border hover:bg-accent/5">
+                    <td className="py-3 px-4 font-mono text-accent">karnel install lang</td>
+                    <td className="py-3 px-4">✓ (pkg/apt)</td>
+                    <td className="py-3 px-4">✓ (apt/dnf/brew/winget)</td>
+                  </tr>
+                  <tr className="border-b border-border hover:bg-accent/5">
+                    <td className="py-3 px-4 font-mono text-accent">karnel install ai</td>
+                    <td className="py-3 px-4">✓ 30 agents</td>
+                    <td className="py-3 px-4">✓ 15+ agents</td>
+                  </tr>
+                  <tr className="border-b border-border hover:bg-accent/5">
+                    <td className="py-3 px-4 font-mono text-accent">karnel brain</td>
+                    <td className="py-3 px-4">✓</td>
+                    <td className="py-3 px-4">✓ (graph, sync, reset)</td>
+                  </tr>
+                  <tr className="border-b border-border hover:bg-accent/5">
+                    <td className="py-3 px-4 font-mono text-accent">karnel ask</td>
+                    <td className="py-3 px-4">✗</td>
+                    <td className="py-3 px-4">✓ (via opencode)</td>
+                  </tr>
+                  <tr className="border-b border-border hover:bg-accent/5">
+                    <td className="py-3 px-4 font-mono text-accent">karnel cleanup</td>
+                    <td className="py-3 px-4">✗</td>
+                    <td className="py-3 px-4">✓</td>
+                  </tr>
+                  <tr className="border-b border-border hover:bg-accent/5">
+                    <td className="py-3 px-4 font-mono text-accent">karnel upgrade</td>
+                    <td className="py-3 px-4">✗</td>
+                    <td className="py-3 px-4">✓ (dist-upgrade)</td>
+                  </tr>
+                  <tr className="border-b border-border hover:bg-accent/5">
+                    <td className="py-3 px-4 font-mono text-accent">karnel pg</td>
+                    <td className="py-3 px-4">✓</td>
+                    <td className="py-3 px-4">✓</td>
+                  </tr>
+                  <tr className="border-b border-border hover:bg-accent/5">
+                    <td className="py-3 px-4 font-mono text-accent">karnel backup</td>
+                    <td className="py-3 px-4">✓ (+cloud)</td>
+                    <td className="py-3 px-4">✓</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </AnimatedSection>
+
+          {/* Links */}
+          <AnimatedSection delay={300} className="text-center mt-12">
+            <div className="flex gap-4 justify-center flex-wrap">
+              <a
+                href="https://github.com/israelmarques1024-dotcom/karnel-termux"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group inline-flex items-center gap-2 rounded-xl border border-border bg-card/50 px-7 py-3.5 text-sm font-semibold text-foreground transition-all duration-300 hover:border-accent/30 hover:bg-accent/5 hover:scale-105 active:scale-95"
+              >
+                <Smartphone size={18} />
+                Karnel Mobile Repo
+              </a>
+              <a
+                href="https://github.com/israelmarques1024-dotcom/karnel-termux-desktop-cli"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group inline-flex items-center gap-2 rounded-xl border border-accent/30 bg-accent/5 px-7 py-3.5 text-sm font-semibold text-accent transition-all duration-300 hover:bg-accent/10 hover:scale-105 active:scale-95"
+              >
+                <Laptop size={18} />
+                Karnel Desktop Repo
+              </a>
+              <Link
+                href="/desktop"
+                className="group inline-flex items-center gap-2 rounded-xl bg-accent px-7 py-3.5 text-sm font-semibold text-accent-foreground shadow-lg shadow-accent/25 transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-accent/40 active:scale-95"
+              >
+                Read Desktop Docs
+                <ArrowRight size={18} className="transition-transform duration-300 group-hover:translate-x-1" />
+              </Link>
+            </div>
+          </AnimatedSection>
         </div>
       </section>
 

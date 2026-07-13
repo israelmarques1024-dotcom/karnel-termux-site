@@ -1,9 +1,12 @@
 import { Link, useLocation } from "wouter";
 import { useState } from "react";
+import { ChevronDown, ChevronRight } from "lucide-react";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   const [location, navigate] = useLocation();
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(true);
+  const [desktopOpen, setDesktopOpen] = useState(false);
 
   const scrollToSupport = () => {
     if (location !== "/") {
@@ -19,6 +22,9 @@ export default function Layout({ children }: { children: React.ReactNode }) {
   const navItems = [
     { label: "Get Started", href: "/" },
     { label: "Support Project", action: scrollToSupport },
+  ];
+
+  const termuxItems = [
     { label: "Termux", href: "/termux" },
     { label: "Termux:API", href: "/termux/api" },
     { label: "Karnel", href: "/karnel" },
@@ -41,7 +47,76 @@ export default function Layout({ children }: { children: React.ReactNode }) {
     { label: "Cleanup", href: "/karnel/cleanup" },
     { label: "Doctor", href: "/karnel/doctor" },
     { label: "Show", href: "/karnel/show" },
+    { label: "Backup", href: "/karnel/backup" },
   ];
+
+  const desktopItems = [
+    { label: "Documentation", href: "/desktop" },
+    { label: "Install", href: "/desktop#installation" },
+    { label: "Commands", href: "/desktop#commands" },
+    { label: "Categories", href: "/desktop#categories" },
+    { label: "Platforms", href: "/desktop#platforms" },
+  ];
+
+  const renderNavSection = (
+    title: string,
+    items: { label: string; href?: string; action?: () => void }[],
+    isOpen: boolean,
+    setIsOpen: (v: boolean) => void
+  ) => (
+    <div className="space-y-1 mb-2">
+      <button
+        onClick={() => setIsOpen(!isOpen)}
+        className="flex w-full items-center justify-between px-4 py-2.5 rounded-md font-mono text-sm font-medium text-sidebar-foreground hover:bg-sidebar-primary/15 hover:text-accent/80 transition-all duration-200"
+      >
+        <span>{title}</span>
+        <span className="flex items-center gap-1">
+          {isOpen ? (
+            <ChevronDown size={12} className="text-accent/70" />
+          ) : (
+            <ChevronRight size={12} className="text-muted-foreground" />
+          )}
+        </span>
+      </button>
+      {isOpen && (
+        <div className="ml-4 mt-1 space-y-1 border-l border-sidebar-border/30 pl-3 animate-slide-down">
+          {items.map((item) => {
+            const isActive = item.href && location === item.href;
+            const isAction = !item.href && item.action;
+            return isAction ? (
+              <button
+                key={item.label}
+                onClick={(e) => {
+                  item.action?.();
+                  setSidebarOpen(false);
+                }}
+                className={`block w-full text-left px-3 py-2 rounded-md transition-all duration-200 font-mono text-xs font-medium ${
+                  isActive
+                    ? "bg-gradient-to-r from-accent/20 to-accent/10 text-accent border-l border-accent shadow-sm shadow-accent/20"
+                    : "text-sidebar-foreground hover:bg-sidebar-primary/15 hover:text-accent/80"
+                }`}
+              >
+                {item.label}
+              </button>
+            ) : (
+              <Link
+                key={item.href}
+                href={item.href || "/"}
+                className={`block px-3 py-2 rounded-md transition-all duration-200 font-mono text-xs font-medium ${
+                  isActive
+                    ? "bg-gradient-to-r from-accent/20 to-accent/10 text-accent border-l border-accent shadow-sm shadow-accent/20"
+                    : "text-sidebar-foreground hover:bg-sidebar-primary/15 hover:text-accent/80"
+                }`}
+                onClick={() => setSidebarOpen(false)}
+              >
+                {item.label}
+              </Link>
+            );
+          })}
+        </div>
+      )}
+    </div>
+  );
 
   return (
     <div className="flex min-h-screen bg-background text-foreground">
@@ -69,7 +144,8 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           </Link>
 
           {/* Navigation */}
-          <nav className="flex-1 space-y-1">
+          <nav className="flex-1 space-y-1 overflow-y-auto pr-2">
+            {/* Core Items (always visible) */}
             {navItems.map((item) => {
               const isActive = item.href && location === item.href;
               const isAction = !item.href && item.action;
@@ -103,24 +179,32 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                 </Link>
               );
             })}
-          </nav>
 
-          {/* Footer */}
-          <div className="pt-6 border-t border-sidebar-border/50 space-y-3">
-            <button
-              onClick={() => {
-                scrollToSupport();
-                setSidebarOpen(false);
-              }}
-              className="block w-full text-center px-4 py-2 bg-accent/20 text-accent rounded-lg font-mono text-sm font-medium hover:bg-accent/30 transition-colors"
-            >
-              Support Project
-             </button>
-            <p className="text-xs text-muted-foreground font-mono">
-              <span className="text-accent">v4.7.4</span> • Android + Termux
-            </p>
-            <p className="text-xs text-muted-foreground/60 mt-2">Built for developers</p>
-          </div>
+            <div className="my-4 h-px bg-sidebar-border/30" />
+
+            {/* Mobile/Termux Section (collapsible) */}
+            {renderNavSection("📱 KARNEL MOBILE", termuxItems, mobileOpen, setMobileOpen)}
+
+            {/* Desktop Section (collapsible) */}
+            {renderNavSection("💻 KARNEL DESKTOP", desktopItems, desktopOpen, setDesktopOpen)}
+
+            {/* Footer */}
+            <div className="pt-6 border-t border-sidebar-border/50 space-y-3">
+              <button
+                onClick={() => {
+                  scrollToSupport();
+                  setSidebarOpen(false);
+                }}
+                className="block w-full text-center px-4 py-2 bg-accent/20 text-accent rounded-lg font-mono text-sm font-medium hover:bg-accent/30 transition-colors"
+              >
+                Support Project
+              </button>
+              <p className="text-xs text-muted-foreground font-mono">
+                <span className="text-accent">v4.7.4</span> • Android + Termux
+              </p>
+              <p className="text-xs text-muted-foreground/60 mt-2">Built for developers</p>
+            </div>
+          </nav>
         </div>
       </aside>
 
@@ -158,7 +242,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         {/* Footer */}
         <footer className="bg-card border-t border-border p-6 text-center text-sm text-muted-foreground">
           <p>
-            Karnel Termux — Built by{" "}
+            Karnel Termux & Desktop — Built by{" "}
             <a
               href="https://github.com/israelmarques1024-dotcom"
               target="_blank"
@@ -180,16 +264,16 @@ export default function Layout({ children }: { children: React.ReactNode }) {
               rel="noopener noreferrer"
               className="text-accent hover:underline"
             >
-              Karnel Repo
+              Karnel Mobile Repo
             </a>
             {" · "}
             <a
-              href="https://github.com/israelmarques1024-dotcom"
+              href="https://github.com/israelmarques1024-dotcom/karnel-termux-desktop-cli"
               target="_blank"
               rel="noopener noreferrer"
               className="text-accent hover:underline"
             >
-              GitHub Profile
+              Karnel Desktop Repo
             </a>
             {" · "}
             <a
@@ -199,6 +283,10 @@ export default function Layout({ children }: { children: React.ReactNode }) {
               className="text-accent hover:underline"
             >
               MIT License
+            </a>
+            {" · "}
+            <a href="/terms" className="text-accent hover:underline">
+              Terms
             </a>
           </p>
         </footer>

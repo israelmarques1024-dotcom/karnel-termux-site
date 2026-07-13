@@ -32,6 +32,10 @@ const commands = [
   { cmd: "karnel list", desc: "Listar ferramentas disponíveis nos módulos" },
   { cmd: "karnel pg", desc: "Gerenciador de banco de dados PostgreSQL" },
   { cmd: "karnel init", desc: "Inicializar projetos com templates" },
+  { cmd: "karnel backup", desc: "Backup completo do Termux (configs + pacotes + tools)" },
+  { cmd: "karnel backup --cloud", desc: "Backup + upload para Google Drive" },
+  { cmd: "karnel restore", desc: "Restaurar backup mais recente" },
+  { cmd: "karnel restore --cloud", desc: "Restaurar do Google Drive" },
 ];
 
 const templates = [
@@ -124,6 +128,12 @@ export default function KarnelDocs() {
 
           {[
             {
+              title: "karnel backup",
+              desc: "Backup completo do Termux — salva configurações, pacotes instalados e ferramentas Karnel em um arquivo. Upload opcional para Google Drive via rclone (gratuito).",
+              code: `karnel backup                    # Backup local (configs + pacotes + tools)\nkarnel backup --cloud           # Backup + upload para Google Drive\nkarnel restore                  # Restaurar backup mais recente\nkarnel restore --cloud          # Restaurar do Google Drive`,
+              extra: { label: "O backup inclui:", code: "• Lista de todos os pacotes (dpkg)\n• Manifest das ferramentas Karnel\n• Configs do shell (.bashrc, .zshrc, .profile)\n• Configurações do Termux (fontes, cores)\n• Chaves SSH\n• Configs de apps (~/.config)\n• Repositórios APT" }
+            },
+            {
               title: "karnel reinstall",
               desc: "Reinstalar módulos ou ferramentas específicas — desinstala e instala do zero.",
               code: `karnel reinstall                # Mostrar ajuda\nkarnel reinstall <target>       # Reinstalar alvo específico\nkarnel reinstall <target> --tool1 --tool2  # Reinstalar ferramentas específicas`,
@@ -179,6 +189,21 @@ export default function KarnelDocs() {
               </div>
             </AnimatedSection>
           ))}
+
+          <AnimatedSection delay={1500}>
+            <div className="card-hover bg-card border border-border rounded-xl p-8 text-center">
+              <h3 className="text-xl font-bold font-mono mb-2">Documentação de Backup</h3>
+              <p className="text-muted-foreground mb-6">
+                Saiba como salvar e restaurar todo o seu Termux.
+              </p>
+              <a
+                href="/karnel/backup"
+                className="group inline-flex items-center gap-2 rounded-xl bg-accent px-6 py-3 text-sm font-semibold text-accent-foreground shadow-lg shadow-accent/25 transition-all duration-300 hover:scale-105 hover:shadow-xl active:scale-95"
+              >
+                Ver Documentação de Backup
+              </a>
+            </div>
+          </AnimatedSection>
 
           <AnimatedSection delay={1600}>
             <div className="card-hover bg-card border border-border rounded-xl p-8 text-center">

@@ -29,7 +29,7 @@ const aiTools = [
   { name: "Crush CLI", bin: "crush", flag: "--crush" },
   { name: "Odysseus", bin: "odysseus", flag: "--odysseus" },
   { name: "Kimchi CLI", bin: "kimchi", flag: "--kimchi-code" },
-  { name: "karnelRoute", bin: "karnel-route", flag: "--karnel-route" },
+  { name: "omniRoute", bin: "omni-route", flag: "--omni-route" },
   { name: "Context7", bin: "ctx7", flag: "--ctx7" },
   { name: "OpenSpec", bin: "openspec", flag: "--openspec" },
 ];

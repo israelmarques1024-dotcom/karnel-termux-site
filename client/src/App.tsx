@@ -13,6 +13,7 @@ const Home = lazy(() => import("@/pages/Home"));
 const Termux = lazy(() => import("@/pages/Termux"));
 const TermuxAPI = lazy(() => import("@/pages/TermuxAPI"));
 const KarnelDocs = lazy(() => import("@/pages/KarnelDocs"));
+const KarnelDesktop = lazy(() => import("@/pages/KarnelDesktop"));
 const AITools = lazy(() => import("@/pages/AITools"));
 const CodeEditor = lazy(() => import("@/pages/CodeEditor"));
 const Deploy = lazy(() => import("@/pages/Deploy"));
@@ -32,6 +33,8 @@ const KarnelShell = lazy(() => import("@/pages/KarnelShell"));
 const KarnelUI = lazy(() => import("@/pages/KarnelUI"));
 const KarnelAuto = lazy(() => import("@/pages/KarnelAuto"));
 const KarnelCleanup = lazy(() => import("@/pages/KarnelCleanup"));
+const KarnelBackup = lazy(() => import("@/pages/KarnelBackup"));
+const Terms = lazy(() => import("@/pages/Terms"));
 
 function RouterOutlet() {
   return (
@@ -41,6 +44,7 @@ function RouterOutlet() {
         <Route path={"/termux"} component={Termux} />
         <Route path={"/termux/api"} component={TermuxAPI} />
         <Route path={"/karnel"} component={KarnelDocs} />
+        <Route path={"/desktop"} component={KarnelDesktop} />
         <Route path={"/karnel/ai"} component={AITools} />
         <Route path={"/karnel/editor"} component={CodeEditor} />
         <Route path={"/karnel/deploy"} component={Deploy} />
@@ -60,6 +64,8 @@ function RouterOutlet() {
         <Route path={"/karnel/ui"} component={KarnelUI} />
         <Route path={"/karnel/auto"} component={KarnelAuto} />
         <Route path={"/karnel/cleanup"} component={KarnelCleanup} />
+        <Route path={"/karnel/backup"} component={KarnelBackup} />
+        <Route path={"/terms"} component={Terms} />
         <Route path={"/404"} component={NotFound} />
         <Route component={NotFound} />
       </Switch>
