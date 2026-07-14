@@ -121,7 +121,8 @@ export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <div className="flex min-h-screen bg-background text-foreground">
       {/* Sidebar - responsive width */}
-      <aside
+      <nav
+        aria-label="Main navigation"
         className={`fixed left-0 top-0 z-40 h-screen bg-sidebar border-r border-sidebar-border transition-all duration-300 lg:relative lg:translate-x-0 ${
           sidebarOpen ? "translate-x-0" : "-translate-x-full"
         } w-full sm:w-72 lg:w-64 xl:w-72 max-w-[85vw]`}
@@ -138,7 +139,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
               className="w-10 h-10 sm:w-12 sm:h-12 drop-shadow-[0_0_12px_rgba(168,85,247,0.5)] group-hover:drop-shadow-[0_0_20px_rgba(168,85,247,0.8)] transition-all duration-300"
             />
             <div className="hidden sm:block">
-              <h1 className="font-bold text-lg font-mono text-foreground group-hover:text-accent transition-colors">KARNEL</h1>
+              <div className="font-bold text-lg font-mono text-foreground group-hover:text-accent transition-colors">KARNEL</div>
               <p className="text-xs text-muted-foreground group-hover:text-accent/70 transition-colors">TERMUX</p>
             </div>
           </a>
@@ -190,7 +191,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             </div>
           </nav>
         </div>
-      </aside>
+      </nav>
 
       {/* Mobile Overlay */}
       {sidebarOpen && (

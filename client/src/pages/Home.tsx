@@ -3,9 +3,8 @@ import { Link } from "wouter";
 import {
   ArrowRight, Zap, Code2, Cpu, Terminal, Brain, Rocket,
   Stethoscope, Eye, Mic, Database, Puzzle, Shield,
-  Laptop, Smartphone
+  Laptop, Smartphone, Star
 } from "lucide-react";
-import { RiStarLine, RiFlashlightFill } from "@remixicon/react";
 import CodeBlock from "@/components/CodeBlock";
 import SupportProject from "@/components/SupportProject";
 import { AnimatedSection } from "@/components/AnimatedSection";
@@ -65,24 +64,26 @@ const steps = [
 function AnimatedStat({ label, value, suffix = "", delay = 0 }: { label: string; value: number; suffix?: string; delay?: number }) {
   const { ref } = useInView({ threshold: 0, once: true });
   const [count, setCount] = useState(0);
-  const hasStarted = useRef(false);
+  const rafRef = useRef<number>(undefined);
 
   useEffect(() => {
-    if (hasStarted.current) return;
+    const duration = 2000;
+    const start = performance.now();
+    function tick(now: number) {
+      const elapsed = now - start;
+      const progress = Math.min(elapsed / duration, 1);
+      setCount(Math.floor(progress * value));
+      if (progress < 1) {
+        rafRef.current = requestAnimationFrame(tick);
+      }
+    }
     const timeout = setTimeout(() => {
-      hasStarted.current = true;
-      const duration = 1500;
-      const startTime = performance.now();
-      const tick = (now: number) => {
-        const elapsed = now - startTime;
-        const progress = Math.min(elapsed / duration, 1);
-        const eased = 1 - Math.pow(1 - progress, 3);
-        setCount(Math.floor(eased * value));
-        if (progress < 1) requestAnimationFrame(tick);
-      };
-      requestAnimationFrame(tick);
+      rafRef.current = requestAnimationFrame(tick);
     }, delay + 300);
-    return () => clearTimeout(timeout);
+    return () => {
+      clearTimeout(timeout);
+      if (rafRef.current !== undefined) cancelAnimationFrame(rafRef.current);
+    };
   }, [value, delay]);
 
   return (
@@ -117,7 +118,7 @@ export default function Home() {
         <div className="relative z-10 max-w-5xl mx-auto text-center">
           <AnimatedSection animation="fade-in-up">
             <div className="inline-flex items-center gap-2 rounded-full border border-accent/20 bg-accent/5 px-4 py-1.5 text-xs font-medium text-accent mb-8 animate-float">
-              <RiFlashlightFill size={14} />
+              <Zap size={14} />
               Open Source — MIT
             </div>
           </AnimatedSection>
@@ -317,7 +318,7 @@ export default function Home() {
                 rel="noopener noreferrer"
                 className="star-btn inline-flex items-center gap-2 sm:gap-3 px-5 sm:px-8 py-3 sm:py-4 rounded-xl font-bold text-sm sm:text-base"
               >
-                <RiStarLine size={20} />
+                <Star size={20} />
                 Star on GitHub
               </a>
             </div>
@@ -370,7 +371,7 @@ export default function Home() {
         <div className="max-w-3xl mx-auto text-center">
           <AnimatedSection animation="scale-in">
             <div className="inline-flex items-center gap-2 rounded-full border border-accent/20 bg-accent/5 px-4 py-1.5 text-xs font-medium text-accent mb-6">
-              <RiFlashlightFill size={14} />
+              <Zap size={14} />
               Start building today
             </div>
           </AnimatedSection>
@@ -497,17 +498,17 @@ chmod +x karnel && sudo mv karnel /usr/local/bin/`} language="bash" title="insta
                   </tr>
                   <tr className="border-b border-border hover:bg-accent/5">
                     <td className="py-3 px-4 font-mono text-accent">karnel ask</td>
-                    <td className="py-3 px-4">✗</td>
+                    <td className="py-3 px-4">✓ (manual AI CLI)</td>
                     <td className="py-3 px-4">✓ (via opencode)</td>
                   </tr>
                   <tr className="border-b border-border hover:bg-accent/5">
                     <td className="py-3 px-4 font-mono text-accent">karnel cleanup</td>
-                    <td className="py-3 px-4">✗</td>
+                    <td className="py-3 px-4">Via pkg/npm</td>
                     <td className="py-3 px-4">✓</td>
                   </tr>
                   <tr className="border-b border-border hover:bg-accent/5">
                     <td className="py-3 px-4 font-mono text-accent">karnel upgrade</td>
-                    <td className="py-3 px-4">✗</td>
+                    <td className="py-3 px-4">pkg upgrade</td>
                     <td className="py-3 px-4">✓ (dist-upgrade)</td>
                   </tr>
                   <tr className="border-b border-border hover:bg-accent/5">
