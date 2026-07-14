@@ -92,7 +92,7 @@ function AnimatedStat({ label, value, suffix = "", delay = 0 }: { label: string;
       className="rounded-xl border border-border bg-card/50 p-4 text-center transition-all duration-500 hover:border-accent/30 hover:bg-card/80 hover:shadow-lg hover:shadow-accent/5 hover:-translate-y-1"
       style={{ animationDelay: `${delay}ms` }}
     >
-      <div className="text-2xl sm:text-3xl font-bold font-mono text-gradient-accent">
+      <div className="text-2xl sm:text-3xl font-bold font-mono text-gradient">
         {count}{suffix}
       </div>
       <div className="text-xs mt-1 font-medium text-muted-foreground">
@@ -184,7 +184,7 @@ export default function Home() {
         <div className="max-w-4xl mx-auto">
           <AnimatedSection className="text-center mb-10">
             <h2 className="text-3xl sm:text-4xl font-bold mb-3">
-              Install In <span className="text-gradient-accent">One Line</span>
+              Install In <span className="text-gradient">One Line</span>
             </h2>
             <p className="text-muted-foreground">
               No dependencies. No bloat. Pure development power.
@@ -230,7 +230,7 @@ export default function Home() {
         <div className="max-w-6xl mx-auto">
           <AnimatedSection className="text-center mb-14">
             <h2 className="text-3xl sm:text-4xl font-bold mb-3">
-              Why Developers Choose <span className="text-gradient-accent">Karnel Termux</span>
+              Why Developers Choose <span className="text-gradient">Karnel Termux</span>
             </h2>
             <p className="text-muted-foreground">
               Built by developers, for developers coding anywhere.
@@ -265,7 +265,7 @@ export default function Home() {
         <div className="max-w-3xl mx-auto">
           <AnimatedSection className="text-center mb-14">
             <h2 className="text-3xl sm:text-4xl font-bold mb-3">
-              Frequently Asked <span className="text-gradient-accent">Questions</span>
+              Frequently Asked <span className="text-gradient">Questions</span>
             </h2>
             <p className="text-muted-foreground">
               Get your questions answered about Karnel Termux.
@@ -331,7 +331,7 @@ export default function Home() {
         <div className="max-w-4xl mx-auto">
           <AnimatedSection className="text-center mb-14">
             <h2 className="text-3xl sm:text-4xl font-bold mb-3">
-              Quick <span className="text-gradient-accent">Start</span>
+              Quick <span className="text-gradient">Start</span>
             </h2>
             <p className="text-muted-foreground">
               Get coding on your phone in under 5 minutes.
@@ -378,7 +378,7 @@ export default function Home() {
 
           <AnimatedSection delay={100}>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 leading-tight">
-              Ready to Code on Your <span className="text-gradient-accent">Phone</span>?
+              Ready to Code on Your <span className="text-gradient">Phone</span>?
             </h2>
           </AnimatedSection>
 
@@ -415,7 +415,7 @@ export default function Home() {
         <div className="max-w-6xl mx-auto">
           <AnimatedSection className="text-center mb-14">
             <h2 className="text-3xl sm:text-4xl font-bold mb-3">
-              Also for <span className="text-gradient-accent">Desktop</span> (Linux, macOS, Windows)
+              Also for <span className="text-gradient">Desktop</span> (Linux, macOS, Windows)
             </h2>
             <p className="text-muted-foreground">
               Single binary. Native package managers. Zero dependencies.
