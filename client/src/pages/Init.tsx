@@ -27,8 +27,8 @@ export default function Init() {
             <div className="card-hover bg-card border border-accent/50 rounded-lg p-6 mb-12">
               <h3 className="font-bold font-mono mb-4">Uso</h3>
               <CodeBlock
-                code={`karnel init                     # Detecta tipo de projeto e configura
-karnel init <template>          # Configura com template específico`}
+                code={`karnel init                     # Detects project type and configures
+karnel init <template>          # Configures with specific template`}
                 language="bash"
                 title="terminal"
               />
@@ -36,7 +36,7 @@ karnel init <template>          # Configura com template específico`}
           </AnimatedSection>
 
           <AnimatedSection delay={200}>
-            <h2 className="text-2xl font-bold font-mono mb-6">Templates Disponíveis</h2>
+            <h2 className="text-2xl font-bold font-mono mb-6">Available Templates</h2>
           </AnimatedSection>
 
           <div className="grid md:grid-cols-2 gap-4 mb-12">
@@ -54,7 +54,7 @@ karnel init <template>          # Configura com template específico`}
           </div>
 
           <AnimatedSection delay={700}>
-            <h2 className="text-2xl font-bold font-mono mb-6">Exemplo</h2>
+            <h2 className="text-2xl font-bold font-mono mb-6">Example</h2>
             <div className="card-hover bg-card border border-border rounded-lg p-6">
               <CodeBlock
                 code={`mkdir meu-projeto && cd meu-projeto && karnel init next`}
@@ -62,7 +62,7 @@ karnel init <template>          # Configura com template específico`}
                 title="terminal"
               />
               <p className="text-sm text-muted-foreground mt-3">
-                Cria um projeto Next.js completo com TypeScript e Tailwind configurados.
+                 Creates a complete Next.js project with TypeScript and Tailwind configured.
               </p>
             </div>
           </AnimatedSection>

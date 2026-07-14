@@ -2,12 +2,11 @@ import CodeBlock from "@/components/CodeBlock";
 import { AnimatedSection } from "@/components/AnimatedSection";
 
 const commands = [
-  { cmd: "karnel brain add <text>", desc: "Salva um novo pensamento ou ideia" },
-  { cmd: "karnel brain search <query>", desc: "Busca na memória com IA semântica" },
-  { cmd: "karnel brain list", desc: "Lista todas as entradas salvas" },
-  { cmd: "karnel brain graph", desc: "Visualiza conexões entre ideias num grafo" },
-  { cmd: "karnel brain delete <id>", desc: "Remove uma entrada específica" },
-  { cmd: "karnel brain clear", desc: "Limpa todas as entradas" },
+  { cmd: "karnel brain add <text>", desc: "Save a new thought or idea" },
+  { cmd: "karnel brain search <query>", desc: "Search memory with semantic AI" },
+  { cmd: "karnel brain list", desc: "List all saved entries" },
+  { cmd: "karnel brain graph", desc: "Visualize idea connections as a graph" },
+  { cmd: "karnel brain clear", desc: "Clear all entries" },
 ];
 
 export default function Brain() {
@@ -30,7 +29,7 @@ export default function Brain() {
           </AnimatedSection>
 
           <AnimatedSection delay={200}>
-            <h2 className="text-2xl font-bold font-mono mb-6">Comandos</h2>
+            <h2 className="text-2xl font-bold font-mono mb-6">Commands</h2>
           </AnimatedSection>
 
           <AnimatedSection delay={250}>
@@ -39,8 +38,8 @@ export default function Brain() {
                 <table className="w-full text-sm">
                   <thead>
                     <tr className="border-b border-border bg-secondary/30">
-                      <th className="text-left py-3 px-4 font-mono">Comando</th>
-                      <th className="text-left py-3 px-4 font-mono">Descrição</th>
+                      <th className="text-left py-3 px-4 font-mono">Command</th>
+                      <th className="text-left py-3 px-4 font-mono">Description</th>
                     </tr>
                   </thead>
                   <tbody>

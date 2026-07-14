@@ -2,48 +2,48 @@ import CodeBlock from "@/components/CodeBlock";
 import { AnimatedSection } from "@/components/AnimatedSection";
 
 const checks = [
-  { num: 1, title: "Informações do Sistema", desc: "Versão do Android, versão do Termux, arquitetura da CPU" },
-  { num: 2, title: "Recursos do Sistema", desc: "Espaço em disco disponível, RAM total e disponível, avisos de pouca memória" },
-  { num: 3, title: "Armazenamento e Permissões", desc: "Acessibilidade do armazenamento compartilhado, permissões de gravação no caminho do Karnel, integridade do diretório Karnel" },
-  { num: 4, title: "Linguagens e Ferramentas Críticas", desc: "Verifica git, ripgrep, jq, curl, tar, Node.js, Python, Rust, Go, Clang, Make" },
-  { num: 5, title: "Saúde do Gerenciador de Pacotes", desc: "Auditoria dpkg, pacotes retidos, validação de fontes APT" },
-  { num: 6, title: "Node.js e NPM", desc: "Versão do Node, versão do NPM, permissões do prefixo global, tamanho do cache" },
-  { num: 7, title: "Ambiente Python", desc: "Detecção do interpretador Python, disponibilidade do pip, módulo venv" },
-  { num: 8, title: "Banco de Dados PostgreSQL", desc: "Instalação do PostgreSQL, diretório de dados, status de execução" },
-  { num: 9, title: "Framework Karnel", desc: "Versão do Karnel, symlinks da CLI, instalação do banner na configuração do shell" },
-  { num: 10, title: "Status das Ferramentas de IA", desc: "Escaneia 30 ferramentas de IA (opencode, claude, gemini, ollama, etc.)" },
-  { num: 11, title: "Configuração do Shell", desc: "Existência do arquivo de configuração ZSH/Bash, validação de sintaxe" },
-  { num: 12, title: "Compatibilidade com Android", desc: "Detecção do Phantom Process Killer no Android 12+" },
-  { num: 13, title: "Termux:API", desc: "Verificação de instalação do pacote Termux-API" },
-  { num: 14, title: "Configuração do Git", desc: "Configurações de git user.name e user.email" },
-  { num: 15, title: "Chaves SSH", desc: "Existência de chave SSH para autenticação no GitHub" },
-  { num: 16, title: "Conectividade de Rede", desc: "Acessibilidade HTTP ao GitHub" },
-  { num: 17, title: "Servidor OpenSSH", desc: "Disponibilidade do SSHD (opcional)" },
-  { num: 18, title: "Saúde do Disco", desc: "Aviso de espaço em disco baixo (abaixo de 500MB)" },
-  { num: 19, title: "Integridade dos Dados Karnel", desc: "Verifica diretórios KARNEL_CONFIG, KARNEL_CACHE, KARNEL_DATA" },
-  { num: 20, title: "Geração de Relatório", desc: "Salva um relatório detalhado em Markdown em KARNEL_DATA/doctor_reports/" },
-  { num: 21, title: "Plugins ZSH", desc: "Verifica integração do Karnel com ZSH plugins" },
-  { num: 22, title: "GPU e Hardware", desc: "Detecção de GPU e aceleração de hardware" },
-  { num: 23, title: "Locale e Encoding", desc: "Verificação de UTF-8 e configuração de idioma" },
-  { num: 24, title: "Bateria e Energia", desc: "Status da bateria e otimizações de energia" },
-  { num: 25, title: "Chaves de API", desc: "Verifica chaves de API configuradas no ambiente" },
-  { num: 26, title: "Saúde dos Processos", desc: "Detecta processos zumbi e órfãos" },
-  { num: 27, title: "I/O do Armazenamento", desc: "Teste de velocidade de leitura/escrita" },
-  { num: 28, title: "Qualidade da Rede", desc: "Latência, DNS e conectividade" },
-  { num: 29, title: "Privacidade do Shell", desc: "Verifica dados sensíveis no histórico" },
-  { num: 30, title: "USB e Externo", desc: "Detecta dispositivos USB e armazenamento externo" },
+  { num: 1, title: "System Information", desc: "Android version, Termux version, CPU architecture" },
+  { num: 2, title: "System Resources", desc: "Available disk space, total and available RAM, low memory warnings" },
+  { num: 3, title: "Storage and Permissions", desc: "Shared storage accessibility, Karnel path write permissions, directory integrity" },
+  { num: 4, title: "Languages and Critical Tools", desc: "Checks git, ripgrep, jq, curl, tar, Node.js, Python, Rust, Go, Clang, Make" },
+  { num: 5, title: "Package Manager Health", desc: "dpkg audit, held packages, APT sources validation" },
+  { num: 6, title: "Node.js and NPM", desc: "Node version, NPM version, global prefix permissions, cache size" },
+  { num: 7, title: "Python Environment", desc: "Python interpreter detection, pip availability, venv module" },
+  { num: 8, title: "PostgreSQL Database", desc: "PostgreSQL installation, data directory, runtime status" },
+  { num: 9, title: "Karnel Framework", desc: "Karnel version, CLI symlinks, banner installation in shell config" },
+  { num: 10, title: "AI Tools Status", desc: "Scans 30 AI tools (opencode, claude, gemini, ollama, etc.)" },
+  { num: 11, title: "Shell Configuration", desc: "ZSH/Bash config file existence, syntax validation" },
+  { num: 12, title: "Android Compatibility", desc: "Phantom Process Killer detection on Android 12+" },
+  { num: 13, title: "Termux:API", desc: "Termux-API package installation check" },
+  { num: 14, title: "Git Configuration", desc: "Git user.name and user.email settings" },
+  { num: 15, title: "SSH Keys", desc: "SSH key existence for GitHub authentication" },
+  { num: 16, title: "Network Connectivity", desc: "HTTP accessibility to GitHub" },
+  { num: 17, title: "OpenSSH Server", desc: "SSHD availability (optional)" },
+  { num: 18, title: "Disk Health", desc: "Low disk space warning (below 500MB)" },
+  { num: 19, title: "Karnel Data Integrity", desc: "Checks KARNEL_CONFIG, KARNEL_CACHE, KARNEL_DATA directories" },
+  { num: 20, title: "Report Generation", desc: "Saves detailed Markdown report in KARNEL_DATA/doctor_reports/" },
+  { num: 21, title: "ZSH Plugins", desc: "Checks Karnel integration with ZSH plugins" },
+  { num: 22, title: "GPU and Hardware", desc: "GPU detection and hardware acceleration" },
+  { num: 23, title: "Locale and Encoding", desc: "UTF-8 verification and locale configuration" },
+  { num: 24, title: "Battery and Power", desc: "Battery status and power optimizations" },
+  { num: 25, title: "API Keys", desc: "Checks API keys configured in environment" },
+  { num: 26, title: "Process Health", desc: "Detects zombie and orphan processes" },
+  { num: 27, title: "Storage I/O", desc: "Read/write speed test" },
+  { num: 28, title: "Network Quality", desc: "Latency, DNS and connectivity" },
+  { num: 29, title: "Shell Privacy", desc: "Checks for sensitive data in history" },
+  { num: 30, title: "USB and External", desc: "Detects USB devices and external storage" },
 ];
 
 const autoFixes = [
-  "Vincular armazenamento compartilhado via termux-setup-storage",
-  "Instalar pacotes ausentes via pkg install",
-  "Corrigir estado quebrado do dpkg/apt",
-  "Recriar symlinks da CLI para karnel",
-  "Corrigir permissões do diretório global do NPM",
-  "Inicializar e iniciar PostgreSQL",
-  "Gerar chave SSH para GitHub",
-  "Instalar banner do Karnel na configuração do shell",
-  "Limpar cache e pacotes não utilizados",
+  "Link shared storage via termux-setup-storage",
+  "Install missing packages via pkg install",
+  "Fix broken dpkg/apt state",
+  "Recreate CLI symlinks for karnel",
+  "Fix NPM global directory permissions",
+  "Initialize and start PostgreSQL",
+  "Generate SSH key for GitHub",
+  "Install Karnel banner in shell config",
+  "Clean cache and unused packages",
 ];
 
 export default function Doctor() {
@@ -53,8 +53,8 @@ export default function Doctor() {
           <AnimatedSection>
             <h1 className="text-4xl font-bold font-mono mb-4">karnel doctor</h1>
             <p className="text-lg text-muted-foreground mb-8">
-              Diagnostique seu ambiente Termux e Karnel. Executa 30+ verificações em recursos
-              do sistema, runtimes de linguagens, bancos de dados, ferramentas de IA, configuração do shell e mais.
+              Diagnose your Termux and Karnel environment. Runs 30+ checks on system
+              resources, language runtimes, databases, AI tools, shell configuration and more.
             </p>
           </AnimatedSection>
 
@@ -81,7 +81,7 @@ export default function Doctor() {
                     <tr className="border-b border-border bg-secondary/30">
                       <th className="text-left py-3 px-4 font-mono w-12">#</th>
                       <th className="text-left py-3 px-4 font-mono">Verificação</th>
-                      <th className="text-left py-3 px-4 font-mono">Descrição</th>
+                      <th className="text-left py-3 px-4 font-mono">Description</th>
                     </tr>
                   </thead>
                   <tbody>

@@ -2,9 +2,9 @@ import CodeBlock from "@/components/CodeBlock";
 import { AnimatedSection } from "@/components/AnimatedSection";
 
 const tools = [
-  { name: "Vercel", bin: "vercel", flag: "--vercel", desc: "Deploy de frontend & serverless" },
-  { name: "Railway", bin: "railway", flag: "--railway", desc: "Full-stack com bancos de dados" },
-  { name: "Netlify", bin: "netlify", flag: "--netlify", desc: "Sites estáticos & edge functions" },
+  { name: "Vercel", bin: "vercel", flag: "--vercel", desc: "Frontend & serverless deploy" },
+  { name: "Railway", bin: "railway", flag: "--railway", desc: "Full-stack with databases" },
+  { name: "Netlify", bin: "netlify", flag: "--netlify", desc: "Static sites & edge functions" },
 ];
 
 export default function Deploy() {
@@ -12,25 +12,25 @@ export default function Deploy() {
       <section className="py-12 px-4">
         <div className="max-w-4xl mx-auto">
           <AnimatedSection>
-            <h1 className="text-4xl font-bold font-mono mb-4">CLIs de Deploy</h1>
+            <h1 className="text-4xl font-bold font-mono mb-4">Deploy CLIs</h1>
             <p className="text-lg text-muted-foreground mb-8">
-              Envie para produção diretamente do seu celular. Vercel, Railway e
-              Netlify — todos pré-configurados e prontos para deploy.
+              Deploy to production directly from your phone. Vercel, Railway and
+              Netlify — all pre-configured and ready.
             </p>
           </AnimatedSection>
 
           <AnimatedSection delay={100}>
             <div className="card-hover bg-card border border-accent/50 rounded-lg p-6 mb-12">
-              <h3 className="font-bold font-mono mb-4">Instalação Rápida</h3>
+              <h3 className="font-bold font-mono mb-4">Quick Install</h3>
               <CodeBlock code={`karnel install deploy`} language="bash" title="terminal" />
               <p className="text-sm text-muted-foreground mt-4">
-                Instalar específicos: <code className="text-accent">karnel install deploy --vercel --railway</code>
+                Install specific: <code className="text-accent">karnel install deploy --vercel --railway</code>
               </p>
             </div>
           </AnimatedSection>
 
           <AnimatedSection delay={200}>
-            <h2 className="text-2xl font-bold font-mono mb-6">CLIs Disponíveis</h2>
+            <h2 className="text-2xl font-bold font-mono mb-6">Available CLIs</h2>
           </AnimatedSection>
 
           <AnimatedSection delay={250}>
@@ -40,9 +40,9 @@ export default function Deploy() {
                   <thead>
                     <tr className="border-b border-border bg-secondary/30">
                       <th className="text-left py-3 px-4 font-mono">CLI</th>
-                      <th className="text-left py-3 px-4 font-mono">Comando</th>
+                      <th className="text-left py-3 px-4 font-mono">Binary</th>
                       <th className="text-left py-3 px-4 font-mono">Flag</th>
-                      <th className="text-left py-3 px-4 font-mono">Descrição</th>
+                      <th className="text-left py-3 px-4 font-mono">Description</th>
                     </tr>
                   </thead>
                   <tbody>

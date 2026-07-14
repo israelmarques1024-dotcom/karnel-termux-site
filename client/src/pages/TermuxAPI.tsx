@@ -4,33 +4,33 @@ import { AnimatedSection } from "@/components/AnimatedSection";
 
 const commands = {
   clipboard: [
-    { desc: "Obter conteúdo da área de transferência", cmd: "termux-clipboard-get" },
-    { desc: "Definir conteúdo da área de transferência", cmd: 'termux-clipboard-set "text"' },
+    { desc: "Get clipboard content", cmd: "termux-clipboard-get" },
+    { desc: "Set clipboard content", cmd: 'termux-clipboard-set "text"' },
   ],
   hardware: [
-    { desc: "Obter status da bateria", cmd: "termux-battery-status" },
-    { desc: "Listar sensores disponíveis", cmd: "termux-sensor -s" },
-    { desc: "Ler dados do sensor", cmd: "termux-sensor -n <sensor>" },
-    { desc: "Ligar lanterna", cmd: "termux-torch on" },
-    { desc: "Desligar lanterna", cmd: "termux-torch off" },
-    { desc: "Vibrar por 500ms", cmd: "termux-vibrate -d 500" },
+    { desc: "Get battery status", cmd: "termux-battery-status" },
+    { desc: "List available sensors", cmd: "termux-sensor -s" },
+    { desc: "Read sensor data", cmd: "termux-sensor -n <sensor>" },
+    { desc: "Turn on flashlight", cmd: "termux-torch on" },
+    { desc: "Turn off flashlight", cmd: "termux-torch off" },
+    { desc: "Vibrate for 500ms", cmd: "termux-vibrate -d 500" },
   ],
   camera: [
-    { desc: "Obter informações da câmera", cmd: "termux-camera-info" },
-    { desc: "Tirar uma foto", cmd: "termux-camera-photo" },
+    { desc: "Get camera information", cmd: "termux-camera-info" },
+    { desc: "Take a photo", cmd: "termux-camera-photo" },
   ],
   location: [
-    { desc: "Obter localização GPS", cmd: "termux-location" },
+    { desc: "Get GPS location", cmd: "termux-location" },
   ],
   notifications: [
-    { desc: "Mostrar notificação", cmd: 'termux-notification -t "Title" -c "Content"' },
-    { desc: "Remover notificação", cmd: "termux-notification-remove <id>" },
+    { desc: "Show notification", cmd: 'termux-notification -t "Title" -c "Content"' },
+    { desc: "Remove notification", cmd: "termux-notification-remove <id>" },
   ],
   sms: [
-    { desc: "Obter informações do dispositivo", cmd: "termux-telephony-deviceinfo" },
-    { desc: "Obter informações da célula", cmd: "termux-telephony-cellinfo" },
-    { desc: "Listar caixa de entrada SMS", cmd: "termux-sms-inbox" },
-    { desc: "Enviar SMS", cmd: 'termux-sms-send -n <number> "message"' },
+    { desc: "Get device information", cmd: "termux-telephony-deviceinfo" },
+    { desc: "Get cell information", cmd: "termux-telephony-cellinfo" },
+    { desc: "List SMS inbox", cmd: "termux-sms-inbox" },
+    { desc: "Send SMS", cmd: 'termux-sms-send -n <number> "message"' },
   ],
 };
 
@@ -41,17 +41,17 @@ export default function TermuxAPI() {
           <AnimatedSection>
             <h1 className="text-4xl font-bold font-mono mb-4">Termux:API</h1>
             <p className="text-lg text-muted-foreground mb-8">
-              Termux:API expõe recursos do Android e hardware como comandos de linha
-              de comando. Acesse área de transferência, sensores, câmera, notificações e muito mais
-              diretamente do seu terminal.
+              Termux:API exposes Android and hardware features as command-line
+              commands. Access clipboard, sensors, camera, notifications and more
+              directly from your terminal.
             </p>
           </AnimatedSection>
 
           <AnimatedSection delay={100}>
             <div className="card-hover bg-card border border-accent/50 rounded-lg p-6 mb-12">
-              <h3 className="font-bold font-mono mb-4">Instalação</h3>
+              <h3 className="font-bold font-mono mb-4">Installation</h3>
               <p className="text-sm text-muted-foreground mb-4">
-                Instale o APK e o pacote termux-api, depois execute qualquer comando abaixo.
+                Install the APK and termux-api package, then run any command below.
               </p>
               <CodeBlock
                 code={`# 1. Baixe e instale o APK do GitHub
@@ -66,11 +66,11 @@ pkg install termux-api`}
           <AnimatedSection delay={200}>
             <Tabs defaultValue="clipboard" className="mb-12">
               <TabsList className="grid w-full grid-cols-3 lg:grid-cols-6">
-                <TabsTrigger value="clipboard">Área de Transferência</TabsTrigger>
+                <TabsTrigger value="clipboard">Clipboard</TabsTrigger>
                 <TabsTrigger value="hardware">Hardware</TabsTrigger>
                 <TabsTrigger value="camera">Câmera</TabsTrigger>
-                <TabsTrigger value="location">Localização</TabsTrigger>
-                <TabsTrigger value="notifications">Notificações</TabsTrigger>
+                <TabsTrigger value="location">Location</TabsTrigger>
+                <TabsTrigger value="notifications">Notifications</TabsTrigger>
                 <TabsTrigger value="sms">SMS</TabsTrigger>
               </TabsList>
               {Object.entries(commands).map(([category, cmds]) => (
@@ -90,16 +90,16 @@ pkg install termux-api`}
 
           <AnimatedSection delay={300}>
             <div className="card-hover bg-card border border-border rounded-xl p-8">
-              <h2 className="text-2xl font-bold font-mono mb-6">Requisitos</h2>
+              <h2 className="text-2xl font-bold font-mono mb-6">Requirements</h2>
               <p className="text-muted-foreground mb-6">
-                Termux:API requer dois componentes para funcionar. O APK concede permissões
-                do Android, e o pacote fornece a interface de linha de comando.
+                Termux:API requires two components to work. The APK grants Android
+                permissions, and the package provides the command-line interface.
               </p>
               <div className="space-y-6">
                 <div>
-                  <h3 className="font-bold font-mono mb-3">1. Instale o APK</h3>
+                  <h3 className="font-bold font-mono mb-3">1. Install the APK</h3>
                   <p className="text-sm text-muted-foreground mb-4">
-                    Baixe e instale o aplicativo Termux:API do GitHub.
+                    Download and install the Termux:API app from GitHub.
                   </p>
                   <a
                     href="https://github.com/termux/termux-api/releases/latest"
@@ -107,13 +107,13 @@ pkg install termux-api`}
                     rel="noopener noreferrer"
                     className="group inline-flex items-center gap-2 rounded-xl bg-accent px-5 py-2.5 text-sm font-semibold text-accent-foreground shadow-lg shadow-accent/25 transition-all duration-300 hover:scale-105 hover:shadow-xl active:scale-95"
                   >
-                    Baixar APK
+                    Download APK
                   </a>
                 </div>
                 <div>
-                  <h3 className="font-bold font-mono mb-3">2. Instale o Pacote</h3>
+                  <h3 className="font-bold font-mono mb-3">2. Install the Package</h3>
                   <p className="text-sm text-muted-foreground mb-4">
-                    Dentro do Termux, instale o pacote da API:
+                    Inside Termux, install the API package:
                   </p>
                   <CodeBlock code="pkg install termux-api" language="bash" />
                 </div>

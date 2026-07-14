@@ -21,10 +21,10 @@ const agents = [
 ];
 
 const steps = [
-  { num: "1", title: "Captura", desc: "Fale o prompt no microfone. O Android transcreve com speech-to-text." },
-  { num: "2", title: "Revisão", desc: "Texto transcrito abre no code-server para corrigir erros e ajustar." },
-  { num: "3", title: "Clipboard", desc: "Prompt revisado é copiado para a área de transferência automaticamente." },
-  { num: "4", title: "Disparo", desc: "Agente de AI é executado com o prompt — mãos-livres." },
+  { num: "1", title: "Capture", desc: "Speak the prompt into the microphone. Android transcribes with speech-to-text." },
+  { num: "2", title: "Review", desc: "Transcribed text opens in code-server for error correction and adjustments." },
+  { num: "3", title: "Clipboard", desc: "Reviewed prompt is copied to clipboard automatically." },
+  { num: "4", title: "Dispatch", desc: "AI agent runs with the prompt — hands-free." },
 ];
 
 export default function Voice() {
@@ -88,8 +88,8 @@ karnel voice claude-code --lang pt-BR  # Fala em português → claude`}
                 <table className="w-full text-sm">
                   <thead>
                     <tr className="border-b border-border">
-                      <th className="text-left p-3 font-mono text-accent">Agente</th>
-                      <th className="text-left p-3 font-mono text-accent">Comando Executado</th>
+                      <th className="text-left p-3 font-mono text-accent">Agent</th>
+                      <th className="text-left p-3 font-mono text-accent">Command</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -106,7 +106,7 @@ karnel voice claude-code --lang pt-BR  # Fala em português → claude`}
           </AnimatedSection>
 
           <AnimatedSection delay={700}>
-            <h2 className="text-2xl font-bold font-mono mb-6">Opções</h2>
+            <h2 className="text-2xl font-bold font-mono mb-6">Options</h2>
           </AnimatedSection>
 
           <AnimatedSection delay={750}>
@@ -116,21 +116,21 @@ karnel voice claude-code --lang pt-BR  # Fala em português → claude`}
                   <thead>
                     <tr className="border-b border-border">
                       <th className="text-left p-3 font-mono text-accent">Flag</th>
-                      <th className="text-left p-3 font-mono text-accent">Descrição</th>
+                      <th className="text-left p-3 font-mono text-accent">Description</th>
                     </tr>
                   </thead>
                   <tbody>
                     <tr className="border-b border-border/50 hover:bg-accent/5 transition-colors">
                       <td className="p-3 font-mono">--lang &lt;código&gt;</td>
-                      <td className="p-3 text-muted-foreground">Idioma da fala: pt-BR, en-US, es</td>
+                      <td className="p-3 text-muted-foreground">Speech language: pt-BR, en-US, es</td>
                     </tr>
                     <tr className="border-b border-border/50 hover:bg-accent/5 transition-colors">
                       <td className="p-3 font-mono">--raw</td>
-                      <td className="p-3 text-muted-foreground">Pula edição no code-server, usa captura direta</td>
+                      <td className="p-3 text-muted-foreground">Skip code-server editing, use direct capture</td>
                     </tr>
                     <tr className="border-b border-border/50 hover:bg-accent/5 transition-colors">
                       <td className="p-3 font-mono">--no-clip</td>
-                      <td className="p-3 text-muted-foreground">Não copia prompt para área de transferência</td>
+                      <td className="p-3 text-muted-foreground">Don't copy prompt to clipboard</td>
                     </tr>
                   </tbody>
                 </table>

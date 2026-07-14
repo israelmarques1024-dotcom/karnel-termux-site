@@ -92,8 +92,8 @@ const troubleshooting = [
     fix: "# Abra o code-server e faça login via extensão GitHub Copilot",
   },
   {
-    title: "Reinstalar do zero",
-    desc: "Faça backup da configuração, remova o diretório code-server e reinstale.",
+    title: "Reinstall from scratch",
+    desc: "Backup your config, remove the code-server directory and reinstall.",
     fix: `mv ~/.config/code-server ~/.config/code-server.bak\nkarnel reinstall editor`,
   },
 ];
@@ -122,13 +122,13 @@ export default function CodeEditor() {
 
           <AnimatedSection delay={100}>
             <div className="card-hover bg-card border border-accent/50 rounded-lg p-6 mb-12">
-              <h3 className="font-bold font-mono mb-4">Instalação Rápida</h3>
+              <h3 className="font-bold font-mono mb-4">Quick Install</h3>
               <CodeBlock code={`karnel install editor`} language="bash" title="terminal" />
             </div>
           </AnimatedSection>
 
           <AnimatedSection delay={200}>
-            <h2 className="text-2xl font-bold font-mono mb-6">Funcionalidades</h2>
+            <h2 className="text-2xl font-bold font-mono mb-6">Features</h2>
           </AnimatedSection>
 
           <div className="grid md:grid-cols-2 gap-4 mb-12">
@@ -143,7 +143,7 @@ export default function CodeEditor() {
           </div>
 
           <AnimatedSection delay={650}>
-            <h2 className="text-2xl font-bold font-mono mb-6">Atalhos de Teclado</h2>
+            <h2 className="text-2xl font-bold font-mono mb-6">Keyboard Shortcuts</h2>
             <p className="text-muted-foreground mb-6">Tecla Líder: <code className="bg-background px-2 py-1 rounded text-accent">Space</code></p>
           </AnimatedSection>
 
@@ -160,9 +160,9 @@ export default function CodeEditor() {
                     <table className="w-full text-sm">
                       <thead>
                         <tr className="border-b border-border bg-secondary/30">
-                          <th className="text-left py-3 px-4 font-mono">Tecla</th>
-                          <th className="text-left py-3 px-4 font-mono">Modo</th>
-                          <th className="text-left py-3 px-4 font-mono">Descrição</th>
+                          <th className="text-left py-3 px-4 font-mono">Key</th>
+                          <th className="text-left py-3 px-4 font-mono">Mode</th>
+                          <th className="text-left py-3 px-4 font-mono">Description</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -182,7 +182,7 @@ export default function CodeEditor() {
           </AnimatedSection>
 
           <AnimatedSection delay={750}>
-            <h2 className="text-2xl font-bold font-mono mb-6">Suporte a Linguagens</h2>
+            <h2 className="text-2xl font-bold font-mono mb-6">Language Support</h2>
           </AnimatedSection>
 
           <AnimatedSection delay={800}>
@@ -191,10 +191,10 @@ export default function CodeEditor() {
                 <table className="w-full text-sm">
                   <thead>
                     <tr className="border-b border-border bg-secondary/30">
-                      <th className="text-left py-3 px-4 font-mono">Linguagem</th>
+                      <th className="text-left py-3 px-4 font-mono">Language</th>
                       <th className="text-left py-3 px-4 font-mono">LSP</th>
                       <th className="text-left py-3 px-4 font-mono">Formatador</th>
-                      <th className="text-left py-3 px-4 font-mono">Recursos</th>
+                      <th className="text-left py-3 px-4 font-mono">Features</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -213,13 +213,13 @@ export default function CodeEditor() {
           </AnimatedSection>
 
           <AnimatedSection delay={850}>
-            <h2 className="text-2xl font-bold font-mono mb-6">Opções de Instalação</h2>
+            <h2 className="text-2xl font-bold font-mono mb-6">Installation Options</h2>
           </AnimatedSection>
 
           {[
-            { title: "Instalação Completa", desc: "Instala code-server, VS Code extensions e todos os plugins.", code: "karnel install editor" },
-            { title: "Componentes Individuais", desc: "Instale apenas o que você precisa para uma configuração mais leve.", code: "karnel install editor          # Instala code-server completo\nkarnel start editor            # Inicia o servidor na porta 8080" },
-            { title: "Extensões VS Code", desc: "Instale extensões via CLI (recomendado no celular) ou pelo painel de extensões:", code: "# Via CLI (recomendado para mobile):\ncode-server --install-extension ms-python.python\ncode-server --install-extension esbenp.prettier-vscode\n\n# Ou pelo painel: Ctrl+Shift+X" },
+            { title: "Full Installation", desc: "Installs code-server, VS Code extensions and all plugins.", code: "karnel install editor" },
+            { title: "Individual Components", desc: "Install only what you need for a lighter setup.", code: "karnel install editor          # Install full code-server\nkarnel start editor            # Start server on port 8080" },
+            { title: "VS Code Extensions", desc: "Install extensions via CLI (recommended on mobile) or via the extensions panel:", code: "# Via CLI (recommended for mobile):\ncode-server --install-extension ms-python.python\ncode-server --install-extension esbenp.prettier-vscode\n\n# Or via panel: Ctrl+Shift+X" },
           ].map((item, i) => (
             <AnimatedSection key={i} delay={900 + i * 80}>
               <div className="card-hover bg-card border border-border rounded-lg p-6 mb-6">
@@ -231,7 +231,7 @@ export default function CodeEditor() {
           ))}
 
           <AnimatedSection delay={1100}>
-            <h2 className="text-2xl font-bold font-mono mb-6">Configuração</h2>
+            <h2 className="text-2xl font-bold font-mono mb-6">Configuration</h2>
             <div className="card-hover bg-card border border-border rounded-lg p-6 mb-6">
               <p className="text-muted-foreground mb-4">
                 O code-server usa <code className="text-accent">~/.config/code-server/config.yaml</code> para configuração.

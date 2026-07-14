@@ -21,7 +21,7 @@ export default function KarnelShell() {
         <AnimatedSection>
           <h1 className="text-4xl font-bold font-mono mb-4">Shell ZSH</h1>
           <p className="text-lg text-muted-foreground mb-8">
-            ZSH com Oh My Zsh e plugins de produtividade para Termux.
+            ZSH with Oh My Zsh and productivity plugins for Termux.
           </p>
         </AnimatedSection>
 

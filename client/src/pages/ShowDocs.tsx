@@ -2,18 +2,18 @@ import CodeBlock from "@/components/CodeBlock";
 import { AnimatedSection } from "@/components/AnimatedSection";
 
 const examples = [
-  { cmd: "karnel show ai --opencode", desc: "Mostrar README do OpenCode no módulo de IA" },
-  { cmd: "karnel show ai --ollama", desc: "Mostrar documentação do Ollama" },
-  { cmd: "karnel show db --postgresql", desc: "Mostrar guia de configuração do PostgreSQL" },
-  { cmd: "karnel show dev --gh", desc: "Mostrar docs do GitHub CLI" },
-  { cmd: "karnel show npm --typescript", desc: "Mostrar guia do pacote npm TypeScript" },
-  { cmd: "karnel show all --<tool>", desc: "Pesquisar uma ferramenta em todos os módulos" },
+  { cmd: "karnel show ai --opencode", desc: "Show OpenCode README in AI module" },
+  { cmd: "karnel show ai --ollama", desc: "Show Ollama documentation" },
+  { cmd: "karnel show db --postgresql", desc: "Show PostgreSQL setup guide" },
+  { cmd: "karnel show dev --gh", desc: "Show GitHub CLI docs" },
+  { cmd: "karnel show npm --typescript", desc: "Show TypeScript npm package guide" },
+  { cmd: "karnel show all --<tool>", desc: "Search for a tool across all modules" },
 ];
 
 const renderers = [
-  { name: "glow", desc: "Renderiza Markdown com destaque de sintaxe e estilo" },
-  { name: "pygmentize", desc: "Markdown com destaque de sintaxe via less -R" },
-  { name: "cat", desc: "Texto simples quando nenhuma ferramenta está disponível" },
+  { name: "glow", desc: "Renders Markdown with syntax highlighting and style" },
+  { name: "pygmentize", desc: "Markdown with syntax highlighting via less -R" },
+  { name: "cat", desc: "Plain text when no formatting tool is available" },
 ];
 
 const modules = [
@@ -37,8 +37,8 @@ export default function ShowDocs() {
           <AnimatedSection>
             <h1 className="text-4xl font-bold font-mono mb-4">karnel show</h1>
             <p className="text-lg text-muted-foreground mb-8">
-              Exibe documentação README para qualquer ferramenta instalada via Karnel. Suporta
-              renderização via glow (quando disponível), pygmentize ou cat simples.
+              Displays README documentation for any tool installed via Karnel. Supports
+              rendering via glow (when available), pygmentize, or plain cat.
             </p>
           </AnimatedSection>
 
@@ -47,14 +47,14 @@ export default function ShowDocs() {
               <h3 className="font-bold font-mono mb-4">Uso</h3>
               <CodeBlock code={"karnel show <module> --<tool>"} language="bash" title="terminal" />
               <p className="text-sm text-muted-foreground mt-4">
-                Execute <code className="text-accent">karnel list &lt;module&gt;</code> primeiro para ver as ferramentas
-                disponíveis em um módulo.
+                Run <code className="text-accent">karnel list &lt;module&gt;</code> first to see available
+                tools in a module.
               </p>
             </div>
           </AnimatedSection>
 
           <AnimatedSection delay={200}>
-            <h2 className="text-2xl font-bold font-mono mb-6">Como Funciona</h2>
+            <h2 className="text-2xl font-bold font-mono mb-6">How It Works</h2>
           </AnimatedSection>
 
           <AnimatedSection delay={250}>
@@ -76,7 +76,7 @@ export default function ShowDocs() {
           </AnimatedSection>
 
           <AnimatedSection delay={300}>
-            <h2 className="text-2xl font-bold font-mono mb-6">Exemplos</h2>
+            <h2 className="text-2xl font-bold font-mono mb-6">Examples</h2>
           </AnimatedSection>
 
           <div className="space-y-6 mb-12">
@@ -91,7 +91,7 @@ export default function ShowDocs() {
           </div>
 
           <AnimatedSection delay={800}>
-            <h2 className="text-2xl font-bold font-mono mb-6">Listar Ferramentas em um Módulo</h2>
+            <h2 className="text-2xl font-bold font-mono mb-6">List Tools in a Module</h2>
           </AnimatedSection>
 
           <AnimatedSection delay={850}>
@@ -118,7 +118,7 @@ gemini            Google Gemini CLI`}
           </AnimatedSection>
 
           <AnimatedSection delay={900}>
-            <h2 className="text-2xl font-bold font-mono mb-6">Módulos Disponíveis</h2>
+            <h2 className="text-2xl font-bold font-mono mb-6">Available Modules</h2>
           </AnimatedSection>
 
           <AnimatedSection delay={950}>
@@ -127,9 +127,9 @@ gemini            Google Gemini CLI`}
                 <table className="w-full text-sm">
                   <thead>
                     <tr className="border-b border-border bg-secondary/30">
-                      <th className="text-left py-3 px-4 font-mono">Módulo</th>
-                      <th className="text-left py-3 px-4 font-mono">Comando</th>
-                      <th className="text-left py-3 px-4 font-mono">Exemplos</th>
+                      <th className="text-left py-3 px-4 font-mono">Module</th>
+                      <th className="text-left py-3 px-4 font-mono">Command</th>
+                      <th className="text-left py-3 px-4 font-mono">Examples</th>
                     </tr>
                   </thead>
                   <tbody>

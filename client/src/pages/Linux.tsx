@@ -3,17 +3,17 @@ import { AnimatedSection } from "@/components/AnimatedSection";
 
 const stacks = [
   { name: "Node.js", desc: "JavaScript/TypeScript runtime — v22 LTS", pkg: "nodejs" },
-  { name: "Python", desc: "Python 3.12 com pip e venv", pkg: "python" },
-  { name: "Go", desc: "Linguagem compilada da Google", pkg: "golang" },
-  { name: "Rust", desc: "Linguagem de sistemas segura e rápida", pkg: "rust" },
-  { name: "C/C++", desc: "Clang compiler para C e C++", pkg: "clang" },
-  { name: "PHP", desc: "Linguagem para web backend", pkg: "php" },
-  { name: "Perl", desc: "Linguagem de scripting e text processing", pkg: "perl" },
-  { name: "PostgreSQL", desc: "Banco relacional avançado", pkg: "postgresql" },
-  { name: "MongoDB", desc: "Banco NoSQL orientado a documentos", pkg: "mongodb" },
-  { name: "MariaDB", desc: "Banco relacional compatível com MySQL", pkg: "mariadb" },
-  { name: "SQLite", desc: "Banco leve embutido", pkg: "sqlite" },
-  { name: "Redis", desc: "Cache e banco chave-valor em memória", pkg: "redis" },
+  { name: "Python", desc: "Python 3.12 with pip and venv", pkg: "python" },
+  { name: "Go", desc: "Google's compiled language", pkg: "golang" },
+  { name: "Rust", desc: "Safe and fast systems language", pkg: "rust" },
+  { name: "C/C++", desc: "Clang compiler for C and C++", pkg: "clang" },
+  { name: "PHP", desc: "Web backend language", pkg: "php" },
+  { name: "Perl", desc: "Scripting and text processing language", pkg: "perl" },
+  { name: "PostgreSQL", desc: "Advanced relational database", pkg: "postgresql" },
+  { name: "MongoDB", desc: "Document-oriented NoSQL database", pkg: "mongodb" },
+  { name: "MariaDB", desc: "MySQL-compatible relational database", pkg: "mariadb" },
+  { name: "SQLite", desc: "Lightweight embedded database", pkg: "sqlite" },
+  { name: "Redis", desc: "In-memory cache and key-value store", pkg: "redis" },
 ];
 
 export default function Linux() {
@@ -23,29 +23,29 @@ export default function Linux() {
           <AnimatedSection>
             <h1 className="text-4xl font-bold font-mono mb-4">Stack Linux Completa</h1>
             <p className="text-lg text-muted-foreground mb-8">
-              O Karnel transforma seu Android num ambiente Linux completo com
-              linguagens, bancos de dados e ferramentas de desenvolvimento.
+              Karnel transforms your Android into a complete Linux environment with
+              languages, databases, and development tools.
             </p>
           </AnimatedSection>
 
           <AnimatedSection delay={100}>
             <div className="card-hover bg-card border border-accent/50 rounded-lg p-6 mb-12">
-              <h3 className="font-bold font-mono mb-4">Instalação Rápida</h3>
+              <h3 className="font-bold font-mono mb-4">Quick Install</h3>
               <CodeBlock code="karnel install lang" language="bash" title="terminal" />
               <p className="text-sm text-muted-foreground mt-3">
-                Instala Node.js, Python, Go, Rust, C/C++ e mais.
+                Installs Node.js, Python, Go, Rust, C/C++ and more.
               </p>
               <div className="mt-3">
                 <CodeBlock code="karnel install db" language="bash" title="terminal" />
                 <p className="text-sm text-muted-foreground mt-3">
-                   Instala PostgreSQL, MariaDB, SQLite, MongoDB e Redis.
+                   Installs PostgreSQL, MariaDB, SQLite, MongoDB and Redis.
                 </p>
               </div>
             </div>
           </AnimatedSection>
 
           <AnimatedSection delay={200}>
-            <h2 className="text-2xl font-bold font-mono mb-6">Linguagens</h2>
+            <h2 className="text-2xl font-bold font-mono mb-6">Languages</h2>
           </AnimatedSection>
 
           <div className="grid md:grid-cols-2 gap-4 mb-12">
@@ -61,7 +61,7 @@ export default function Linux() {
           </div>
 
           <AnimatedSection delay={700}>
-            <h2 className="text-2xl font-bold font-mono mb-6">Bancos de Dados</h2>
+            <h2 className="text-2xl font-bold font-mono mb-6">Databases</h2>
           </AnimatedSection>
 
           <div className="grid md:grid-cols-2 gap-4 mb-12">
