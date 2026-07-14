@@ -129,7 +129,7 @@ go build -o karnel .`}
 
         <AnimatedSection delay={800}>
           <h2 id="all-commands" className="text-2xl font-bold font-mono mb-6">All Commands</h2>
-          <p className="text-muted-foreground mb-8">21 commands total</p>
+          <p className="text-muted-foreground mb-8">{desktopCommands.length} commands total</p>
         </AnimatedSection>
 
         <AnimatedSection delay={850}>

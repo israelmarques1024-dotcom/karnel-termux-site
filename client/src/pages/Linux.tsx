@@ -13,6 +13,7 @@ const stacks = [
   { name: "MongoDB", desc: "Banco NoSQL orientado a documentos", pkg: "mongodb" },
   { name: "MariaDB", desc: "Banco relacional compatível com MySQL", pkg: "mariadb" },
   { name: "SQLite", desc: "Banco leve embutido", pkg: "sqlite" },
+  { name: "Redis", desc: "Cache e banco chave-valor em memória", pkg: "redis" },
 ];
 
 export default function Linux() {
