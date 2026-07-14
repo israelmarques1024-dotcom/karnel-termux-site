@@ -2,40 +2,40 @@ import CodeBlock from "@/components/CodeBlock";
 import { AnimatedSection } from "@/components/AnimatedSection";
 
 const modules = [
-  { name: "Pacotes de Linguagem", desc: "Node, Python, Perl, PHP, Rust, C/C++, Go", cmd: "karnel install lang" },
-  { name: "Bancos de Dados", desc: "PostgreSQL, MariaDB, SQLite, MongoDB, Redis", cmd: "karnel install db" },
-  { name: "Ferramentas de IA", desc: "30 agentes (OpenCode, Claude, Gemini, Ollama, etc.)", cmd: "karnel install ai" },
-  { name: "Editor de Código", desc: "code-server (VS Code no navegador)", cmd: "karnel install editor" },
-  { name: "Ferramentas de Desenvolvimento", desc: "GitHub CLI, wget, curl, fzf, etc.", cmd: "karnel install dev" },
-  { name: "Módulos Node.js", desc: "Pacotes npm globais (TypeScript, NestJS, Prettier)", cmd: "karnel install npm" },
-  { name: "Shell ZSH", desc: "ZSH + Oh My Zsh + 10 plugins", cmd: "karnel install shell" },
-  { name: "Interface Termux", desc: "Fonte, Cursor, Extra-keys, Banner", cmd: "karnel install ui" },
-  { name: "Comando de Voz", desc: "Speech-to-agent com Termux:API", cmd: "karnel install voice" },
-  { name: "Automação", desc: "n8n e ferramentas de automação", cmd: "karnel install auto" },
-  { name: "CLIs de Deploy", desc: "Vercel, Railway, Netlify", cmd: "karnel install deploy" },
+  { name: "Language Packages", desc: "Node, Python, Perl, PHP, Rust, C/C++, Go", cmd: "karnel install lang" },
+  { name: "Databases", desc: "PostgreSQL, MariaDB, SQLite, MongoDB, Redis", cmd: "karnel install db" },
+  { name: "AI Tools", desc: "30 agents (OpenCode, Claude, Gemini, Ollama, etc.)", cmd: "karnel install ai" },
+  { name: "Code Editor", desc: "code-server (VS Code in browser)", cmd: "karnel install editor" },
+  { name: "Dev Tools", desc: "GitHub CLI, wget, curl, fzf, etc.", cmd: "karnel install dev" },
+  { name: "Node.js Modules", desc: "Global npm packages (TypeScript, NestJS, Prettier)", cmd: "karnel install npm" },
+  { name: "ZSH Shell", desc: "ZSH + Oh My Zsh + 10 plugins", cmd: "karnel install shell" },
+  { name: "Termux UI", desc: "Font, Cursor, Extra-keys, Banner", cmd: "karnel install ui" },
+  { name: "Voice Command", desc: "Speech-to-agent via Termux:API", cmd: "karnel install voice" },
+  { name: "Automation", desc: "n8n and automation tools", cmd: "karnel install auto" },
+  { name: "Deploy CLIs", desc: "Vercel, Railway, Netlify", cmd: "karnel install deploy" },
 ];
 
 const commands = [
-  { cmd: "karnel --version", desc: "Mostrar versão atual" },
-  { cmd: "karnel brain", desc: "Segundo cérebro — salvar e pesquisar memórias" },
-  { cmd: "karnel env", desc: "Gerenciar variáveis de ambiente" },
-  { cmd: "karnel ia", desc: "Gerenciar agentes de IA, sessões e rotas" },
-  { cmd: "karnel install", desc: "Instalar módulos e pacotes" },
-  { cmd: "karnel show", desc: "Mostrar documentação de qualquer ferramenta" },
-  { cmd: "karnel doctor", desc: "Diagnosticar ambiente Termux & Karnel (30+ verificações)" },
-  { cmd: "karnel start", desc: "Iniciar serviços (editor, etc.)" },
-  { cmd: "karnel update", desc: "Atualizar módulos ou framework" },
-  { cmd: "karnel uninstall", desc: "Remover módulos instalados" },
-  { cmd: "karnel reinstall", desc: "Desinstalar + instalar módulos" },
-  { cmd: "karnel voice", desc: "Fala-para-agente via microfone" },
-  { cmd: "karnel open", desc: "Abrir documentação no navegador" },
-  { cmd: "karnel list", desc: "Listar ferramentas disponíveis nos módulos" },
-  { cmd: "karnel pg", desc: "Gerenciador de banco de dados PostgreSQL" },
-  { cmd: "karnel init", desc: "Inicializar projetos com templates" },
-  { cmd: "karnel backup", desc: "Backup completo do Termux (configs + pacotes + tools)" },
-  { cmd: "karnel backup --cloud", desc: "Backup + upload para Google Drive" },
-  { cmd: "karnel restore", desc: "Restaurar backup mais recente" },
-  { cmd: "karnel restore --cloud", desc: "Restaurar do Google Drive" },
+  { cmd: "karnel --version", desc: "Show current version" },
+  { cmd: "karnel brain", desc: "Second brain — save and search memories" },
+  { cmd: "karnel env", desc: "Manage environment variables" },
+  { cmd: "karnel ia", desc: "Manage AI agents, sessions and routes" },
+  { cmd: "karnel install", desc: "Install modules and packages" },
+  { cmd: "karnel show", desc: "Show documentation for any tool" },
+  { cmd: "karnel doctor", desc: "Diagnose Termux & Karnel environment (30+ checks)" },
+  { cmd: "karnel start", desc: "Start services (editor, etc.)" },
+  { cmd: "karnel update", desc: "Update modules or framework" },
+  { cmd: "karnel uninstall", desc: "Remove installed modules" },
+  { cmd: "karnel reinstall", desc: "Uninstall + install modules" },
+  { cmd: "karnel voice", desc: "Speech-to-agent via microphone" },
+  { cmd: "karnel open", desc: "Open documentation in browser" },
+  { cmd: "karnel list", desc: "List available tools in modules" },
+  { cmd: "karnel pg", desc: "PostgreSQL database manager" },
+  { cmd: "karnel init", desc: "Initialize projects with templates" },
+  { cmd: "karnel backup", desc: "Full Termux backup (configs + packages + tools)" },
+  { cmd: "karnel backup --cloud", desc: "Backup + upload to Google Drive" },
+  { cmd: "karnel restore", desc: "Restore latest backup" },
+  { cmd: "karnel restore --cloud", desc: "Restore from Google Drive" },
 ];
 
 const templates = [
@@ -55,14 +55,14 @@ export default function KarnelDocs() {
           <AnimatedSection>
             <h1 className="text-4xl font-bold font-mono mb-4">KARNEL TERMUX</h1>
             <p className="text-lg text-muted-foreground mb-8">
-              Ambiente de Desenvolvimento Modular para Termux (Android). Automatize instalações,
-              atualizações e configurações com comandos simples.
+               Modular development environment for Termux (Android). Automate installs,
+               updates and configurations with simple commands.
             </p>
           </AnimatedSection>
 
           <AnimatedSection delay={100}>
             <div className="card-hover bg-card border border-accent/50 rounded-lg p-6 mb-12">
-              <h3 className="font-bold font-mono mb-4">Instalação Rápida</h3>
+              <h3 className="font-bold font-mono mb-4">Quick Install</h3>
               <div className="space-y-3">
                 <CodeBlock
                   code={`bash -c "$(curl -fsSL https://raw.githubusercontent.com/israelmarques1024-dotcom/karnel-termux/main/install.sh)"`}
@@ -80,9 +80,9 @@ export default function KarnelDocs() {
           </AnimatedSection>
 
           <AnimatedSection delay={200}>
-            <h2 className="text-2xl font-bold font-mono mb-6">Módulos</h2>
+            <h2 className="text-2xl font-bold font-mono mb-6">Modules</h2>
             <p className="text-muted-foreground mb-8">
-              Clique em um módulo para ver todas as ferramentas incluídas
+              Click a module to see all included tools
             </p>
           </AnimatedSection>
 
@@ -99,9 +99,9 @@ export default function KarnelDocs() {
           </div>
 
           <AnimatedSection delay={900}>
-            <h2 className="text-2xl font-bold font-mono mb-6">Comandos Principais</h2>
+            <h2 className="text-2xl font-bold font-mono mb-6">Main Commands</h2>
             <p className="text-muted-foreground mb-8">
-              Clique em qualquer comando para ver a documentação completa
+              Click any command to see full documentation
             </p>
           </AnimatedSection>
 
@@ -123,42 +123,42 @@ export default function KarnelDocs() {
           </AnimatedSection>
 
           <AnimatedSection delay={1000}>
-            <h2 className="text-2xl font-bold font-mono mb-6">Comandos Detalhados</h2>
+            <h2 className="text-2xl font-bold font-mono mb-6">Detailed Commands</h2>
           </AnimatedSection>
 
           {[
             {
               title: "karnel backup",
-              desc: "Backup completo do Termux — salva configurações, pacotes instalados e ferramentas Karnel em um arquivo. Upload opcional para Google Drive via rclone (gratuito).",
-              code: `karnel backup                    # Backup local (configs + pacotes + tools)\nkarnel backup --cloud           # Backup + upload para Google Drive\nkarnel restore                  # Restaurar backup mais recente\nkarnel restore --cloud          # Restaurar do Google Drive`,
-              extra: { label: "O backup inclui:", code: "• Lista de todos os pacotes (dpkg)\n• Manifest das ferramentas Karnel\n• Configs do shell (.bashrc, .zshrc, .profile)\n• Configurações do Termux (fontes, cores)\n• Chaves SSH\n• Configs de apps (~/.config)\n• Repositórios APT" }
+              desc: "Full Termux backup — saves configs, installed packages, and Karnel tools to an archive. Optional upload to Google Drive via rclone (free).",
+              code: `karnel backup                    # Local backup (configs + packages + tools)\nkarnel backup --cloud           # Backup + upload to Google Drive\nkarnel restore                  # Restore latest backup\nkarnel restore --cloud          # Restore from Google Drive`,
+              extra: { label: "Backup includes:", code: "• Full package list (dpkg)\n• Karnel tools manifest\n• Shell configs (.bashrc, .zshrc, .profile)\n• Termux settings (fonts, colors)\n• SSH keys\n• App configs (~/.config)\n• APT repositories" }
             },
             {
               title: "karnel reinstall",
-              desc: "Reinstalar módulos ou ferramentas específicas — desinstala e instala do zero.",
-              code: `karnel reinstall                # Mostrar ajuda\nkarnel reinstall <target>       # Reinstalar alvo específico\nkarnel reinstall <target> --tool1 --tool2  # Reinstalar ferramentas específicas`,
-              extra: { label: "Exemplos:", code: `karnel reinstall ai --opencode --ollama       # Reinstalar apenas OpenCode e Ollama\nkarnel reinstall db --postgresql --sqlite     # Reinstalar apenas PostgreSQL e SQLite\nkarnel reinstall dev --gh --fzf               # Reinstalar apenas gh e fzf` }
+              desc: "Reinstall specific modules or tools — uninstalls and installs from scratch.",
+              code: `karnel reinstall                # Show help\nkarnel reinstall <target>       # Reinstall specific target\nkarnel reinstall <target> --tool1 --tool2  # Reinstall specific tools`,
+              extra: { label: "Examples:", code: `karnel reinstall ai --opencode --ollama       # Reinstall only OpenCode and Ollama\nkarnel reinstall db --postgresql --sqlite     # Reinstall only PostgreSQL and SQLite\nkarnel reinstall dev --gh --fzf               # Reinstall only gh and fzf` }
             },
             {
               title: "karnel voice",
-              desc: "Capture voz do microfone, revise no code-server e dispare qualquer agente de IA. Suporta 15 agentes, seleção de idioma, modo raw e clipboard automático.",
-              code: `karnel voice                     # Mostrar ajuda\nkarnel voice opencode             # Capturar → code-server → opencode run\nkarnel voice text                 # Capturar → code-server → stdout\nkarnel voice '!'                  # Atalho para "text"\nkarnel voice claude-code --lang pt-BR  # Português → claude\nkarnel voice opencode --raw       # Captura direta, sem edição`
+              desc: "Capture voice from microphone, review in code-server, and trigger any AI agent. Supports 15 agents, language selection, raw mode, and auto-clipboard.",
+              code: `karnel voice                     # Show help\nkarnel voice opencode             # Capture → code-server → opencode run\nkarnel voice text                 # Capture → code-server → stdout\nkarnel voice '!'                  # Shortcut for "text"\nkarnel voice claude-code --lang en-US  # English → claude\nkarnel voice opencode --raw       # Direct capture, no editing`
             },
             {
               title: "karnel open",
-              desc: "Abrir documentação oficial no navegador.",
-              code: `karnel open                     # Mostrar ajuda\nkarnel open <target>            # Abrir documentação oficial no navegador\nkarnel open karnel                # Abre https://kerneltermux.vercel.app`,
+              desc: "Open official documentation in browser.",
+              code: `karnel open                     # Show help\nkarnel open <target>            # Open official docs in browser\nkarnel open karnel                # Opens https://kerneltermux.vercel.app`,
               extra: { label: null, code: null }
             },
             {
               title: "karnel pg",
-              desc: "Gerenciador de banco de dados PostgreSQL.",
-              code: `karnel pg                       # Mostrar ajuda\nkarnel pg start                 # Iniciar servidor\nkarnel pg stop                  # Parar servidor\nkarnel pg restart               # Reiniciar servidor\nkarnel pg status                # Verificar status\nkarnel pg init                  # Inicializar banco de dados\nkarnel pg create <name>         # Criar banco de dados\nkarnel pg drop <name>           # Remover banco de dados\nkarnel pg list                  # Listar bancos de dados\nkarnel pg shell                 # Abrir console psql`
+              desc: "PostgreSQL database manager.",
+              code: `karnel pg                       # Show help\nkarnel pg start                 # Start server\nkarnel pg stop                  # Stop server\nkarnel pg restart               # Restart server\nkarnel pg status                # Check status\nkarnel pg init                  # Initialize database\nkarnel pg create <name>         # Create database\nkarnel pg drop <name>           # Drop database\nkarnel pg list                  # List databases\nkarnel pg shell                 # Open psql console`
             },
             {
               title: "karnel init",
-              desc: "Configurar projetos existentes com dependências, estrutura de pastas e ferramentas predefinidas.",
-              code: `karnel init                     # Detectar tipo de projeto automaticamente e configurar\nkarnel init <template>          # Configurar com template específico`,
+              desc: "Configure existing projects with dependencies, folder structure, and predefined tools.",
+              code: `karnel init                     # Auto-detect project type and configure\nkarnel init <template>          # Configure with specific template`,
               hasTemplates: true
             },
           ].map((section, i) => (
@@ -175,7 +175,7 @@ export default function KarnelDocs() {
                 )}
                 {(section as any).hasTemplates && (
                   <div className="mt-4">
-                    <p className="text-sm text-muted-foreground mb-3">Templates disponíveis:</p>
+                    <p className="text-sm text-muted-foreground mb-3">Available templates:</p>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm">
                       {templates.map((tpl) => (
                         <div key={tpl.name} className="bg-background border border-border rounded p-3">
@@ -192,24 +192,24 @@ export default function KarnelDocs() {
 
           <AnimatedSection delay={1500}>
             <div className="card-hover bg-card border border-border rounded-xl p-8 text-center">
-              <h3 className="text-xl font-bold font-mono mb-2">Documentação de Backup</h3>
+              <h3 className="text-xl font-bold font-mono mb-2">Backup Documentation</h3>
               <p className="text-muted-foreground mb-6">
-                Saiba como salvar e restaurar todo o seu Termux.
+                Learn how to save and restore your entire Termux.
               </p>
               <a
                 href="/karnel/backup"
                 className="group inline-flex items-center gap-2 rounded-xl bg-accent px-6 py-3 text-sm font-semibold text-accent-foreground shadow-lg shadow-accent/25 transition-all duration-300 hover:scale-105 hover:shadow-xl active:scale-95"
               >
-                Ver Documentação de Backup
+                View Backup Documentation
               </a>
             </div>
           </AnimatedSection>
 
           <AnimatedSection delay={1600}>
             <div className="card-hover bg-card border border-border rounded-xl p-8 text-center">
-              <h3 className="text-xl font-bold font-mono mb-4">Ver Documentação Completa</h3>
+              <h3 className="text-xl font-bold font-mono mb-4">View Full Documentation</h3>
               <p className="text-muted-foreground mb-6">
-                Explore o repositório completo do Karnel Termux no GitHub para documentação detalhada e exemplos.
+                Explore the full Karnel Termux repository on GitHub for detailed docs and examples.
               </p>
               <a
                 href="https://github.com/israelmarques1024-dotcom/karnel-termux"
@@ -217,7 +217,7 @@ export default function KarnelDocs() {
                 rel="noopener noreferrer"
                 className="group inline-flex items-center gap-2 rounded-xl bg-accent px-6 py-3 text-sm font-semibold text-accent-foreground shadow-lg shadow-accent/25 transition-all duration-300 hover:scale-105 hover:shadow-xl active:scale-95"
               >
-                Ver no GitHub
+                View on GitHub
               </a>
             </div>
           </AnimatedSection>

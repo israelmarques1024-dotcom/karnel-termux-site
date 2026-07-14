@@ -2,10 +2,10 @@ import CodeBlock from "@/components/CodeBlock";
 import { AnimatedSection } from "@/components/AnimatedSection";
 
 const components = [
-  { name: "Meslo Nerd Font", flag: "--font", desc: "Fonte com ligaduras e ícones" },
-  { name: "Extra Keys", flag: "--extra-keys", desc: "Teclas adicionais no teclado Termux" },
-  { name: "Cursor Color", flag: "--cursor", desc: "Cursor estilizado com gradiente" },
-  { name: "Startup Banner", flag: "--banner", desc: "Banner ASCII com efeito metálico ao iniciar" },
+  { name: "Meslo Nerd Font", flag: "--font", desc: "Font with ligatures and icons" },
+  { name: "Extra Keys", flag: "--extra-keys", desc: "Additional keys on Termux keyboard" },
+  { name: "Cursor Color", flag: "--cursor", desc: "Styled cursor with gradient" },
+  { name: "Startup Banner", flag: "--banner", desc: "ASCII banner with metallic effect on startup" },
 ];
 
 export default function KarnelUI() {
@@ -13,15 +13,15 @@ export default function KarnelUI() {
     <section className="py-12 px-4">
       <div className="max-w-4xl mx-auto">
         <AnimatedSection>
-          <h1 className="text-4xl font-bold font-mono mb-4">Interface Termux</h1>
+          <h1 className="text-4xl font-bold font-mono mb-4">Termux Interface</h1>
           <p className="text-lg text-muted-foreground mb-8">
-            Customize a aparência do Termux com fonte, teclas extras, cursor e banner.
+            Customize the look of Termux with font, extra keys, cursor and banner.
           </p>
         </AnimatedSection>
 
         <AnimatedSection delay={100}>
           <div className="card-hover bg-card border border-accent/50 rounded-lg p-6 mb-12">
-            <h3 className="font-bold font-mono mb-4">Instalação Rápida</h3>
+            <h3 className="font-bold font-mono mb-4">Quick Install</h3>
             <CodeBlock code="karnel install ui" language="bash" title="terminal" />
           </div>
         </AnimatedSection>

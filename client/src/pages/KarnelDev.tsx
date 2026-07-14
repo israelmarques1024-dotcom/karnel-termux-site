@@ -2,25 +2,25 @@ import CodeBlock from "@/components/CodeBlock";
 import { AnimatedSection } from "@/components/AnimatedSection";
 
 const tools = [
-  { name: "GitHub CLI", flag: "--gh", desc: "Gerencie GitHub pelo terminal" },
-  { name: "Wget", flag: "--wget", desc: "Download por rede" },
-  { name: "Curl", flag: "--curl", desc: "Cliente HTTP" },
-  { name: "LSD", flag: "--lsd", desc: "Ls moderno com ícones" },
-  { name: "Bat", flag: "--bat", desc: "Cat moderno com syntax highlight" },
-  { name: "Proot", flag: "--proot", desc: "Ambiente Linux isolado sem root" },
-  { name: "Ncurses Utils", flag: "--ncurses", desc: "Utilitários de terminal" },
-  { name: "Tmate", flag: "--tmate", desc: "Compartilhamento de terminal" },
-  { name: "Cloudflared", flag: "--cloudflared", desc: "Túnel Cloudflare" },
-  { name: "Translate Shell", flag: "--translate", desc: "Tradutor no terminal" },
-  { name: "html2text", flag: "--html2text", desc: "Converte HTML para texto" },
-  { name: "jq", flag: "--jq", desc: "Processador JSON no terminal" },
-  { name: "bc", flag: "--bc", desc: "Calculadora de precisão" },
-  { name: "Tree", flag: "--tree", desc: "Exibe diretórios em árvore" },
-  { name: "Fzf", flag: "--fzf", desc: "Buscador fuzzy de arquivos" },
-  { name: "ImageMagick", flag: "--imagemagick", desc: "Edição de imagens no terminal" },
-  { name: "Shfmt", flag: "--shfmt", desc: "Formatador de shell script" },
+  { name: "GitHub CLI", flag: "--gh", desc: "Manage GitHub from terminal" },
+  { name: "Wget", flag: "--wget", desc: "Network downloader" },
+  { name: "Curl", flag: "--curl", desc: "HTTP client" },
+  { name: "LSD", flag: "--lsd", desc: "Modern ls with icons" },
+  { name: "Bat", flag: "--bat", desc: "Modern cat with syntax highlight" },
+  { name: "Proot", flag: "--proot", desc: "Isolated Linux environment without root" },
+  { name: "Ncurses Utils", flag: "--ncurses", desc: "Terminal utilities" },
+  { name: "Tmate", flag: "--tmate", desc: "Terminal sharing" },
+  { name: "Cloudflared", flag: "--cloudflared", desc: "Cloudflare tunnel" },
+  { name: "Translate Shell", flag: "--translate", desc: "Terminal translator" },
+  { name: "html2text", flag: "--html2text", desc: "Convert HTML to text" },
+  { name: "jq", flag: "--jq", desc: "JSON processor for terminal" },
+  { name: "bc", flag: "--bc", desc: "Precision calculator" },
+  { name: "Tree", flag: "--tree", desc: "Display directory tree" },
+  { name: "Fzf", flag: "--fzf", desc: "Fuzzy file finder" },
+  { name: "ImageMagick", flag: "--imagemagick", desc: "Image editing in terminal" },
+  { name: "Shfmt", flag: "--shfmt", desc: "Shell script formatter" },
   { name: "Make", flag: "--make", desc: "Build system" },
-  { name: "Udocker", flag: "--udocker", desc: "Contêineres sem root" },
+  { name: "Udocker", flag: "--udocker", desc: "Rootless containers" },
 ];
 
 export default function KarnelDev() {
@@ -28,21 +28,21 @@ export default function KarnelDev() {
     <section className="py-12 px-4">
       <div className="max-w-4xl mx-auto">
         <AnimatedSection>
-          <h1 className="text-4xl font-bold font-mono mb-4">Ferramentas de Desenvolvimento</h1>
+          <h1 className="text-4xl font-bold font-mono mb-4">Development Tools</h1>
           <p className="text-lg text-muted-foreground mb-8">
-            Utilitários essenciais para o dia a dia de desenvolvimento no Termux.
+            Essential utilities for daily development in Termux.
           </p>
         </AnimatedSection>
 
         <AnimatedSection delay={100}>
           <div className="card-hover bg-card border border-accent/50 rounded-lg p-6 mb-12">
-            <h3 className="font-bold font-mono mb-4">Instalação Rápida</h3>
+            <h3 className="font-bold font-mono mb-4">Quick Install</h3>
             <CodeBlock code="karnel install dev" language="bash" title="terminal" />
           </div>
         </AnimatedSection>
 
         <AnimatedSection delay={200}>
-          <h2 className="text-2xl font-bold font-mono mb-6">Ferramentas Disponíveis</h2>
+          <h2 className="text-2xl font-bold font-mono mb-6">Available Tools</h2>
         </AnimatedSection>
 
         <div className="grid md:grid-cols-2 gap-6 mb-12">

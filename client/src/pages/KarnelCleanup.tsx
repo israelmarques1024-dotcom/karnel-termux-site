@@ -6,18 +6,18 @@ export default function KarnelCleanup() {
     <section className="py-12 px-4">
       <div className="max-w-4xl mx-auto">
         <AnimatedSection>
-          <h1 className="text-4xl font-bold font-mono mb-4">Limpeza de Cache</h1>
+          <h1 className="text-4xl font-bold font-mono mb-4">Cache Cleanup</h1>
           <p className="text-lg text-muted-foreground mb-8">
-            Libere armazenamento limpando caches dos gerenciadores de pacotes.
+            Free up storage by cleaning package manager caches.
           </p>
         </AnimatedSection>
 
         <AnimatedSection delay={100}>
           <div className="card-hover bg-card border border-accent/50 rounded-lg p-6 mb-8">
-            <h3 className="font-bold font-mono mb-4">Comando Karnel</h3>
+            <h3 className="font-bold font-mono mb-4">Karnel Command</h3>
             <CodeBlock code="karnel cleanup" language="bash" title="terminal" />
             <p className="text-sm text-muted-foreground mt-2">
-              Limpa caches, logs e arquivos temporários automaticamente.
+              Cleans caches, logs and temporary files automatically.
             </p>
           </div>
         </AnimatedSection>
@@ -51,7 +51,7 @@ export default function KarnelCleanup() {
 
         <AnimatedSection delay={400}>
           <div className="card-hover bg-card border border-accent/50 rounded-lg p-6">
-            <h3 className="font-bold font-mono mb-4">Comando Único</h3>
+            <h3 className="font-bold font-mono mb-4">Single Command</h3>
             <CodeBlock code="pkg clean && npm cache clean --force && pip cache purge" language="bash" />
           </div>
         </AnimatedSection>
