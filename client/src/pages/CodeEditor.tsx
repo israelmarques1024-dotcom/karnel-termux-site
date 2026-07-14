@@ -241,7 +241,7 @@ export default function CodeEditor() {
           </AnimatedSection>
 
           <AnimatedSection delay={1150}>
-            <h2 className="text-2xl font-bold font-mono mb-6">Caminhos de Configuração</h2>
+            <h2 className="text-2xl font-bold font-mono mb-6">Configuration Paths</h2>
           </AnimatedSection>
 
           <AnimatedSection delay={1200}>
@@ -268,7 +268,7 @@ export default function CodeEditor() {
           </AnimatedSection>
 
           <AnimatedSection delay={1250}>
-            <h2 className="text-2xl font-bold font-mono mb-6">Solução de Problemas</h2>
+            <h2 className="text-2xl font-bold font-mono mb-6">Troubleshooting</h2>
           </AnimatedSection>
 
           <div className="space-y-6 mb-12">
@@ -284,7 +284,7 @@ export default function CodeEditor() {
           </div>
 
           <AnimatedSection delay={1700}>
-            <h2 className="text-2xl font-bold font-mono mb-6">Estrutura de Configuração</h2>
+            <h2 className="text-2xl font-bold font-mono mb-6">Configuration Structure</h2>
             <CodeBlock
               code={`~/.config/code-server/
 └── config.yaml                    # Configurações do servidor

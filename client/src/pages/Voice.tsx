@@ -172,7 +172,7 @@ karnel voice claude-code --lang pt-BR  # Fala em português → claude`}
           </AnimatedSection>
 
           <AnimatedSection delay={1200}>
-            <h2 className="text-2xl font-bold font-mono mb-6">Solução de Problemas</h2>
+            <h2 className="text-2xl font-bold font-mono mb-6">Troubleshooting</h2>
             <div className="card-hover bg-card border border-border rounded-lg p-6">
               <div className="space-y-4 text-sm text-muted-foreground">
                 <div>

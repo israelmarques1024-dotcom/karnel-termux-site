@@ -16,7 +16,7 @@ export default function Init() {
       <section className="py-12 px-4">
         <div className="max-w-4xl mx-auto">
           <AnimatedSection>
-            <h1 className="text-4xl font-bold font-mono mb-4">karnel init — Inicialização de Projetos</h1>
+            <h1 className="text-4xl font-bold font-mono mb-4">karnel init — Project Initialization</h1>
             <p className="text-lg text-muted-foreground mb-8">
               Configure projetos existentes com dependências, estrutura de pastas e
               ferramentas pré-definidas. Comece a codar em segundos.

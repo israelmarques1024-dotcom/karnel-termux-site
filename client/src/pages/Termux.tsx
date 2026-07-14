@@ -68,7 +68,7 @@ export default function Termux() {
           </div>
 
           <AnimatedSection delay={500}>
-            <h2 className="text-2xl font-bold font-mono mb-6">Por que Usar o Karnel?</h2>
+            <h2 className="text-2xl font-bold font-mono mb-6">Why Use Karnel?</h2>
             <p className="text-muted-foreground mb-6">
               Embora o Termux funcione muito bem pronto para uso, o Karnel melhora sua
               experiência com automação e ferramentas avançadas.

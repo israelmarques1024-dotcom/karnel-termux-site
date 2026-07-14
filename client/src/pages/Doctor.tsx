@@ -66,7 +66,7 @@ export default function Doctor() {
           </AnimatedSection>
 
           <AnimatedSection delay={200}>
-            <h2 className="text-2xl font-bold font-mono mb-6">As 30+ Verificações</h2>
+            <h2 className="text-2xl font-bold font-mono mb-6">30+ Checks</h2>
             <p className="text-muted-foreground mb-6">
               Cada verificação relata um status — sucesso, aviso ou erro — e pode
               opcionalmente ser corrigida automaticamente.
@@ -80,7 +80,7 @@ export default function Doctor() {
                   <thead>
                     <tr className="border-b border-border bg-secondary/30">
                       <th className="text-left py-3 px-4 font-mono w-12">#</th>
-                      <th className="text-left py-3 px-4 font-mono">Verificação</th>
+                      <th className="text-left py-3 px-4 font-mono">Check</th>
                       <th className="text-left py-3 px-4 font-mono">Description</th>
                     </tr>
                   </thead>
@@ -99,7 +99,7 @@ export default function Doctor() {
           </AnimatedSection>
 
           <AnimatedSection delay={300}>
-            <h2 className="text-2xl font-bold font-mono mb-6">Capacidade de Auto-Correção</h2>
+            <h2 className="text-2xl font-bold font-mono mb-6">Auto-Fix Capabilities</h2>
           </AnimatedSection>
 
           <AnimatedSection delay={350}>
@@ -121,7 +121,7 @@ export default function Doctor() {
           </AnimatedSection>
 
           <AnimatedSection delay={400}>
-            <h2 className="text-2xl font-bold font-mono mb-6">Saída do Relatório</h2>
+            <h2 className="text-2xl font-bold font-mono mb-6">Report Output</h2>
           </AnimatedSection>
 
           <AnimatedSection delay={450}>
@@ -142,7 +142,7 @@ export default function Doctor() {
           </AnimatedSection>
 
           <AnimatedSection delay={500}>
-            <h2 className="text-2xl font-bold font-mono mb-6">Exemplo de Saída</h2>
+            <h2 className="text-2xl font-bold font-mono mb-6">Example Output</h2>
           </AnimatedSection>
 
           <AnimatedSection delay={550}>

@@ -14,7 +14,7 @@ export default function Brain() {
       <section className="py-12 px-4">
         <div className="max-w-4xl mx-auto">
           <AnimatedSection>
-            <h1 className="text-4xl font-bold font-mono mb-4">karnel brain — Segundo Cérebro</h1>
+            <h1 className="text-4xl font-bold font-mono mb-4">karnel brain — Second Brain</h1>
             <p className="text-lg text-muted-foreground mb-8">
               Sistema de memória integrado com busca por IA e visualização em grafo.
               Salve ideias, comandos, trechos de código e encontre tudo rapidamente.

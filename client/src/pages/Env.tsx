@@ -6,7 +6,7 @@ export default function Env() {
       <section className="py-12 px-4">
         <div className="max-w-4xl mx-auto">
           <AnimatedSection>
-            <h1 className="text-4xl font-bold font-mono mb-4">karnel env — Gerenciador de Variáveis de Ambiente</h1>
+            <h1 className="text-4xl font-bold font-mono mb-4">karnel env — Environment Variable Manager</h1>
             <p className="text-lg text-muted-foreground mb-8">
               Gerencia chaves de API e variáveis de ambiente de forma segura.
               Nunca mais hardcode secrets nos seus projetos.
@@ -49,7 +49,7 @@ karnel env export               # Exporta tudo pro shell atual`}
           </div>
 
           <AnimatedSection delay={500}>
-            <h2 className="text-2xl font-bold font-mono mb-6">Segurança</h2>
+            <h2 className="text-2xl font-bold font-mono mb-6">Security</h2>
             <div className="card-hover bg-card border border-border rounded-lg p-6">
               <p className="text-muted-foreground mb-4">
                 As variáveis são armazenadas em <code className="text-accent">$KARNEL_CONFIG/env/</code> com
