@@ -4,10 +4,6 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
-  --radius-sm: calc(var(--radius) - 4px);
-  --radius-md: calc(var(--radius) - 2px);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 4px);
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -40,6 +36,10 @@
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
 }
 
 :root {
@@ -149,9 +149,7 @@
   .text-gradient {
     @apply bg-gradient-to-r from-red-500 via-purple-500 to-blue-500 bg-clip-text text-transparent;
   }
-  .text-gradient-accent {
-    @apply bg-gradient-to-r from-red-500 via-purple-500 to-blue-500 bg-clip-text text-transparent;
-  }
+
   .animate-float {
     animation: float 3s ease-in-out infinite;
   }

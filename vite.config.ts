@@ -22,12 +22,8 @@ export default defineConfig({
           react: ["react", "react-dom"],
           router: ["wouter"],
           radix: [
-            "@radix-ui/react-dialog",
-            "@radix-ui/react-label",
-            "@radix-ui/react-separator",
             "@radix-ui/react-slot",
             "@radix-ui/react-tabs",
-            "@radix-ui/react-toggle",
             "@radix-ui/react-tooltip",
           ],
           icons: ["lucide-react"],

@@ -1,7 +1,7 @@
 import { useState, useCallback, useRef, useEffect } from "react";
 import QRCode from "qrcode";
 
-// ===== Configuration =====
+// TODO: move to env variable
 const PIX_KEY = "037f07bd-a326-42b6-a5a3-f29b36e703db";
 
 // ===== EMV Payload (for QR code — required by ALL Brazilian bank apps) =====
@@ -71,7 +71,7 @@ export default function SupportProject() {
     let active = true;
     QRCode.toDataURL(PIX_EMV, { width: 210, margin: 1, color: { dark: "#0a0a0a", light: "#ffffff" } })
       .then((url) => { if (active) setQrDataUrl(url); })
-      .catch(() => { if (active) setQrDataUrl(""); });
+      .catch((err) => { console.error('Failed to generate QR code:', err); if (active) setQrDataUrl(""); });
     return () => { active = false; };
   }, []);
 

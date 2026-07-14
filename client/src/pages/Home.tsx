@@ -557,50 +557,6 @@ chmod +x karnel && sudo mv karnel /usr/local/bin/`} language="bash" title="insta
           </AnimatedSection>
         </div>
       </section>
-
-      {/* CTA */}
-      <section className="py-24 px-4 bg-card/50 border-t border-border">
-        <div className="max-w-3xl mx-auto text-center">
-          <AnimatedSection animation="scale-in">
-            <div className="inline-flex items-center gap-2 rounded-full border border-accent/20 bg-accent/5 px-4 py-1.5 text-xs font-medium text-accent mb-6">
-              <RiFlashlightFill size={14} />
-              Start building today
-            </div>
-          </AnimatedSection>
-
-          <AnimatedSection delay={100}>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 leading-tight">
-              Ready to Code on Your <span className="text-gradient-accent">Phone</span>?
-            </h2>
-          </AnimatedSection>
-
-          <AnimatedSection delay={200}>
-            <p className="text-muted-foreground mb-10 text-lg">
-              Join thousands of developers building real apps with Karnel Termux.
-            </p>
-          </AnimatedSection>
-
-          <AnimatedSection delay={300}>
-            <div className="flex gap-4 justify-center flex-wrap">
-              <Link
-                href="/termux"
-                className="group inline-flex items-center gap-2 rounded-xl bg-accent px-7 py-3.5 text-sm font-semibold text-accent-foreground shadow-lg shadow-accent/25 transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-accent/40 active:scale-95 animate-pulse-glow"
-              >
-                Get Started Now
-                <ArrowRight size={18} className="transition-transform duration-300 group-hover:translate-x-1" />
-              </Link>
-              <a
-                href="https://github.com/israelmarques1024-dotcom/karnel-termux"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group inline-flex items-center gap-2 rounded-xl border border-border bg-card/50 px-7 py-3.5 text-sm font-semibold text-foreground transition-all duration-300 hover:border-accent/30 hover:bg-accent/5 hover:scale-105 active:scale-95"
-              >
-                View on GitHub
-              </a>
-            </div>
-          </AnimatedSection>
-        </div>
-      </section>
     </div>
   );
 }

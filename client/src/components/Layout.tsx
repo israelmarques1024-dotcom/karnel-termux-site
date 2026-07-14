@@ -1,6 +1,6 @@
-import { Link, useLocation } from "wouter";
+import { useLocation } from "wouter";
 import { useState } from "react";
-import { ChevronDown, ChevronRight } from "lucide-react";
+import { ChevronDown, ChevronRight, Menu, X } from "lucide-react";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   const [location, navigate] = useLocation();
@@ -21,7 +21,6 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 
   const navItems = [
     { label: "Get Started", href: "/" },
-    { label: "Support Project", action: scrollToSupport },
   ];
 
   const termuxItems = [
@@ -52,10 +51,10 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 
   const desktopItems = [
     { label: "Documentation", href: "/desktop" },
-    { label: "Install", href: "/desktop#installation" },
-    { label: "Commands", href: "/desktop#commands" },
-    { label: "Categories", href: "/desktop#categories" },
-    { label: "Platforms", href: "/desktop#platforms" },
+    { label: "Install", href: "/desktop" },
+    { label: "Commands", href: "/desktop" },
+    { label: "Categories", href: "/desktop" },
+    { label: "Platforms", href: "/desktop" },
   ];
 
   const renderNavSection = (
@@ -87,6 +86,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
               <button
                 key={item.label}
                 onClick={(e) => {
+                  e.preventDefault();
                   item.action?.();
                   setSidebarOpen(false);
                 }}
@@ -99,10 +99,10 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                 {item.label}
               </button>
             ) : (
-              <Link
+              <a
                 key={item.href}
                 href={item.href || "/"}
-                className={`block px-3 py-2 rounded-md transition-all duration-200 font-mono text-xs font-medium ${
+                className={`block px-3 py-2 rounded-md transition-all duration-200 font-mono text-xs font-medium pointer-events-auto ${
                   isActive
                     ? "bg-gradient-to-r from-accent/20 to-accent/10 text-accent border-l border-accent shadow-sm shadow-accent/20"
                     : "text-sidebar-foreground hover:bg-sidebar-primary/15 hover:text-accent/80"
@@ -110,7 +110,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                 onClick={() => setSidebarOpen(false)}
               >
                 {item.label}
-              </Link>
+              </a>
             );
           })}
         </div>
@@ -120,52 +120,36 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 
   return (
     <div className="flex min-h-screen bg-background text-foreground">
-      {/* Sidebar */}
+      {/* Sidebar - responsive width */}
       <aside
-        className={`fixed left-0 top-0 z-40 h-screen w-64 bg-sidebar border-r border-sidebar-border transition-transform duration-300 lg:relative lg:translate-x-0 ${
+        className={`fixed left-0 top-0 z-40 h-screen bg-sidebar border-r border-sidebar-border transition-all duration-300 lg:relative lg:translate-x-0 ${
           sidebarOpen ? "translate-x-0" : "-translate-x-full"
-        }`}
+        } w-full sm:w-72 lg:w-64 xl:w-72 max-w-[85vw]`}
       >
-        <div className="flex flex-col h-full p-6">
+        <div className="flex flex-col h-full p-4 sm:p-6">
           {/* Logo */}
-          <Link
+          <a
             href="/"
             className="flex items-center gap-3 mb-8 hover:opacity-90 transition-all duration-300 group"
           >
             <img
               src="/karnel-logo.png"
               alt="Karnel Termux"
-              className="w-12 h-12 drop-shadow-[0_0_12px_rgba(168,85,247,0.5)] group-hover:drop-shadow-[0_0_20px_rgba(168,85,247,0.8)] transition-all duration-300"
+              className="w-10 h-10 sm:w-12 sm:h-12 drop-shadow-[0_0_12px_rgba(168,85,247,0.5)] group-hover:drop-shadow-[0_0_20px_rgba(168,85,247,0.8)] transition-all duration-300"
             />
-            <div>
+            <div className="hidden sm:block">
               <h1 className="font-bold text-lg font-mono text-foreground group-hover:text-accent transition-colors">KARNEL</h1>
               <p className="text-xs text-muted-foreground group-hover:text-accent/70 transition-colors">TERMUX</p>
             </div>
-          </Link>
+          </a>
 
           {/* Navigation */}
           <nav className="flex-1 space-y-1 overflow-y-auto pr-2">
             {/* Core Items (always visible) */}
             {navItems.map((item) => {
-              const isActive = item.href && location === item.href;
-              const isAction = !item.href && item.action;
-              return isAction ? (
-                <button
-                  key={item.label}
-                  onClick={(e) => {
-                    item.action?.();
-                    setSidebarOpen(false);
-                  }}
-                  className={`block w-full text-left px-4 py-2.5 rounded-md transition-all duration-200 font-mono text-sm font-medium ${
-                    isActive
-                      ? "bg-gradient-to-r from-accent/20 to-accent/10 text-accent border-l-2 border-accent shadow-sm shadow-accent/20"
-                      : "text-sidebar-foreground hover:bg-sidebar-primary/15 hover:text-accent/80"
-                  }`}
-                >
-                  {item.label}
-                </button>
-              ) : (
-                <Link
+              const isActive = location === item.href;
+              return (
+                <a
                   key={item.href}
                   href={item.href || "/"}
                   className={`block px-4 py-2.5 rounded-md transition-all duration-200 font-mono text-sm font-medium ${
@@ -176,7 +160,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                   onClick={() => setSidebarOpen(false)}
                 >
                   {item.label}
-                </Link>
+                </a>
               );
             })}
 
@@ -200,7 +184,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                 Support Project
               </button>
               <p className="text-xs text-muted-foreground font-mono">
-                <span className="text-accent">v4.7.4</span> • Android + Termux
+                <span className="text-accent">v4.7.6</span> • Android + Termux
               </p>
               <p className="text-xs text-muted-foreground/60 mt-2">Built for developers</p>
             </div>
@@ -208,9 +192,18 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         </div>
       </aside>
 
+      {/* Mobile Overlay */}
+      {sidebarOpen && (
+        <div
+          className="fixed inset-0 z-30 bg-black/50 lg:hidden"
+          onClick={() => setSidebarOpen(false)}
+          aria-hidden="true"
+        />
+      )}
+
       {/* Main Content */}
-      <div className="flex-1 flex flex-col">
-        {/* Header */}
+      <div className="flex-1 flex flex-col min-w-0">
+        {/* Header - always visible on mobile, hidden on lg+ */}
         <header className="sticky top-0 z-30 bg-card border-b border-border lg:hidden">
           <div className="flex items-center justify-between p-4">
             <a href="/" className="flex items-center gap-2">
@@ -225,18 +218,18 @@ export default function Layout({ children }: { children: React.ReactNode }) {
               onClick={() => setSidebarOpen(!sidebarOpen)}
               className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive hover:bg-accent dark:hover:bg-accent/50 size-9"
             >
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-menu">
-                <line x1="4" x2="20" y1="12" y2="12" />
-                <line x1="4" x2="20" y1="6" y2="6" />
-                <line x1="4" x2="20" y1="18" y2="18" />
-              </svg>
+              {sidebarOpen ? (
+                <X size={20} className="text-foreground" />
+              ) : (
+                <Menu size={20} className="text-foreground" />
+              )}
             </button>
           </div>
         </header>
 
         {/* Page Content */}
-        <main className="flex-1 overflow-auto">
-          <div className="max-w-6xl mx-auto">{children}</div>
+        <main className="flex-1 overflow-auto min-h-0">
+          <div className="max-w-6xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-8">{children}</div>
         </main>
 
         {/* Footer */}
@@ -300,14 +293,6 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           </p>
         </footer>
       </div>
-
-      {/* Overlay for mobile */}
-      {sidebarOpen && (
-        <div
-          className="fixed inset-0 z-30 bg-black/50 lg:hidden"
-          onClick={() => setSidebarOpen(false)}
-        />
-      )}
     </div>
   );
 }

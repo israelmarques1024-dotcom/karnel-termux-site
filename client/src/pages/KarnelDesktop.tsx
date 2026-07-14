@@ -56,7 +56,7 @@ export default function KarnelDesktopDocs() {
         </AnimatedSection>
 
         <AnimatedSection delay={100}>
-          <div className="card-hover bg-card border border-accent/50 rounded-lg p-6 mb-12">
+          <div id="installation" className="card-hover bg-card border border-accent/50 rounded-lg p-6 mb-12">
             <h3 className="font-bold font-mono mb-4">Installation</h3>
             <div className="space-y-3">
               <CodeBlock
@@ -79,7 +79,7 @@ go build -o karnel .`}
         </AnimatedSection>
 
         <AnimatedSection delay={200}>
-          <h2 className="text-2xl font-bold font-mono mb-6">Platform Support</h2>
+          <h2 id="platforms" className="text-2xl font-bold font-mono mb-6">Platform Support</h2>
           <p className="text-muted-foreground mb-8">Uses native package manager on each OS</p>
         </AnimatedSection>
 
@@ -109,7 +109,7 @@ go build -o karnel .`}
         </AnimatedSection>
 
         <AnimatedSection delay={300}>
-          <h2 className="text-2xl font-bold font-mono mb-6">Categories (Install All at Once)</h2>
+          <h2 id="categories" className="text-2xl font-bold font-mono mb-6">Categories (Install All at Once)</h2>
           <p className="text-muted-foreground mb-8">
             Use <code className="bg-accent/10 px-2 py-0.5 rounded font-mono">{"karnel install <category>"}</code> to install all tools in a category
           </p>
@@ -128,7 +128,7 @@ go build -o karnel .`}
         </div>
 
         <AnimatedSection delay={800}>
-          <h2 className="text-2xl font-bold font-mono mb-6">All Commands</h2>
+          <h2 id="all-commands" className="text-2xl font-bold font-mono mb-6">All Commands</h2>
           <p className="text-muted-foreground mb-8">21 commands total</p>
         </AnimatedSection>
 
@@ -150,7 +150,7 @@ go build -o karnel .`}
         </AnimatedSection>
 
         <AnimatedSection delay={1000}>
-          <h2 className="text-2xl font-bold font-mono mb-6">Key Features</h2>
+          <h2 id="key-features" className="text-2xl font-bold font-mono mb-6">Key Features</h2>
         </AnimatedSection>
 
         {[
