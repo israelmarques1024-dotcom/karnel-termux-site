@@ -21,6 +21,11 @@ const tools = [
   { name: "Shfmt", flag: "--shfmt", desc: "Shell script formatter" },
   { name: "Make", flag: "--make", desc: "Build system" },
   { name: "Udocker", flag: "--udocker", desc: "Rootless containers" },
+  { name: "Snyk", flag: "--snyk", desc: "Security scanning tool" },
+  { name: "Httptmux", flag: "--httptmux", desc: "HTTP traffic sharing via tmux" },
+  { name: "Zork", flag: "--zork", desc: "Zork game for terminal" },
+  { name: "OpenSSH", flag: "--openssh", desc: "Secure shell client and server" },
+  { name: "Tmux", flag: "--tmux", desc: "Terminal multiplexer" },
 ];
 
 export default function KarnelDev() {
