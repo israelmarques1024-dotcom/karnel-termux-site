@@ -6,7 +6,6 @@ export default function Layout({ children }: { children: React.ReactNode }) {
   const [location, navigate] = useLocation();
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(true);
-  const [desktopOpen, setDesktopOpen] = useState(false);
 
   const scrollToSupport = () => {
     if (location !== "/") {
@@ -49,13 +48,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
     { label: "Backup", href: "/karnel/backup" },
   ];
 
-  const desktopItems = [
-    { label: "Documentation", href: "/desktop" },
-    { label: "Install", href: "/desktop" },
-    { label: "Commands", href: "/desktop" },
-    { label: "Categories", href: "/desktop" },
-    { label: "Platforms", href: "/desktop" },
-  ];
+
 
   const renderNavSection = (
     title: string,
@@ -170,8 +163,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             {/* Mobile/Termux Section (collapsible) */}
             {renderNavSection("📱 KARNEL MOBILE", termuxItems, mobileOpen, setMobileOpen)}
 
-            {/* Desktop Section (collapsible) */}
-            {renderNavSection("💻 KARNEL DESKTOP", desktopItems, desktopOpen, setDesktopOpen)}
+
 
             {/* Footer */}
             <div className="pt-6 border-t border-sidebar-border/50 space-y-3">
@@ -236,7 +228,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         {/* Footer */}
         <footer className="bg-card border-t border-border p-6 text-center text-sm text-muted-foreground">
           <p>
-            Karnel Termux & Desktop — Built by{" "}
+            Karnel Termux — Built by{" "}
             <a
               href="https://github.com/israelmarques1024-dotcom"
               target="_blank"
@@ -270,15 +262,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
               Karnel Mobile Repo
             </a>
             {" · "}
-            <a
-              href="https://github.com/israelmarques1024-dotcom/karnel-termux-desktop-cli"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-accent hover:underline"
-            >
-              Karnel Desktop Repo
-            </a>
-            {" · "}
+
             <a
               href="https://github.com/israelmarques1024-dotcom/karnel-termux/blob/main/LICENSE"
               target="_blank"

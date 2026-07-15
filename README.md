@@ -13,9 +13,7 @@
   <a href="https://github.com/israelmarques1024-dotcom/karnel-termux">
     <img src="https://img.shields.io/badge/CLI%20Repo-karnel--termux-0078D4?style=for-the-badge" alt="CLI">
   </a>
-  <a href="https://github.com/israelmarques1024-dotcom/karnel-termux-desktop-cli">
-    <img src="https://img.shields.io/badge/Desktop%20CLI-karnel--desktop--cli-0078D4?style=for-the-badge" alt="Desktop CLI">
-  </a>
+
   <a href="https://github.com/israelmarques1024-dotcom/karnel-termux-site">
     <img src="https://img.shields.io/badge/license-MIT-0078D4?style=for-the-badge" alt="License">
   </a>
@@ -25,7 +23,7 @@
 
 **Karnel Termux** is a modular development environment for Termux on Android.
 
-This site hosts the official documentation for the Karnel Termux CLI and Karnel Desktop CLI.
+This site hosts the official documentation for the Karnel Termux CLI.
 
 Created by **Israel Marques**.
 
@@ -144,7 +142,5 @@ MIT © Israel Marques
   <a href="https://github.com/israelmarques1024-dotcom/karnel-termux">
     <img src="https://img.shields.io/badge/Karnel%20Termux-181717?style=for-the-badge&logo=github" alt="CLI">
   </a>
-  <a href="https://github.com/israelmarques1024-dotcom/karnel-termux-desktop-cli">
-    <img src="https://img.shields.io/badge/Karnel%20Desktop-181717?style=for-the-badge&logo=github" alt="Desktop">
-  </a>
+
 </p>

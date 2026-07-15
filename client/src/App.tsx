@@ -13,7 +13,6 @@ const Home = lazy(() => import("@/pages/Home"));
 const Termux = lazy(() => import("@/pages/Termux"));
 const TermuxAPI = lazy(() => import("@/pages/TermuxAPI"));
 const KarnelDocs = lazy(() => import("@/pages/KarnelDocs"));
-const KarnelDesktop = lazy(() => import("@/pages/KarnelDesktop"));
 const AITools = lazy(() => import("@/pages/AITools"));
 const CodeEditor = lazy(() => import("@/pages/CodeEditor"));
 const Deploy = lazy(() => import("@/pages/Deploy"));
@@ -44,7 +43,6 @@ function RouterOutlet() {
         <Route path={"/termux"} component={Termux} />
         <Route path={"/termux/api"} component={TermuxAPI} />
         <Route path={"/karnel"} component={KarnelDocs} />
-        <Route path={"/desktop"} component={KarnelDesktop} />
         <Route path={"/karnel/ai"} component={AITools} />
         <Route path={"/karnel/editor"} component={CodeEditor} />
         <Route path={"/karnel/deploy"} component={Deploy} />
