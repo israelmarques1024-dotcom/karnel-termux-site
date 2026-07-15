@@ -3,7 +3,7 @@ import { Link } from "wouter";
 import {
   ArrowRight, Zap, Code2, Cpu, Terminal, Brain, Rocket,
   Stethoscope, Eye, Mic, Database, Puzzle, Shield,
-  Laptop, Smartphone, Star
+  Star
 } from "lucide-react";
 import CodeBlock from "@/components/CodeBlock";
 import SupportProject from "@/components/SupportProject";
