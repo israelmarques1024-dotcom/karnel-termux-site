@@ -1,185 +1,542 @@
-import CodeBlock from "@/components/CodeBlock";
 import { AnimatedSection } from "@/components/AnimatedSection";
+import CodeBlock from "@/components/CodeBlock";
 
-const checks = [
-  { num: 1, title: "System Information", desc: "Android version, Termux version, CPU architecture" },
-  { num: 2, title: "System Resources", desc: "Available disk space, total and available RAM, low memory warnings" },
-  { num: 3, title: "Storage and Permissions", desc: "Shared storage accessibility, Karnel path write permissions, directory integrity" },
-  { num: 4, title: "Languages and Critical Tools", desc: "Checks git, ripgrep, jq, curl, tar, Node.js, Python, Rust, Go, Clang, Make" },
-  { num: 5, title: "Package Manager Health", desc: "dpkg audit, held packages, APT sources validation" },
-  { num: 6, title: "Node.js and NPM", desc: "Node version, NPM version, global prefix permissions, cache size" },
-  { num: 7, title: "Python Environment", desc: "Python interpreter detection, pip availability, venv module" },
-  { num: 8, title: "PostgreSQL Database", desc: "PostgreSQL installation, data directory, runtime status" },
-  { num: 9, title: "Karnel Framework", desc: "Karnel version, CLI symlinks, banner installation in shell config" },
-  { num: 10, title: "AI Tools Status", desc: "Scans 30 AI tools (opencode, claude, gemini, ollama, etc.)" },
-  { num: 11, title: "Shell Configuration", desc: "ZSH/Bash config file existence, syntax validation" },
-  { num: 12, title: "Android Compatibility", desc: "Phantom Process Killer detection on Android 12+" },
-  { num: 13, title: "Termux:API", desc: "Termux-API package installation check" },
-  { num: 14, title: "Git Configuration", desc: "Git user.name and user.email settings" },
-  { num: 15, title: "SSH Keys", desc: "SSH key existence for GitHub authentication" },
-  { num: 16, title: "Network Connectivity", desc: "HTTP accessibility to GitHub" },
-  { num: 17, title: "OpenSSH Server", desc: "SSHD availability (optional)" },
-  { num: 18, title: "Disk Health", desc: "Low disk space warning (below 500MB)" },
-  { num: 19, title: "Karnel Data Integrity", desc: "Checks KARNEL_CONFIG, KARNEL_CACHE, KARNEL_DATA directories" },
-  { num: 20, title: "Report Generation", desc: "Saves detailed Markdown report in KARNEL_DATA/doctor_reports/" },
-  { num: 21, title: "ZSH Plugins", desc: "Checks Karnel integration with ZSH plugins" },
-  { num: 22, title: "GPU and Hardware", desc: "GPU detection and hardware acceleration" },
-  { num: 23, title: "Locale and Encoding", desc: "UTF-8 verification and locale configuration" },
-  { num: 24, title: "Battery and Power", desc: "Battery status and power optimizations" },
-  { num: 25, title: "API Keys", desc: "Checks API keys configured in environment" },
-  { num: 26, title: "Process Health", desc: "Detects zombie and orphan processes" },
-  { num: 27, title: "Storage I/O", desc: "Read/write speed test" },
-  { num: 28, title: "Network Quality", desc: "Latency, DNS and connectivity" },
-  { num: 29, title: "Shell Privacy", desc: "Checks for sensitive data in history" },
-  { num: 30, title: "USB and External", desc: "Detects USB devices and external storage" },
+const termuxGroups = [
+  {
+    title: "System and hardware",
+    desc: "Android, Termux, CPU, RAM, disk, locale, battery, GPU, USB and external storage.",
+  },
+  {
+    title: "Storage and permissions",
+    desc: "Shared storage, Karnel directories, write access, data integrity and storage I/O.",
+  },
+  {
+    title: "Packages and runtimes",
+    desc: "dpkg/APT, mirrors, Node.js, npm, Python, pip, venv, Go, Rust, Clang and Make.",
+  },
+  {
+    title: "Services",
+    desc: "PostgreSQL, proot/glibc, OpenSSH server, Termux:API and background processes.",
+  },
+  {
+    title: "Karnel and AI",
+    desc: "Framework version, CLI link, banner, shell integration and all 31 AI registry commands.",
+  },
+  {
+    title: "Shell health",
+    desc: "Zsh configuration, plugins, caches, invalid shebangs, broken links and shell history privacy.",
+  },
+  {
+    title: "Identity and access",
+    desc: "Git identity, SSH keys, API keys and relevant configuration availability.",
+  },
+  {
+    title: "Network",
+    desc: "DNS, HTTPS, GitHub connectivity, mirrors and latency.",
+  },
 ];
 
-const autoFixes = [
-  "Link shared storage via termux-setup-storage",
-  "Install missing packages via pkg install",
-  "Fix broken dpkg/apt state",
-  "Recreate CLI symlinks for karnel",
-  "Fix NPM global directory permissions",
-  "Initialize and start PostgreSQL",
-  "Generate SSH key for GitHub",
-  "Install Karnel banner in shell config",
-  "Clean cache and unused packages",
+const modes = [
+  {
+    mode: "Quick",
+    flag: "--quick / -q",
+    definitions: 64,
+    tools: 56,
+    coverage: "Syntax, format, lint, lint+format, type checks and tests",
+  },
+  {
+    mode: "Standard",
+    flag: "--standard / -s",
+    definitions: 74,
+    tools: 66,
+    coverage:
+      "Quick + security, dependencies, coverage, dead code and complexity",
+  },
+  {
+    mode: "Deep",
+    flag: "--deep / -d",
+    definitions: 76,
+    tools: 68,
+    coverage: "Every registered category, including docs and build checks",
+  },
+];
+
+const ecosystemGroups = [
+  {
+    source: "package.json, tsconfig.json",
+    labels: "JavaScript, TypeScript",
+    frameworks:
+      "Next.js, Nuxt, Vite, Angular, React, Vue, Svelte, Astro, Express, Fastify, NestJS, Hono",
+  },
+  {
+    source: "Python manifests and *.py",
+    labels: "Python",
+    frameworks: "Django, FastAPI, Flask, pytest, tox, Poetry",
+  },
+  {
+    source: "go.mod, Cargo.toml, Gemfile, composer.json",
+    labels: "Go, Rust, Ruby, PHP",
+    frameworks: "-",
+  },
+  {
+    source: "pubspec.yaml, CMakeLists.txt, Makefile",
+    labels: "Dart, C/C++",
+    frameworks: "Flutter, CMake",
+  },
+  {
+    source: "Maven, Gradle and .NET project files",
+    labels: "Java, Kotlin, C#",
+    frameworks: "Maven, Gradle, .NET",
+  },
+  {
+    source: "Docker, Terraform and Ansible files",
+    labels: "Docker, Terraform, Ansible",
+    frameworks: "-",
+  },
+  {
+    source: "mix.exs, Cabal, Lua, Swift, Julia, Zig and Nix files",
+    labels: "Elixir, Haskell, Lua, Swift, Julia, Zig, Nix",
+    frameworks: "-",
+  },
+  {
+    source: ".github/workflows, shell and SQL files",
+    labels: "GitHub Actions, Shell, SQL",
+    frameworks: "-",
+  },
+];
+
+const toolGroups = [
+  [
+    "JavaScript",
+    "ESLint, Prettier, npm audit, Vitest, Jest, markdownlint-cli2",
+  ],
+  ["TypeScript", "TypeScript compiler, Biome, ESLint, Prettier"],
+  [
+    "Python",
+    "AST syntax parsing, Ruff, Pyright, mypy, Bandit, pip-audit, pytest, pytest-cov, Vulture, Radon",
+  ],
+  ["Shell", "Bash, Zsh, ShellCheck, shfmt, checkmake"],
+  ["Go", "gofmt, go vet, Staticcheck, govulncheck, go test"],
+  ["Rust", "cargo check/test/audit, rustfmt, Clippy"],
+  ["C/C++", "Clang syntax, clang-format, clang-tidy"],
+  ["JVM and .NET", "javac, Detekt, ktlint; C# receives cross-language checks"],
+  [
+    "Web and infrastructure",
+    "Hadolint, Docker Compose, Terraform, TFLint, actionlint, ansible-lint",
+  ],
+  [
+    "Other languages",
+    "SQLFluff, PHPStan, PHPUnit, RuboCop, Dart, Mix, SwiftLint, HLint, Selene, StyLua, Statix, Julia, Zig",
+  ],
+  ["Cross-language", "yamllint, jq, xmllint, Trivy, Semgrep"],
+];
+
+const reliabilityItems = [
+  "Persistent arrays survive function-scoped imports through explicit global declarations.",
+  "Registry commands containing shell pipelines are parsed without corrupting fields.",
+  "Language checks run from their manifest directory, global checks run from the selected root, and both preserve exit status.",
+  "File placeholders use shell-safe path quoting and are skipped when no compatible file exists.",
+  "Cross-language checks run once per project instead of once per detected ecosystem.",
+  "npx uses --no-install, so diagnostics never download a missing package automatically.",
+  "JSON mode emits a standalone document; optional fix progress goes to stderr.",
+  "Termux information and battery probes have timeouts and cannot block a full run.",
+  "GitHub Actions, scoped Angular/NestJS packages and all Python manifest variants are detected.",
 ];
 
 export default function Doctor() {
   return (
-      <section className="py-12 px-4">
-        <div className="max-w-4xl mx-auto">
-          <AnimatedSection>
-            <h1 className="text-4xl font-bold font-mono mb-4">karnel doctor</h1>
-            <p className="text-lg text-muted-foreground mb-8">
-              Diagnose your Termux and Karnel environment. Runs 30+ checks on system
-              resources, language runtimes, databases, AI tools, shell configuration and more.
+    <section className="py-12 px-4">
+      <div className="max-w-4xl mx-auto">
+        <AnimatedSection>
+          <p className="text-sm font-mono text-accent mb-3">CLI reference</p>
+          <h1 className="text-4xl font-bold font-mono mb-4">karnel doctor</h1>
+          <p className="text-lg text-muted-foreground mb-8">
+            Diagnose the Termux environment or analyze a project with a registry
+            of 76 code checks. Doctor exposes exactly two operational
+            subcommands:
+            <code className="text-accent"> termux</code> and
+            <code className="text-accent"> code</code>.
+          </p>
+        </AnimatedSection>
+
+        <AnimatedSection delay={100}>
+          <div className="card-hover bg-card border border-accent/50 rounded-lg p-6 mb-8">
+            <h2 className="font-bold font-mono mb-4">Command surface</h2>
+            <CodeBlock
+              code={`karnel doctor termux [--quick] [--fix]
+karnel doctor code [options] [directory]`}
+              language="bash"
+              title="terminal"
+            />
+            <p className="text-sm text-muted-foreground mt-4">
+              Running <code className="text-accent">karnel doctor</code> without
+              a subcommand defaults to{" "}
+              <code className="text-accent">termux</code>.
             </p>
-          </AnimatedSection>
+          </div>
+        </AnimatedSection>
 
-          <AnimatedSection delay={100}>
-            <div className="card-hover bg-card border border-accent/50 rounded-lg p-6 mb-12">
-              <h3 className="font-bold font-mono mb-4">Uso</h3>
-              <CodeBlock code="karnel doctor" language="bash" title="terminal" />
+        <AnimatedSection delay={150}>
+          <nav
+            aria-label="On this page"
+            className="bg-card border border-border rounded-lg p-5 mb-12"
+          >
+            <p className="font-mono font-bold mb-3">On this page</p>
+            <div className="flex flex-wrap gap-x-5 gap-y-2 text-sm">
+              <a className="text-accent hover:underline" href="#termux">
+                Termux diagnostics
+              </a>
+              <a className="text-accent hover:underline" href="#code">
+                Code analysis
+              </a>
+              <a className="text-accent hover:underline" href="#tools">
+                Tool registry
+              </a>
+              <a className="text-accent hover:underline" href="#output">
+                Output and reports
+              </a>
+              <a className="text-accent hover:underline" href="#reliability">
+                Reliability audit
+              </a>
             </div>
-          </AnimatedSection>
+          </nav>
+        </AnimatedSection>
 
-          <AnimatedSection delay={200}>
-            <h2 className="text-2xl font-bold font-mono mb-6">30+ Checks</h2>
+        <AnimatedSection delay={200}>
+          <div id="termux" className="scroll-mt-24">
+            <h2 className="text-2xl font-bold font-mono mb-4">
+              Termux diagnostics
+            </h2>
             <p className="text-muted-foreground mb-6">
-              Cada verificação relata um status — sucesso, aviso ou erro — e pode
-              opcionalmente ser corrigida automaticamente.
+              More than 30 sections inspect Android resources, package health,
+              runtimes, services, Karnel, shell configuration, processes,
+              storage and networking.
             </p>
-          </AnimatedSection>
+          </div>
+        </AnimatedSection>
 
-          <AnimatedSection delay={250}>
-            <div className="card-hover bg-card border border-border rounded-lg overflow-hidden mb-12">
-              <div className="overflow-x-auto">
-                <table className="w-full text-sm">
-                  <thead>
-                    <tr className="border-b border-border bg-secondary/30">
-                      <th className="text-left py-3 px-4 font-mono w-12">#</th>
-                      <th className="text-left py-3 px-4 font-mono">Check</th>
-                      <th className="text-left py-3 px-4 font-mono">Description</th>
+        <AnimatedSection delay={250}>
+          <div className="card-hover bg-card border border-border rounded-lg p-6 mb-8">
+            <CodeBlock
+              code={`karnel doctor termux
+karnel doctor termux --quick
+karnel doctor termux --fix`}
+              language="bash"
+              title="terminal"
+            />
+            <div className="overflow-x-auto mt-6">
+              <table className="w-full text-sm">
+                <thead>
+                  <tr className="border-b border-border">
+                    <th className="text-left py-3 pr-4 font-mono">Option</th>
+                    <th className="text-left py-3 font-mono">Behavior</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr className="border-b border-border">
+                    <td className="py-3 pr-4 font-mono text-accent">
+                      --quick, -q
+                    </td>
+                    <td className="py-3 text-muted-foreground">
+                      Runs essential system, storage, critical-tool and package
+                      checks, then skips extended runtime, AI, shell, process,
+                      I/O and network sections.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td className="py-3 pr-4 font-mono text-accent">
+                      --fix, -f
+                    </td>
+                    <td className="py-3 text-muted-foreground">
+                      Applies queued callbacks without the group confirmation.
+                      Each correction still reports success or failure.
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </AnimatedSection>
+
+        <AnimatedSection delay={300}>
+          <div className="grid md:grid-cols-2 gap-4 mb-12">
+            {termuxGroups.map(group => (
+              <article
+                key={group.title}
+                className="card-hover bg-card border border-border rounded-lg p-5"
+              >
+                <h3 className="font-mono font-bold mb-2">{group.title}</h3>
+                <p className="text-sm text-muted-foreground">{group.desc}</p>
+              </article>
+            ))}
+          </div>
+        </AnimatedSection>
+
+        <AnimatedSection delay={350}>
+          <div id="code" className="scroll-mt-24">
+            <h2 className="text-2xl font-bold font-mono mb-4">Code analysis</h2>
+            <p className="text-muted-foreground mb-6">
+              The code doctor scans four directory levels, prunes common
+              generated and vendor folders, detects subprojects, and runs only
+              checks relevant to the discovered ecosystems.
+            </p>
+          </div>
+        </AnimatedSection>
+
+        <AnimatedSection delay={400}>
+          <div className="card-hover bg-card border border-border rounded-lg p-6 mb-8">
+            <CodeBlock
+              code={`karnel doctor code
+karnel doctor code --standard /path/to/project
+karnel doctor code --deep --json /path/to/project
+karnel doctor code --fix /path/to/project`}
+              language="bash"
+              title="terminal"
+            />
+            <div className="overflow-x-auto mt-6">
+              <table className="w-full text-sm">
+                <thead>
+                  <tr className="border-b border-border">
+                    <th className="text-left py-3 pr-4 font-mono">Mode</th>
+                    <th className="text-left py-3 pr-4 font-mono">
+                      Definitions
+                    </th>
+                    <th className="text-left py-3 pr-4 font-mono">Tools</th>
+                    <th className="text-left py-3 font-mono">Coverage</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {modes.map(mode => (
+                    <tr
+                      key={mode.mode}
+                      className="border-b border-border last:border-0"
+                    >
+                      <td className="py-3 pr-4">
+                        <span className="block font-mono font-medium">
+                          {mode.mode}
+                        </span>
+                        <span className="text-xs text-accent">{mode.flag}</span>
+                      </td>
+                      <td className="py-3 pr-4 font-mono">
+                        {mode.definitions}
+                      </td>
+                      <td className="py-3 pr-4 font-mono">{mode.tools}</td>
+                      <td className="py-3 text-muted-foreground">
+                        {mode.coverage}
+                      </td>
                     </tr>
-                  </thead>
-                  <tbody>
-                    {checks.map((check) => (
-                      <tr key={check.num} className="border-b border-border hover:bg-accent/5 transition-colors">
-                        <td className="py-3 px-4 font-mono text-accent">{check.num}</td>
-                        <td className="py-3 px-4 font-mono font-medium">{check.title}</td>
-                        <td className="py-3 px-4 text-muted-foreground">{check.desc}</td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
+                  ))}
+                </tbody>
+              </table>
             </div>
-          </AnimatedSection>
+            <p className="text-sm text-muted-foreground mt-4">
+              Counts describe the complete registry. A project runs only rows
+              for detected ecosystems plus the cross-language rows once.
+            </p>
+          </div>
+        </AnimatedSection>
 
-          <AnimatedSection delay={300}>
-            <h2 className="text-2xl font-bold font-mono mb-6">Auto-Fix Capabilities</h2>
-          </AnimatedSection>
+        <AnimatedSection delay={450}>
+          <h3 className="text-xl font-bold font-mono mb-4">
+            25 detected ecosystem labels
+          </h3>
+          <div className="card-hover bg-card border border-border rounded-lg overflow-hidden mb-12">
+            <div className="overflow-x-auto">
+              <table className="w-full text-sm">
+                <thead>
+                  <tr className="border-b border-border bg-secondary/30">
+                    <th className="text-left py-3 px-4 font-mono">Source</th>
+                    <th className="text-left py-3 px-4 font-mono">Labels</th>
+                    <th className="text-left py-3 px-4 font-mono">Metadata</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {ecosystemGroups.map(group => (
+                    <tr
+                      key={group.source}
+                      className="border-b border-border last:border-0"
+                    >
+                      <td className="py-3 px-4 font-mono text-xs">
+                        {group.source}
+                      </td>
+                      <td className="py-3 px-4">{group.labels}</td>
+                      <td className="py-3 px-4 text-muted-foreground">
+                        {group.frameworks}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </AnimatedSection>
 
-          <AnimatedSection delay={350}>
-            <div className="card-hover bg-card border border-border rounded-lg p-6 mb-12">
-              <p className="text-muted-foreground mb-4">
-                Após executar todas as verificações, o <code className="text-accent">karnel doctor</code> apresenta problemas detectados e
-                pergunta se você deseja aplicar as correções automáticas. Cada problema tem uma correção
-                predefinida ou comando shell.
+        <AnimatedSection delay={500}>
+          <div id="tools" className="scroll-mt-24">
+            <h2 className="text-2xl font-bold font-mono mb-4">Tool registry</h2>
+            <p className="text-muted-foreground mb-6">
+              The registry contains 76 definitions across 68 distinct displayed
+              tool labels. C# currently receives cross-language checks only.
+            </p>
+          </div>
+          <div className="card-hover bg-card border border-border rounded-lg overflow-hidden mb-12">
+            <div className="overflow-x-auto">
+              <table className="w-full text-sm">
+                <thead>
+                  <tr className="border-b border-border bg-secondary/30">
+                    <th className="text-left py-3 px-4 font-mono">Ecosystem</th>
+                    <th className="text-left py-3 px-4 font-mono">Checks</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {toolGroups.map(([ecosystem, tools]) => (
+                    <tr
+                      key={ecosystem}
+                      className="border-b border-border last:border-0"
+                    >
+                      <td className="py-3 px-4 font-mono font-medium">
+                        {ecosystem}
+                      </td>
+                      <td className="py-3 px-4 text-muted-foreground">
+                        {tools}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </AnimatedSection>
+
+        <AnimatedSection delay={550}>
+          <h2 className="text-2xl font-bold font-mono mb-4">Fix modes</h2>
+          <div className="grid md:grid-cols-2 gap-4 mb-12">
+            <div className="card-hover bg-card border border-border rounded-lg p-5">
+              <h3 className="font-mono font-bold mb-2">--fix / --safe-fix</h3>
+              <p className="text-sm text-muted-foreground">
+                Applies only fixes explicitly classified as safe and only for
+                actual findings. File-based fixes retain their sample path.
               </p>
-              <p className="text-muted-foreground mb-4">Exemplos de correções automáticas:</p>
-              <div className="grid md:grid-cols-2 gap-3 mb-4">
-                {autoFixes.map((fix, i) => (
-                  <div key={i} className="bg-background border border-border rounded p-3 text-sm text-muted-foreground">
-                    {fix}
-                  </div>
-                ))}
-              </div>
             </div>
-          </AnimatedSection>
-
-          <AnimatedSection delay={400}>
-            <h2 className="text-2xl font-bold font-mono mb-6">Report Output</h2>
-          </AnimatedSection>
-
-          <AnimatedSection delay={450}>
-            <div className="card-hover bg-card border border-border rounded-lg p-6 mb-12">
-              <p className="text-muted-foreground mb-4">
-                Um relatório detalhado em Markdown é salvo em:
-              </p>
-              <CodeBlock
-                code={"$KARNEL_DATA/doctor_reports/doctor_report_latest.md"}
-                language="bash"
-                title="report path"
-              />
-              <p className="text-muted-foreground mt-4">
-                O relatório inclui informações do sistema, uso de recursos, status do PostgreSQL, contagem de ferramentas
-                de IA e um resumo de erros, avisos e correções aplicadas.
+            <div className="card-hover bg-card border border-border rounded-lg p-5">
+              <h3 className="font-mono font-bold mb-2">--aggressive-fix</h3>
+              <p className="text-sm text-muted-foreground">
+                Also allows available fixes without a safe classification.
+                Review version-control changes immediately after execution.
               </p>
             </div>
-          </AnimatedSection>
+          </div>
+        </AnimatedSection>
 
-          <AnimatedSection delay={500}>
-            <h2 className="text-2xl font-bold font-mono mb-6">Example Output</h2>
-          </AnimatedSection>
-
-          <AnimatedSection delay={550}>
-            <div className="card-hover bg-card border border-border rounded-lg p-6">
-              <CodeBlock
-                code={`[ KARNEL DOCTOR ]
-
-[✓] Android Version: 14
-[✓] Termux Version: 0.118.0
-[✓] CPU Architecture: aarch64
-
-── System Resources ──
-[✓] Available disk space: 45G
-[✓] RAM: Total: 6144 MB | Available: 2800 MB
-
-── Languages & Critical Tools ──
-[✓] git: 2.45.0
-[✓] node: v22.0.0
-[✓] python: 3.12.0
-[!] go is not installed
-
-── Summary ──
-[✓] Diagnostics completed!
-Report saved: /data/data/com.termux/files/home/.local/share/karnel/doctor_reports/doctor_report_latest.md
-Found 1 warning(s). System is functional but can be optimized.
-
-── Auto-Fix Options ──
-Detected 1 issue(s) that can be automatically fixed:
-  1. Install missing: golang
-
-Apply all auto-corrections? [y/N]`}
-                language="bash"
-                title="sample output"
-              />
+        <AnimatedSection delay={600}>
+          <div id="output" className="scroll-mt-24">
+            <h2 className="text-2xl font-bold font-mono mb-4">
+              Output and reports
+            </h2>
+          </div>
+          <div className="card-hover bg-card border border-border rounded-lg p-6 mb-6">
+            <h3 className="font-mono font-bold mb-4">Standalone JSON</h3>
+            <CodeBlock
+              code={`{
+  "directory": "/path/to/project",
+  "results": [
+    {
+      "severity": "ok",
+      "language": "Shell",
+      "tool": "bash",
+      "category": "syntax",
+      "count": 0,
+      "detail": ""
+    }
+  ]
+}`}
+              language="json"
+              title="karnel doctor code --json"
+            />
+            <p className="text-sm text-muted-foreground mt-4">
+              Nonzero command status and timeout are errors, including silent
+              failures. Empty successful output is OK; other output is
+              classified by severity keywords.
+            </p>
+          </div>
+          <div className="grid md:grid-cols-2 gap-4 mb-12">
+            <div className="card-hover bg-card border border-border rounded-lg p-5">
+              <h3 className="font-mono font-bold mb-3">Termux report</h3>
+              <code className="text-xs text-accent break-all">
+                $KARNEL_DATA/doctor_reports/doctor_report_latest.md
+              </code>
+              <p className="text-sm text-muted-foreground mt-3">
+                Replaced on each run and generated after auto-fixes.
+              </p>
             </div>
-          </AnimatedSection>
-        </div>
-      </section>
+            <div className="card-hover bg-card border border-border rounded-lg p-5">
+              <h3 className="font-mono font-bold mb-3">Code text report</h3>
+              <code className="text-xs text-accent break-all">
+                $KARNEL_DATA/doctor_code_reports/doctor_code_YYYYMMDD_HHMMSS.txt
+              </code>
+              <p className="text-sm text-muted-foreground mt-3">
+                Timestamped and created in terminal text mode.
+              </p>
+            </div>
+          </div>
+        </AnimatedSection>
+
+        <AnimatedSection delay={650}>
+          <div id="reliability" className="scroll-mt-24">
+            <h2 className="text-2xl font-bold font-mono mb-4">
+              2026-07-16 reliability audit
+            </h2>
+            <p className="text-muted-foreground mb-6">
+              The Doctor implementation and documentation were reviewed
+              together. The current behavior is covered by smoke tests and
+              ShellCheck.
+            </p>
+          </div>
+          <div className="card-hover bg-card border border-accent/40 rounded-lg p-6 mb-8">
+            <ul className="space-y-3 text-sm text-muted-foreground">
+              {reliabilityItems.map(item => (
+                <li key={item} className="flex gap-3">
+                  <span className="text-accent" aria-hidden="true">
+                    ✓
+                  </span>
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </AnimatedSection>
+
+        <AnimatedSection delay={700}>
+          <div className="card-hover bg-card border border-border rounded-lg p-6">
+            <h2 className="text-xl font-bold font-mono mb-3">
+              Source documentation
+            </h2>
+            <p className="text-muted-foreground mb-4">
+              The repository reference contains the complete implementation map,
+              detector table, report details, regression coverage and change
+              record.
+            </p>
+            <div className="flex flex-wrap gap-4 text-sm">
+              <a
+                className="text-accent hover:underline"
+                href="https://github.com/israelmarques1024-dotcom/karnel-termux/blob/main/docs/doctor/README.md"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Doctor reference
+              </a>
+              <a
+                className="text-accent hover:underline"
+                href="https://github.com/israelmarques1024-dotcom/karnel-termux/blob/main/docs/CHANGELOG.md"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Audit changelog
+              </a>
+            </div>
+          </div>
+        </AnimatedSection>
+      </div>
+    </section>
   );
 }

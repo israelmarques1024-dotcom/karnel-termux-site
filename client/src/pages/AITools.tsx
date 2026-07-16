@@ -32,6 +32,7 @@ const aiTools = [
   { name: "omniRoute", bin: "omni-route", flag: "--omni-route", desc: "AI gateway routing proxy" },
   { name: "Context7", bin: "ctx7", flag: "--ctx7", desc: "Context manager for large codebases" },
   { name: "OpenSpec", bin: "openspec", flag: "--openspec", desc: "Open-source spec generator" },
+  { name: "Copilot-Termux", bin: "copilot", flag: "--copilot-termux", desc: "GitHub Copilot CLI adapted for Termux" },
 ];
 
 export default function AITools() {

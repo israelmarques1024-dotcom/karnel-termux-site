@@ -16,10 +16,10 @@ const iconColors = [
 ];
 
 const stats = [
-  { label: "AI Agents", value: 30, suffix: "+" },
+  { label: "AI Agents", value: 31 },
   { label: "Languages", value: 7 },
   { label: "Databases", value: 5 },
-  { label: "Dev Tools", value: 19 },
+  { label: "Dev Tools", value: 24 },
   { label: "Deploy CLIs", value: 3 },
   { label: "Total Packages", value: 90, suffix: "+" },
 ];
@@ -32,7 +32,7 @@ const installOptions = [
 
 const features = [
   { href: "/karnel", icon: <Zap size={22} />, title: "Modular Architecture", desc: "Install only what you need. No tool conflicts." },
-  { href: "/karnel/ai", icon: <Code2 size={22} />, title: "30 AI Agents", desc: "Claude, Gemini, OpenCode, Ollama and more. Pre-configured." },
+  { href: "/karnel/ai", icon: <Code2 size={22} />, title: "31 AI Agents", desc: "Claude, Gemini, OpenCode, Ollama and more. Pre-configured." },
   { href: "/karnel/editor", icon: <Terminal size={22} />, title: "VS Code Editor", desc: "code-server (VS Code in browser) for 20+ languages. Copilot included." },
   { href: "/karnel/linux", icon: <Cpu size={22} />, title: "Linux Stack", desc: "PostgreSQL, MongoDB, Node.js, Python, Go, Rust. Everything you need." },
   { href: "/karnel/brain", icon: <Brain size={22} />, title: "Second Brain", desc: "Integrated memory with AI search and idea graph." },
@@ -136,10 +136,10 @@ export default function Home() {
           <AnimatedSection animation="fade-in-up" delay={200}>
             <p className="text-base sm:text-lg text-muted-foreground mb-10 max-w-2xl mx-auto leading-relaxed">
               Transform your Android into a complete development station.
-              Install <span className="text-accent font-semibold">30 AI agents</span>,{" "}
+              Install <span className="text-accent font-semibold">31 AI agents</span>,{" "}
               <span className="text-accent font-semibold">7 languages</span>,{" "}
               <span className="text-accent font-semibold">5 databases</span>,{" "}
-              <span className="text-accent font-semibold">19 tools</span>{" "}
+              <span className="text-accent font-semibold">24 tools</span>{" "}
               and <span className="text-accent font-semibold">3 deploy CLIs</span> — in seconds.
             </p>
           </AnimatedSection>

@@ -32,53 +32,53 @@ Created by **Israel Marques**.
 ## Features
 
 - **Documentation** for all CLI commands and modules
-- **AI agents page** — Browse and install 30 AI agents
+- **AI agents page** — Browse and install 31 AI agents
 - **Interactive guides** — Doctor checks, PostgreSQL, voice commands, and more
 - **Responsive** — Works on mobile and desktop
 - **Dark theme** — Easy on the eyes
 
 ## Pages
 
-| Page | Route | Description |
-|------|-------|-------------|
-| Home | `/` | Landing page with overview |
-| AI Tools | `/ai-tools` | 30 AI agents with search and filter |
-| Brain | `/brain` | Second brain memory system docs |
-| Code Editor | `/code-editor` | code-server (VS Code in browser) |
-| Deploy | `/deploy` | Deployment guides for Vercel, Railway, Netlify |
-| Doctor | `/doctor` | Diagnostic tool documentation |
-| Env | `/env` | Environment variable management |
-| Init | `/init` | Project templates |
-| Karnel Auto | `/karnel-auto` | n8n automation |
-| Karnel Backup | `/karnel-backup` | Backup and restore |
-| Karnel Cleanup | `/karnel-cleanup` | Cache and temp cleanup |
-| Karnel DB | `/karnel-db` | Database module (PostgreSQL, MariaDB, SQLite, MongoDB, Redis) |
-| Karnel Dev | `/karnel-dev` | Dev tools |
-| Karnel Docs | `/karnel-docs` | Documentation system |
-| Karnel Lang | `/karnel-lang` | Languages (Node.js, Python, Go, Rust, C/C++, PHP, Perl) |
-| Karnel Npm | `/karnel-npm` | Global npm packages |
-| Karnel Shell | `/karnel-shell` | ZSH + Oh My Zsh |
-| Karnel UI | `/karnel-ui` | Font, cursor, extra-keys, banner |
-| Linux | `/linux` | Linux-specific tools |
-| PG | `/pg` | PostgreSQL manager |
-| Show Docs | `/show-docs` | Tool documentation viewer |
-| Termux | `/termux` | Termux-specific tools |
-| Termux API | `/termux-api` | Termux:API integration |
-| Voice | `/voice` | Voice command agent |
+| Page           | Route             | Description                                                   |
+| -------------- | ----------------- | ------------------------------------------------------------- |
+| Home           | `/`               | Landing page with overview                                    |
+| AI Tools       | `/karnel/ai`      | 31 AI agents with search and filter                           |
+| Brain          | `/karnel/brain`   | Second brain memory system docs                               |
+| Code Editor    | `/karnel/editor`  | code-server (VS Code in browser)                              |
+| Deploy         | `/karnel/deploy`  | Deployment guides for Vercel, Railway, Netlify                |
+| Doctor         | `/karnel/doctor`  | Termux diagnostics and project code analysis                  |
+| Env            | `/karnel/env`     | Environment variable management                               |
+| Init           | `/karnel/init`    | Project templates                                             |
+| Karnel Auto    | `/karnel/auto`    | n8n automation                                                |
+| Karnel Backup  | `/karnel/backup`  | Backup and restore                                            |
+| Karnel Cleanup | `/karnel/cleanup` | Cache and temp cleanup                                        |
+| Karnel DB      | `/karnel/db`      | Database module (PostgreSQL, MariaDB, SQLite, MongoDB, Redis) |
+| Karnel Dev     | `/karnel/dev`     | Dev tools                                                     |
+| Karnel Docs    | `/karnel`         | Documentation system                                          |
+| Karnel Lang    | `/karnel/lang`    | Languages (Node.js, Python, Go, Rust, C/C++, PHP, Perl)       |
+| Karnel Npm     | `/karnel/npm`     | Global npm packages                                           |
+| Karnel Shell   | `/karnel/shell`   | ZSH + Oh My Zsh                                               |
+| Karnel UI      | `/karnel/ui`      | Font, cursor, extra-keys, banner                              |
+| Linux          | `/karnel/linux`   | Linux-specific tools                                          |
+| PG             | `/karnel/pg`      | PostgreSQL manager                                            |
+| Show Docs      | `/karnel/show`    | Tool documentation viewer                                     |
+| Termux         | `/termux`         | Termux-specific tools                                         |
+| Termux API     | `/termux/api`     | Termux:API integration                                        |
+| Voice          | `/karnel/voice`   | Voice command agent                                           |
 
 ---
 
 ## Tech Stack
 
-| Technology | Purpose |
-|------------|---------|
-| React 19 | UI framework |
-| Vite | Build tool |
-| TypeScript | Type safety |
-| Tailwind CSS | Styling |
-| wouter | Client-side routing |
-| Lucide React | Icons |
-| Vercel | Hosting & deployment |
+| Technology   | Purpose              |
+| ------------ | -------------------- |
+| React 19     | UI framework         |
+| Vite         | Build tool           |
+| TypeScript   | Type safety          |
+| Tailwind CSS | Styling              |
+| wouter       | Client-side routing  |
+| Lucide React | Icons                |
+| Vercel       | Hosting & deployment |
 
 ---
 
