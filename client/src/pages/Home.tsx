@@ -62,11 +62,15 @@ const steps = [
 ];
 
 function AnimatedStat({ label, value, suffix = "", delay = 0 }: { label: string; value: number; suffix?: string; delay?: number }) {
-  const { ref } = useInView({ threshold: 0, once: true });
+  const { ref, inView } = useInView({ threshold: 0, once: true });
   const [count, setCount] = useState(0);
   const rafRef = useRef<number>(undefined);
+  const startedRef = useRef(false);
 
   useEffect(() => {
+    if (!inView || startedRef.current) return;
+    startedRef.current = true;
+
     const duration = 2000;
     const start = performance.now();
     function tick(now: number) {
@@ -79,18 +83,17 @@ function AnimatedStat({ label, value, suffix = "", delay = 0 }: { label: string;
     }
     const timeout = setTimeout(() => {
       rafRef.current = requestAnimationFrame(tick);
-    }, delay + 300);
+    }, delay);
     return () => {
       clearTimeout(timeout);
       if (rafRef.current !== undefined) cancelAnimationFrame(rafRef.current);
     };
-  }, [value, delay]);
+  }, [inView, value, delay]);
 
   return (
     <div
       ref={ref}
       className="rounded-xl border border-border bg-card/50 p-4 text-center transition-all duration-500 hover:border-accent/30 hover:bg-card/80 hover:shadow-lg hover:shadow-accent/5 hover:-translate-y-1"
-      style={{ animationDelay: `${delay}ms` }}
     >
       <div className="text-2xl sm:text-3xl font-bold font-mono text-gradient">
         {count}{suffix}
