@@ -32,9 +32,9 @@ const PIX_EMV = (() => {
     tlv("52", "0000") +
     tlv("53", "986") +
     tlv("58", "BR") +
-    tlv("59", "KARNELTERMUX") +
-    tlv("60", "SAOPAULO") +
-    tlv("62", tlv("05", "TEST")) +
+    tlv("59", "KARNEL TERMUX") +
+    tlv("60", "SAO PAULO") +
+    tlv("62", tlv("05", "DOACAO")) +
     "6304";
   return body + crc16(body);
 })();

@@ -5,14 +5,23 @@ import { ChevronDown, ChevronRight, Menu, X } from "lucide-react";
 export default function Layout({ children }: { children: React.ReactNode }) {
   const [location, navigate] = useLocation();
   const [sidebarOpen, setSidebarOpen] = useState(false);
-  const [mobileOpen, setMobileOpen] = useState(true);
+  const [mobileOpen, setMobileOpen] = useState(false);
 
   const scrollToSupport = () => {
     if (location !== "/") {
       navigate("/");
       setTimeout(() => {
-        document.getElementById("support-project")?.scrollIntoView({ behavior: "smooth" });
-      }, 120);
+        const el = document.getElementById("support-project");
+        if (!el) {
+          const observer = new MutationObserver(() => {
+            const target = document.getElementById("support-project");
+            if (target) { target.scrollIntoView({ behavior: "smooth" }); observer.disconnect(); }
+          });
+          observer.observe(document.body, { childList: true, subtree: true });
+        } else {
+          el.scrollIntoView({ behavior: "smooth" });
+        }
+      }, 100);
     } else {
       document.getElementById("support-project")?.scrollIntoView({ behavior: "smooth" });
     }
@@ -47,8 +56,6 @@ export default function Layout({ children }: { children: React.ReactNode }) {
     { label: "Show", href: "/karnel/show" },
     { label: "Backup", href: "/karnel/backup" },
   ];
-
-
 
   const renderNavSection = (
     title: string,
