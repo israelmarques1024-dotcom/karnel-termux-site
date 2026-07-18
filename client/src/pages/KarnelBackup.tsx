@@ -12,8 +12,14 @@ import {
 } from "lucide-react";
 
 const backupCommands = [
-  { cmd: "karnel backup", desc: "Local backup of all configs + packages + tools" },
-  { cmd: "karnel backup --cloud", desc: "Backup + upload to Google Drive (via rclone)" },
+  {
+    cmd: "karnel backup",
+    desc: "Local backup of all configs + packages + tools",
+  },
+  {
+    cmd: "karnel backup --cloud",
+    desc: "Backup + upload to Google Drive (via rclone)",
+  },
   { cmd: "karnel restore", desc: "Restore most recent backup" },
   { cmd: "karnel restore <file>", desc: "Restore a specific backup file" },
   { cmd: "karnel restore --cloud", desc: "Restore from Google Drive" },
@@ -43,15 +49,23 @@ export default function KarnelBackupPage() {
               <table className="w-full text-sm">
                 <thead>
                   <tr className="border-b border-border">
-                    <th className="text-left py-3 px-4 font-mono text-accent">Command</th>
-                    <th className="text-left py-3 px-4 text-muted-foreground">Description</th>
+                    <th className="text-left py-3 px-4 font-mono text-accent">
+                      Command
+                    </th>
+                    <th className="text-left py-3 px-4 text-muted-foreground">
+                      Description
+                    </th>
                   </tr>
                 </thead>
                 <tbody>
-                  {backupCommands.map((cmd) => (
+                  {backupCommands.map(cmd => (
                     <tr key={cmd.cmd} className="border-b border-border/50">
-                      <td className="py-3 px-4 font-mono text-accent">{cmd.cmd}</td>
-                      <td className="py-3 px-4 text-muted-foreground">{cmd.desc}</td>
+                      <td className="py-3 px-4 font-mono text-accent">
+                        {cmd.cmd}
+                      </td>
+                      <td className="py-3 px-4 text-muted-foreground">
+                        {cmd.desc}
+                      </td>
                     </tr>
                   ))}
                 </tbody>
@@ -79,21 +93,46 @@ karnel restore --cloud          # Restore from Google Drive`}
             <h2 className="text-xl font-bold font-mono mb-4">What Is Saved</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm">
               {[
-                { icon: Package, label: "Packages", desc: "Full dpkg package list" },
+                {
+                  icon: Package,
+                  label: "Packages",
+                  desc: "Full dpkg package list",
+                },
                 { icon: Wrench, label: "Tools", desc: "Karnel tools manifest" },
-                { icon: Terminal, label: "Shell", desc: ".bashrc, .zshrc, .profile" },
-                { icon: Palette, label: "Termux", desc: "Fonts, colors, properties" },
+                {
+                  icon: Terminal,
+                  label: "Shell",
+                  desc: ".bashrc, .zshrc, .profile",
+                },
+                {
+                  icon: Palette,
+                  label: "Termux",
+                  desc: "Fonts, colors, properties",
+                },
                 { icon: Key, label: "SSH", desc: "Keys and configs" },
-                { icon: FolderClosed, label: "Configs", desc: "~/.config complete" },
-                { icon: Radio, label: "APT", desc: "sources.list repositories" },
+                {
+                  icon: FolderClosed,
+                  label: "Configs",
+                  desc: "~/.config complete",
+                },
+                {
+                  icon: Radio,
+                  label: "APT",
+                  desc: "sources.list repositories",
+                },
                 { icon: Cloud, label: "Cloud", desc: "Upload to Google Drive" },
-              ].map((item) => {
+              ].map(item => {
                 const Icon = item.icon;
                 return (
-                  <div key={item.label} className="bg-background border border-border rounded p-3 flex items-start gap-3">
+                  <div
+                    key={item.label}
+                    className="bg-background border border-border rounded p-3 flex items-start gap-3"
+                  >
                     <Icon className="w-5 h-5 text-accent mt-0.5 shrink-0" />
                     <div>
-                      <span className="font-bold text-accent">{item.label}</span>
+                      <span className="font-bold text-accent">
+                        {item.label}
+                      </span>
                       <p className="text-muted-foreground">{item.desc}</p>
                     </div>
                   </div>
@@ -105,10 +144,13 @@ karnel restore --cloud          # Restore from Google Drive`}
 
         <AnimatedSection delay={400}>
           <div className="card-hover bg-card border border-border rounded-lg p-6">
-            <h2 className="text-xl font-bold font-mono mb-4">Cloud (gratuito)</h2>
+            <h2 className="text-xl font-bold font-mono mb-4">
+              Cloud (gratuito)
+            </h2>
             <p className="text-muted-foreground mb-4">
-              Backup uses <strong>rclone</strong> — an open-source tool that connects to
-              Google Drive, Dropbox, OneDrive and others. Zero server cost.
+              Backup uses <strong>rclone</strong> — an open-source tool that
+              connects to Google Drive, Dropbox, OneDrive and others. Zero
+              server cost.
             </p>
             <CodeBlock
               code={`karnel backup --cloud             # Primeira vez: instala rclone
@@ -124,8 +166,8 @@ karnel backup --cloud             # Agora sobe pro Google Drive`}
           <div className="card-hover bg-card border border-border rounded-lg p-6">
             <h2 className="text-xl font-bold font-mono mb-4">Restore</h2>
             <p className="text-muted-foreground mb-4">
-              Restore extracts the configs, restores the package list,
-              and automatically reinstalls all Karnel tools.
+              Restore extracts the configs, restores the package list, and
+              automatically reinstalls all Karnel tools.
             </p>
             <CodeBlock
               code={`karnel restore                  # Restaura o backup mais recente
@@ -135,8 +177,9 @@ karnel restore --cloud           # Baixa do Google Drive e restaura`}
               title="terminal"
             />
             <div className="mt-4 p-3 bg-yellow-500/10 border border-yellow-500/20 rounded text-sm text-muted-foreground">
-              Package restore (dpkg) may take a few minutes.
-              After finishing, restart Termux or run <code className="text-accent">source ~/.zshrc</code>.
+              Package restore (dpkg) may take a few minutes. After finishing,
+              restart Termux or run{" "}
+              <code className="text-accent">source ~/.zshrc</code>.
             </div>
           </div>
         </AnimatedSection>

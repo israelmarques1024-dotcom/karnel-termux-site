@@ -22,7 +22,6 @@ export default defineConfig({
     rollupOptions: {
       output: {
         manualChunks: {
-          react: ["react", "react-dom"],
           router: ["wouter"],
           radix: [
             "@radix-ui/react-slot",

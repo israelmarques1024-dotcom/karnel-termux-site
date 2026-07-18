@@ -15,7 +15,11 @@ export default function KarnelAuto() {
         <AnimatedSection delay={100}>
           <div className="card-hover bg-card border border-accent/50 rounded-lg p-6 mb-8">
             <h3 className="font-bold font-mono mb-4">Quick Install</h3>
-            <CodeBlock code="karnel install auto" language="bash" title="terminal" />
+            <CodeBlock
+              code="karnel install auto"
+              language="bash"
+              title="terminal"
+            />
           </div>
         </AnimatedSection>
 
@@ -23,11 +27,15 @@ export default function KarnelAuto() {
           <div className="card-hover bg-card border border-border rounded-lg p-6 mb-8">
             <h3 className="font-bold font-mono mb-2">n8n</h3>
             <p className="text-sm text-muted-foreground mb-4">
-              Workflow automation platform. Connect apps and services with visual flows.
+              Workflow automation platform. Connect apps and services with
+              visual flows.
             </p>
             <div className="space-y-2">
               <CodeBlock code="karnel install auto --n8n" language="bash" />
-              <CodeBlock code="# After install:\nn8n start\n# Access UI: http://localhost:5678" language="bash" />
+              <CodeBlock
+                code="# After install:\nn8n start\n# Access UI: http://localhost:5678"
+                language="bash"
+              />
             </div>
           </div>
         </AnimatedSection>

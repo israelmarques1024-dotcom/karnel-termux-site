@@ -1,17 +1,21 @@
 {
   "name": "karnel-termux-docs",
-  "version": "0.0.6",
+  "version": "0.0.7",
+  "private": true,
   "type": "module",
   "license": "MIT",
   "engines": {
-    "node": ">=20"
+    "node": ">=24 <25"
   },
   "scripts": {
     "dev": "vite --host",
     "build": "vite build",
     "preview": "vite preview --host",
-    "lint": "tsc --noEmit --pretty",
-    "format": "prettier --write \"client/src\""
+    "lint": "tsc --noEmit --incremental false --pretty",
+    "test": "vitest run",
+    "format": "prettier --write \"client/src\" \"*.{ts,json,md}\"",
+    "format:check": "prettier --check \"client/src\" \"*.{ts,json,md}\"",
+    "check": "pnpm lint && pnpm test && pnpm build"
   },
   "dependencies": {
     "@radix-ui/react-slot": "^1.2.3",
@@ -34,12 +38,12 @@
     "@types/react": "^19.2.1",
     "@types/react-dom": "^19.2.1",
     "@vitejs/plugin-react": "^5.0.4",
-    "pnpm": "^10.15.1",
     "prettier": "^3.6.2",
     "tailwindcss": "^4.1.14",
     "tw-animate-css": "^1.4.0",
     "typescript": "5.6.3",
-    "vite": "^7.1.7"
+    "vite": "^7.1.7",
+    "vitest": "^3.2.4"
   },
   "packageManager": "pnpm@10.15.1"
 }

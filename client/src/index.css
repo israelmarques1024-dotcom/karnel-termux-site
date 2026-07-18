@@ -43,19 +43,19 @@
 }
 
 :root {
-  --primary: oklch(0.55 0.2 280);  /* Deep Purple (light-mode contrast) */
+  --primary: oklch(0.55 0.2 280); /* Deep Purple (light-mode contrast) */
   --primary-foreground: oklch(0.98 0.01 0);
   --sidebar-primary: oklch(0.55 0.2 280);
   --sidebar-primary-foreground: oklch(0.98 0.01 0);
-  --accent: oklch(0.58 0.2 15);  /* Ruby Red */
+  --accent: oklch(0.58 0.2 15); /* Ruby Red */
   --accent-foreground: oklch(0.98 0.01 0);
   --chart-1: oklch(0.58 0.2 15);
   --chart-2: oklch(0.55 0.2 280);
-  --chart-3: oklch(0.55 0.18 330);  /* Pink */
+  --chart-3: oklch(0.55 0.18 330); /* Pink */
   --chart-4: oklch(0.5 0.16 280);
   --chart-5: oklch(0.52 0.2 350);
   --radius: 0.5rem;
-  --background: oklch(0.98 0.005 280);  /* Near White Purple */
+  --background: oklch(0.98 0.005 280); /* Near White Purple */
   --foreground: oklch(0.2 0.02 280);
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.2 0.02 280);
@@ -143,8 +143,6 @@
   }
 }
 
-
-
 @layer utilities {
   .text-gradient {
     @apply bg-gradient-to-r from-red-500 via-purple-500 to-blue-500 bg-clip-text text-transparent;
@@ -175,48 +173,95 @@
 }
 
 @keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-8px); }
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
 }
 
 @keyframes gradient-shift {
-  0%, 100% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
 }
 
 @keyframes pulse-glow {
-  0%, 100% { box-shadow: 0 0 20px oklch(0.62 0.22 15 / 0.25); }
-  50% { box-shadow: 0 0 40px oklch(0.62 0.22 15 / 0.4); }
+  0%,
+  100% {
+    box-shadow: 0 0 20px oklch(0.62 0.22 15 / 0.25);
+  }
+  50% {
+    box-shadow: 0 0 40px oklch(0.62 0.22 15 / 0.4);
+  }
 }
 
 @keyframes fade-in {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 @keyframes fade-in-up {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @keyframes fade-in-left {
-  from { opacity: 0; transform: translateX(-20px); }
-  to { opacity: 1; transform: translateX(0); }
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
 @keyframes fade-in-right {
-  from { opacity: 0; transform: translateX(20px); }
-  to { opacity: 1; transform: translateX(0); }
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
 @keyframes scale-in {
-  from { opacity: 0; transform: scale(0.95); }
-  to { opacity: 1; transform: scale(1); }
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
 @keyframes shimmer {
-  0% { background-position: -200% 0; }
-  100% { background-position: 200% 0; }
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
 }
 
 @layer utilities {
@@ -233,7 +278,12 @@
     animation: scale-in 0.4s ease-out both;
   }
   .animate-shimmer {
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.05), transparent);
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.05),
+      transparent
+    );
     background-size: 200% 100%;
     animation: shimmer 2s infinite;
   }
@@ -242,11 +292,15 @@
     transition: all 0.3s ease;
   }
   .glow-hover::after {
-    content: '';
+    content: "";
     position: absolute;
     inset: -1px;
     border-radius: inherit;
-    background: linear-gradient(135deg, oklch(0.62 0.22 15 / 0), oklch(0.62 0.22 15 / 0));
+    background: linear-gradient(
+      135deg,
+      oklch(0.62 0.22 15 / 0),
+      oklch(0.62 0.22 15 / 0)
+    );
     z-index: -1;
     opacity: 0;
     transition: opacity 0.3s ease;
@@ -254,7 +308,11 @@
   }
   .glow-hover:hover::after {
     opacity: 1;
-    background: linear-gradient(135deg, oklch(0.62 0.22 15 / 0.3), oklch(0.32 0.18 280 / 0.3));
+    background: linear-gradient(
+      135deg,
+      oklch(0.62 0.22 15 / 0.3),
+      oklch(0.32 0.18 280 / 0.3)
+    );
   }
 }
 
@@ -285,8 +343,12 @@ details summary::marker {
 }
 
 @keyframes gem-spin-ring {
-  0% { transform: rotateX(60deg) rotateZ(0deg); }
-  100% { transform: rotateX(60deg) rotateZ(360deg); }
+  0% {
+    transform: rotateX(60deg) rotateZ(0deg);
+  }
+  100% {
+    transform: rotateX(60deg) rotateZ(360deg);
+  }
 }
 
 /* GitHub star button */
@@ -310,7 +372,9 @@ details summary::marker {
 
 .star-btn:hover {
   transform: translateY(-2px) scale(1.02);
-  box-shadow: 0 8px 30px rgba(245, 158, 11, 0.5), 0 0 60px rgba(245, 158, 11, 0.15);
+  box-shadow:
+    0 8px 30px rgba(245, 158, 11, 0.5),
+    0 0 60px rgba(245, 158, 11, 0.15);
 }
 
 .star-btn:hover::before {

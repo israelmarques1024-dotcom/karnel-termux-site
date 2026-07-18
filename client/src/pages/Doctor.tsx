@@ -151,11 +151,12 @@ export default function Doctor() {
           <p className="text-sm font-mono text-accent mb-3">CLI reference</p>
           <h1 className="text-4xl font-bold font-mono mb-4">karnel doctor</h1>
           <p className="text-lg text-muted-foreground mb-8">
-            Diagnose the Termux environment or analyze a project with a registry
-            of 76 code checks. Doctor exposes exactly two operational
-            subcommands:
-            <code className="text-accent"> termux</code> and
-            <code className="text-accent"> code</code>.
+            Diagnose the Termux environment, analyze a project with 76 code
+            checks, or validate Robin without spending LLM credits. Doctor
+            exposes three operational subcommands:{" "}
+            <code className="text-accent">termux</code>,{" "}
+            <code className="text-accent">code</code>, and{" "}
+            <code className="text-accent">robin</code>.
           </p>
         </AnimatedSection>
 
@@ -164,7 +165,8 @@ export default function Doctor() {
             <h2 className="font-bold font-mono mb-4">Command surface</h2>
             <CodeBlock
               code={`karnel doctor termux [--quick] [--fix]
-karnel doctor code [options] [directory]`}
+karnel doctor code [options] [directory]
+karnel doctor robin [--network]`}
               language="bash"
               title="terminal"
             />
@@ -188,6 +190,9 @@ karnel doctor code [options] [directory]`}
               </a>
               <a className="text-accent hover:underline" href="#code">
                 Code analysis
+              </a>
+              <a className="text-accent hover:underline" href="#robin">
+                Robin diagnostics
               </a>
               <a className="text-accent hover:underline" href="#tools">
                 Tool registry
@@ -273,6 +278,32 @@ karnel doctor termux --fix`}
         </AnimatedSection>
 
         <AnimatedSection delay={350}>
+          <div id="robin" className="scroll-mt-24 mb-12">
+            <h2 className="text-2xl font-bold font-mono mb-4">
+              Robin diagnostics
+            </h2>
+            <p className="text-muted-foreground mb-6">
+              Robin mode verifies the exact upstream source pin, Python and
+              native imports, Tor SOCKS listener, Streamlit health endpoint,
+              private configuration permissions, and persistent investigation
+              storage. It never calls an LLM.
+            </p>
+            <div className="card-hover bg-card border border-border rounded-lg p-6">
+              <CodeBlock
+                code={`karnel doctor robin
+karnel doctor robin --network`}
+                language="bash"
+                title="terminal"
+              />
+              <p className="text-sm text-muted-foreground mt-4">
+                <code className="text-accent">--network</code> adds one bounded
+                HTTPS request through Tor. Without it, all checks remain local.
+              </p>
+            </div>
+          </div>
+        </AnimatedSection>
+
+        <AnimatedSection delay={400}>
           <div id="code" className="scroll-mt-24">
             <h2 className="text-2xl font-bold font-mono mb-4">Code analysis</h2>
             <p className="text-muted-foreground mb-6">
@@ -283,7 +314,7 @@ karnel doctor termux --fix`}
           </div>
         </AnimatedSection>
 
-        <AnimatedSection delay={400}>
+        <AnimatedSection delay={450}>
           <div className="card-hover bg-card border border-border rounded-lg p-6 mb-8">
             <CodeBlock
               code={`karnel doctor code

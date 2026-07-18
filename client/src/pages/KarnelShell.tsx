@@ -2,16 +2,48 @@ import CodeBlock from "@/components/CodeBlock";
 import { AnimatedSection } from "@/components/AnimatedSection";
 
 const plugins = [
-  { name: "powerlevel10k", flag: "--powerlevel10k", desc: "Fastest and most beautiful ZSH theme" },
+  {
+    name: "powerlevel10k",
+    flag: "--powerlevel10k",
+    desc: "Fastest and most beautiful ZSH theme",
+  },
   { name: "zsh-defer", flag: "--zsh-defer", desc: "Async plugin loading" },
-  { name: "zsh-autosuggestions", flag: "--zsh-autosuggestions", desc: "Fish-style autocomplete" },
-  { name: "zsh-syntax-highlighting", flag: "--zsh-syntax-highlighting", desc: "Syntax highlighting in commands" },
-  { name: "zsh-history-substring-search", flag: "--history-substring", desc: "Fish-style history search" },
-  { name: "zsh-completions", flag: "--zsh-completions", desc: "Extra completion definitions" },
+  {
+    name: "zsh-autosuggestions",
+    flag: "--zsh-autosuggestions",
+    desc: "Fish-style autocomplete",
+  },
+  {
+    name: "zsh-syntax-highlighting",
+    flag: "--zsh-syntax-highlighting",
+    desc: "Syntax highlighting in commands",
+  },
+  {
+    name: "zsh-history-substring-search",
+    flag: "--history-substring",
+    desc: "Fish-style history search",
+  },
+  {
+    name: "zsh-completions",
+    flag: "--zsh-completions",
+    desc: "Extra completion definitions",
+  },
   { name: "fzf-tab", flag: "--fzf-tab", desc: "Fuzzy tab completion with fzf" },
-  { name: "zsh-you-should-use", flag: "--you-should-use", desc: "Reminds you of existing aliases" },
-  { name: "zsh-autopair", flag: "--zsh-autopair", desc: "Auto-close brackets and quotes" },
-  { name: "zsh-better-npm-completion", flag: "--better-npm", desc: "Improved npm completion" },
+  {
+    name: "zsh-you-should-use",
+    flag: "--you-should-use",
+    desc: "Reminds you of existing aliases",
+  },
+  {
+    name: "zsh-autopair",
+    flag: "--zsh-autopair",
+    desc: "Auto-close brackets and quotes",
+  },
+  {
+    name: "zsh-better-npm-completion",
+    flag: "--better-npm",
+    desc: "Improved npm completion",
+  },
 ];
 
 export default function KarnelShell() {
@@ -28,12 +60,18 @@ export default function KarnelShell() {
         <AnimatedSection delay={100}>
           <div className="card-hover bg-card border border-accent/50 rounded-lg p-6 mb-12">
             <h3 className="font-bold font-mono mb-4">Quick Install</h3>
-            <CodeBlock code="karnel install shell" language="bash" title="terminal" />
+            <CodeBlock
+              code="karnel install shell"
+              language="bash"
+              title="terminal"
+            />
           </div>
         </AnimatedSection>
 
         <AnimatedSection delay={200}>
-          <h2 className="text-2xl font-bold font-mono mb-6">Included Plugins (10)</h2>
+          <h2 className="text-2xl font-bold font-mono mb-6">
+            Included Plugins (10)
+          </h2>
         </AnimatedSection>
 
         <div className="grid md:grid-cols-2 gap-4 mb-12">
@@ -42,7 +80,10 @@ export default function KarnelShell() {
               <div className="card-hover bg-card border border-border rounded-lg p-4">
                 <h3 className="font-bold font-mono mb-1">{p.name}</h3>
                 <p className="text-sm text-muted-foreground mb-2">{p.desc}</p>
-                <CodeBlock code={`karnel install shell ${p.flag}`} language="bash" />
+                <CodeBlock
+                  code={`karnel install shell ${p.flag}`}
+                  language="bash"
+                />
               </div>
             </AnimatedSection>
           ))}
@@ -53,7 +94,9 @@ export default function KarnelShell() {
             <h3 className="font-bold font-mono mb-4">Management</h3>
             <div className="space-y-4">
               <div>
-                <p className="text-sm text-muted-foreground mb-2">Update plugins:</p>
+                <p className="text-sm text-muted-foreground mb-2">
+                  Update plugins:
+                </p>
                 <CodeBlock code="karnel update shell" language="bash" />
               </div>
               <div>

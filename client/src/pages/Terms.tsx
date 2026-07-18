@@ -12,47 +12,76 @@ export default function TermsPage() {
           or accessing this site, you agree to these terms.
         </p>
 
-        <h2 className="text-xl font-bold font-mono text-foreground mt-8">1. MIT License</h2>
+        <h2 className="text-xl font-bold font-mono text-foreground mt-8">
+          1. MIT License
+        </h2>
         <p>
-          The Software is released under the MIT License. You are free to use, copy,
-          modify, merge, publish, distribute, sublicense, and/or sell copies of the
-          Software, subject to the following conditions:
+          The Software is released under the MIT License. You are free to use,
+          copy, modify, merge, publish, distribute, sublicense, and/or sell
+          copies of the Software, subject to the following conditions:
         </p>
         <p className="bg-card border border-border rounded-lg p-4 font-mono text-sm">
-          THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED.
-          IN NO EVENT SHALL THE AUTHORS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY.
+          THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+          EXPRESS OR IMPLIED. IN NO EVENT SHALL THE AUTHORS BE LIABLE FOR ANY
+          CLAIM, DAMAGES OR OTHER LIABILITY.
         </p>
 
-        <h2 className="text-xl font-bold font-mono text-foreground mt-8">2. No Warranty</h2>
+        <h2 className="text-xl font-bold font-mono text-foreground mt-8">
+          2. No Warranty
+        </h2>
         <p>
-          The Software is provided without any warranty. You use it at your own risk.
-          The authors are not responsible for any data loss, device issues, or other
-          damages that may arise from its use.
+          The Software is provided without any warranty. You use it at your own
+          risk. The authors are not responsible for any data loss, device
+          issues, or other damages that may arise from its use.
         </p>
 
-        <h2 className="text-xl font-bold font-mono text-foreground mt-8">3. Termux Compatibility</h2>
+        <h2 className="text-xl font-bold font-mono text-foreground mt-8">
+          3. Termux Compatibility
+        </h2>
         <p>
-          The Software is designed for Termux on Android. Compatibility with other
-          environments is not guaranteed. Always backup your data before running any
-          automation or system-modifying commands.
+          The Software is designed for Termux on Android. Compatibility with
+          other environments is not guaranteed. Always backup your data before
+          running any automation or system-modifying commands.
         </p>
 
-        <h2 className="text-xl font-bold font-mono text-foreground mt-8">4. Third-Party Services</h2>
+        <h2 className="text-xl font-bold font-mono text-foreground mt-8">
+          4. Third-Party Services
+        </h2>
         <p>
-          The Software may interact with third-party services (e.g., Google Drive via
-          rclone, GitHub, AI APIs). You are responsible for complying with their
-          respective terms of service.
+          The Software may interact with third-party services (e.g., Google
+          Drive via rclone, GitHub, AI APIs). You are responsible for complying
+          with their respective terms of service.
         </p>
 
-        <h2 className="text-xl font-bold font-mono text-foreground mt-8">5. Changes</h2>
+        <h2 className="text-xl font-bold font-mono text-foreground mt-8">
+          5. OSINT and Robin
+        </h2>
+        <p>
+          Robin must be used only for lawful, authorized, and ethical research.
+          You are responsible for the legality of queries, accessed material,
+          evidence handling, retention, and compliance with institutional and
+          provider policies. Tor does not guarantee anonymity. External LLM
+          providers may receive and retain queries, URLs, collected content, and
+          summaries outside Tor. AI output may be inaccurate and is not verified
+          evidence. Never expose Robin's local interface to the public internet.
+        </p>
+
+        <h2 className="text-xl font-bold font-mono text-foreground mt-8">
+          6. Changes
+        </h2>
         <p>
           These terms may be updated at any time. Continued use after changes
           constitutes acceptance of the new terms.
         </p>
 
         <p className="pt-8 text-sm">
-          Last updated: July 2026.
-          Contact: <a href="mailto:israelmarques1024@gmail.com" className="text-accent hover:underline">israelmarques1024@gmail.com</a>
+          Last updated: July 2026. Contact:{" "}
+          <a
+            href="mailto:israelmarques1024@gmail.com"
+            className="text-accent hover:underline"
+          >
+            israelmarques1024@gmail.com
+          </a>
         </p>
       </div>
     </section>

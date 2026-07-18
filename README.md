@@ -31,8 +31,8 @@ Created by **Israel Marques**.
 
 ## Features
 
-- **Documentation** for all CLI commands and modules
-- **AI agents page** — Browse and install 31 AI agents
+- **Documentation** for all CLI commands and modules, including Robin OSINT
+- **AI tools page** — Browse and install 31 agents, gateways, and developer utilities
 - **Interactive guides** — Doctor checks, PostgreSQL, voice commands, and more
 - **Responsive** — Works on mobile and desktop
 - **Dark theme** — Easy on the eyes
@@ -42,7 +42,7 @@ Created by **Israel Marques**.
 | Page           | Route             | Description                                                   |
 | -------------- | ----------------- | ------------------------------------------------------------- |
 | Home           | `/`               | Landing page with overview                                    |
-| AI Tools       | `/karnel/ai`      | 31 AI agents with search and filter                           |
+| AI Tools       | `/karnel/ai`      | 31 agents, gateways, and developer utilities                  |
 | Brain          | `/karnel/brain`   | Second brain memory system docs                               |
 | Code Editor    | `/karnel/editor`  | code-server (VS Code in browser)                              |
 | Deploy         | `/karnel/deploy`  | Deployment guides for Vercel, Railway, Netlify                |
@@ -53,10 +53,11 @@ Created by **Israel Marques**.
 | Karnel Backup  | `/karnel/backup`  | Backup and restore                                            |
 | Karnel Cleanup | `/karnel/cleanup` | Cache and temp cleanup                                        |
 | Karnel DB      | `/karnel/db`      | Database module (PostgreSQL, MariaDB, SQLite, MongoDB, Redis) |
-| Karnel Dev     | `/karnel/dev`     | Dev tools                                                     |
+| Karnel Dev     | `/karnel/dev`     | 32 development tools                                          |
 | Karnel Docs    | `/karnel`         | Documentation system                                          |
 | Karnel Lang    | `/karnel/lang`    | Languages (Node.js, Python, Go, Rust, C/C++, PHP, Perl)       |
 | Karnel Npm     | `/karnel/npm`     | Global npm packages                                           |
+| Karnel OSINT   | `/karnel/osint`   | Robin v2.8, Tor, privacy model and lifecycle                  |
 | Karnel Shell   | `/karnel/shell`   | ZSH + Oh My Zsh                                               |
 | Karnel UI      | `/karnel/ui`      | Font, cursor, extra-keys, banner                              |
 | Linux          | `/karnel/linux`   | Linux-specific tools                                          |
@@ -89,7 +90,7 @@ pnpm install
 pnpm dev
 ```
 
-Open http://localhost:5173 in your browser.
+Open http://localhost:3000 in your browser.
 
 ### Build
 
@@ -106,15 +107,17 @@ pnpm preview
 client/
 ├── src/
 │   ├── components/     # Reusable components
+│   ├── data/           # Synchronized tool catalog
+│   ├── hooks/          # Navigation and viewport hooks
+│   ├── lib/            # Routes, contracts, and utilities
 │   ├── pages/          # Page components
-│   ├── layout/         # Layout and navigation
-│   ├── lib/            # Utilities
 │   └── index.css       # Global styles
 ├── index.html
-├── package.json
-├── tsconfig.json
-├── tailwind.config.ts
-└── vite.config.ts
+package.json            # Scripts and dependencies
+pnpm-lock.yaml          # Reproducible dependency graph
+tsconfig.json           # TypeScript configuration
+vercel.json             # Production deployment settings
+vite.config.ts          # Vite and build configuration
 ```
 
 ---
@@ -124,7 +127,7 @@ client/
 1. Fork the repo
 2. Create a branch: `git checkout -b my-feature`
 3. Make your changes
-4. Run: `pnpm build`
+4. Run: `pnpm format:check && pnpm check`
 5. Push and open a PR
 
 ---

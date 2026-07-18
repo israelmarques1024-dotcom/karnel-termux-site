@@ -5,7 +5,10 @@ const templates = [
   { name: "next", desc: "Next.js com Turbopack, TypeScript, Tailwind CSS" },
   { name: "react", desc: "React + Vite com estrutura moderna" },
   { name: "nest", desc: "NestJS com TypeORM e autenticação" },
-  { name: "express", desc: "Express API com TypeScript + TypeORM + migrations" },
+  {
+    name: "express",
+    desc: "Express API com TypeScript + TypeORM + migrations",
+  },
   { name: "python", desc: "FastAPI com SQLModel ou SQLAlchemy" },
   { name: "go", desc: "Gin/Fiber API com Docker support" },
   { name: "rust", desc: "Axum/Actix Web com SQLx" },
@@ -13,60 +16,67 @@ const templates = [
 
 export default function Init() {
   return (
-      <section className="py-12 px-4">
-        <div className="max-w-4xl mx-auto">
-          <AnimatedSection>
-            <h1 className="text-4xl font-bold font-mono mb-4">karnel init — Project Initialization</h1>
-            <p className="text-lg text-muted-foreground mb-8">
-              Configure projetos existentes com dependências, estrutura de pastas e
-              ferramentas pré-definidas. Comece a codar em segundos.
-            </p>
-          </AnimatedSection>
+    <section className="py-12 px-4">
+      <div className="max-w-4xl mx-auto">
+        <AnimatedSection>
+          <h1 className="text-4xl font-bold font-mono mb-4">
+            karnel init — Project Initialization
+          </h1>
+          <p className="text-lg text-muted-foreground mb-8">
+            Configure projetos existentes com dependências, estrutura de pastas
+            e ferramentas pré-definidas. Comece a codar em segundos.
+          </p>
+        </AnimatedSection>
 
-          <AnimatedSection delay={100}>
-            <div className="card-hover bg-card border border-accent/50 rounded-lg p-6 mb-12">
-              <h3 className="font-bold font-mono mb-4">Uso</h3>
-              <CodeBlock
-                code={`karnel init                     # Detects project type and configures
+        <AnimatedSection delay={100}>
+          <div className="card-hover bg-card border border-accent/50 rounded-lg p-6 mb-12">
+            <h3 className="font-bold font-mono mb-4">Uso</h3>
+            <CodeBlock
+              code={`karnel init                     # Detects project type and configures
 karnel init <template>          # Configures with specific template`}
-                language="bash"
-                title="terminal"
-              />
-            </div>
-          </AnimatedSection>
-
-          <AnimatedSection delay={200}>
-            <h2 className="text-2xl font-bold font-mono mb-6">Available Templates</h2>
-          </AnimatedSection>
-
-          <div className="grid md:grid-cols-2 gap-4 mb-12">
-            {templates.map((tpl, i) => (
-              <AnimatedSection key={i} delay={300 + i * 60}>
-                <div className="card-hover bg-card border border-border rounded-lg p-5">
-                  <span className="font-mono text-accent font-bold text-lg">{tpl.name}</span>
-                  <p className="text-sm text-muted-foreground mt-2">{tpl.desc}</p>
-                  <div className="mt-3">
-                    <CodeBlock code={`karnel init ${tpl.name}`} language="bash" />
-                  </div>
-                </div>
-              </AnimatedSection>
-            ))}
+              language="bash"
+              title="terminal"
+            />
           </div>
+        </AnimatedSection>
 
-          <AnimatedSection delay={700}>
-            <h2 className="text-2xl font-bold font-mono mb-6">Example</h2>
-            <div className="card-hover bg-card border border-border rounded-lg p-6">
-              <CodeBlock
-                code={`mkdir meu-projeto && cd meu-projeto && karnel init next`}
-                language="bash"
-                title="terminal"
-              />
-              <p className="text-sm text-muted-foreground mt-3">
-                 Creates a complete Next.js project with TypeScript and Tailwind configured.
-              </p>
-            </div>
-          </AnimatedSection>
+        <AnimatedSection delay={200}>
+          <h2 className="text-2xl font-bold font-mono mb-6">
+            Available Templates
+          </h2>
+        </AnimatedSection>
+
+        <div className="grid md:grid-cols-2 gap-4 mb-12">
+          {templates.map((tpl, i) => (
+            <AnimatedSection key={i} delay={300 + i * 60}>
+              <div className="card-hover bg-card border border-border rounded-lg p-5">
+                <span className="font-mono text-accent font-bold text-lg">
+                  {tpl.name}
+                </span>
+                <p className="text-sm text-muted-foreground mt-2">{tpl.desc}</p>
+                <div className="mt-3">
+                  <CodeBlock code={`karnel init ${tpl.name}`} language="bash" />
+                </div>
+              </div>
+            </AnimatedSection>
+          ))}
         </div>
-      </section>
+
+        <AnimatedSection delay={700}>
+          <h2 className="text-2xl font-bold font-mono mb-6">Example</h2>
+          <div className="card-hover bg-card border border-border rounded-lg p-6">
+            <CodeBlock
+              code={`mkdir meu-projeto && cd meu-projeto && karnel init next`}
+              language="bash"
+              title="terminal"
+            />
+            <p className="text-sm text-muted-foreground mt-3">
+              Creates a complete Next.js project with TypeScript and Tailwind
+              configured.
+            </p>
+          </div>
+        </AnimatedSection>
+      </div>
+    </section>
   );
 }

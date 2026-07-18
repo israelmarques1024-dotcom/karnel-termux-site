@@ -5,10 +5,16 @@ interface Props {
   children: ReactNode;
   className?: string;
   delay?: number;
-  animation?: "fade-in" | "fade-in-up" | "fade-in-left" | "fade-in-right" | "scale-in";
+  animation?:
+    "fade-in" | "fade-in-up" | "fade-in-left" | "fade-in-right" | "scale-in";
 }
 
-export function AnimatedSection({ children, className = "", delay = 0, animation = "fade-in-up" }: Props) {
+export function AnimatedSection({
+  children,
+  className = "",
+  delay = 0,
+  animation = "fade-in-up",
+}: Props) {
   const { ref, inView } = useInView({ threshold: 0.05 });
 
   return (

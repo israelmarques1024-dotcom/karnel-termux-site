@@ -18,47 +18,47 @@ function getSnapshot() {
 }
 
 function emitChange() {
-  listeners.forEach((l) => l());
+  listeners.forEach(l => l());
 }
 
-export default function useTransitionLocation(): [string, (to: string) => void] {
+export default function useTransitionLocation(): [
+  string,
+  (to: string) => void,
+] {
   const location = useSyncExternalStore(subscribe, getSnapshot);
 
-  const navigate = useCallback(
-    (to: string) => {
-      if (to === currentLocation || navigating) return;
-      navigating = true;
+  const navigate = useCallback((to: string) => {
+    if (to === currentLocation || navigating) return;
+    navigating = true;
 
-      if (typeof window !== "undefined") {
-        window.history.pushState(null, "", to);
+    if (typeof window !== "undefined") {
+      window.history.pushState(null, "", to);
 
-        const ctrl = transitionControllerRef.current;
-        if (!ctrl) {
+      const ctrl = transitionControllerRef.current;
+      if (!ctrl) {
+        currentLocation = to;
+        emitChange();
+        navigating = false;
+        return;
+      }
+
+      ctrl
+        .cover()
+        .then(() => {
+          currentLocation = to;
+          emitChange();
+          return ctrl.reveal();
+        })
+        .then(() => {
+          navigating = false;
+        })
+        .catch(() => {
           currentLocation = to;
           emitChange();
           navigating = false;
-          return;
-        }
-
-        ctrl
-          .cover()
-          .then(() => {
-            currentLocation = to;
-            emitChange();
-            return ctrl.reveal();
-          })
-          .then(() => {
-            navigating = false;
-          })
-          .catch(() => {
-            currentLocation = to;
-            emitChange();
-            navigating = false;
-          });
-      }
-    },
-    []
-  );
+        });
+    }
+  }, []);
 
   useEffect(() => {
     if (typeof window === "undefined") return;

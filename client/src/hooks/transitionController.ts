@@ -3,4 +3,6 @@ export interface TransitionController {
   reveal(): Promise<void>;
 }
 
-export const transitionControllerRef = { current: null as TransitionController | null };
+export const transitionControllerRef = {
+  current: null as TransitionController | null,
+};

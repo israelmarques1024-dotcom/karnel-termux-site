@@ -2,11 +2,45 @@ import CodeBlock from "@/components/CodeBlock";
 import { AnimatedSection } from "@/components/AnimatedSection";
 
 const databases = [
-  { name: "PostgreSQL", flag: "--postgresql", desc: "Advanced relational database", cmds: ["karnel install db --postgresql", "karnel pg init", "karnel pg start", "psql -U postgres"] },
-  { name: "MariaDB", flag: "--mariadb", desc: "MySQL-compatible, robust", cmds: ["karnel install db --mariadb"] },
-  { name: "SQLite", flag: "--sqlite", desc: "Embedded lightweight database", cmds: ["karnel install db --sqlite"] },
-  { name: "MongoDB", flag: "--mongodb", desc: "NoSQL document database", cmds: ["karnel install db --mongodb"] },
-  { name: "Redis", flag: "--redis", desc: "In-memory cache and message broker", cmds: ["karnel install db --redis", "redis-server --daemonize yes", "redis-cli"] },
+  {
+    name: "PostgreSQL",
+    flag: "--postgresql",
+    desc: "Advanced relational database",
+    cmds: [
+      "karnel install db --postgresql",
+      "karnel pg init",
+      "karnel pg start",
+      "psql -U postgres",
+    ],
+  },
+  {
+    name: "MariaDB",
+    flag: "--mariadb",
+    desc: "MySQL-compatible, robust",
+    cmds: ["karnel install db --mariadb"],
+  },
+  {
+    name: "SQLite",
+    flag: "--sqlite",
+    desc: "Embedded lightweight database",
+    cmds: ["karnel install db --sqlite"],
+  },
+  {
+    name: "MongoDB",
+    flag: "--mongodb",
+    desc: "NoSQL document database",
+    cmds: ["karnel install db --mongodb"],
+  },
+  {
+    name: "Redis",
+    flag: "--redis",
+    desc: "In-memory cache and message broker",
+    cmds: [
+      "karnel install db --redis",
+      "redis-server --daemonize yes",
+      "redis-cli",
+    ],
+  },
 ];
 
 export default function KarnelDB() {
@@ -23,12 +57,18 @@ export default function KarnelDB() {
         <AnimatedSection delay={100}>
           <div className="card-hover bg-card border border-accent/50 rounded-lg p-6 mb-12">
             <h3 className="font-bold font-mono mb-4">Quick Install</h3>
-            <CodeBlock code="karnel install db" language="bash" title="terminal" />
+            <CodeBlock
+              code="karnel install db"
+              language="bash"
+              title="terminal"
+            />
           </div>
         </AnimatedSection>
 
         <AnimatedSection delay={200}>
-          <h2 className="text-2xl font-bold font-mono mb-6">Available Databases</h2>
+          <h2 className="text-2xl font-bold font-mono mb-6">
+            Available Databases
+          </h2>
         </AnimatedSection>
 
         <div className="grid md:grid-cols-2 gap-6 mb-12">

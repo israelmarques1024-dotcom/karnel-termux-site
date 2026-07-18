@@ -52,7 +52,10 @@ export default function KarnelCleanup() {
         <AnimatedSection delay={400}>
           <div className="card-hover bg-card border border-accent/50 rounded-lg p-6">
             <h3 className="font-bold font-mono mb-4">Single Command</h3>
-            <CodeBlock code="pkg clean && npm cache clean --force && pip cache purge" language="bash" />
+            <CodeBlock
+              code="pkg clean && npm cache clean --force && pip cache purge"
+              language="bash"
+            />
           </div>
         </AnimatedSection>
       </div>

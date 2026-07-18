@@ -1,21 +1,70 @@
 import { useLocation } from "wouter";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { ChevronDown, ChevronRight, Menu, X } from "lucide-react";
+import { DOCUMENTATION_NAV, ROUTES } from "@/lib/routes";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   const [location, navigate] = useLocation();
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const mainRef = useRef<HTMLElement>(null);
+  const sidebarRef = useRef<HTMLElement>(null);
+  const menuButtonRef = useRef<HTMLButtonElement>(null);
+
+  useEffect(() => {
+    mainRef.current?.scrollTo({ top: 0, left: 0, behavior: "auto" });
+    window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+    setSidebarOpen(false);
+  }, [location]);
+
+  useEffect(() => {
+    if (!sidebarOpen) return;
+    const previousFocus = document.activeElement as HTMLElement | null;
+    const sidebar = sidebarRef.current;
+    const focusable = sidebar?.querySelectorAll<HTMLElement>(
+      'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])'
+    );
+    focusable?.[0]?.focus();
+
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        event.preventDefault();
+        setSidebarOpen(false);
+        menuButtonRef.current?.focus();
+        return;
+      }
+      if (event.key !== "Tab" || !focusable?.length) return;
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+      }
+    };
+    document.addEventListener("keydown", onKeyDown);
+    return () => {
+      document.removeEventListener("keydown", onKeyDown);
+      if (sidebar?.contains(document.activeElement)) {
+        previousFocus?.focus();
+      }
+    };
+  }, [sidebarOpen]);
 
   const scrollToSupport = () => {
-    if (location !== "/") {
-      navigate("/");
+    if (location !== ROUTES.home) {
+      navigate(ROUTES.home);
       setTimeout(() => {
         const el = document.getElementById("support-project");
         if (!el) {
           const observer = new MutationObserver(() => {
             const target = document.getElementById("support-project");
-            if (target) { target.scrollIntoView({ behavior: "smooth" }); observer.disconnect(); }
+            if (target) {
+              target.scrollIntoView({ behavior: "smooth" });
+              observer.disconnect();
+            }
           });
           observer.observe(document.body, { childList: true, subtree: true });
         } else {
@@ -23,49 +72,27 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         }
       }, 100);
     } else {
-      document.getElementById("support-project")?.scrollIntoView({ behavior: "smooth" });
+      document
+        .getElementById("support-project")
+        ?.scrollIntoView({ behavior: "smooth" });
     }
   };
 
-  const navItems = [
-    { label: "Get Started", href: "/" },
-  ];
+  const navItems = [{ label: "Get Started", href: ROUTES.home }];
 
-  const termuxItems = [
-    { label: "Termux", href: "/termux" },
-    { label: "Termux:API", href: "/termux/api" },
-    { label: "Karnel", href: "/karnel" },
-    { label: "AI Tools", href: "/karnel/ai" },
-    { label: "Languages", href: "/karnel/lang" },
-    { label: "Databases", href: "/karnel/db" },
-    { label: "Editor", href: "/karnel/editor" },
-    { label: "Dev Tools", href: "/karnel/dev" },
-    { label: "npm", href: "/karnel/npm" },
-    { label: "Shell", href: "/karnel/shell" },
-    { label: "UI", href: "/karnel/ui" },
-    { label: "Auto", href: "/karnel/auto" },
-    { label: "Linux Stack", href: "/karnel/linux" },
-    { label: "Second Brain", href: "/karnel/brain" },
-    { label: "Voice", href: "/karnel/voice" },
-    { label: "PG", href: "/karnel/pg" },
-    { label: "Init", href: "/karnel/init" },
-    { label: "Env", href: "/karnel/env" },
-    { label: "Deploy", href: "/karnel/deploy" },
-    { label: "Cleanup", href: "/karnel/cleanup" },
-    { label: "Doctor", href: "/karnel/doctor" },
-    { label: "Show", href: "/karnel/show" },
-    { label: "Backup", href: "/karnel/backup" },
-  ];
+  const termuxItems = DOCUMENTATION_NAV;
 
   const renderNavSection = (
     title: string,
-    items: { label: string; href?: string; action?: () => void }[],
+    items: readonly { label: string; href?: string; action?: () => void }[],
     isOpen: boolean,
     setIsOpen: (v: boolean) => void
   ) => (
     <div className="space-y-1 mb-2">
       <button
         onClick={() => setIsOpen(!isOpen)}
+        type="button"
+        aria-expanded={isOpen}
         className="flex w-full items-center justify-between px-4 py-2.5 rounded-md font-mono text-sm font-medium text-sidebar-foreground hover:bg-sidebar-primary/15 hover:text-accent/80 transition-all duration-200"
       >
         <span>{title}</span>
@@ -79,13 +106,13 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       </button>
       {isOpen && (
         <div className="ml-4 mt-1 space-y-1 border-l border-sidebar-border/30 pl-3 animate-slide-down">
-          {items.map((item) => {
+          {items.map(item => {
             const isActive = item.href && location === item.href;
             const isAction = !item.href && item.action;
             return isAction ? (
               <button
                 key={item.label}
-                onClick={(e) => {
+                onClick={e => {
                   e.preventDefault();
                   item.action?.();
                   setSidebarOpen(false);
@@ -122,15 +149,19 @@ export default function Layout({ children }: { children: React.ReactNode }) {
     <div className="flex min-h-screen bg-background text-foreground">
       {/* Sidebar - responsive width */}
       <nav
+        ref={sidebarRef}
+        id="mobile-navigation"
         aria-label="Main navigation"
         className={`fixed left-0 top-0 z-40 h-screen bg-sidebar border-r border-sidebar-border transition-all duration-300 lg:relative lg:translate-x-0 ${
-          sidebarOpen ? "translate-x-0" : "-translate-x-full"
+          sidebarOpen
+            ? "translate-x-0 visible"
+            : "-translate-x-full invisible lg:visible"
         } w-full sm:w-72 lg:w-64 xl:w-72 max-w-[85vw]`}
       >
         <div className="flex flex-col h-full p-4 sm:p-6">
           {/* Logo */}
           <a
-            href="/"
+            href={ROUTES.home}
             className="flex items-center gap-3 mb-8 hover:opacity-90 transition-all duration-300 group"
           >
             <img
@@ -139,15 +170,19 @@ export default function Layout({ children }: { children: React.ReactNode }) {
               className="w-10 h-10 sm:w-12 sm:h-12 drop-shadow-[0_0_12px_rgba(168,85,247,0.5)] group-hover:drop-shadow-[0_0_20px_rgba(168,85,247,0.8)] transition-all duration-300"
             />
             <div className="hidden sm:block">
-              <div className="font-bold text-lg font-mono text-foreground group-hover:text-accent transition-colors">KARNEL</div>
-              <p className="text-xs text-muted-foreground group-hover:text-accent/70 transition-colors">TERMUX</p>
+              <div className="font-bold text-lg font-mono text-foreground group-hover:text-accent transition-colors">
+                KARNEL
+              </div>
+              <p className="text-xs text-muted-foreground group-hover:text-accent/70 transition-colors">
+                TERMUX
+              </p>
             </div>
           </a>
 
           {/* Navigation */}
-          <nav className="flex-1 space-y-1 overflow-y-auto pr-2">
+          <div className="flex-1 space-y-1 overflow-y-auto pr-2">
             {/* Core Items (always visible) */}
-            {navItems.map((item) => {
+            {navItems.map(item => {
               const isActive = location === item.href;
               return (
                 <a
@@ -168,9 +203,12 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             <div className="my-4 h-px bg-sidebar-border/30" />
 
             {/* Mobile/Termux Section (collapsible) */}
-            {renderNavSection("📱 KARNEL MOBILE", termuxItems, mobileOpen, setMobileOpen)}
-
-
+            {renderNavSection(
+              "📱 KARNEL MOBILE",
+              termuxItems,
+              mobileOpen,
+              setMobileOpen
+            )}
 
             {/* Footer */}
             <div className="pt-6 border-t border-sidebar-border/50 space-y-3">
@@ -184,11 +222,13 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                 Support Project
               </button>
               <p className="text-xs text-muted-foreground font-mono">
-                <span className="text-accent">v4.7.6</span> • Android + Termux
+                <span className="text-accent">v4.8.0</span> • Android + Termux
               </p>
-              <p className="text-xs text-muted-foreground/60 mt-2">Built for developers</p>
+              <p className="text-xs text-muted-foreground/60 mt-2">
+                Built for developers
+              </p>
             </div>
-          </nav>
+          </div>
         </div>
       </nav>
 
@@ -206,7 +246,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         {/* Header - always visible on mobile, hidden on lg+ */}
         <header className="sticky top-0 z-30 bg-card border-b border-border lg:hidden">
           <div className="flex items-center justify-between p-4">
-            <a href="/" className="flex items-center gap-2">
+            <a href={ROUTES.home} className="flex items-center gap-2">
               <img
                 alt="Karnel Termux"
                 className="w-9 h-9 drop-shadow-[0_0_8px_rgba(168,85,247,0.4)]"
@@ -215,7 +255,12 @@ export default function Layout({ children }: { children: React.ReactNode }) {
               <span className="font-bold font-mono text-sm">KARNEL</span>
             </a>
             <button
+              ref={menuButtonRef}
               onClick={() => setSidebarOpen(!sidebarOpen)}
+              type="button"
+              aria-label={sidebarOpen ? "Close navigation" : "Open navigation"}
+              aria-expanded={sidebarOpen}
+              aria-controls="mobile-navigation"
               className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive hover:bg-accent dark:hover:bg-accent/50 size-9"
             >
               {sidebarOpen ? (
@@ -228,8 +273,10 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         </header>
 
         {/* Page Content */}
-        <main className="flex-1 overflow-auto min-h-0">
-          <div className="max-w-6xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-8">{children}</div>
+        <main ref={mainRef} className="flex-1 overflow-auto min-h-0">
+          <div className="max-w-6xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-8">
+            {children}
+          </div>
         </main>
 
         {/* Footer */}
@@ -246,7 +293,10 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             </a>
           </p>
           <p className="mt-2 text-xs">
-            <a href="mailto:israelmarques1024@gmail.com" className="text-accent/70 hover:text-accent transition-colors">
+            <a
+              href="mailto:israelmarques1024@gmail.com"
+              className="text-accent/70 hover:text-accent transition-colors"
+            >
               israelmarques1024@gmail.com
             </a>
           </p>

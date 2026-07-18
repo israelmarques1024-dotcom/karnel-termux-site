@@ -3,9 +3,7 @@
   "outputDirectory": "dist/public",
   "devCommand": "pnpm dev",
   "framework": "vite",
-  "installCommand": "pnpm install",
+  "installCommand": "pnpm install --frozen-lockfile",
   "alias": ["kerneltermux.vercel.app"],
-  "rewrites": [
-    { "source": "/(.*)", "destination": "/index.html" }
-  ]
+  "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }]
 }

@@ -1,67 +1,207 @@
 import { useState, useEffect, useRef } from "react";
 import { Link } from "wouter";
 import {
-  ArrowRight, Zap, Code2, Cpu, Terminal, Brain, Rocket,
-  Stethoscope, Eye, Mic, Database, Puzzle, Shield,
-  Star
+  ArrowRight,
+  Zap,
+  Code2,
+  Cpu,
+  Terminal,
+  Brain,
+  Rocket,
+  Stethoscope,
+  Eye,
+  Mic,
+  Database,
+  Puzzle,
+  Shield,
+  Star,
+  ScanSearch,
+  Wrench,
 } from "lucide-react";
 import CodeBlock from "@/components/CodeBlock";
 import SupportProject from "@/components/SupportProject";
 import { AnimatedSection } from "@/components/AnimatedSection";
 import { useInView } from "@/hooks/useInView";
+import { CATALOG_COUNTS } from "@/data/catalog";
+import { ROUTES } from "@/lib/routes";
 
 const iconColors = [
-  "text-red-400", "text-purple-400", "text-orange-400", "text-sky-400",
-  "text-emerald-400", "text-pink-400", "text-amber-400", "text-indigo-400",
+  "text-red-400",
+  "text-purple-400",
+  "text-orange-400",
+  "text-sky-400",
+  "text-emerald-400",
+  "text-pink-400",
+  "text-amber-400",
+  "text-indigo-400",
 ];
 
 const stats = [
-  { label: "AI Agents", value: 31 },
+  { label: "AI Tools", value: CATALOG_COUNTS.ai },
   { label: "Languages", value: 7 },
   { label: "Databases", value: 5 },
-  { label: "Dev Tools", value: 24 },
+  { label: "Dev Tools", value: CATALOG_COUNTS.dev },
   { label: "Deploy CLIs", value: 3 },
   { label: "Total Packages", value: 90, suffix: "+" },
 ];
 
 const installOptions = [
-  { name: "curl", code: `bash -c "$(curl -fsSL https://raw.githubusercontent.com/israelmarques1024-dotcom/karnel-termux/main/install.sh)"` },
+  {
+    name: "curl",
+    code: `bash -c "$(curl -fsSL https://raw.githubusercontent.com/israelmarques1024-dotcom/karnel-termux/main/install.sh)"`,
+  },
   { name: "npm", code: "npm install -g karnel-termux" },
   { name: "pnpm", code: "pnpm add -g karnel-termux" },
 ];
 
 const features = [
-  { href: "/karnel", icon: <Zap size={22} />, title: "Modular Architecture", desc: "Install only what you need. No tool conflicts." },
-  { href: "/karnel/ai", icon: <Code2 size={22} />, title: "31 AI Agents", desc: "Claude, Gemini, OpenCode, Ollama and more. Pre-configured." },
-  { href: "/karnel/editor", icon: <Terminal size={22} />, title: "VS Code Editor", desc: "code-server (VS Code in browser) for 20+ languages. Copilot included." },
-  { href: "/karnel/linux", icon: <Cpu size={22} />, title: "Linux Stack", desc: "PostgreSQL, MongoDB, Node.js, Python, Go, Rust. Everything you need." },
-  { href: "/karnel/brain", icon: <Brain size={22} />, title: "Second Brain", desc: "Integrated memory with AI search and idea graph." },
-  { href: "/karnel/deploy", icon: <Rocket size={22} />, title: "Direct Deploy", desc: "Vercel, Railway, Netlify. Deploy from your phone." },
-  { href: "/karnel/doctor", icon: <Stethoscope size={22} />, title: "karnel doctor", desc: "Diagnose your environment with 30+ automatic checks." },
-  { href: "/karnel/show", icon: <Eye size={22} />, title: "karnel show", desc: "View any tool documentation without leaving terminal." },
-  { href: "/karnel/voice", icon: <Mic size={22} />, title: "karnel voice", desc: "Talk to your AI agents. Hands-free coding." },
-  { href: "/karnel/pg", icon: <Database size={22} />, title: "karnel pg", desc: "Manage PostgreSQL: init, start, stop, shell — one command." },
-  { href: "/karnel/init", icon: <Puzzle size={22} />, title: "karnel init", desc: "Create Next.js, Express and other projects in seconds." },
-  { href: "/karnel/env", icon: <Shield size={22} />, title: "karnel env", desc: "Manage API keys securely. Never hardcode secrets." },
+  {
+    href: ROUTES.karnel,
+    icon: <Zap size={22} />,
+    title: "Modular Architecture",
+    desc: "Install only what you need. No tool conflicts.",
+  },
+  {
+    href: ROUTES.ai,
+    icon: <Code2 size={22} />,
+    title: `${CATALOG_COUNTS.ai} AI Tools`,
+    desc: "Claude, Gemini, OpenCode, Ollama and more. Pre-configured.",
+  },
+  {
+    href: ROUTES.osint,
+    icon: <ScanSearch size={22} />,
+    title: "Robin OSINT",
+    desc: "Lawful dark-web research through Tor with a verified local UI.",
+  },
+  {
+    href: ROUTES.dev,
+    icon: <Wrench size={22} />,
+    title: `${CATALOG_COUNTS.dev} Dev Tools`,
+    desc: "A synchronized toolbox for building, inspecting, and shipping from Termux.",
+  },
+  {
+    href: ROUTES.editor,
+    icon: <Terminal size={22} />,
+    title: "VS Code Editor",
+    desc: "code-server (VS Code in browser) for 20+ languages. Copilot included.",
+  },
+  {
+    href: ROUTES.linux,
+    icon: <Cpu size={22} />,
+    title: "Linux Stack",
+    desc: "PostgreSQL, MongoDB, Node.js, Python, Go, Rust. Everything you need.",
+  },
+  {
+    href: ROUTES.brain,
+    icon: <Brain size={22} />,
+    title: "Second Brain",
+    desc: "Integrated memory with AI search and idea graph.",
+  },
+  {
+    href: ROUTES.deploy,
+    icon: <Rocket size={22} />,
+    title: "Direct Deploy",
+    desc: "Vercel, Railway, Netlify. Deploy from your phone.",
+  },
+  {
+    href: ROUTES.doctor,
+    icon: <Stethoscope size={22} />,
+    title: "karnel doctor",
+    desc: "Diagnose Termux, project code, and Robin from one command.",
+  },
+  {
+    href: ROUTES.show,
+    icon: <Eye size={22} />,
+    title: "karnel show",
+    desc: "View any tool documentation without leaving terminal.",
+  },
+  {
+    href: ROUTES.voice,
+    icon: <Mic size={22} />,
+    title: "karnel voice",
+    desc: "Talk to your AI agents. Hands-free coding.",
+  },
+  {
+    href: ROUTES.pg,
+    icon: <Database size={22} />,
+    title: "karnel pg",
+    desc: "Manage PostgreSQL: init, start, stop, shell — one command.",
+  },
+  {
+    href: ROUTES.init,
+    icon: <Puzzle size={22} />,
+    title: "karnel init",
+    desc: "Create Next.js, Express and other projects in seconds.",
+  },
+  {
+    href: ROUTES.env,
+    icon: <Shield size={22} />,
+    title: "karnel env",
+    desc: "Manage API keys securely. Never hardcode secrets.",
+  },
 ];
 
 const faqs = [
-  { q: "Is it free?", a: "Yes! Karnel Termux is 100% free and open source (MIT)." },
-  { q: "Requires root?", a: "No. Karnel Termux works on any Android with Termux, no root needed." },
-  { q: "Works on any Android?", a: "Yes, Android 11+ recommended. Devices with 4GB+ RAM have better performance." },
-  { q: "Is Karnel Termux open source?", a: "Yes! Karnel Termux is open source. In the future I plan to add ads similar to freebuff, but for now it's supported only through Pix donations." },
-  { q: "Need internet?", a: "Only for installing and updating packages. After installation, most tools work fully offline. Internet is also required if you use AI agents (API calls) or clone remote repositories." },
-  { q: "Can I use it without Linux knowledge?", a: "Yes! Karnel Termux is designed to be simple. Portuguese commands and integrated assistant." },
+  {
+    q: "Is it free?",
+    a: "Yes! Karnel Termux is 100% free and open source (MIT).",
+  },
+  {
+    q: "Requires root?",
+    a: "No. Karnel Termux works on any Android with Termux, no root needed.",
+  },
+  {
+    q: "Works on any Android?",
+    a: "Yes, Android 11+ recommended. Devices with 4GB+ RAM have better performance.",
+  },
+  {
+    q: "Is Karnel Termux open source?",
+    a: "Yes! Karnel Termux is open source. In the future I plan to add ads similar to freebuff, but for now it's supported only through Pix donations.",
+  },
+  {
+    q: "Need internet?",
+    a: "Only for installing and updating packages. After installation, most tools work fully offline. Internet is also required if you use AI agents (API calls) or clone remote repositories.",
+  },
+  {
+    q: "Can I use it without Linux knowledge?",
+    a: "Yes! Karnel Termux is designed to be simple. Portuguese commands and integrated assistant.",
+  },
 ];
 
 const steps = [
-  { step: "1", title: "Install Termux", desc: "Install Termux from GitHub or F-Droid." },
-  { step: "2", title: "Run Installer", desc: "Paste the install command and let Karnel configure everything." },
-  { step: "3", title: "Choose Your Tools", desc: "Use 'karnel install' to add AI agents, databases, editors and more." },
-  { step: "4", title: "Start Coding", desc: "Open code-server, connect to database and build real projects." },
+  {
+    step: "1",
+    title: "Install Termux",
+    desc: "Install Termux from GitHub or F-Droid.",
+  },
+  {
+    step: "2",
+    title: "Run Installer",
+    desc: "Paste the install command and let Karnel configure everything.",
+  },
+  {
+    step: "3",
+    title: "Choose Your Tools",
+    desc: "Use 'karnel install' to add AI agents, databases, editors and more.",
+  },
+  {
+    step: "4",
+    title: "Start Coding",
+    desc: "Open code-server, connect to database and build real projects.",
+  },
 ];
 
-function AnimatedStat({ label, value, suffix = "", delay = 0 }: { label: string; value: number; suffix?: string; delay?: number }) {
+function AnimatedStat({
+  label,
+  value,
+  suffix = "",
+  delay = 0,
+}: {
+  label: string;
+  value: number;
+  suffix?: string;
+  delay?: number;
+}) {
   const { ref, inView } = useInView({ threshold: 0, once: true });
   const [count, setCount] = useState(0);
   const rafRef = useRef<number>(undefined);
@@ -96,7 +236,8 @@ function AnimatedStat({ label, value, suffix = "", delay = 0 }: { label: string;
       className="rounded-xl border border-border bg-card/50 p-4 text-center transition-all duration-500 hover:border-accent/30 hover:bg-card/80 hover:shadow-lg hover:shadow-accent/5 hover:-translate-y-1"
     >
       <div className="text-2xl sm:text-3xl font-bold font-mono text-gradient">
-        {count}{suffix}
+        {count}
+        {suffix}
       </div>
       <div className="text-xs mt-1 font-medium text-muted-foreground">
         {label}
@@ -116,7 +257,14 @@ export default function Home() {
         <div className="absolute inset-0 bg-[url(/karnel-bg.jpg)] bg-cover bg-center bg-no-repeat opacity-60" />
         <div className="absolute inset-0 bg-gradient-to-b from-background/0 via-background/40 to-background" />
         <div className="absolute inset-0 bg-gradient-to-t from-accent/5 via-transparent to-cyan-500/5" />
-        <div className="absolute inset-0 opacity-30 animate-gradient" style={{ background: 'linear-gradient(135deg, oklch(0.62 0.22 15 / 0.1), oklch(0.32 0.18 280 / 0.1), oklch(0.62 0.22 15 / 0.1))', backgroundSize: '200% 200%' }} />
+        <div
+          className="absolute inset-0 opacity-30 animate-gradient"
+          style={{
+            background:
+              "linear-gradient(135deg, oklch(0.62 0.22 15 / 0.1), oklch(0.32 0.18 280 / 0.1), oklch(0.62 0.22 15 / 0.1))",
+            backgroundSize: "200% 200%",
+          }}
+        />
 
         <div className="relative z-10 max-w-5xl mx-auto text-center">
           <AnimatedSection animation="fade-in-up">
@@ -139,25 +287,35 @@ export default function Home() {
           <AnimatedSection animation="fade-in-up" delay={200}>
             <p className="text-base sm:text-lg text-muted-foreground mb-10 max-w-2xl mx-auto leading-relaxed">
               Transform your Android into a complete development station.
-              Install <span className="text-accent font-semibold">31 AI agents</span>,{" "}
-              <span className="text-accent font-semibold">7 languages</span>,{" "}
+              Install{" "}
+              <span className="text-accent font-semibold">
+                {CATALOG_COUNTS.ai} AI tools
+              </span>
+              , <span className="text-accent font-semibold">7 languages</span>,{" "}
               <span className="text-accent font-semibold">5 databases</span>,{" "}
-              <span className="text-accent font-semibold">24 tools</span>{" "}
-              and <span className="text-accent font-semibold">3 deploy CLIs</span> — in seconds.
+              <span className="text-accent font-semibold">
+                {CATALOG_COUNTS.dev} tools
+              </span>{" "}
+              and{" "}
+              <span className="text-accent font-semibold">3 deploy CLIs</span> —
+              in seconds.
             </p>
           </AnimatedSection>
 
           <AnimatedSection animation="fade-in-up" delay={300}>
             <div className="flex gap-4 justify-center mb-16 flex-wrap">
               <Link
-                href="/termux"
+                href={ROUTES.termux}
                 className="group inline-flex items-center gap-2 rounded-xl bg-accent px-6 py-3 text-sm font-semibold text-accent-foreground shadow-lg shadow-accent/25 transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-accent/40 active:scale-95"
               >
                 Get Started
-                <ArrowRight size={18} className="transition-transform duration-300 group-hover:translate-x-1" />
+                <ArrowRight
+                  size={18}
+                  className="transition-transform duration-300 group-hover:translate-x-1"
+                />
               </Link>
               <Link
-                href="/karnel"
+                href={ROUTES.karnel}
                 className="group inline-flex items-center gap-2 rounded-xl border border-border bg-card/50 px-6 py-3 text-sm font-semibold text-foreground transition-all duration-300 hover:border-accent/30 hover:bg-accent/5 hover:scale-105 active:scale-95"
               >
                 Explore Docs
@@ -175,7 +333,9 @@ export default function Home() {
         </div>
 
         <div className="absolute bottom-0 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 pb-8 text-muted-foreground animate-float">
-          <span className="text-xs font-medium tracking-wider uppercase">Scroll</span>
+          <span className="text-xs font-medium tracking-wider uppercase">
+            Scroll
+          </span>
           <div className="h-8 w-[1px] bg-gradient-to-b from-accent/50 to-transparent" />
         </div>
       </section>
@@ -233,7 +393,8 @@ export default function Home() {
         <div className="max-w-6xl mx-auto">
           <AnimatedSection className="text-center mb-14">
             <h2 className="text-3xl sm:text-4xl font-bold mb-3">
-              Why Developers Choose <span className="text-gradient">Karnel Termux</span>
+              Why Developers Choose{" "}
+              <span className="text-gradient">Karnel Termux</span>
             </h2>
             <p className="text-muted-foreground">
               Built by developers, for developers coding anywhere.
@@ -247,7 +408,9 @@ export default function Home() {
                   href={feature.href}
                   className="card-hover group block rounded-xl border border-border bg-card/30 p-6"
                 >
-                  <div className={`mb-3 ${iconColors[i % iconColors.length]} transition-transform duration-300 group-hover:scale-110`}>
+                  <div
+                    className={`mb-3 ${iconColors[i % iconColors.length]} transition-transform duration-300 group-hover:scale-110`}
+                  >
                     {feature.icon}
                   </div>
                   <h3 className="text-base font-bold font-mono mb-2 group-hover:text-accent transition-colors">
@@ -280,7 +443,9 @@ export default function Home() {
               <AnimatedSection key={i} delay={i * 80}>
                 <div
                   className={`rounded-xl border bg-card/50 transition-all duration-300 ${
-                    openFaq === i ? "border-accent/30 shadow-lg shadow-accent/5" : "border-border"
+                    openFaq === i
+                      ? "border-accent/30 shadow-lg shadow-accent/5"
+                      : "border-border"
                   }`}
                 >
                   <button
@@ -301,7 +466,9 @@ export default function Home() {
                     id={`faq-answer-${i}`}
                     role="region"
                     className={`overflow-hidden transition-all duration-300 ${
-                      openFaq === i ? "max-h-40 opacity-100" : "max-h-0 opacity-0"
+                      openFaq === i
+                        ? "max-h-40 opacity-100"
+                        : "max-h-0 opacity-0"
                     }`}
                   >
                     <div className="px-6 pb-4 text-sm text-muted-foreground border-t border-border pt-3">
@@ -381,13 +548,15 @@ export default function Home() {
 
           <AnimatedSection delay={100}>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 leading-tight">
-              Ready to Code on Your <span className="text-gradient">Phone</span>?
+              Ready to Code on Your <span className="text-gradient">Phone</span>
+              ?
             </h2>
           </AnimatedSection>
 
           <AnimatedSection delay={200}>
             <p className="text-muted-foreground mb-10 text-lg">
-              Join thousands of developers building real apps with Karnel Termux.
+              Join thousands of developers building real apps with Karnel
+              Termux.
             </p>
           </AnimatedSection>
 
@@ -398,7 +567,10 @@ export default function Home() {
                 className="group inline-flex items-center gap-2 rounded-xl bg-accent px-7 py-3.5 text-sm font-semibold text-accent-foreground shadow-lg shadow-accent/25 transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-accent/40 active:scale-95 animate-pulse-glow"
               >
                 Get Started Now
-                <ArrowRight size={18} className="transition-transform duration-300 group-hover:translate-x-1" />
+                <ArrowRight
+                  size={18}
+                  className="transition-transform duration-300 group-hover:translate-x-1"
+                />
               </Link>
               <a
                 href="https://github.com/israelmarques1024-dotcom/karnel-termux"
@@ -412,8 +584,6 @@ export default function Home() {
           </AnimatedSection>
         </div>
       </section>
-
-
     </div>
   );
 }
