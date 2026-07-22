@@ -1,12 +1,11 @@
-import { useLocation } from "wouter";
+import { useLocation, Link } from "wouter";
 import { useEffect, useRef, useState } from "react";
-import { ChevronDown, ChevronRight, Menu, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { DOCUMENTATION_NAV, ROUTES } from "@/lib/routes";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   const [location, navigate] = useLocation();
   const [sidebarOpen, setSidebarOpen] = useState(false);
-  const [mobileOpen, setMobileOpen] = useState(false);
   const mainRef = useRef<HTMLElement>(null);
   const sidebarRef = useRef<HTMLElement>(null);
   const menuButtonRef = useRef<HTMLButtonElement>(null);
@@ -80,73 +79,15 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 
   const navItems = [{ label: "Get Started", href: ROUTES.home }];
 
-  const termuxItems = DOCUMENTATION_NAV;
-
-  const renderNavSection = (
-    title: string,
-    items: readonly { label: string; href?: string; action?: () => void }[],
-    isOpen: boolean,
-    setIsOpen: (v: boolean) => void
-  ) => (
-    <div className="space-y-1 mb-2">
-      <button
-        onClick={() => setIsOpen(!isOpen)}
-        type="button"
-        aria-expanded={isOpen}
-        className="flex w-full items-center justify-between px-4 py-2.5 rounded-md font-mono text-sm font-medium text-sidebar-foreground hover:bg-sidebar-primary/15 hover:text-accent/80 transition-all duration-200"
-      >
-        <span>{title}</span>
-        <span className="flex items-center gap-1">
-          {isOpen ? (
-            <ChevronDown size={12} className="text-accent/70" />
-          ) : (
-            <ChevronRight size={12} className="text-muted-foreground" />
-          )}
-        </span>
-      </button>
-      {isOpen && (
-        <div className="ml-4 mt-1 space-y-1 border-l border-sidebar-border/30 pl-3 animate-slide-down">
-          {items.map(item => {
-            const isActive = item.href && location === item.href;
-            const isAction = !item.href && item.action;
-            return isAction ? (
-              <button
-                key={item.label}
-                onClick={e => {
-                  e.preventDefault();
-                  item.action?.();
-                  setSidebarOpen(false);
-                }}
-                className={`block w-full text-left px-3 py-2 rounded-md transition-all duration-200 font-mono text-xs font-medium ${
-                  isActive
-                    ? "bg-gradient-to-r from-accent/20 to-accent/10 text-accent border-l border-accent shadow-sm shadow-accent/20"
-                    : "text-sidebar-foreground hover:bg-sidebar-primary/15 hover:text-accent/80"
-                }`}
-              >
-                {item.label}
-              </button>
-            ) : (
-              <a
-                key={item.href}
-                href={item.href || "/"}
-                className={`block px-3 py-2 rounded-md transition-all duration-200 font-mono text-xs font-medium pointer-events-auto ${
-                  isActive
-                    ? "bg-gradient-to-r from-accent/20 to-accent/10 text-accent border-l border-accent shadow-sm shadow-accent/20"
-                    : "text-sidebar-foreground hover:bg-sidebar-primary/15 hover:text-accent/80"
-                }`}
-                onClick={() => setSidebarOpen(false)}
-              >
-                {item.label}
-              </a>
-            );
-          })}
-        </div>
-      )}
-    </div>
-  );
-
   return (
     <div className="flex min-h-screen bg-background text-foreground">
+      {/* Skip to content — accessibility */}
+      <a
+        href="#main-content"
+        className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-accent focus:text-accent-foreground focus:rounded-md focus:outline-none focus:ring-2 focus:ring-accent"
+      >
+        Skip to content
+      </a>
       {/* Sidebar - responsive width */}
       <nav
         ref={sidebarRef}
@@ -160,7 +101,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       >
         <div className="flex flex-col h-full p-4 sm:p-6">
           {/* Logo */}
-          <a
+          <Link
             href={ROUTES.home}
             className="flex items-center gap-3 mb-8 hover:opacity-90 transition-all duration-300 group"
           >
@@ -177,7 +118,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                 TERMUX
               </p>
             </div>
-          </a>
+          </Link>
 
           {/* Navigation */}
           <div className="flex-1 space-y-1 overflow-y-auto pr-2">
@@ -185,7 +126,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             {navItems.map(item => {
               const isActive = location === item.href;
               return (
-                <a
+                <Link
                   key={item.href}
                   href={item.href || "/"}
                   className={`block px-4 py-2.5 rounded-md transition-all duration-200 font-mono text-sm font-medium ${
@@ -196,19 +137,29 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                   onClick={() => setSidebarOpen(false)}
                 >
                   {item.label}
-                </a>
+                </Link>
               );
             })}
 
             <div className="my-4 h-px bg-sidebar-border/30" />
 
-            {/* Mobile/Termux Section (collapsible) */}
-            {renderNavSection(
-              "📱 KARNEL MOBILE",
-              termuxItems,
-              mobileOpen,
-              setMobileOpen
-            )}
+            {DOCUMENTATION_NAV.map(item => {
+              const isActive = location === item.href;
+              return (
+                <Link
+                  key={item.href}
+                  href={item.href || "/"}
+                  className={`block px-4 py-2 rounded-md transition-all duration-200 font-mono text-xs font-medium ${
+                    isActive
+                      ? "bg-gradient-to-r from-accent/20 to-accent/10 text-accent border-l border-accent shadow-sm shadow-accent/20"
+                      : "text-sidebar-foreground hover:bg-sidebar-primary/15 hover:text-accent/80"
+                  }`}
+                  onClick={() => setSidebarOpen(false)}
+                >
+                  {item.label}
+                </Link>
+              );
+            })}
 
             {/* Footer */}
             <div className="pt-6 border-t border-sidebar-border/50 space-y-3">
@@ -222,7 +173,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                 Support Project
               </button>
               <p className="text-xs text-muted-foreground font-mono">
-                <span className="text-accent">v4.8.0</span> • Android + Termux
+                <span className="text-accent">v4.9.0</span> • Android + Termux
               </p>
               <p className="text-xs text-muted-foreground/60 mt-2">
                 Built for developers
@@ -246,14 +197,14 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         {/* Header - always visible on mobile, hidden on lg+ */}
         <header className="sticky top-0 z-30 bg-card border-b border-border lg:hidden">
           <div className="flex items-center justify-between p-4">
-            <a href={ROUTES.home} className="flex items-center gap-2">
+            <Link href={ROUTES.home} className="flex items-center gap-2">
               <img
                 alt="Karnel Termux"
                 className="w-9 h-9 drop-shadow-[0_0_8px_rgba(168,85,247,0.4)]"
                 src="/karnel-logo.png"
               />
               <span className="font-bold font-mono text-sm">KARNEL</span>
-            </a>
+            </Link>
             <button
               ref={menuButtonRef}
               onClick={() => setSidebarOpen(!sidebarOpen)}
@@ -273,7 +224,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         </header>
 
         {/* Page Content */}
-        <main ref={mainRef} className="flex-1 overflow-auto min-h-0">
+        <main ref={mainRef} id="main-content" className="flex-1 overflow-auto min-h-0">
           <div className="max-w-6xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-8">
             {children}
           </div>
@@ -329,9 +280,9 @@ export default function Layout({ children }: { children: React.ReactNode }) {
               MIT License
             </a>
             {" · "}
-            <a href="/terms" className="text-accent hover:underline">
+            <Link href="/terms" className="text-accent hover:underline">
               Terms
-            </a>
+            </Link>
           </p>
         </footer>
       </div>

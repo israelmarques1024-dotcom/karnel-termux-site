@@ -1,5 +1,5 @@
 import { Copy, Check } from "lucide-react";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
 
@@ -15,8 +15,10 @@ export default function CodeBlock({
   title,
 }: CodeBlockProps) {
   const [copied, setCopied] = useState(false);
+  const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const handleCopy = async () => {
+    if (timerRef.current) clearTimeout(timerRef.current);
     try {
       if (!navigator.clipboard?.writeText) {
         throw new Error("Clipboard API is unavailable");
@@ -24,7 +26,7 @@ export default function CodeBlock({
       await navigator.clipboard.writeText(code);
       setCopied(true);
       toast.success("Copied to clipboard!");
-      setTimeout(() => setCopied(false), 2000);
+      timerRef.current = setTimeout(() => setCopied(false), 2000);
     } catch (err) {
       console.error("Failed to copy:", err);
       toast.error("Could not copy to clipboard");

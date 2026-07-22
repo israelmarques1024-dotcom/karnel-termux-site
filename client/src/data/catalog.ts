@@ -213,48 +213,25 @@ export const DEV_TOOLS = [
   { name: "Make", flag: "--make", desc: "Build automation" },
   { name: "Udocker", flag: "--udocker", desc: "Rootless containers" },
   { name: "Snyk", flag: "--snyk", desc: "Security scanner" },
+] as const;
+
+export const NETWORK_TOOLS = [
+  { name: "Dark Web OSINT", flag: "--dark", desc: "Tor crawler and scraper for OSINT research" },
+  { name: "DedSec Network Toolkit", flag: "--dedsec-network", desc: "Multi-purpose network scanner, OSINT, and pentest" },
+] as const;
+
+export const UTILS_TOOLS = [
   { name: "Httptmux", flag: "--httptmux", desc: "Interactive API client" },
   { name: "Zork", flag: "--zork", desc: "Classic text adventures" },
-  {
-    name: "File Converter",
-    flag: "--fconv",
-    desc: "Convert files between common formats",
-  },
-  {
-    name: "File Checker",
-    flag: "--filecheck",
-    desc: "Inspect file integrity and metadata",
-  },
-  {
-    name: "Websites Creator",
-    flag: "--websites",
-    desc: "Scaffold website projects",
-  },
-  {
-    name: "Smart Notes",
-    flag: "--notes",
-    desc: "Manage notes from the terminal",
-  },
-  {
-    name: "Tree Explorer",
-    flag: "--treex",
-    desc: "Explore project trees interactively",
-  },
-  {
-    name: "Password Master",
-    flag: "--passman",
-    desc: "Local password management",
-  },
-  {
-    name: "App Launcher",
-    flag: "--applaunch",
-    desc: "Launch installed applications",
-  },
-  {
-    name: "Loading Screen",
-    flag: "--splash",
-    desc: "Customize the startup splash",
-  },
+  { name: "File Converter", flag: "--fconv", desc: "Convert files between common formats" },
+  { name: "File Checker", flag: "--filecheck", desc: "Inspect file integrity and metadata" },
+  { name: "Websites Creator", flag: "--websites", desc: "Scaffold website projects" },
+  { name: "Smart Notes", flag: "--notes", desc: "Manage notes from the terminal" },
+  { name: "Tree Explorer", flag: "--treex", desc: "Explore project trees interactively" },
+  { name: "Password Master", flag: "--passman", desc: "Local password management" },
+  { name: "App Launcher", flag: "--applaunch", desc: "Launch installed applications" },
+  { name: "Loading Screen", flag: "--splash", desc: "Customize the startup splash" },
+  { name: "QR Code Generator", flag: "--qrcode", desc: "Generate QR codes from URLs and text" },
 ] as const;
 
 export const OSINT_TOOLS = [
@@ -266,8 +243,97 @@ export const OSINT_TOOLS = [
   },
 ] as const;
 
+export const LANG_TOOLS = [
+  { name: "Bun", flag: "--bun", pkg: "bun", desc: "Fast all-in-one JavaScript runtime" },
+  { name: "Node.js LTS", flag: "--nodejs", pkg: "nodejs-lts", desc: "V8-based JavaScript runtime" },
+  { name: "Python", flag: "--python", pkg: "python", desc: "Versatile language for scripts and apps" },
+  { name: "Perl", flag: "--perl", pkg: "perl", desc: "Text processing and scripting" },
+  { name: "PHP", flag: "--php", pkg: "php", desc: "Web server language" },
+  { name: "Rust", flag: "--rust", pkg: "rust", desc: "Systems programming with safety and performance" },
+  { name: "C/C++ (clang)", flag: "--clang", pkg: "clang", desc: "Native compilation with Clang/GCC" },
+  { name: "Go (golang)", flag: "--golang", pkg: "golang", desc: "Compiled concurrent language" },
+] as const;
+
+export const DB_TOOLS = [
+  { name: "PostgreSQL", flag: "--postgresql", desc: "Advanced relational database" },
+  { name: "MariaDB", flag: "--mariadb", desc: "MySQL-compatible, robust" },
+  { name: "SQLite", flag: "--sqlite", desc: "Embedded lightweight database" },
+  { name: "MongoDB", flag: "--mongodb", desc: "NoSQL document database" },
+  { name: "Redis", flag: "--redis", desc: "In-memory cache and message broker" },
+] as const;
+
+export const EDITOR_TOOLS = [
+  { name: "code-server", flag: "--code-server", desc: "VS Code in browser" },
+  { name: "neovim", flag: "--neovim", desc: "Modern Vim-based editor" },
+  { name: "nvchad", flag: "--nvchad", desc: "Neovim IDE configuration" },
+] as const;
+
+export const AUTO_TOOLS = [
+  { name: "n8n", flag: "--n8n", desc: "Workflow automation platform with visual flows" },
+] as const;
+
+export const DEPLOY_TOOLS = [
+  { name: "Railway", flag: "--railway", bin: "railway", desc: "Full-stack with databases" },
+  { name: "Netlify", flag: "--netlify", bin: "netlify", desc: "Static sites & edge functions" },
+  { name: "Vercel", flag: "--vercel", bin: "vercel", desc: "Frontend deployment platform" },
+] as const;
+
+export const NPM_TOOLS = [
+  { name: "TypeScript", flag: "--typescript", bin: "tsc", desc: "JavaScript with types" },
+  { name: "NestJS CLI", flag: "--nestjs", bin: "nest", desc: "Progressive Node.js framework" },
+  { name: "Prettier", flag: "--prettier", bin: "prettier", desc: "Code formatter" },
+  { name: "Live Server", flag: "--live-server", bin: "live-server", desc: "Server with live reload" },
+  { name: "Localtunnel", flag: "--localtunnel", bin: "lt", desc: "Public tunnels for localhost" },
+  { name: "Vercel CLI", flag: "--vercel", bin: "vercel", desc: "Deploy to Vercel" },
+  { name: "Markserv", flag: "--markserv", bin: "markserv", desc: "Markdown server" },
+  { name: "PSQL Format", flag: "--psqlformat", bin: "psqlformat", desc: "SQL formatter" },
+  { name: "NPM Check Updates", flag: "--ncu", bin: "ncu", desc: "Check package updates" },
+  { name: "Ngrok", flag: "--ngrok", bin: "ngrok", desc: "Public tunnels for localhost" },
+  { name: "Turbopack", flag: "--turbopack", bin: "turbo", desc: "Extremely fast Rust bundler" },
+] as const;
+
+export const SHELL_TOOLS = [
+  { name: "powerlevel10k", flag: "--powerlevel10k", desc: "Fastest and most beautiful ZSH theme" },
+  { name: "zsh-defer", flag: "--zsh-defer", desc: "Async plugin loading" },
+  { name: "zsh-autosuggestions", flag: "--zsh-autosuggestions", desc: "Fish-style autocomplete" },
+  { name: "zsh-syntax-highlighting", flag: "--zsh-syntax-highlighting", desc: "Syntax highlighting in commands" },
+  { name: "zsh-history-substring-search", flag: "--history-substring", desc: "Fish-style history search" },
+  { name: "zsh-completions", flag: "--zsh-completions", desc: "Extra completion definitions" },
+  { name: "fzf-tab", flag: "--fzf-tab", desc: "Fuzzy tab completion with fzf" },
+  { name: "zsh-you-should-use", flag: "--you-should-use", desc: "Reminds you of existing aliases" },
+  { name: "zsh-autopair", flag: "--zsh-autopair", desc: "Auto-close brackets and quotes" },
+  { name: "zsh-better-npm-completion", flag: "--better-npm", desc: "Improved npm completion" },
+] as const;
+
+export const UI_TOOLS = [
+  { name: "Meslo Nerd Font", flag: "--font", desc: "Font with ligatures and icons" },
+  { name: "Extra Keys", flag: "--extra-keys", desc: "Additional keys on Termux keyboard" },
+  { name: "Cursor Color", flag: "--cursor", desc: "Styled cursor with gradient" },
+  { name: "Startup Banner", flag: "--banner", desc: "ASCII banner with metallic effect on startup" },
+] as const;
+
+export const GAMES_TOOLS = [
+  { name: "Buzz", flag: "--buzz", desc: "Quiz game with multiple categories" },
+  { name: "CTF God", flag: "--ctfgod", desc: "Capture The Flag challenge solver" },
+  { name: "Detective", flag: "--detective", desc: "Mystery investigation game" },
+  { name: "Pet Friends", flag: "--pet-friends", desc: "Virtual pet simulator" },
+  { name: "Tamagotchi", flag: "--tamagotchi", desc: "Retro digital pet" },
+  { name: "Terminal Arcade", flag: "--arcade", desc: "Classic arcade games in terminal" },
+] as const;
+
 export const CATALOG_COUNTS = {
   ai: AI_TOOLS.length,
   dev: DEV_TOOLS.length,
+  network: NETWORK_TOOLS.length,
+  utils: UTILS_TOOLS.length,
   osint: OSINT_TOOLS.length,
+  lang: LANG_TOOLS.length,
+  db: DB_TOOLS.length,
+  editor: EDITOR_TOOLS.length,
+  auto: AUTO_TOOLS.length,
+  deploy: DEPLOY_TOOLS.length,
+  npm: NPM_TOOLS.length,
+  shell: SHELL_TOOLS.length,
+  ui: UI_TOOLS.length,
+  games: GAMES_TOOLS.length,
 } as const;

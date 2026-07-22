@@ -30,6 +30,21 @@ const modules = [
     cmd: "karnel install dev",
   },
   {
+    name: "Games",
+    desc: `${CATALOG_COUNTS.games} terminal games (Buzz, CTF God, Detective, etc.)`,
+    cmd: "karnel install games",
+  },
+  {
+    name: "Network Tools",
+    desc: `${CATALOG_COUNTS.network} network tools (Dark Web OSINT, DedSec Network)`,
+    cmd: "karnel install network",
+  },
+  {
+    name: "Utility Scripts",
+    desc: `${CATALOG_COUNTS.utils} utility scripts (fconv, notes, qrcode, zork, etc.)`,
+    cmd: "karnel install utils",
+  },
+  {
     name: "OSINT Tools",
     desc: "Robin v2.8 — responsible dark-web OSINT through Tor",
     cmd: "karnel install osint",

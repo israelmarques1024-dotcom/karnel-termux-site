@@ -1,8 +1,7 @@
 import { useState, useCallback, useRef, useEffect } from "react";
 import QRCode from "qrcode";
 
-// TODO: move to env variable
-const PIX_KEY = "037f07bd-a326-42b6-a5a3-f29b36e703db";
+const PIX_KEY = import.meta.env.VITE_PIX_KEY as string || "037f07bd-a326-42b6-a5a3-f29b36e703db";
 
 // ===== EMV Payload (for QR code — required by ALL Brazilian bank apps) =====
 function crc16(str: string): string {
@@ -86,6 +85,7 @@ export default function SupportProject() {
       });
     return () => {
       active = false;
+      if (timerRef.current !== null) clearTimeout(timerRef.current);
     };
   }, []);
 

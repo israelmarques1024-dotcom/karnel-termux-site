@@ -38,10 +38,10 @@ const iconColors = [
 
 const stats = [
   { label: "AI Tools", value: CATALOG_COUNTS.ai },
-  { label: "Languages", value: 7 },
-  { label: "Databases", value: 5 },
+  { label: "Languages", value: CATALOG_COUNTS.lang },
+  { label: "Databases", value: CATALOG_COUNTS.db },
   { label: "Dev Tools", value: CATALOG_COUNTS.dev },
-  { label: "Deploy CLIs", value: 3 },
+  { label: "Deploy CLIs", value: CATALOG_COUNTS.deploy },
   { label: "Total Packages", value: 90, suffix: "+" },
 ];
 
@@ -297,7 +297,7 @@ export default function Home() {
                 {CATALOG_COUNTS.dev} tools
               </span>{" "}
               and{" "}
-              <span className="text-accent font-semibold">3 deploy CLIs</span> —
+              <span className="text-accent font-semibold">{CATALOG_COUNTS.deploy} deploy CLIs</span> —
               in seconds.
             </p>
           </AnimatedSection>

@@ -3,6 +3,12 @@ import { AnimatedSection } from "@/components/AnimatedSection";
 
 const langs = [
   {
+    name: "Bun",
+    flag: "--bun",
+    pkg: "bun",
+    desc: "Fast all-in-one JavaScript runtime",
+  },
+  {
     name: "Node.js LTS",
     flag: "--nodejs",
     pkg: "nodejs",
@@ -72,9 +78,9 @@ export default function KarnelLang() {
         </AnimatedSection>
 
         <AnimatedSection delay={200}>
-          <h2 className="text-2xl font-bold font-mono mb-6">
-            Available Languages
-          </h2>
+        <h2 className="text-2xl font-bold font-mono mb-6">
+          Available Languages ({langs.length})
+        </h2>
         </AnimatedSection>
 
         <div className="grid md:grid-cols-2 gap-6 mb-12">

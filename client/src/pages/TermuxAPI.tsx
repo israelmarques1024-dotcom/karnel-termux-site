@@ -65,18 +65,18 @@ pkg install termux-api`}
           </div>
         </AnimatedSection>
 
-        <AnimatedSection delay={200}>
-          <Tabs defaultValue="clipboard" className="mb-12">
-            <TabsList className="grid w-full grid-cols-3 lg:grid-cols-6">
-              <TabsTrigger value="clipboard">Clipboard</TabsTrigger>
-              <TabsTrigger value="hardware">Hardware</TabsTrigger>
-              <TabsTrigger value="camera">Câmera</TabsTrigger>
-              <TabsTrigger value="location">Location</TabsTrigger>
-              <TabsTrigger value="notifications">Notifications</TabsTrigger>
-              <TabsTrigger value="sms">SMS</TabsTrigger>
-            </TabsList>
-            {Object.entries(commands).map(([category, cmds]) => (
-              <TabsContent key={category} value={category}>
+        <Tabs defaultValue="clipboard" className="mb-12">
+          <TabsList className="grid w-full grid-cols-3 lg:grid-cols-6">
+            <TabsTrigger value="clipboard">Clipboard</TabsTrigger>
+            <TabsTrigger value="hardware">Hardware</TabsTrigger>
+            <TabsTrigger value="camera">Câmera</TabsTrigger>
+            <TabsTrigger value="location">Location</TabsTrigger>
+            <TabsTrigger value="notifications">Notifications</TabsTrigger>
+            <TabsTrigger value="sms">SMS</TabsTrigger>
+          </TabsList>
+          {Object.entries(commands).map(([category, cmds]) => (
+            <TabsContent key={category} value={category}>
+              <AnimatedSection delay={250}>
                 <div className="space-y-4">
                   {cmds.map((item, i) => (
                     <div
@@ -90,10 +90,10 @@ pkg install termux-api`}
                     </div>
                   ))}
                 </div>
-              </TabsContent>
-            ))}
-          </Tabs>
-        </AnimatedSection>
+              </AnimatedSection>
+            </TabsContent>
+          ))}
+        </Tabs>
 
         <AnimatedSection delay={300}>
           <div className="card-hover bg-card border border-border rounded-xl p-8">

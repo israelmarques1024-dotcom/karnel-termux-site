@@ -255,11 +255,28 @@ export default function CodeEditor() {
         <AnimatedSection delay={100}>
           <div className="card-hover bg-card border border-accent/50 rounded-lg p-6 mb-12">
             <h3 className="font-bold font-mono mb-4">Quick Install</h3>
-            <CodeBlock
-              code={`karnel install editor`}
-              language="bash"
-              title="terminal"
-            />
+            <p className="text-sm text-muted-foreground mb-4">
+              Três opções de editor — instale individualmente ou todos:
+            </p>
+            <div className="space-y-2">
+              <CodeBlock
+                code={`karnel install editor                    # Instalar todos`}
+                language="bash"
+                title="terminal"
+              />
+              <CodeBlock
+                code={`karnel install editor --code-server       # VS Code no navegador`}
+                language="bash"
+              />
+              <CodeBlock
+                code={`karnel install editor --neovim            # Editor modal moderno`}
+                language="bash"
+              />
+              <CodeBlock
+                code={`karnel install editor --nvchad            # Configuração completa Neovim`}
+                language="bash"
+              />
+            </div>
           </div>
         </AnimatedSection>
 
@@ -290,17 +307,17 @@ export default function CodeEditor() {
           </p>
         </AnimatedSection>
 
-        <AnimatedSection delay={700}>
-          <Tabs defaultValue="Geral" className="mb-12">
-            <TabsList className="grid w-full grid-cols-3 lg:grid-cols-6">
-              {keybindings.map(cat => (
-                <TabsTrigger key={cat.category} value={cat.category}>
-                  {cat.category}
-                </TabsTrigger>
-              ))}
-            </TabsList>
+        <Tabs defaultValue="Geral" className="mb-12">
+          <TabsList className="grid w-full grid-cols-3 lg:grid-cols-6">
             {keybindings.map(cat => (
-              <TabsContent key={cat.category} value={cat.category}>
+              <TabsTrigger key={cat.category} value={cat.category}>
+                {cat.category}
+              </TabsTrigger>
+            ))}
+          </TabsList>
+          {keybindings.map(cat => (
+            <TabsContent key={cat.category} value={cat.category}>
+              <AnimatedSection delay={750}>
                 <div className="card-hover bg-card border border-border rounded-lg overflow-hidden">
                   <table className="w-full text-sm">
                     <thead>
@@ -332,10 +349,10 @@ export default function CodeEditor() {
                     </tbody>
                   </table>
                 </div>
-              </TabsContent>
-            ))}
-          </Tabs>
-        </AnimatedSection>
+              </AnimatedSection>
+            </TabsContent>
+          ))}
+        </Tabs>
 
         <AnimatedSection delay={750}>
           <h2 className="text-2xl font-bold font-mono mb-6">
@@ -499,6 +516,38 @@ export default function CodeEditor() {
             language="bash"
             title="code-server structure"
           />
+        </AnimatedSection>
+
+        <AnimatedSection delay={1800}>
+          <h2 className="text-2xl font-bold font-mono mb-6">Neovim</h2>
+          <div className="card-hover bg-card border border-border rounded-lg p-6 mb-6">
+            <p className="text-muted-foreground mb-4">
+              Neovim é um editor de texto moderno baseado em Vim, com suporte a
+              LSP, treesitter, e extensões via Lua. Instalação via pkg.
+            </p>
+            <CodeBlock
+              code={`karnel install editor --neovim`}
+              language="bash"
+              title="terminal"
+            />
+          </div>
+        </AnimatedSection>
+
+        <AnimatedSection delay={1900}>
+          <h2 className="text-2xl font-bold font-mono mb-6">NvChad</h2>
+          <div className="card-hover bg-card border border-border rounded-lg p-6 mb-6">
+            <p className="text-muted-foreground mb-4">
+              NvChad é uma configuração completa para Neovim com tema bonito,
+              LSP pré-configurado, formatação automática, atalhos inteligentes e
+              suporte a IA. Mantida separadamente em
+              <code className="text-accent mx-1">nvchad-termux</code>.
+            </p>
+            <CodeBlock
+              code={`karnel install editor --nvchad`}
+              language="bash"
+              title="terminal"
+            />
+          </div>
         </AnimatedSection>
       </div>
     </section>

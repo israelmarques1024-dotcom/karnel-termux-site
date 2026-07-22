@@ -33,6 +33,9 @@ const KarnelNpm = lazy(() => import("@/pages/KarnelNpm"));
 const KarnelShell = lazy(() => import("@/pages/KarnelShell"));
 const KarnelUI = lazy(() => import("@/pages/KarnelUI"));
 const KarnelAuto = lazy(() => import("@/pages/KarnelAuto"));
+const KarnelGames = lazy(() => import("@/pages/KarnelGames"));
+const KarnelNetwork = lazy(() => import("@/pages/KarnelNetwork"));
+const KarnelUtils = lazy(() => import("@/pages/KarnelUtils"));
 const KarnelCleanup = lazy(() => import("@/pages/KarnelCleanup"));
 const KarnelBackup = lazy(() => import("@/pages/KarnelBackup"));
 const Terms = lazy(() => import("@/pages/Terms"));
@@ -61,6 +64,9 @@ const APP_ROUTES = [
   { path: ROUTES.shell, component: KarnelShell },
   { path: ROUTES.ui, component: KarnelUI },
   { path: ROUTES.auto, component: KarnelAuto },
+  { path: ROUTES.games, component: KarnelGames },
+  { path: ROUTES.network, component: KarnelNetwork },
+  { path: ROUTES.utils, component: KarnelUtils },
   { path: ROUTES.cleanup, component: KarnelCleanup },
   { path: ROUTES.backup, component: KarnelBackup },
   { path: ROUTES.terms, component: Terms },
