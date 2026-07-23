@@ -27,6 +27,8 @@ export const ROUTES = {
   utils: "/karnel/utils",
   cleanup: "/karnel/cleanup",
   backup: "/karnel/backup",
+  plugin: "/karnel/plugin",
+  security: "/karnel/security",
   terms: "/terms",
   notFound: "/404",
 } as const;
@@ -61,4 +63,6 @@ export const DOCUMENTATION_NAV = [
   { label: "Doctor", href: ROUTES.doctor },
   { label: "Show", href: ROUTES.show },
   { label: "Backup", href: ROUTES.backup },
+  { label: "Plugin System", href: ROUTES.plugin },
+  { label: "Security", href: ROUTES.security },
 ] as const;
