@@ -4,6 +4,6 @@
   "devCommand": "pnpm dev",
   "framework": "vite",
   "installCommand": "pnpm install --frozen-lockfile",
-  "alias": ["kerneltermux.vercel.app"],
+  "alias": ["karneltermux.vercel.app"],
   "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }]
 }
