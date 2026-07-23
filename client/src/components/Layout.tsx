@@ -1,14 +1,27 @@
 import { useLocation, Link } from "wouter";
 import { useEffect, useRef, useState } from "react";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Search } from "lucide-react";
 import { DOCUMENTATION_NAV, ROUTES } from "@/lib/routes";
+import SearchModal from "@/components/SearchModal";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   const [location, navigate] = useLocation();
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [searchOpen, setSearchOpen] = useState(false);
   const mainRef = useRef<HTMLElement>(null);
   const sidebarRef = useRef<HTMLElement>(null);
   const menuButtonRef = useRef<HTMLButtonElement>(null);
+
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if ((e.metaKey || e.ctrlKey) && e.key === "k") {
+        e.preventDefault();
+        setSearchOpen(prev => !prev);
+      }
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, []);
 
   useEffect(() => {
     mainRef.current?.scrollTo({ top: 0, left: 0, behavior: "auto" });
@@ -120,6 +133,18 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             </div>
           </Link>
 
+          {/* Search */}
+          <button
+            onClick={() => setSearchOpen(true)}
+            className="flex w-full items-center gap-3 rounded-md border border-border px-3 py-2 text-sm text-muted-foreground hover:bg-accent/50 hover:text-accent-foreground mb-4 transition-colors"
+          >
+            <Search className="h-4 w-4" />
+            <span className="flex-1 text-left">Search tools...</span>
+            <kbd className="hidden rounded-md border border-border px-1.5 py-0.5 text-xs sm:inline-block">
+              ⌘K
+            </kbd>
+          </button>
+
           {/* Navigation */}
           <div className="flex-1 space-y-1 overflow-y-auto pr-2">
             {/* Core Items (always visible) */}
@@ -173,7 +198,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                 Support Project
               </button>
               <p className="text-xs text-muted-foreground font-mono">
-                <span className="text-accent">v4.9.0</span> • Android + Termux
+                <span className="text-accent">v4.9.5</span> • Android + Termux
               </p>
               <p className="text-xs text-muted-foreground/60 mt-2">
                 Built for developers
@@ -205,21 +230,31 @@ export default function Layout({ children }: { children: React.ReactNode }) {
               />
               <span className="font-bold font-mono text-sm">KARNEL</span>
             </Link>
-            <button
-              ref={menuButtonRef}
-              onClick={() => setSidebarOpen(!sidebarOpen)}
-              type="button"
-              aria-label={sidebarOpen ? "Close navigation" : "Open navigation"}
-              aria-expanded={sidebarOpen}
-              aria-controls="mobile-navigation"
-              className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive hover:bg-accent dark:hover:bg-accent/50 size-9"
-            >
-              {sidebarOpen ? (
-                <X size={20} className="text-foreground" />
-              ) : (
-                <Menu size={20} className="text-foreground" />
-              )}
-            </button>
+            <div className="flex items-center gap-1">
+              <button
+                onClick={() => setSearchOpen(true)}
+                type="button"
+                aria-label="Search tools"
+                className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive hover:bg-accent dark:hover:bg-accent/50 size-9"
+              >
+                <Search size={20} className="text-foreground" />
+              </button>
+              <button
+                ref={menuButtonRef}
+                onClick={() => setSidebarOpen(!sidebarOpen)}
+                type="button"
+                aria-label={sidebarOpen ? "Close navigation" : "Open navigation"}
+                aria-expanded={sidebarOpen}
+                aria-controls="mobile-navigation"
+                className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive hover:bg-accent dark:hover:bg-accent/50 size-9"
+              >
+                {sidebarOpen ? (
+                  <X size={20} className="text-foreground" />
+                ) : (
+                  <Menu size={20} className="text-foreground" />
+                )}
+              </button>
+            </div>
           </div>
         </header>
 
@@ -285,6 +320,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             </Link>
           </p>
         </footer>
+        <SearchModal open={searchOpen} onClose={() => setSearchOpen(false)} />
       </div>
     </div>
   );
