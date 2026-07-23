@@ -288,7 +288,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           </p>
           <p className="mt-3">
             <a
-              href="https://kerneltermux.vercel.app"
+              href="https://karneltermux.vercel.app"
               target="_blank"
               rel="noopener noreferrer"
               className="text-accent hover:underline"

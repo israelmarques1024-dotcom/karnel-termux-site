@@ -7,8 +7,8 @@
 </p>
 
 <p align="center">
-  <a href="https://kerneltermux.vercel.app">
-    <img src="https://img.shields.io/badge/Site-kerneltermux.vercel.app-0078D4?style=for-the-badge" alt="Site">
+  <a href="https://karneltermux.vercel.app">
+    <img src="https://img.shields.io/badge/Site-karneltermux.vercel.app-0078D4?style=for-the-badge" alt="Site">
   </a>
   <a href="https://github.com/israelmarques1024-dotcom/karnel-termux">
     <img src="https://img.shields.io/badge/CLI%20Repo-karnel--termux-0078D4?style=for-the-badge" alt="CLI">
@@ -139,7 +139,7 @@ MIT © Israel Marques
 ---
 
 <p align="center">
-  <a href="https://kerneltermux.vercel.app">
+  <a href="https://karneltermux.vercel.app">
     <img src="https://img.shields.io/badge/Visit%20Site-0078D4?style=for-the-badge" alt="Site">
   </a>
   <a href="https://github.com/israelmarques1024-dotcom/karnel-termux">
