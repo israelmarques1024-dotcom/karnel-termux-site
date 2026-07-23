@@ -41,8 +41,9 @@ const stats = [
   { label: "Languages", value: CATALOG_COUNTS.lang },
   { label: "Databases", value: CATALOG_COUNTS.db },
   { label: "Dev Tools", value: CATALOG_COUNTS.dev },
+  { label: "Security Tools", value: 30, suffix: "+" },
   { label: "Deploy CLIs", value: CATALOG_COUNTS.deploy },
-  { label: "Total Packages", value: 90, suffix: "+" },
+  { label: "Total Packages", value: 120, suffix: "+" },
 ];
 
 const installOptions = [
@@ -138,6 +139,24 @@ const features = [
     icon: <Shield size={22} />,
     title: "karnel env",
     desc: "Manage API keys securely. Never hardcode secrets.",
+  },
+  {
+    href: ROUTES.security,
+    icon: <Shield size={22} />,
+    title: "Security (30 tools)",
+    desc: "Nmap, Hydra, SQLMap, Metasploit, Burp, Zap and more.",
+  },
+  {
+    href: ROUTES.plugin,
+    icon: <Puzzle size={22} />,
+    title: "Plugin System",
+    desc: "Extend Karnel with community plugins from GitHub.",
+  },
+  {
+    href: ROUTES.backup,
+    icon: <Database size={22} />,
+    title: "Backup & Restore",
+    desc: "Save configs, packages, tools. Snapshots + cloud sync.",
   },
 ];
 
