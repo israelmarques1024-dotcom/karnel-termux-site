@@ -14,20 +14,20 @@ export interface SearchEntry {
 }
 
 const CATEGORY_ROUTES: Record<string, string> = {
-  AI: "/ai",
-  Dev: "/dev",
-  Network: "/network",
-  Utils: "/utils",
-  OSINT: "/osint",
-  Lang: "/lang",
-  DB: "/db",
-  Editor: "/editor",
-  Auto: "/auto",
-  Deploy: "/deploy",
-  NPM: "/npm",
-  Shell: "/shell",
-  UI: "/ui",
-  Games: "/games",
+  AI: "/karnel/ai",
+  Dev: "/karnel/dev",
+  Network: "/karnel/network",
+  Utils: "/karnel/utils",
+  OSINT: "/karnel/osint",
+  Lang: "/karnel/lang",
+  DB: "/karnel/db",
+  Editor: "/karnel/editor",
+  Auto: "/karnel/auto",
+  Deploy: "/karnel/deploy",
+  NPM: "/karnel/npm",
+  Shell: "/karnel/shell",
+  UI: "/karnel/ui",
+  Games: "/karnel/games",
 };
 
 const catalogs: Record<string, readonly { name: string; desc: string; flag: string }[]> = {
