@@ -1,4 +1,4 @@
-import { lazy, Suspense } from "react";
+import { lazy, Suspense, ComponentType } from "react";
 import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import NotFound from "@/pages/NotFound";
@@ -75,18 +75,24 @@ const APP_ROUTES = [
 
 export const APP_ROUTE_PATHS = APP_ROUTES.map(route => route.path);
 
+function RouteWithErrorBoundary({ path, component: Component }: { path: string; component: ComponentType }) {
+  return (
+    <Route path={path}>
+      <ErrorBoundary key={path}>
+        <Component />
+      </ErrorBoundary>
+    </Route>
+  );
+}
+
 function RouterOutlet() {
   return (
     <Suspense fallback={<div className="min-h-screen bg-background" />}>
       <Switch>
         {APP_ROUTES.map(route => (
-          <Route
-            key={route.path}
-            path={route.path}
-            component={route.component}
-          />
+          <RouteWithErrorBoundary key={route.path} path={route.path} component={route.component} />
         ))}
-        <Route component={NotFound} />
+        <RouteWithErrorBoundary path=":rest*" component={NotFound} />
       </Switch>
     </Suspense>
   );
@@ -94,19 +100,17 @@ function RouterOutlet() {
 
 function App() {
   return (
-    <ErrorBoundary>
-      <ThemeProvider defaultTheme="dark">
-        <TooltipProvider>
-          <Router hook={useTransitionLocation}>
-            <Toaster />
-            <Layout>
-              <RouterOutlet />
-            </Layout>
-            <TransitionOverlay />
-          </Router>
-        </TooltipProvider>
-      </ThemeProvider>
-    </ErrorBoundary>
+    <ThemeProvider defaultTheme="dark">
+      <TooltipProvider>
+        <Router hook={useTransitionLocation}>
+          <Toaster />
+          <Layout>
+            <RouterOutlet />
+          </Layout>
+          <TransitionOverlay />
+        </Router>
+      </TooltipProvider>
+    </ThemeProvider>
   );
 }
 
