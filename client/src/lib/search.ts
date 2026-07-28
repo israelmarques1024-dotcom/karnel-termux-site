@@ -1,7 +1,19 @@
 import {
-  AI_TOOLS, DEV_TOOLS, NETWORK_TOOLS, UTILS_TOOLS, OSINT_TOOLS,
-  LANG_TOOLS, DB_TOOLS, EDITOR_TOOLS, AUTO_TOOLS, DEPLOY_TOOLS,
-  NPM_TOOLS, SHELL_TOOLS, UI_TOOLS, GAMES_TOOLS,
+  AI_TOOLS,
+  DEV_TOOLS,
+  NETWORK_TOOLS,
+  UTILS_TOOLS,
+  OSINT_TOOLS,
+  LANG_TOOLS,
+  DB_TOOLS,
+  EDITOR_TOOLS,
+  AUTO_TOOLS,
+  DEPLOY_TOOLS,
+  NPM_TOOLS,
+  SHELL_TOOLS,
+  UI_TOOLS,
+  GAMES_TOOLS,
+  SECURITY_TOOLS,
 } from "@/data/catalog";
 
 export interface SearchEntry {
@@ -28,9 +40,13 @@ const CATEGORY_ROUTES: Record<string, string> = {
   Shell: "/karnel/shell",
   UI: "/karnel/ui",
   Games: "/karnel/games",
+  Security: "/karnel/security",
 };
 
-const catalogs: Record<string, readonly { name: string; desc: string; flag: string }[]> = {
+const catalogs: Record<
+  string,
+  readonly { name: string; desc: string; flag: string }[]
+> = {
   AI: AI_TOOLS,
   Dev: DEV_TOOLS,
   Network: NETWORK_TOOLS,
@@ -45,17 +61,19 @@ const catalogs: Record<string, readonly { name: string; desc: string; flag: stri
   Shell: SHELL_TOOLS,
   UI: UI_TOOLS,
   Games: GAMES_TOOLS,
+  Security: SECURITY_TOOLS,
 };
 
-export const searchIndex: SearchEntry[] = Object.entries(catalogs).flatMap(([cat, tools]) =>
-  tools.map(t => ({
-    name: t.name,
-    desc: t.desc,
-    flag: t.flag,
-    category: cat,
-    route: CATEGORY_ROUTES[cat] || "/",
-    keywords: `${t.name} ${t.desc} ${t.flag} ${cat}`.toLowerCase(),
-  }))
+export const searchIndex: SearchEntry[] = Object.entries(catalogs).flatMap(
+  ([cat, tools]) =>
+    tools.map(t => ({
+      name: t.name,
+      desc: t.desc,
+      flag: t.flag,
+      category: cat,
+      route: CATEGORY_ROUTES[cat] || "/",
+      keywords: `${t.name} ${t.desc} ${t.flag} ${cat}`.toLowerCase(),
+    }))
 );
 
 export function searchTools(query: string): SearchEntry[] {
@@ -64,7 +82,10 @@ export function searchTools(query: string): SearchEntry[] {
   const terms = q.split(/\s+/).filter(Boolean);
   return searchIndex
     .map(entry => {
-      const score = terms.reduce((s, term) => s + (entry.keywords.includes(term) ? 1 : 0), 0);
+      const score = terms.reduce(
+        (s, term) => s + (entry.keywords.includes(term) ? 1 : 0),
+        0
+      );
       return { entry, score };
     })
     .filter(x => x.score > 0)

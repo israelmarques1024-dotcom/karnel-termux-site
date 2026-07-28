@@ -48,9 +48,6 @@ export default function AITools() {
                       Description
                     </th>
                     <th className="text-left py-3 px-4 font-mono">Flag</th>
-                    <th className="text-left py-3 px-4 font-mono hidden md:table-cell">
-                      Binary
-                    </th>
                     <th className="text-left py-3 px-4 font-mono">Install</th>
                   </tr>
                 </thead>
@@ -68,9 +65,6 @@ export default function AITools() {
                       </td>
                       <td className="py-3 px-4 text-accent font-mono text-xs">
                         {tool.flag}
-                      </td>
-                      <td className="py-3 px-4 font-mono text-xs hidden md:table-cell">
-                        {tool.bin}
                       </td>
                       <td className="py-3 px-4">
                         <span className="inline md:hidden font-mono text-xs text-accent">

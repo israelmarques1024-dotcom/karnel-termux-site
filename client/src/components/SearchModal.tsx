@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, useCallback } from "react";
+import { useState, useEffect, useRef, useCallback, useMemo } from "react";
 import { useLocation } from "wouter";
 import { searchTools, type SearchEntry } from "@/lib/search";
 
@@ -13,7 +13,7 @@ export default function SearchModal({ open, onClose }: SearchModalProps) {
   const inputRef = useRef<HTMLInputElement>(null);
   const [selectedIndex, setSelectedIndex] = useState(0);
 
-  const results = searchTools(query);
+  const results = useMemo(() => searchTools(query), [query]);
 
   useEffect(() => {
     if (open) {
@@ -38,7 +38,7 @@ export default function SearchModal({ open, onClose }: SearchModalProps) {
         onClose();
       }
     },
-    [results, selectedIndex, navigate, onClose],
+    [results, selectedIndex, navigate, onClose]
   );
 
   useEffect(() => {
@@ -59,15 +59,28 @@ export default function SearchModal({ open, onClose }: SearchModalProps) {
       <div className="fixed inset-0 bg-black/60" onClick={onClose} />
       <div className="relative w-full max-w-lg rounded-xl border border-border bg-background shadow-2xl">
         <div className="flex items-center gap-3 border-b border-border px-4">
-          <svg className="h-5 w-5 shrink-0 text-muted-foreground" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-4.35-4.35M11 19a8 8 0 100-16 8 8 0 000 16z" />
+          <svg
+            className="h-5 w-5 shrink-0 text-muted-foreground"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M21 21l-4.35-4.35M11 19a8 8 0 100-16 8 8 0 000 16z"
+            />
           </svg>
           <input
             ref={inputRef}
             className="flex-1 bg-transparent py-4 text-base outline-none placeholder:text-muted-foreground"
             placeholder="Search tools, categories..."
             value={query}
-            onChange={e => { setQuery(e.target.value); setSelectedIndex(0); }}
+            onChange={e => {
+              setQuery(e.target.value);
+              setSelectedIndex(0);
+            }}
             onKeyDown={handleKeyDown}
           />
           <kbd className="hidden rounded-md border border-border px-2 py-0.5 text-xs text-muted-foreground sm:inline-block">
@@ -86,7 +99,10 @@ export default function SearchModal({ open, onClose }: SearchModalProps) {
                 key={entry.flag}
                 entry={entry}
                 selected={i === selectedIndex}
-                onSelect={() => { navigate(entry.route); onClose(); }}
+                onSelect={() => {
+                  navigate(entry.route);
+                  onClose();
+                }}
               />
             ))}
           </ul>
@@ -96,7 +112,15 @@ export default function SearchModal({ open, onClose }: SearchModalProps) {
   );
 }
 
-function SearchItem({ entry, selected, onSelect }: { entry: SearchEntry; selected: boolean; onSelect: () => void }) {
+function SearchItem({
+  entry,
+  selected,
+  onSelect,
+}: {
+  entry: SearchEntry;
+  selected: boolean;
+  onSelect: () => void;
+}) {
   return (
     <li
       className={`flex cursor-pointer items-center gap-3 rounded-lg px-3 py-2.5 text-sm ${
@@ -111,7 +135,9 @@ function SearchItem({ entry, selected, onSelect }: { entry: SearchEntry; selecte
       <span className="shrink-0 rounded-md bg-muted px-2 py-0.5 text-xs text-muted-foreground">
         {entry.category}
       </span>
-      <code className="hidden shrink-0 text-xs text-muted-foreground sm:inline-block">{entry.flag}</code>
+      <code className="hidden shrink-0 text-xs text-muted-foreground sm:inline-block">
+        {entry.flag}
+      </code>
     </li>
   );
 }

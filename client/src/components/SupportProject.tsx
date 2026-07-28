@@ -1,7 +1,7 @@
 import { useState, useCallback, useRef, useEffect } from "react";
 import QRCode from "qrcode";
 
-const PIX_KEY = import.meta.env.VITE_PIX_KEY as string || "037f07bd-a326-42b6-a5a3-f29b36e703db";
+const PIX_KEY = (import.meta.env.VITE_PIX_KEY as string) || "";
 
 // ===== EMV Payload (for QR code — required by ALL Brazilian bank apps) =====
 function crc16(str: string): string {

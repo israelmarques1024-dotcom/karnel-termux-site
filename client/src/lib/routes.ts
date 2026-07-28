@@ -7,6 +7,7 @@ export const ROUTES = {
   osint: "/karnel/osint",
   editor: "/karnel/editor",
   deploy: "/karnel/deploy",
+  supabase: "/karnel/supabase",
   doctor: "/karnel/doctor",
   show: "/karnel/show",
   linux: "/karnel/linux",

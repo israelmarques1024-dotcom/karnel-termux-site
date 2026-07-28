@@ -30,7 +30,8 @@ export default function KarnelUtils() {
             Available Utilities
           </h2>
           <p className="text-muted-foreground mb-8">
-            {utilsTools.length} utility scripts — install individually or all at once
+            {utilsTools.length} utility scripts — install individually or all at
+            once
           </p>
         </AnimatedSection>
 
@@ -41,7 +42,9 @@ export default function KarnelUtils() {
                 <thead>
                   <tr className="border-b border-border bg-secondary/30">
                     <th className="text-left py-3 px-4 font-mono">Tool</th>
-                    <th className="text-left py-3 px-4 font-mono">Description</th>
+                    <th className="text-left py-3 px-4 font-mono">
+                      Description
+                    </th>
                     <th className="text-left py-3 px-4 font-mono">Flag</th>
                     <th className="text-left py-3 px-4 font-mono">Install</th>
                   </tr>

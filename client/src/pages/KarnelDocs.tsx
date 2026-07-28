@@ -278,7 +278,7 @@ export default function KarnelDocs() {
                   )}
                 </div>
               )}
-              {(section as any).hasTemplates && (
+              {"hasTemplates" in section && section.hasTemplates && (
                 <div className="mt-4">
                   <p className="text-sm text-muted-foreground mb-3">
                     Available templates:

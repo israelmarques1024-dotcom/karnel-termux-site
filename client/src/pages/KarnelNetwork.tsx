@@ -30,7 +30,8 @@ export default function KarnelNetwork() {
             Available Network Tools
           </h2>
           <p className="text-muted-foreground mb-8">
-            {networkTools.length} network tools — install individually or all at once
+            {networkTools.length} network tools — install individually or all at
+            once
           </p>
         </AnimatedSection>
 
@@ -41,7 +42,9 @@ export default function KarnelNetwork() {
                 <thead>
                   <tr className="border-b border-border bg-secondary/30">
                     <th className="text-left py-3 px-4 font-mono">Tool</th>
-                    <th className="text-left py-3 px-4 font-mono">Description</th>
+                    <th className="text-left py-3 px-4 font-mono">
+                      Description
+                    </th>
                     <th className="text-left py-3 px-4 font-mono">Flag</th>
                     <th className="text-left py-3 px-4 font-mono">Install</th>
                   </tr>

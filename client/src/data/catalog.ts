@@ -24,8 +24,8 @@ export const AI_TOOLS = [
   { name: "Kimi Code", flag: "--kimi", desc: "" },
   { name: "Command Code", flag: "--command-code", desc: "" },
   { name: "Freebuff", flag: "--freebuff", desc: "" },
-  { name: "Kilo Code CLI", flag: "--kilocode,kilo", desc: "" },
-  { name: "Kiro CLI", flag: "--kiro,kiro-cli", desc: "" },
+  { name: "Kilo Code CLI", flag: "--kilocode-cli", desc: "" },
+  { name: "Kiro CLI", flag: "--kiro", desc: "" },
   { name: "Crush CLI", flag: "--crush", desc: "" },
   { name: "Cline CLI", flag: "--cline", desc: "" },
   { name: "Odysseus", flag: "--odysseus", desc: "" },
@@ -35,6 +35,11 @@ export const AI_TOOLS = [
   { name: "OpenSpec SDD Framework", flag: "--openspec", desc: "" },
   { name: "Copilot-Termux", flag: "--copilot", desc: "" },
   { name: "Qoder", flag: "--qodercli", desc: "" },
+  { name: "AMP Code CLI", flag: "--ampcode", desc: "" },
+  { name: "Cursor CLI", flag: "--cursor-cli", desc: "" },
+  { name: "Oh-My-Pi", flag: "--oh-my-pi", desc: "" },
+  { name: "Goose CLI", flag: "--goose", desc: "Open-source AI coding agent from the Linux Foundation" },
+  { name: "Factory Droid", flag: "--droid", desc: "Enterprise-grade AI coding agent from Factory" },
 ] as const;
 
 export const DEV_TOOLS = [
@@ -43,10 +48,18 @@ export const DEV_TOOLS = [
   { name: "Curl", flag: "--curl", desc: "HTTP client" },
   { name: "Lsd", flag: "--lsd", desc: "Modern ls with icons" },
   { name: "Bat", flag: "--bat", desc: "Modern cat with syntax highlighting" },
-  { name: "Proot", flag: "--proot", desc: "Isolated Linux environment without root" },
+  {
+    name: "Proot",
+    flag: "--proot",
+    desc: "Isolated Linux environment without root",
+  },
   { name: "Ncurses", flag: "--ncurses", desc: "Terminal utilities" },
   { name: "Tmate", flag: "--tmate", desc: "Terminal sharing" },
-  { name: "Openssh", flag: "--openssh", desc: "Secure shell client and server" },
+  {
+    name: "Openssh",
+    flag: "--openssh",
+    desc: "Secure shell client and server",
+  },
   { name: "Tmux", flag: "--tmux", desc: "Terminal multiplexer" },
   { name: "Cloudflared", flag: "--cloudflared", desc: "Cloudflare tunnel" },
   { name: "Translate", flag: "--translate", desc: "Terminal translator" },
@@ -63,45 +76,93 @@ export const DEV_TOOLS = [
 ] as const;
 
 export const NETWORK_TOOLS = [
-  { name: "Dark", flag: "--dark", desc: "Tor crawler and scraper for OSINT research" },
-  { name: "Dedsec Network", flag: "--dedsec-network", desc: "Multi-purpose network scanner, OSINT, and pentest" },
+  {
+    name: "Dark",
+    flag: "--dark",
+    desc: "Tor crawler and scraper for OSINT research",
+  },
+  {
+    name: "Dedsec Network",
+    flag: "--dedsec-network",
+    desc: "Multi-purpose network scanner, OSINT, and pentest",
+  },
 ] as const;
 
 export const UTILS_TOOLS = [
-  { name: "Fconv", flag: "--fconv", desc: "Convert files between common formats" },
-  { name: "Filecheck", flag: "--filecheck", desc: "Inspect file integrity and metadata" },
+  {
+    name: "Fconv",
+    flag: "--fconv",
+    desc: "Convert files between common formats",
+  },
+  {
+    name: "Filecheck",
+    flag: "--filecheck",
+    desc: "Inspect file integrity and metadata",
+  },
   { name: "Websites", flag: "--websites", desc: "Scaffold website projects" },
   { name: "Notes", flag: "--notes", desc: "Manage notes from the terminal" },
-  { name: "Treex", flag: "--treex", desc: "Explore project trees interactively" },
+  {
+    name: "Treex",
+    flag: "--treex",
+    desc: "Explore project trees interactively",
+  },
   { name: "Passman", flag: "--passman", desc: "Local password management" },
-  { name: "Applaunch", flag: "--applaunch", desc: "Launch installed applications" },
+  {
+    name: "Applaunch",
+    flag: "--applaunch",
+    desc: "Launch installed applications",
+  },
   { name: "Splash", flag: "--splash", desc: "Customize the startup splash" },
   { name: "Httptmux", flag: "--httptmux", desc: "Interactive API client" },
   { name: "Zork", flag: "--zork", desc: "Classic text adventures" },
-  { name: "Qrcode", flag: "--qrcode", desc: "Generate QR codes from URLs and text" },
+  {
+    name: "Qrcode",
+    flag: "--qrcode",
+    desc: "Generate QR codes from URLs and text",
+  },
 ] as const;
 
 export const OSINT_TOOLS = [
-  { name: "Robin", flag: "--robin", desc: "AI-assisted dark-web OSINT through Tor and a loopback-only Streamlit UI" },
+  {
+    name: "Robin",
+    flag: "--robin",
+    desc: "AI-assisted dark-web OSINT through Tor and a loopback-only Streamlit UI",
+  },
 ] as const;
 
 export const LANG_TOOLS = [
   { name: "Bun", flag: "--bun", desc: "Fast all-in-one JavaScript runtime" },
   { name: "Nodejs", flag: "--nodejs", desc: "V8-based JavaScript runtime" },
-  { name: "Python", flag: "--python", desc: "Versatile language for scripts and apps" },
+  {
+    name: "Python",
+    flag: "--python",
+    desc: "Versatile language for scripts and apps",
+  },
   { name: "Perl", flag: "--perl", desc: "Text processing and scripting" },
   { name: "Php", flag: "--php", desc: "Web server language" },
-  { name: "Rust", flag: "--rust", desc: "Systems programming with safety and performance" },
+  {
+    name: "Rust",
+    flag: "--rust",
+    desc: "Systems programming with safety and performance",
+  },
   { name: "Clang", flag: "--clang", desc: "Native compilation with Clang/GCC" },
   { name: "Golang", flag: "--golang", desc: "Compiled concurrent language" },
 ] as const;
 
 export const DB_TOOLS = [
-  { name: "Postgresql", flag: "--postgresql", desc: "Advanced relational database" },
+  {
+    name: "Postgresql",
+    flag: "--postgresql",
+    desc: "Advanced relational database",
+  },
   { name: "Mariadb", flag: "--mariadb", desc: "MySQL-compatible, robust" },
   { name: "Sqlite", flag: "--sqlite", desc: "Embedded lightweight database" },
   { name: "Mongodb", flag: "--mongodb", desc: "NoSQL document database" },
-  { name: "Redis", flag: "--redis", desc: "In-memory cache and message broker" },
+  {
+    name: "Redis",
+    flag: "--redis",
+    desc: "In-memory cache and message broker",
+  },
 ] as const;
 
 export const EDITOR_TOOLS = [
@@ -111,58 +172,194 @@ export const EDITOR_TOOLS = [
 ] as const;
 
 export const AUTO_TOOLS = [
-  { name: "N8n", flag: "--n8n", desc: "Workflow automation platform with visual flows" },
+  {
+    name: "N8n",
+    flag: "--n8n",
+    desc: "Workflow automation platform with visual flows",
+  },
 ] as const;
 
 export const DEPLOY_TOOLS = [
   { name: "Railway", flag: "--railway", desc: "Full-stack with databases" },
   { name: "Netlify", flag: "--netlify", desc: "Static sites & edge functions" },
   { name: "Vercel", flag: "--vercel", desc: "Frontend deployment platform" },
+  {
+    name: "Supabase",
+    flag: "--supabase",
+    desc: "PostgreSQL, Edge Functions, types, migrations",
+  },
 ] as const;
 
 export const NPM_TOOLS = [
   { name: "Typescript", flag: "--typescript", desc: "JavaScript with types" },
   { name: "Nestjs", flag: "--nestjs", desc: "Progressive Node.js framework" },
   { name: "Prettier", flag: "--prettier", desc: "Code formatter" },
-  { name: "Live Server", flag: "--live-server", desc: "Server with live reload" },
-  { name: "Localtunnel", flag: "--localtunnel", desc: "Public tunnels for localhost" },
+  {
+    name: "Live Server",
+    flag: "--live-server",
+    desc: "Server with live reload",
+  },
+  {
+    name: "Localtunnel",
+    flag: "--localtunnel",
+    desc: "Public tunnels for localhost",
+  },
   { name: "Vercel", flag: "--vercel", desc: "Deploy to Vercel" },
   { name: "Markserv", flag: "--markserv", desc: "Markdown server" },
   { name: "Psqlformat", flag: "--psqlformat", desc: "SQL formatter" },
   { name: "Ncu", flag: "--ncu", desc: "Check package updates" },
-  { name: "Turbopack", flag: "--turbopack", desc: "Extremely fast Rust bundler" },
+  {
+    name: "Turbopack",
+    flag: "--turbopack",
+    desc: "Extremely fast Rust bundler",
+  },
   { name: "Ngrok", flag: "--ngrok", desc: "Public tunnels for localhost" },
 ] as const;
 
 export const SHELL_TOOLS = [
-  { name: "Powerlevel10k", flag: "--powerlevel10k", desc: "Fastest and most beautiful ZSH theme" },
+  {
+    name: "Powerlevel10k",
+    flag: "--powerlevel10k",
+    desc: "Fastest and most beautiful ZSH theme",
+  },
   { name: "Zsh Defer", flag: "--zsh-defer", desc: "Async plugin loading" },
-  { name: "Zsh Autosuggestions", flag: "--zsh-autosuggestions", desc: "Fish-style autocomplete" },
-  { name: "Zsh Syntax Highlighting", flag: "--zsh-syntax-highlighting", desc: "Syntax highlighting in commands" },
-  { name: "History Substring", flag: "--history-substring", desc: "Fish-style history search" },
-  { name: "Zsh Completions", flag: "--zsh-completions", desc: "Extra completion definitions" },
+  {
+    name: "Zsh Autosuggestions",
+    flag: "--zsh-autosuggestions",
+    desc: "Fish-style autocomplete",
+  },
+  {
+    name: "Zsh Syntax Highlighting",
+    flag: "--zsh-syntax-highlighting",
+    desc: "Syntax highlighting in commands",
+  },
+  {
+    name: "History Substring",
+    flag: "--history-substring",
+    desc: "Fish-style history search",
+  },
+  {
+    name: "Zsh Completions",
+    flag: "--zsh-completions",
+    desc: "Extra completion definitions",
+  },
   { name: "Fzf Tab", flag: "--fzf-tab", desc: "Fuzzy tab completion with fzf" },
-  { name: "You Should Use", flag: "--you-should-use", desc: "Reminds you of existing aliases" },
-  { name: "Zsh Autopair", flag: "--zsh-autopair", desc: "Auto-close brackets and quotes" },
+  {
+    name: "You Should Use",
+    flag: "--you-should-use",
+    desc: "Reminds you of existing aliases",
+  },
+  {
+    name: "Zsh Autopair",
+    flag: "--zsh-autopair",
+    desc: "Auto-close brackets and quotes",
+  },
   { name: "Better Npm", flag: "--better-npm", desc: "Improved npm completion" },
 ] as const;
 
 export const UI_TOOLS = [
   { name: "Font", flag: "--font", desc: "Font with ligatures and icons" },
-  { name: "Extra Keys", flag: "--extra-keys", desc: "Additional keys on Termux keyboard" },
-  { name: "Cursor", flag: "--cursor", desc: "Styled cursor with gradient" },
-  { name: "Banner", flag: "--banner", desc: "ASCII banner with metallic effect on startup" },
+  {
+    name: "Extra Keys",
+    flag: "--extra-keys",
+    desc: "Additional keys on Termux keyboard",
+  },
+  {
+    name: "Banner",
+    flag: "--banner",
+    desc: "ASCII banner with metallic effect on startup",
+  },
 ] as const;
 
 export const GAMES_TOOLS = [
   { name: "Buzz", flag: "--buzz", desc: "Quiz game with multiple categories" },
-  { name: "Ctfgod", flag: "--ctfgod", desc: "Capture The Flag challenge solver" },
-  { name: "Detective", flag: "--detective", desc: "Mystery investigation game" },
+  {
+    name: "Ctfgod",
+    flag: "--ctfgod",
+    desc: "Capture The Flag challenge solver",
+  },
+  {
+    name: "Detective",
+    flag: "--detective",
+    desc: "Mystery investigation game",
+  },
   { name: "Pet Friends", flag: "--pet-friends", desc: "Virtual pet simulator" },
   { name: "Tamagotchi", flag: "--tamagotchi", desc: "Retro digital pet" },
-  { name: "Arcade", flag: "--arcade", desc: "Classic arcade games in terminal" },
+  {
+    name: "Arcade",
+    flag: "--arcade",
+    desc: "Classic arcade games in terminal",
+  },
 ] as const;
 
+export const SECURITY_TOOLS = [
+  {
+    name: "Nmap",
+    flag: "--nmap",
+    desc: "Network discovery and security scanning",
+  },
+  { name: "Hydra", flag: "--hydra", desc: "Password brute-force attack tool" },
+  { name: "Nikto", flag: "--nikto", desc: "Web server scanner" },
+  { name: "SQLMap", flag: "--sqlmap", desc: "SQL injection automation" },
+  { name: "Gobuster", flag: "--gobuster", desc: "Directory/file busting tool" },
+  { name: "Dirb", flag: "--dirb", desc: "Web content scanner" },
+  { name: "WPScan", flag: "--wpscan", desc: "WordPress vulnerability scanner" },
+  {
+    name: "John",
+    flag: "--john",
+    desc: "Password cracking tool (John the Ripper)",
+  },
+  {
+    name: "Aircrack Ng",
+    flag: "--aircrack-ng",
+    desc: "Wi-Fi security assessment suite",
+  },
+  {
+    name: "Metasploit",
+    flag: "--metasploit",
+    desc: "Penetration testing framework",
+  },
+  {
+    name: "Burp Suite",
+    flag: "--burpsuite",
+    desc: "Web application security testing",
+  },
+  { name: "Zap", flag: "--zap", desc: "OWASP ZAP web app scanner" },
+  {
+    name: "Enum4linux",
+    flag: "--enum4linux",
+    desc: "Windows/Samba enumeration",
+  },
+  { name: "Smbclient", flag: "--smbclient", desc: "SMB/CIFS client" },
+  { name: "Ffuf", flag: "--ffuf", desc: "Fast web fuzzer" },
+  { name: "Whatweb", flag: "--whatweb", desc: "Website fingerprinting" },
+  { name: "Wafw00f", flag: "--wafw00f", desc: "WAF detection fingerprinting" },
+  { name: "Dnsrecon", flag: "--dnsrecon", desc: "DNS enumeration tool" },
+  {
+    name: "Theharvester",
+    flag: "--theharvester",
+    desc: "Email and subdomain enumeration",
+  },
+  { name: "Subfinder", flag: "--subfinder", desc: "Subdomain discovery" },
+  {
+    name: "Amass",
+    flag: "--amass",
+    desc: "Network mapping and attack surface discovery",
+  },
+  { name: "Masscan", flag: "--masscan", desc: "Mass IP port scanner" },
+  { name: "Netcat", flag: "--netcat", desc: "TCP/UDP networking utility" },
+  { name: "Tcpdump", flag: "--tcpdump", desc: "Packet capture and analysis" },
+  { name: "Whois", flag: "--whois", desc: "Domain registration lookup" },
+  { name: "Hashcat", flag: "--hashcat", desc: "Advanced password recovery" },
+  { name: "Binwalk", flag: "--binwalk", desc: "Firmware analysis tool" },
+  {
+    name: "Foremost",
+    flag: "--foremost",
+    desc: "File carving and data recovery",
+  },
+  { name: "Steghide", flag: "--steghide", desc: "Steganography tool" },
+  { name: "Exiftool", flag: "--exiftool", desc: "Metadata reader/writer" },
+] as const;
 
 export const CATALOG_COUNTS = {
   ai: AI_TOOLS.length,
@@ -179,4 +376,5 @@ export const CATALOG_COUNTS = {
   shell: SHELL_TOOLS.length,
   ui: UI_TOOLS.length,
   games: GAMES_TOOLS.length,
+  security: SECURITY_TOOLS.length,
 } as const;

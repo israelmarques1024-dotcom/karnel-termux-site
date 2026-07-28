@@ -51,6 +51,7 @@ const APP_ROUTES = [
   { path: ROUTES.osint, component: KarnelOsint },
   { path: ROUTES.editor, component: CodeEditor },
   { path: ROUTES.deploy, component: Deploy },
+  { path: ROUTES.supabase, component: Deploy },
   { path: ROUTES.doctor, component: Doctor },
   { path: ROUTES.show, component: ShowDocs },
   { path: ROUTES.linux, component: Linux },
@@ -79,7 +80,13 @@ const APP_ROUTES = [
 
 export const APP_ROUTE_PATHS = APP_ROUTES.map(route => route.path);
 
-function RouteWithErrorBoundary({ path, component: Component }: { path: string; component: ComponentType }) {
+function RouteWithErrorBoundary({
+  path,
+  component: Component,
+}: {
+  path: string;
+  component: ComponentType;
+}) {
   return (
     <Route path={path}>
       <ErrorBoundary key={path}>
@@ -94,7 +101,11 @@ function RouterOutlet() {
     <Suspense fallback={<div className="min-h-screen bg-background" />}>
       <Switch>
         {APP_ROUTES.map(route => (
-          <RouteWithErrorBoundary key={route.path} path={route.path} component={route.component} />
+          <RouteWithErrorBoundary
+            key={route.path}
+            path={route.path}
+            component={route.component}
+          />
         ))}
         <RouteWithErrorBoundary path=":rest*" component={NotFound} />
       </Switch>

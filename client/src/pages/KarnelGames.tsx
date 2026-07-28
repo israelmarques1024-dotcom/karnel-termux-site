@@ -26,9 +26,7 @@ export default function KarnelGames() {
         </AnimatedSection>
 
         <AnimatedSection delay={200}>
-          <h2 className="text-2xl font-bold font-mono mb-6">
-            Available Games
-          </h2>
+          <h2 className="text-2xl font-bold font-mono mb-6">Available Games</h2>
           <p className="text-muted-foreground mb-8">
             {gamesTools.length} games — install individually or all at once
           </p>
@@ -41,7 +39,9 @@ export default function KarnelGames() {
                 <thead>
                   <tr className="border-b border-border bg-secondary/30">
                     <th className="text-left py-3 px-4 font-mono">Game</th>
-                    <th className="text-left py-3 px-4 font-mono">Description</th>
+                    <th className="text-left py-3 px-4 font-mono">
+                      Description
+                    </th>
                     <th className="text-left py-3 px-4 font-mono">Flag</th>
                     <th className="text-left py-3 px-4 font-mono">Install</th>
                   </tr>

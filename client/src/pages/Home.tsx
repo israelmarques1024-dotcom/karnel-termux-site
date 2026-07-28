@@ -41,9 +41,28 @@ const stats = [
   { label: "Languages", value: CATALOG_COUNTS.lang },
   { label: "Databases", value: CATALOG_COUNTS.db },
   { label: "Dev Tools", value: CATALOG_COUNTS.dev },
-  { label: "Security Tools", value: 30, suffix: "+" },
+  { label: "Security Tools", value: CATALOG_COUNTS.security },
   { label: "Deploy CLIs", value: CATALOG_COUNTS.deploy },
-  { label: "Total Packages", value: 120, suffix: "+" },
+  {
+    label: "Total Packages",
+    value:
+      CATALOG_COUNTS.ai +
+      CATALOG_COUNTS.dev +
+      CATALOG_COUNTS.lang +
+      CATALOG_COUNTS.db +
+      CATALOG_COUNTS.editor +
+      CATALOG_COUNTS.npm +
+      CATALOG_COUNTS.shell +
+      CATALOG_COUNTS.ui +
+      CATALOG_COUNTS.games +
+      CATALOG_COUNTS.deploy +
+      CATALOG_COUNTS.network +
+      CATALOG_COUNTS.utils +
+      CATALOG_COUNTS.osint +
+      CATALOG_COUNTS.auto +
+      CATALOG_COUNTS.security,
+    suffix: "+",
+  },
 ];
 
 const installOptions = [
@@ -102,7 +121,7 @@ const features = [
     href: ROUTES.deploy,
     icon: <Rocket size={22} />,
     title: "Direct Deploy",
-    desc: "Vercel, Railway, Netlify. Deploy from your phone.",
+    desc: "Vercel, Railway, Netlify, Supabase. Deploy from your phone.",
   },
   {
     href: ROUTES.doctor,
@@ -157,6 +176,12 @@ const features = [
     icon: <Database size={22} />,
     title: "Backup & Restore",
     desc: "Save configs, packages, tools. Snapshots + cloud sync.",
+  },
+  {
+    href: ROUTES.supabase,
+    icon: <Database size={22} />,
+    title: "Supabase CLI",
+    desc: "PostgreSQL migrations, Edge Functions, types, secrets, branches.",
   },
 ];
 
@@ -316,8 +341,10 @@ export default function Home() {
                 {CATALOG_COUNTS.dev} tools
               </span>{" "}
               and{" "}
-              <span className="text-accent font-semibold">{CATALOG_COUNTS.deploy} deploy CLIs</span> —
-              in seconds.
+              <span className="text-accent font-semibold">
+                {CATALOG_COUNTS.deploy} deploy CLIs
+              </span>{" "}
+              — in seconds.
             </p>
           </AnimatedSection>
 
