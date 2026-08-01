@@ -96,7 +96,7 @@ describe("site contracts", () => {
     const before = readFileSync(catalog, "utf8");
 
     expect(() =>
-      execFileSync(process.execPath, [script], {
+      execFileSync(process.execPath, [script, "--check"], {
         env: { ...process.env, KARNEL_REPO_DIR: "/tmp/missing-karnel-source" },
         stdio: "pipe",
       })

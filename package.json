@@ -15,6 +15,7 @@
     "test": "vitest run",
     "format": "prettier --write \"client/src\" \"*.{ts,json,md}\"",
     "format:check": "prettier --check \"client/src\" \"*.{ts,json,md}\"",
+    "catalog:check": "node scripts/generate-catalog.mjs --check",
     "check": "pnpm lint && pnpm test && pnpm build"
   },
   "dependencies": {

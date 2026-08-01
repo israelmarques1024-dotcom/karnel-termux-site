@@ -18,6 +18,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
+      - uses: actions/checkout@v7
+        with:
+          repository: israelmarques1024-dotcom/karnel-termux
+          ref: c96aa5d6ec5c7723868520444c279a1da3b7b1bc
+          path: .ci/karnel-termux
+          fetch-depth: 1
       - uses: pnpm/action-setup@v6
         with:
           version: 10.15.1
@@ -26,5 +32,6 @@ jobs:
           node-version: 24
           cache: pnpm
       - run: pnpm install --frozen-lockfile
+      - run: KARNEL_REPO_DIR="$GITHUB_WORKSPACE/.ci/karnel-termux" pnpm catalog:check
       - run: pnpm format:check
       - run: pnpm check

@@ -118,6 +118,13 @@ To generate from a local CLI checkout before it is published:
 KARNEL_REPO_DIR=/path/to/karnel-termux node scripts/generate-catalog.mjs
 ```
 
+Verify that the generated file has not drifted from a local CLI checkout without
+writing files:
+
+```bash
+KARNEL_REPO_DIR=/path/to/karnel-termux pnpm catalog:check
+```
+
 After generating, run the full verification suite:
 
 ```bash

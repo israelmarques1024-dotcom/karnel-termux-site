@@ -7,11 +7,15 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const GITHUB_RAW =
   "https://raw.githubusercontent.com/israelmarques1024-dotcom/karnel-termux/main";
 const LOCAL_KARNEL_ROOT = process.env.KARNEL_REPO_DIR;
+const CHECK = process.argv.includes("--check");
 
 async function fetchText(url) {
   if (LOCAL_KARNEL_ROOT && url.startsWith(`${GITHUB_RAW}/`)) {
     const relative = url.slice(`${GITHUB_RAW}/`.length);
     return readFileSync(join(LOCAL_KARNEL_ROOT, relative), "utf8");
+  }
+  if (CHECK) {
+    throw new Error("Catalog check requires KARNEL_REPO_DIR; refusing network access.");
   }
   const res = await fetch(url);
   if (!res.ok) throw new Error(`HTTP ${res.status}: ${url}`);
@@ -281,6 +285,15 @@ export const CATALOG_COUNTS = {
 
   const outPath = join(__dirname, "..", "client", "src", "data", "catalog.ts");
   output = await format(output, { filepath: outPath });
+  if (CHECK) {
+    if (readFileSync(outPath, "utf8") !== output) {
+      throw new Error(
+        "Catalog drift detected. Regenerate with KARNEL_REPO_DIR=/path/to/karnel-termux node scripts/generate-catalog.mjs"
+      );
+    }
+    console.log("Catalog matches CLI registries.");
+    return;
+  }
   writeFileSync(outPath, output, "utf-8");
   console.log(
     `Generated ${outPath} (${aiTools.length} AI, ${devTools.length} Dev, ${langTools.length} Lang, ${dbTools.length} DB, ${editorTools.length} Editor, ${npmTools.length} NPM, ${shellTools.length} Shell, ${uiTools.length} UI, ${autoTools.length} Auto, ${deployTools.length} Deploy, ${networkTools.length} Network, ${utilsTools.length} Utils, ${osintTools.length} OSINT, ${gamesTools.length} Games)`
