@@ -128,6 +128,12 @@ pnpm check
 The site reads only public CLI metadata. Never place GitHub, npm, Vercel, Puter,
 or other service tokens in source files, generated catalog data, or documentation.
 
+### Framework Updates
+
+The site documents the CLI behavior: `karnel update karnel` uses the official
+curl installer first, then falls back to a local Git checkout and package-manager
+installs. Keep this description synchronized with `karnel/cli/commands/update.sh`.
+
 ---
 
 ## Project Structure

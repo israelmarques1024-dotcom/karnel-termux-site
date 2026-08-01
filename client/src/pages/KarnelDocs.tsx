@@ -93,7 +93,10 @@ const commands = [
     desc: "Diagnose Termux & Karnel environment (30+ checks)",
   },
   { cmd: "karnel start", desc: "Start services (editor, etc.)" },
-  { cmd: "karnel update", desc: "Update modules or framework" },
+  {
+    cmd: "karnel update karnel",
+    desc: "Update framework via the official curl installer first",
+  },
   { cmd: "karnel uninstall", desc: "Remove installed modules" },
   { cmd: "karnel reinstall", desc: "Uninstall + install modules" },
   {
