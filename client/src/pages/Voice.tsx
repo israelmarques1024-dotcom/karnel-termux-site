@@ -29,7 +29,7 @@ const steps = [
   {
     num: "2",
     title: "Review",
-    desc: "Transcribed text opens in code-server for error correction and adjustments.",
+    desc: "Transcribed text opens in $EDITOR (nano by default) for review and adjustments.",
   },
   {
     num: "3",
@@ -52,7 +52,7 @@ export default function Voice() {
             karnel voice — Speech-to-Agent
           </h1>
           <p className="text-lg text-muted-foreground mb-8">
-            Capture áudio pelo microfone, revise no code-server, copie para a
+            Capture áudio pelo microfone, revise no editor configurado, copie para a
             área de transferência e dispare qualquer agente de IA com o prompt
             transcrito. Tudo em um comando.
           </p>
@@ -63,8 +63,8 @@ export default function Voice() {
             <h3 className="font-bold font-mono mb-4">Uso Básico</h3>
             <CodeBlock
               code={`karnel voice                     # Mostra ajuda
-karnel voice opencode             # Captura → code-server → opencode run
-karnel voice text                 # Captura → code-server → stdout
+karnel voice opencode             # Captura → $EDITOR → opencode run
+karnel voice text                 # Captura → $EDITOR → stdout
 karnel voice '!'                  # Atalho para "text"
 karnel voice claude-code --lang pt-BR  # Fala em português → claude`}
               language="bash"
@@ -164,7 +164,7 @@ karnel voice claude-code --lang pt-BR  # Fala em português → claude`}
                   <tr className="border-b border-border/50 hover:bg-accent/5 transition-colors">
                     <td className="p-3 font-mono">--raw</td>
                     <td className="p-3 text-muted-foreground">
-                      Skip code-server editing, use direct capture
+                      Skip editor review, use direct capture
                     </td>
                   </tr>
                   <tr className="border-b border-border/50 hover:bg-accent/5 transition-colors">
@@ -229,12 +229,6 @@ karnel voice claude-code --lang pt-BR  # Fala em português → claude`}
               </li>
               <li className="flex gap-2">
                 <span className="text-accent">•</span>{" "}
-                <strong>code-server:</strong>{" "}
-                <code className="text-accent">karnel install editor</code>{" "}
-                (opcional com <code className="text-accent">--raw</code>)
-              </li>
-              <li className="flex gap-2">
-                <span className="text-accent">•</span>{" "}
                 <strong>Microfone:</strong> permitir nas Config. Android &gt;
                 Apps &gt; Termux &gt; Permissões
               </li>
@@ -268,7 +262,7 @@ karnel voice claude-code --lang pt-BR  # Fala em português → claude`}
               </div>
               <div>
                 <h3 className="font-bold font-mono text-foreground mb-1">
-                  code-server não abre
+                  Editor não abre
                 </h3>
                 <p>
                   Use <code className="text-accent">--raw</code> para pular a

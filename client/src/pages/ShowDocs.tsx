@@ -17,10 +17,6 @@ const examples = [
     cmd: "karnel show osint --robin",
     desc: "Show responsible-use and Robin lifecycle documentation",
   },
-  {
-    cmd: "karnel show all --<tool>",
-    desc: "Search for a tool across all modules",
-  },
 ];
 
 const renderers = [
@@ -62,18 +58,12 @@ const modules = [
     tools: "code-server",
   },
   {
-    mod: "deploy",
-    cmd: "karnel show deploy --vercel",
-    tools: "vercel, railway, netlify",
-  },
-  {
     mod: "ui",
     cmd: "karnel show ui --font",
     tools: "font, cursor, extra-keys, banner",
   },
   { mod: "auto", cmd: "karnel show auto --n8n", tools: "n8n" },
   { mod: "osint", cmd: "karnel show osint --robin", tools: "robin" },
-  { mod: "voice", cmd: "karnel show voice --termux-api", tools: "termux-api" },
 ];
 
 export default function ShowDocs() {

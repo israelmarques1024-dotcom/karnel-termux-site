@@ -2,14 +2,14 @@ import CodeBlock from "@/components/CodeBlock";
 import { AnimatedSection } from "@/components/AnimatedSection";
 
 const commands = [
-  { cmd: "karnel brain add <text>", desc: "Save a new thought or idea" },
+  { cmd: "karnel brain save", desc: "Save a new memory interactively" },
   {
     cmd: "karnel brain search <query>",
-    desc: "Search memory with semantic AI",
+    desc: "Search memories by keywords or tags",
   },
   { cmd: "karnel brain list", desc: "List all saved entries" },
   { cmd: "karnel brain graph", desc: "Visualize idea connections as a graph" },
-  { cmd: "karnel brain clear", desc: "Clear all entries" },
+  { cmd: "karnel brain reset", desc: "Destroy the entire brain" },
 ];
 
 export default function Brain() {
@@ -21,7 +21,7 @@ export default function Brain() {
             karnel brain — Second Brain
           </h1>
           <p className="text-lg text-muted-foreground mb-8">
-            Sistema de memória integrado com busca por IA e visualização em
+             Sistema de memória local com busca por palavras-chave e visualização em
             grafo. Salve ideias, comandos, trechos de código e encontre tudo
             rapidamente.
           </p>
@@ -81,12 +81,12 @@ export default function Brain() {
         <div className="space-y-6 mb-12">
           {[
             {
-              code: `karnel brain add "Ideia: app de tarefas usando Electron + SQLite"`,
-              desc: "Salva uma ideia no cérebro.",
+               code: "karnel brain save",
+               desc: "Abre o fluxo interativo para salvar uma ideia no cérebro.",
             },
             {
               code: `karnel brain search "como configurar postgres"`,
-              desc: "Busca inteligente por contexto, não por palavra exata.",
+               desc: "Busca memórias por palavras-chave e tags.",
             },
             {
               code: `karnel brain graph`,
@@ -107,11 +107,10 @@ export default function Brain() {
           <div className="card-hover bg-card border border-border rounded-lg p-6">
             <p className="text-muted-foreground mb-4">
               O <code className="text-accent">karnel brain</code> armazena suas
-              entradas em um banco local (
-              <code className="text-accent">$KARNEL_DATA/brain/</code>) e usa
-              embeddings de IA para buscar por similaridade semântica. O grafo
-              mostra conexões entre ideias baseadas em palavras-chave e contexto
-              compartilhado.
+               entradas como arquivos Markdown em{" "}
+               <code className="text-accent">$KARNEL_DATA/brain/</code> e usa
+               busca local por palavras-chave e tags. O grafo mostra as relações
+               criadas entre memórias.
             </p>
           </div>
         </AnimatedSection>

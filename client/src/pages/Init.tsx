@@ -2,7 +2,7 @@ import CodeBlock from "@/components/CodeBlock";
 import { AnimatedSection } from "@/components/AnimatedSection";
 
 const templates = [
-  { name: "next", desc: "Next.js com Turbopack, TypeScript, Tailwind CSS" },
+  { name: "next", desc: "Next.js com webpack, TypeScript, Tailwind CSS" },
   { name: "react", desc: "React + Vite com estrutura moderna" },
   { name: "nest", desc: "NestJS com TypeORM e autenticação" },
   {
@@ -66,13 +66,12 @@ karnel init <template>          # Configures with specific template`}
           <h2 className="text-2xl font-bold font-mono mb-6">Example</h2>
           <div className="card-hover bg-card border border-border rounded-lg p-6">
             <CodeBlock
-              code={`mkdir meu-projeto && cd meu-projeto && karnel init next`}
+               code={`cd meu-projeto-next && karnel init next`}
               language="bash"
               title="terminal"
             />
             <p className="text-sm text-muted-foreground mt-3">
-              Creates a complete Next.js project with TypeScript and Tailwind
-              configured.
+               Configures an existing Next.js project with TypeScript and Tailwind.
             </p>
           </div>
         </AnimatedSection>

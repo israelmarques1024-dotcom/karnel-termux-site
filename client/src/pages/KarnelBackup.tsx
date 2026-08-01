@@ -18,11 +18,11 @@ const backupCommands = [
   },
   {
     cmd: "karnel backup --cloud",
-    desc: "Backup + upload to Google Drive (via rclone)",
+     desc: "Backup + upload via the configured rclone remote",
   },
   { cmd: "karnel restore", desc: "Restore most recent backup" },
   { cmd: "karnel restore <file>", desc: "Restore a specific backup file" },
-  { cmd: "karnel restore --cloud", desc: "Restore from Google Drive" },
+   { cmd: "karnel restore --cloud", desc: "Restore via the configured rclone remote" },
   { cmd: "karnel show backup", desc: "Show backup help in terminal" },
 ];
 
@@ -79,9 +79,9 @@ export default function KarnelBackupPage() {
             <h2 className="text-xl font-bold font-mono mb-4">Basic Usage</h2>
             <CodeBlock
               code={`karnel backup                    # Full local backup
-karnel backup --cloud           # Backup + upload to Google Drive
+karnel backup --cloud           # Backup + upload via rclone
 karnel restore                  # Restore most recent
-karnel restore --cloud          # Restore from Google Drive`}
+karnel restore --cloud          # Restore via rclone`}
               language="bash"
               title="terminal"
             />
@@ -120,7 +120,7 @@ karnel restore --cloud          # Restore from Google Drive`}
                   label: "APT",
                   desc: "sources.list repositories",
                 },
-                { icon: Cloud, label: "Cloud", desc: "Upload to Google Drive" },
+                { icon: Cloud, label: "Cloud", desc: "Upload via an rclone remote" },
               ].map(item => {
                 const Icon = item.icon;
                 return (
@@ -149,13 +149,13 @@ karnel restore --cloud          # Restore from Google Drive`}
             </h2>
             <p className="text-muted-foreground mb-4">
               Backup uses <strong>rclone</strong> — an open-source tool that
-              connects to Google Drive, Dropbox, OneDrive and others. Zero
-              server cost.
+               connects to Google Drive, Dropbox, OneDrive and other providers.
+               Configure a remote named <code>karnel</code> before using cloud backup.
             </p>
             <CodeBlock
               code={`karnel backup --cloud             # Primeira vez: instala rclone
 rclone config                     # Configura o remote "karnel"
-karnel backup --cloud             # Agora sobe pro Google Drive`}
+karnel backup --cloud             # Agora envia ao remote "karnel"`}
               language="bash"
               title="terminal"
             />
@@ -172,7 +172,7 @@ karnel backup --cloud             # Agora sobe pro Google Drive`}
             <CodeBlock
               code={`karnel restore                  # Restaura o backup mais recente
 karnel restore ~/backup.tar.gz   # Restaura um arquivo específico
-karnel restore --cloud           # Baixa do Google Drive e restaura`}
+karnel restore --cloud           # Baixa do remote "karnel" e restaura`}
               language="bash"
               title="terminal"
             />
