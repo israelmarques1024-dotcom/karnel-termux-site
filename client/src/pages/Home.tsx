@@ -335,8 +335,11 @@ export default function Home() {
               <span className="text-accent font-semibold">
                 {CATALOG_COUNTS.ai} AI tools
               </span>
-              , <span className="text-accent font-semibold">7 languages</span>,{" "}
-              <span className="text-accent font-semibold">5 databases</span>,{" "}
+              ,{" "}
+              <span className="text-accent font-semibold">
+                {CATALOG_COUNTS.lang} languages
+              </span>
+              , <span className="text-accent font-semibold">5 databases</span>,{" "}
               <span className="text-accent font-semibold">
                 {CATALOG_COUNTS.dev} tools
               </span>{" "}

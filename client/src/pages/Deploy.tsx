@@ -1,26 +1,8 @@
 import CodeBlock from "@/components/CodeBlock";
 import { AnimatedSection } from "@/components/AnimatedSection";
+import { DEPLOY_TOOLS } from "@/data/catalog";
 
-const tools = [
-  {
-    name: "Vercel",
-    bin: "vercel",
-    flag: "--vercel",
-    desc: "Frontend & serverless deploy",
-  },
-  {
-    name: "Railway",
-    bin: "railway",
-    flag: "--railway",
-    desc: "Full-stack with databases",
-  },
-  {
-    name: "Netlify",
-    bin: "netlify",
-    flag: "--netlify",
-    desc: "Static sites & edge functions",
-  },
-];
+const tools = DEPLOY_TOOLS.map(tool => ({ ...tool, bin: tool.flag.slice(2) }));
 
 export default function Deploy() {
   return (
@@ -29,8 +11,8 @@ export default function Deploy() {
         <AnimatedSection>
           <h1 className="text-4xl font-bold font-mono mb-4">Deploy CLIs</h1>
           <p className="text-lg text-muted-foreground mb-8">
-            Deploy to production directly from your phone. Vercel, Railway and
-            Netlify — all pre-configured and ready.
+            Deploy to production directly from your phone. Vercel, Railway,
+            Netlify, and Supabase are pre-configured and ready.
           </p>
         </AnimatedSection>
 
@@ -70,9 +52,9 @@ export default function Deploy() {
                   </tr>
                 </thead>
                 <tbody>
-                  {tools.map((tool, i) => (
+                  {tools.map(tool => (
                     <tr
-                      key={i}
+                      key={tool.flag}
                       className="border-b border-border hover:bg-accent/5 transition-colors"
                     >
                       <td className="py-3 px-4 font-mono font-bold">
@@ -107,9 +89,9 @@ export default function Deploy() {
                   {tool.name}
                 </h3>
                 <CodeBlock
-                  code={`${tool.bin} ${tool.name === "Railway" ? "up" : "deploy --prod"}`}
+                  code={`karnel install deploy ${tool.flag}`}
                   language="bash"
-                  title="terminal"
+                  title="install"
                 />
               </div>
             </AnimatedSection>

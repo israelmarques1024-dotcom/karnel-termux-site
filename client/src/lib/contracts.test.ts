@@ -1,4 +1,7 @@
 import { describe, expect, it } from "vitest";
+import { execFileSync } from "node:child_process";
+import { readFileSync } from "node:fs";
+import { resolve } from "node:path";
 import { APP_ROUTE_PATHS } from "@/App";
 import {
   AI_TOOLS,
@@ -15,6 +18,7 @@ import {
   SHELL_TOOLS,
   UI_TOOLS,
   UTILS_TOOLS,
+  SECURITY_TOOLS,
 } from "@/data/catalog";
 import { DOCUMENTATION_NAV, ROUTES, ROUTE_PATHS } from "@/lib/routes";
 
@@ -39,7 +43,7 @@ describe("site contracts", () => {
 
   it("matches the released Karnel registries", () => {
     expect(CATALOG_COUNTS).toEqual({
-      ai: 37,
+      ai: 39,
       dev: 22,
       network: 2,
       utils: 11,
@@ -51,7 +55,7 @@ describe("site contracts", () => {
       deploy: 4,
       npm: 11,
       shell: 10,
-      ui: 3,
+      ui: 4,
       games: 6,
       security: 30,
     });
@@ -79,8 +83,24 @@ describe("site contracts", () => {
       SHELL_TOOLS,
       UI_TOOLS,
       UTILS_TOOLS,
+      SECURITY_TOOLS,
     ]) {
       expect(new Set(tools.map(tool => tool.flag)).size).toBe(tools.length);
     }
+  });
+
+  it("does not overwrite the catalog when a source registry is unavailable", () => {
+    const root = process.cwd();
+    const script = resolve(root, "scripts/generate-catalog.mjs");
+    const catalog = resolve(root, "client/src/data/catalog.ts");
+    const before = readFileSync(catalog, "utf8");
+
+    expect(() =>
+      execFileSync(process.execPath, [script], {
+        env: { ...process.env, KARNEL_REPO_DIR: "/tmp/missing-karnel-source" },
+        stdio: "pipe",
+      })
+    ).toThrow();
+    expect(readFileSync(catalog, "utf8")).toBe(before);
   });
 });

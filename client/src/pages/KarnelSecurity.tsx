@@ -1,5 +1,6 @@
 import CodeBlock from "@/components/CodeBlock";
 import { AnimatedSection } from "@/components/AnimatedSection";
+import { SECURITY_TOOLS as tools } from "@/data/catalog";
 
 export default function KarnelSecurity() {
   return (
@@ -24,21 +25,39 @@ export default function KarnelSecurity() {
         </AnimatedSection>
 
         <AnimatedSection delay={150}>
-          <div className="card-hover bg-card border border-accent/50 rounded-lg p-6 mb-8">
-            <h3 className="font-bold font-mono mb-4">Available tools</h3>
-            <CodeBlock
-              code={`karnel install security --nmap
-karnel install security --hydra
-karnel install security --nikto
-karnel install security --sqlmap
-karnel install security --gobuster
-karnel install security --dirb
-karnel install security --wpscan
-karnel install security --john
-karnel install security --aircrack-ng
-karnel install security --metasploit`}
-              language="bash"
-            />
+          <div className="card-hover bg-card border border-border rounded-lg overflow-hidden mb-8">
+            <div className="overflow-x-auto">
+              <table className="w-full text-sm">
+                <thead>
+                  <tr className="border-b border-border bg-secondary/30">
+                    <th className="text-left py-3 px-4 font-mono">Tool</th>
+                    <th className="text-left py-3 px-4 font-mono">Flag</th>
+                    <th className="text-left py-3 px-4 font-mono">Install</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {tools.map(tool => (
+                    <tr
+                      key={tool.flag}
+                      className="border-b border-border hover:bg-accent/5 transition-colors"
+                    >
+                      <td className="py-3 px-4 font-mono font-bold text-xs sm:text-sm">
+                        {tool.name}
+                      </td>
+                      <td className="py-3 px-4 text-accent font-mono text-xs">
+                        {tool.flag}
+                      </td>
+                      <td className="py-3 px-4">
+                        <CodeBlock
+                          code={`karnel install security ${tool.flag}`}
+                          language="bash"
+                        />
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
           </div>
         </AnimatedSection>
 

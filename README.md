@@ -32,7 +32,8 @@ Created by **Israel Marques**.
 ## Features
 
 - **Documentation** for all CLI commands and modules, including Robin OSINT
-- **AI tools page** — Browse and install 31 agents, gateways, and developer utilities
+- **AI tools page** — Browse and install 39 agents, gateways, and developer utilities
+- **CLI-synchronized catalog** — Install flags and counts are generated from the Karnel CLI registries
 - **Interactive guides** — Doctor checks, PostgreSQL, voice commands, and more
 - **Responsive** — Works on mobile and desktop
 - **Dark theme** — Easy on the eyes
@@ -42,7 +43,7 @@ Created by **Israel Marques**.
 | Page           | Route             | Description                                                   |
 | -------------- | ----------------- | ------------------------------------------------------------- |
 | Home           | `/`               | Landing page with overview                                    |
-| AI Tools       | `/karnel/ai`      | 31 agents, gateways, and developer utilities                  |
+| AI Tools       | `/karnel/ai`      | 39 agents, gateways, and developer utilities                  |
 | Brain          | `/karnel/brain`   | Second brain memory system docs                               |
 | Code Editor    | `/karnel/editor`  | code-server (VS Code in browser)                              |
 | Deploy         | `/karnel/deploy`  | Deployment guides for Vercel, Railway, Netlify                |
@@ -53,7 +54,7 @@ Created by **Israel Marques**.
 | Karnel Backup  | `/karnel/backup`  | Backup and restore                                            |
 | Karnel Cleanup | `/karnel/cleanup` | Cache and temp cleanup                                        |
 | Karnel DB      | `/karnel/db`      | Database module (PostgreSQL, MariaDB, SQLite, MongoDB, Redis) |
-| Karnel Dev     | `/karnel/dev`     | 32 development tools                                          |
+| Karnel Dev     | `/karnel/dev`     | 22 development tools                                          |
 | Karnel Docs    | `/karnel`         | Documentation system                                          |
 | Karnel Lang    | `/karnel/lang`    | Languages (Node.js, Python, Go, Rust, C/C++, PHP, Perl)       |
 | Karnel Npm     | `/karnel/npm`     | Global npm packages                                           |
@@ -85,6 +86,9 @@ Created by **Israel Marques**.
 
 ## Run Locally
 
+The supported development runtime is Node.js 24 with pnpm 10.15.1, as pinned by
+`package.json` and `pnpm-lock.yaml`.
+
 ```bash
 pnpm install
 pnpm dev
@@ -98,6 +102,31 @@ Open http://localhost:3000 in your browser.
 pnpm build
 pnpm preview
 ```
+
+### Synchronize The Catalog
+
+The catalog in `client/src/data/catalog.ts` is generated. Do not edit it by hand.
+To refresh it from the published CLI registry:
+
+```bash
+node scripts/generate-catalog.mjs
+```
+
+To generate from a local CLI checkout before it is published:
+
+```bash
+KARNEL_REPO_DIR=/path/to/karnel-termux node scripts/generate-catalog.mjs
+```
+
+After generating, run the full verification suite:
+
+```bash
+pnpm format:check
+pnpm check
+```
+
+The site reads only public CLI metadata. Never place GitHub, npm, Vercel, Puter,
+or other service tokens in source files, generated catalog data, or documentation.
 
 ---
 
