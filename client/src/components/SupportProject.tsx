@@ -1,42 +1,10 @@
 import { useState, useCallback, useRef, useEffect } from "react";
 import QRCode from "qrcode";
 
-const PIX_KEY = (import.meta.env.VITE_PIX_KEY as string) || "";
+const PIX_COPY_AND_PASTE =
+  "00020126220014br.gov.bcb.pix01005204000053039865802BR5913KARNEL TERMUX6009SAO PAULO62100506DOACAO63046141";
 
-// ===== EMV Payload (for QR code — required by ALL Brazilian bank apps) =====
-function crc16(str: string): string {
-  const table = new Uint16Array(256);
-  for (let i = 0; i < 256; i++) {
-    let c = i;
-    for (let j = 0; j < 8; j++) {
-      c = c & 1 ? (c >> 1) ^ 0x8408 : c >> 1;
-    }
-    table[i] = c;
-  }
-  let crc = 0xffff;
-  for (let i = 0; i < str.length; i++) {
-    crc = (crc >> 8) ^ table[(crc ^ str.charCodeAt(i)) & 0xff];
-  }
-  return (crc ^ 0xffff).toString(16).toUpperCase().padStart(4, "0");
-}
-
-const tlv = (tag: string, val: string): string =>
-  tag + val.length.toString().padStart(2, "0") + val;
-
-const PIX_EMV = (() => {
-  const merchant = tlv("26", tlv("00", "br.gov.bcb.pix") + tlv("01", PIX_KEY));
-  const body =
-    tlv("00", "01") +
-    merchant +
-    tlv("52", "0000") +
-    tlv("53", "986") +
-    tlv("58", "BR") +
-    tlv("59", "KARNEL TERMUX") +
-    tlv("60", "SAO PAULO") +
-    tlv("62", tlv("05", "DOACAO")) +
-    "6304";
-  return body + crc16(body);
-})();
+const PIX_EMV = PIX_COPY_AND_PASTE;
 
 // ===== Clipboard =====
 async function copy(text: string): Promise<boolean> {
@@ -94,7 +62,7 @@ export default function SupportProject() {
       clearTimeout(timerRef.current);
       timerRef.current = null;
     }
-    const ok = await copy(PIX_KEY);
+    const ok = await copy(PIX_COPY_AND_PASTE);
     setSt(ok ? "copied" : "error");
     timerRef.current = setTimeout(
       () => {
@@ -170,9 +138,9 @@ export default function SupportProject() {
               <div className="flex-1 h-px bg-gradient-to-r from-transparent via-white/[0.06] to-transparent" />
             </div>
 
-            {/* Pix key */}
+            {/* Pix copy-and-paste code */}
             <div className="flex flex-col items-center gap-3">
-              <p className="text-xs text-gray-600">Copie a chave Pix:</p>
+              <p className="text-xs text-gray-600">Pix Copia e Cola:</p>
 
               <div
                 onClick={() => doCopy()}
@@ -184,13 +152,13 @@ export default function SupportProject() {
                 }}
                 role="button"
                 tabIndex={0}
-                aria-label="Copiar chave Pix"
-                className="w-full px-4 py-3.5 rounded-xl bg-gray-800/60 border border-white/[0.06] text-center font-mono text-sm text-cyan-300/90 select-all cursor-pointer hover:border-purple-500/40 hover:bg-gray-800/80 transition-colors"
+                aria-label="Copiar codigo Pix"
+                className="w-full px-4 py-3.5 rounded-xl bg-gray-800/60 border border-white/[0.06] text-center font-mono text-xs text-cyan-300/90 break-all select-all cursor-pointer hover:border-purple-500/40 hover:bg-gray-800/80 transition-colors"
               >
                 <span className="text-gray-600 text-xs mr-2 select-none">
-                  chave:
+                  codigo:
                 </span>
-                {PIX_KEY}
+                {PIX_COPY_AND_PASTE}
               </div>
 
               <button
@@ -244,14 +212,14 @@ export default function SupportProject() {
                         d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"
                       />
                     </svg>{" "}
-                    Copiar chave Pix
+                    Copiar codigo Pix
                   </>
                 )}
               </button>
 
               {st === "error" && (
                 <p className="text-xs text-gray-600 text-center">
-                  Copia automática indisponível. Selecione a chave acima e use
+                  Copia automática indisponível. Selecione o codigo acima e use
                   Ctrl+C / Cmd+C.
                 </p>
               )}

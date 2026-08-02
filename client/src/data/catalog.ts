@@ -23,6 +23,7 @@ export const AI_TOOLS = [
   { name: "Hermes Agent", flag: "--hermes-agent", desc: "" },
   { name: "Kimi Code", flag: "--kimi-code", desc: "" },
   { name: "Command Code", flag: "--command-code", desc: "" },
+  { name: "Codebuff", flag: "--codebuff", desc: "" },
   { name: "Freebuff", flag: "--freebuff", desc: "" },
   { name: "Kilo Code CLI", flag: "--kilocode-cli", desc: "" },
   { name: "Kiro CLI", flag: "--kiro", desc: "" },
