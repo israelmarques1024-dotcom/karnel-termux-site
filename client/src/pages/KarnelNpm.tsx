@@ -63,10 +63,10 @@ const packages = [
     desc: "Public tunnels for localhost",
   },
   {
-    name: "Turbopack",
+    name: "Next.js Turbopack",
     flag: "--turbopack",
-    bin: "turbo",
-    desc: "Extremely fast Rust bundler",
+    bin: "next-turbopack dev",
+    desc: "Run Next.js with the bundled glibc Node.js runtime",
   },
 ];
 

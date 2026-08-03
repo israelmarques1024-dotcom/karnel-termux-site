@@ -66,12 +66,13 @@ karnel init <template>          # Configures with specific template`}
           <h2 className="text-2xl font-bold font-mono mb-6">Example</h2>
           <div className="card-hover bg-card border border-border rounded-lg p-6">
             <CodeBlock
-               code={`cd meu-projeto-next && karnel init next`}
+              code={`cd meu-projeto-next && karnel init next`}
               language="bash"
               title="terminal"
             />
             <p className="text-sm text-muted-foreground mt-3">
-               Configures an existing Next.js project with TypeScript and Tailwind.
+              Configures an existing Next.js project with TypeScript and
+              Tailwind.
             </p>
           </div>
         </AnimatedSection>

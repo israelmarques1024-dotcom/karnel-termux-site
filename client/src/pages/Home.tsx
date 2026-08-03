@@ -103,7 +103,7 @@ const features = [
     href: ROUTES.editor,
     icon: <Terminal size={22} />,
     title: "VS Code Editor",
-    desc: "code-server (VS Code in browser) for 20+ languages. Copilot included.",
+    desc: "code-server provides VS Code in the browser for Termux.",
   },
   {
     href: ROUTES.linux,
@@ -115,7 +115,7 @@ const features = [
     href: ROUTES.brain,
     icon: <Brain size={22} />,
     title: "Second Brain",
-    desc: "Integrated memory with AI search and idea graph.",
+    desc: "Local memory with keyword/tag search, AI questions, and an idea graph.",
   },
   {
     href: ROUTES.deploy,
@@ -133,7 +133,7 @@ const features = [
     href: ROUTES.show,
     icon: <Eye size={22} />,
     title: "karnel show",
-    desc: "View any tool documentation without leaving terminal.",
+    desc: "View tool documentation that ships with a README without leaving terminal.",
   },
   {
     href: ROUTES.voice,
@@ -151,7 +151,7 @@ const features = [
     href: ROUTES.init,
     icon: <Puzzle size={22} />,
     title: "karnel init",
-    desc: "Create Next.js, Express and other projects in seconds.",
+    desc: "Configure and detect existing Next.js, Express and other projects.",
   },
   {
     href: ROUTES.env,

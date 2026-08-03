@@ -16,12 +16,12 @@ export default function KarnelPlugin() {
           <div className="card-hover bg-card border border-accent/50 rounded-lg p-6 mb-8">
             <h3 className="font-bold font-mono mb-4">Install a plugin</h3>
             <CodeBlock
-               code="karnel plugin install <approved-name>"
+              code="karnel plugin install <approved-name>"
               language="bash"
               title="terminal"
             />
             <p className="text-sm text-muted-foreground mt-2">
-               Installs an approved plugin from the official registry.
+              Installs an approved plugin from the official registry.
             </p>
           </div>
         </AnimatedSection>
@@ -30,7 +30,7 @@ export default function KarnelPlugin() {
           <div className="card-hover bg-card border border-accent/50 rounded-lg p-6 mb-8">
             <h3 className="font-bold font-mono mb-4">Plugin commands</h3>
             <CodeBlock
-               code={`karnel plugin install <approved-name>       Install an approved plugin
+              code={`karnel plugin install <approved-name>       Install an approved plugin
 karnel plugin install <user/repo> --unsafe  Install an unapproved GitHub plugin
 karnel plugin remove <name>      Uninstall a plugin
 karnel plugin update <name>      Update a plugin
@@ -38,13 +38,14 @@ karnel plugin list               List installed plugins
 karnel plugin create <name>      Scaffold a new plugin`}
               language="bash"
             />
-           </div>
-         </AnimatedSection>
+          </div>
+        </AnimatedSection>
 
         <AnimatedSection delay={175}>
           <p className="text-sm text-muted-foreground mb-8">
             Unapproved repositories require <code>--unsafe</code> and an
-            interactive confirmation because plugins run with your user permissions.
+            interactive confirmation because plugins run with your user
+            permissions.
           </p>
         </AnimatedSection>
 
@@ -59,7 +60,7 @@ karnel plugin create <name>      Scaffold a new plugin`}
               language="bash"
             />
             <p className="text-sm text-muted-foreground mt-2">
-               Creates <code>$KARNEL_DATA/plugins/my-plugin/</code>
+              Creates <code>$KARNEL_DATA/plugins/my-plugin/</code>
             </p>
           </div>
         </AnimatedSection>

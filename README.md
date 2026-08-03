@@ -105,8 +105,9 @@ pnpm preview
 
 ### Synchronize The Catalog
 
-The catalog in `client/src/data/catalog.ts` is generated. Do not edit it by hand.
-To refresh it from the published CLI registry:
+The catalog in `client/src/data/catalog.ts` is generated from the pinned CLI
+revision declared in `scripts/generate-catalog.mjs`. Do not edit it by hand.
+To refresh it from that published CLI revision:
 
 ```bash
 node scripts/generate-catalog.mjs

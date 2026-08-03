@@ -1,5 +1,6 @@
 import { Check, X, Lock, Zap, Shield, Wrench } from "lucide-react";
 import { AnimatedSection } from "@/components/AnimatedSection";
+import { CATALOG_COUNTS } from "@/data/catalog";
 
 const features = [
   {
@@ -27,7 +28,10 @@ const features = [
 const comparisons = [
   { feature: "Configuração com um comando", termux: false },
   { feature: "Sistema de módulos & CLI framework", termux: false },
-  { feature: "30 agentes de IA pré-configurados", termux: false },
+  {
+    feature: `${CATALOG_COUNTS.ai} agentes de IA pré-configurados`,
+    termux: false,
+  },
   { feature: "code-server (VS Code no navegador)", termux: false },
   { feature: "ZSH + plugins + memória persistente", termux: false },
   { feature: "Deploy direto (Vercel, Railway, Netlify)", termux: false },

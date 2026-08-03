@@ -4,7 +4,7 @@ import { AnimatedSection } from "@/components/AnimatedSection";
 const stacks = [
   {
     name: "Node.js",
-    desc: "JavaScript/TypeScript runtime — v22 LTS",
+    desc: "JavaScript/TypeScript runtime — Node.js LTS",
     pkg: "nodejs",
   },
   { name: "Python", desc: "Python 3.12 with pip and venv", pkg: "python" },

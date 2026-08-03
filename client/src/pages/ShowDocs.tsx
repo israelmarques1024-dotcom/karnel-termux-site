@@ -29,7 +29,7 @@ const modules = [
   {
     mod: "ai",
     cmd: "karnel show ai --opencode",
-    tools: "opencode, ollama, claude, gemini",
+    tools: "opencode, ollama, claude-code, gemini-cli",
   },
   {
     mod: "lang",
@@ -73,9 +73,9 @@ export default function ShowDocs() {
         <AnimatedSection>
           <h1 className="text-4xl font-bold font-mono mb-4">karnel show</h1>
           <p className="text-lg text-muted-foreground mb-8">
-            Displays README documentation for any tool installed via Karnel.
-            Supports rendering via glow (when available), pygmentize, or plain
-            cat.
+            Displays README documentation for tools that ship documentation with
+            Karnel. Supports rendering via glow (when available), pygmentize, or
+            plain cat.
           </p>
         </AnimatedSection>
 

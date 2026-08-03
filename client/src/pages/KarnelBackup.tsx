@@ -18,11 +18,14 @@ const backupCommands = [
   },
   {
     cmd: "karnel backup --cloud",
-     desc: "Backup + upload via the configured rclone remote",
+    desc: "Backup + upload via the configured rclone remote",
   },
   { cmd: "karnel restore", desc: "Restore most recent backup" },
   { cmd: "karnel restore <file>", desc: "Restore a specific backup file" },
-   { cmd: "karnel restore --cloud", desc: "Restore via the configured rclone remote" },
+  {
+    cmd: "karnel restore --cloud",
+    desc: "Restore via the configured rclone remote",
+  },
   { cmd: "karnel show backup", desc: "Show backup help in terminal" },
 ];
 
@@ -120,7 +123,11 @@ karnel restore --cloud          # Restore via rclone`}
                   label: "APT",
                   desc: "sources.list repositories",
                 },
-                { icon: Cloud, label: "Cloud", desc: "Upload via an rclone remote" },
+                {
+                  icon: Cloud,
+                  label: "Cloud",
+                  desc: "Upload via an rclone remote",
+                },
               ].map(item => {
                 const Icon = item.icon;
                 return (
@@ -149,8 +156,9 @@ karnel restore --cloud          # Restore via rclone`}
             </h2>
             <p className="text-muted-foreground mb-4">
               Backup uses <strong>rclone</strong> — an open-source tool that
-               connects to Google Drive, Dropbox, OneDrive and other providers.
-               Configure a remote named <code>karnel</code> before using cloud backup.
+              connects to Google Drive, Dropbox, OneDrive and other providers.
+              Configure a remote named <code>karnel</code> before using cloud
+              backup.
             </p>
             <CodeBlock
               code={`karnel backup --cloud             # Primeira vez: instala rclone

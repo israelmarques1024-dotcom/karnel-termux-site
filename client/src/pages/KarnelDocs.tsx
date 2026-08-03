@@ -223,8 +223,8 @@ export default function KarnelDocs() {
         {[
           {
             title: "karnel backup",
-             desc: "Full Termux backup — saves configs, installed packages, and Karnel tools to an archive. Optional upload through the configured rclone remote.",
-             code: `karnel backup                    # Local backup (configs + packages + tools)\nkarnel backup --cloud           # Backup + upload via rclone\nkarnel restore                  # Restore latest backup\nkarnel restore --cloud          # Restore via rclone`,
+            desc: "Full Termux backup — saves configs, installed packages, and Karnel tools to an archive. Optional upload through the configured rclone remote.",
+            code: `karnel backup                    # Local backup (configs + packages + tools)\nkarnel backup --cloud           # Backup + upload via rclone\nkarnel restore                  # Restore latest backup\nkarnel restore --cloud          # Restore via rclone`,
             extra: {
               label: "Backup includes:",
               code: "• Full package list (dpkg)\n• Karnel tools manifest\n• Shell configs (.bashrc, .zshrc, .profile)\n• Termux settings (fonts, colors)\n• SSH keys\n• App configs (~/.config)\n• APT repositories",
@@ -241,8 +241,8 @@ export default function KarnelDocs() {
           },
           {
             title: "karnel voice",
-             desc: "Capture voice from microphone, review in $EDITOR (nano by default), and trigger any AI agent. Supports 15 agents, language selection, raw mode, and auto-clipboard.",
-             code: `karnel voice                     # Show help\nkarnel voice opencode             # Capture → $EDITOR → opencode run\nkarnel voice text                 # Capture → $EDITOR → stdout\nkarnel voice '!'                  # Shortcut for "text"\nkarnel voice claude-code --lang en-US  # English → claude\nkarnel voice opencode --raw       # Direct capture, no editing`,
+            desc: "Capture voice from microphone, review in $EDITOR (nano by default), and trigger any AI agent. Supports 14 agents plus text mode, language selection, raw mode, and auto-clipboard.",
+            code: `karnel voice                     # Show help\nkarnel voice opencode             # Capture → $EDITOR → opencode run\nkarnel voice text                 # Capture → $EDITOR → stdout\nkarnel voice '!'                  # Shortcut for "text"\nkarnel voice claude-code --lang en-US  # English → claude\nkarnel voice opencode --raw       # Direct capture, no editing`,
           },
           {
             title: "karnel open",

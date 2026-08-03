@@ -21,8 +21,8 @@ export default function Brain() {
             karnel brain — Second Brain
           </h1>
           <p className="text-lg text-muted-foreground mb-8">
-             Sistema de memória local com busca por palavras-chave e visualização em
-            grafo. Salve ideias, comandos, trechos de código e encontre tudo
+            Sistema de memória local com busca por palavras-chave e visualização
+            em grafo. Salve ideias, comandos, trechos de código e encontre tudo
             rapidamente.
           </p>
         </AnimatedSection>
@@ -81,12 +81,12 @@ export default function Brain() {
         <div className="space-y-6 mb-12">
           {[
             {
-               code: "karnel brain save",
-               desc: "Abre o fluxo interativo para salvar uma ideia no cérebro.",
+              code: "karnel brain save",
+              desc: "Abre o fluxo interativo para salvar uma ideia no cérebro.",
             },
             {
               code: `karnel brain search "como configurar postgres"`,
-               desc: "Busca memórias por palavras-chave e tags.",
+              desc: "Busca memórias por palavras-chave e tags.",
             },
             {
               code: `karnel brain graph`,
@@ -107,10 +107,10 @@ export default function Brain() {
           <div className="card-hover bg-card border border-border rounded-lg p-6">
             <p className="text-muted-foreground mb-4">
               O <code className="text-accent">karnel brain</code> armazena suas
-               entradas como arquivos Markdown em{" "}
-               <code className="text-accent">$KARNEL_DATA/brain/</code> e usa
-               busca local por palavras-chave e tags. O grafo mostra as relações
-               criadas entre memórias.
+              entradas como arquivos Markdown em{" "}
+              <code className="text-accent">$KARNEL_DATA/brain/</code> e usa
+              busca local por palavras-chave e tags. O grafo mostra as relações
+              criadas entre memórias.
             </p>
           </div>
         </AnimatedSection>

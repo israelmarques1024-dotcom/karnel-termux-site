@@ -52,9 +52,9 @@ export default function Voice() {
             karnel voice — Speech-to-Agent
           </h1>
           <p className="text-lg text-muted-foreground mb-8">
-            Capture áudio pelo microfone, revise no editor configurado, copie para a
-            área de transferência e dispare qualquer agente de IA com o prompt
-            transcrito. Tudo em um comando.
+            Capture áudio pelo microfone, revise no editor configurado, copie
+            para a área de transferência e dispare qualquer agente de IA com o
+            prompt transcrito. Tudo em um comando.
           </p>
         </AnimatedSection>
 
@@ -100,7 +100,7 @@ karnel voice claude-code --lang pt-BR  # Fala em português → claude`}
 
         <AnimatedSection delay={600}>
           <h2 className="text-2xl font-bold font-mono mb-6">
-            Agentes Suportados (15)
+            14 Agentes + Modo Texto
           </h2>
         </AnimatedSection>
 
