@@ -32,7 +32,7 @@ Created by **Israel Marques**.
 ## Features
 
 - **Documentation** for all CLI commands and modules, including Robin OSINT
-- **AI tools page** — Browse and install 39 agents, gateways, and developer utilities
+- **AI tools page** — Browse and install 41 agents, gateways, and developer utilities
 - **CLI-synchronized catalog** — Install flags and counts are generated from the Karnel CLI registries
 - **Interactive guides** — Doctor checks, PostgreSQL, voice commands, and more
 - **Responsive** — Works on mobile and desktop
@@ -43,7 +43,7 @@ Created by **Israel Marques**.
 | Page           | Route             | Description                                                   |
 | -------------- | ----------------- | ------------------------------------------------------------- |
 | Home           | `/`               | Landing page with overview                                    |
-| AI Tools       | `/karnel/ai`      | 39 agents, gateways, and developer utilities                  |
+| AI Tools       | `/karnel/ai`      | 41 agents, gateways, and developer utilities                  |
 | Brain          | `/karnel/brain`   | Second brain memory system docs                               |
 | Code Editor    | `/karnel/editor`  | code-server (VS Code in browser)                              |
 | Deploy         | `/karnel/deploy`  | Deployment guides for Vercel, Railway, Netlify                |

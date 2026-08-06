@@ -36,6 +36,7 @@ export const AI_TOOLS = [
   { name: "OpenSpec SDD Framework", flag: "--openspec", desc: "" },
   { name: "Supercode CLI", flag: "--supercode-cli", desc: "" },
   { name: "Puter CLI", flag: "--puter", desc: "" },
+  { name: "KeelCode", flag: "--keelcode", desc: "Hosted coding-agent CLI" },
   { name: "Copilot-Termux", flag: "--copilot-termux", desc: "" },
   { name: "Qoder", flag: "--qoder", desc: "" },
   { name: "AMP Code CLI", flag: "--ampcode", desc: "" },
@@ -123,6 +124,7 @@ export const UTILS_TOOLS = [
     flag: "--qrcode",
     desc: "Generate QR codes from URLs and text",
   },
+  { name: "Superfile", flag: "--superfile", desc: "Terminal file manager" },
 ] as const;
 
 export const OSINT_TOOLS = [
