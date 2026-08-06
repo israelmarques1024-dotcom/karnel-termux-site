@@ -4,7 +4,7 @@ import { fileURLToPath } from "url";
 import { format } from "prettier";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
-const KARNEL_REF = "cf53c3ff0892e375232258e9c2a18788c17cc864";
+const KARNEL_REF = "f46ca4fe3c1923872e45040ed3042a40fd612c4f";
 const GITHUB_RAW = `https://raw.githubusercontent.com/israelmarques1024-dotcom/karnel-termux/${KARNEL_REF}`;
 const LOCAL_KARNEL_ROOT = process.env.KARNEL_REPO_DIR;
 const CHECK = process.argv.includes("--check");
@@ -78,7 +78,9 @@ function parseAIRegistry(text) {
 
 function lookupDescriptions(category) {
   const descs = {
-    ai: {},
+    ai: {
+      keelcode: "Hosted coding-agent CLI",
+    },
     dev: {
       gh: "Manage GitHub from the terminal",
       wget: "Network downloader",
@@ -180,6 +182,7 @@ function lookupDescriptions(category) {
       applaunch: "Launch installed applications",
       splash: "Customize the startup splash",
       qrcode: "Generate QR codes from URLs and text",
+      superfile: "Terminal file manager",
     },
     osint: {
       robin:
