@@ -2,12 +2,13 @@ import CodeBlock from "@/components/CodeBlock";
 import { AnimatedSection } from "@/components/AnimatedSection";
 
 const commands = [
+  { cmd: "karnel brain init", desc: "Initialize the local memory store" },
   { cmd: "karnel brain save", desc: "Save a new memory interactively" },
   {
     cmd: "karnel brain search <query>",
     desc: "Search memories by keywords or tags",
   },
-  { cmd: "karnel brain list", desc: "List all saved entries" },
+  { cmd: "karnel brain ls", desc: "List all saved entries" },
   { cmd: "karnel brain graph", desc: "Visualize idea connections as a graph" },
   { cmd: "karnel brain reset", desc: "Destroy the entire brain" },
 ];
@@ -81,8 +82,8 @@ export default function Brain() {
         <div className="space-y-6 mb-12">
           {[
             {
-              code: "karnel brain save",
-              desc: "Abre o fluxo interativo para salvar uma ideia no cérebro.",
+              code: "karnel brain init",
+              desc: "Inicializa o armazenamento local antes de salvar ou buscar memórias.",
             },
             {
               code: `karnel brain search "como configurar postgres"`,

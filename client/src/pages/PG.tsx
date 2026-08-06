@@ -27,6 +27,10 @@ karnel pg status                # Check status
 karnel pg init                  # Initialize database
 karnel pg create <name>         # Create database
 karnel pg drop <name>           # Drop database
+karnel pg backup [name]         # Create a compressed backup
+karnel pg restore [name] [file] # Restore a backup
+karnel pg list-backups          # List available backups
+karnel pg schedule              # Schedule automatic backups
 karnel pg list                  # List databases
 karnel pg shell                 # Open psql console`}
               language="bash"
@@ -39,13 +43,18 @@ karnel pg shell                 # Open psql console`}
           <h2 className="text-2xl font-bold font-mono mb-6">Quick Example</h2>
           <div className="card-hover bg-card border border-border rounded-lg p-6 mb-12">
             <CodeBlock
-              code={`karnel pg init && karnel pg start && karnel pg create myapp`}
+              code={`karnel pg init
+karnel pg start
+psql -d postgres -c "CREATE ROLE postgres LOGIN SUPERUSER;"
+karnel pg create myapp`}
               language="bash"
               title="terminal"
             />
             <p className="text-sm text-muted-foreground mt-3">
-              Initializes PostgreSQL, starts the server, and creates a database
-              called "myapp".
+              <code>initdb</code> creates a superuser role named for your OS
+              user. Karnel connects as <code>postgres</code>, so, after the
+              server starts, create that role with the command above if it does
+              not already exist, then create the <code>myapp</code> database.
             </p>
           </div>
         </AnimatedSection>

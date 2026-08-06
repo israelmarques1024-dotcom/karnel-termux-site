@@ -33,9 +33,10 @@ export default function KarnelPlugin() {
               code={`karnel plugin install <approved-name>       Install an approved plugin
 karnel plugin install <user/repo> --unsafe  Install an unapproved GitHub plugin
 karnel plugin remove <name>      Uninstall a plugin
-karnel plugin update <name>      Update a plugin
-karnel plugin list               List installed plugins
-karnel plugin create <name>      Scaffold a new plugin`}
+ karnel plugin update <name>      Update a plugin
+ karnel plugin list               List installed plugins
+ karnel plugin search --compatible Search approved compatible plugins
+ karnel plugin create <name>      Scaffold a new plugin`}
               language="bash"
             />
           </div>
@@ -45,7 +46,8 @@ karnel plugin create <name>      Scaffold a new plugin`}
           <p className="text-sm text-muted-foreground mb-8">
             Unapproved repositories require <code>--unsafe</code> and an
             interactive confirmation because plugins run with your user
-            permissions.
+            permissions. Approved registry metadata is reviewed, but plugins are
+            Bash code and are not sandboxed.
           </p>
         </AnimatedSection>
 
@@ -73,11 +75,14 @@ karnel plugin create <name>      Scaffold a new plugin`}
             </p>
             <CodeBlock
               code={`{
+  "schemaVersion": 1,
   "name": "my-plugin",
   "version": "1.0.0",
   "description": "My awesome plugin",
   "commands": ["hello"],
-  "tools": []
+  "minKarnelVersion": "4.13.7",
+  "license": "MIT",
+  "capabilities": []
 }`}
               language="json"
             />
