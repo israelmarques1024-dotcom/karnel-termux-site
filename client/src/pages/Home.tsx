@@ -399,7 +399,7 @@ export default function Home() {
               Install In <span className="text-gradient">One Line</span>
             </h2>
             <p className="text-muted-foreground">
-              No dependencies. No bloat. Pure development power.
+              No manual prerequisites. No bloat. Pure development power.
             </p>
           </AnimatedSection>
 

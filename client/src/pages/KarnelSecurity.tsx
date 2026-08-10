@@ -78,11 +78,11 @@ nikto -h https://target.com
 sqlmap -u "https://target.com/page?id=1"
 
 # Directory enumeration
-gobuster dir -u https://target.com -w /usr/share/wordlists/dirb/common.txt`}
+gobuster dir -u https://target.com -w ~/wordlists/common.txt`}
               language="bash"
             />
             <p className="text-sm text-muted-foreground mt-2">
-              These tools are for authorized security testing only.
+              Provide your own wordlist path. These tools are for authorized security testing only.
             </p>
           </div>
         </AnimatedSection>

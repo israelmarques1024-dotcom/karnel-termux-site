@@ -271,7 +271,7 @@ export default function KarnelDocs() {
           {
             title: "karnel open",
             desc: "Open official documentation in browser.",
-            code: `karnel open                     # Show help\nkarnel open <target>            # Open official docs in browser\nkarnel open karnel                # Opens https://karneltermux.vercel.app`,
+            code: `karnel open                     # Show help\nkarnel open <target>            # Open official docs in browser\nkarnel open karnel                # Opens https://karneltermux.vercel.app/karnel`,
             extra: { label: null, code: null },
           },
           {
