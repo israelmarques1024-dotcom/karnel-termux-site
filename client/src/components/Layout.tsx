@@ -11,6 +11,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
   const mainRef = useRef<HTMLElement>(null);
   const sidebarRef = useRef<HTMLElement>(null);
   const menuButtonRef = useRef<HTMLButtonElement>(null);
+  const isHome = location === ROUTES.home;
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -106,7 +107,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         ref={sidebarRef}
         id="mobile-navigation"
         aria-label="Main navigation"
-        className={`fixed left-0 top-0 z-40 h-screen bg-sidebar border-r border-sidebar-border transition-all duration-300 lg:relative lg:translate-x-0 ${
+        className={`fixed left-0 top-0 z-40 h-screen border-r border-sidebar-border/70 bg-sidebar/95 shadow-2xl shadow-black/20 backdrop-blur-xl transition-all duration-300 lg:relative lg:translate-x-0 lg:shadow-none ${
           sidebarOpen
             ? "translate-x-0 visible"
             : "-translate-x-full invisible lg:visible"
@@ -116,7 +117,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           {/* Logo */}
           <Link
             href={ROUTES.home}
-            className="flex items-center gap-3 mb-8 hover:opacity-90 transition-all duration-300 group"
+            className="group mb-8 flex items-center gap-3 rounded-2xl border border-transparent p-2 -m-2 transition-all duration-300 hover:border-accent/20 hover:bg-accent/5"
           >
             <img
               src="/karnel-logo.png"
@@ -136,11 +137,11 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           {/* Search */}
           <button
             onClick={() => setSearchOpen(true)}
-            className="flex w-full items-center gap-3 rounded-md border border-border px-3 py-2 text-sm text-muted-foreground hover:bg-accent/50 hover:text-accent-foreground mb-4 transition-colors"
+            className="mb-4 flex w-full items-center gap-3 rounded-xl border border-border/80 bg-card/45 px-3 py-2.5 text-sm text-muted-foreground shadow-inner shadow-black/10 transition-all hover:border-accent/30 hover:bg-accent/10 hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/60"
           >
             <Search className="h-4 w-4" />
             <span className="flex-1 text-left">Search tools...</span>
-            <kbd className="hidden rounded-md border border-border px-1.5 py-0.5 text-xs sm:inline-block">
+            <kbd className="hidden rounded-md border border-border bg-background/70 px-1.5 py-0.5 text-xs sm:inline-block">
               ⌘K
             </kbd>
           </button>
@@ -154,10 +155,10 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                 <Link
                   key={item.href}
                   href={item.href || "/"}
-                  className={`block px-4 py-2.5 rounded-md transition-all duration-200 font-mono text-sm font-medium ${
+                  className={`block rounded-xl px-4 py-2.5 font-mono text-sm font-medium transition-all duration-200 ${
                     isActive
-                      ? "bg-gradient-to-r from-accent/20 to-accent/10 text-accent border-l-2 border-accent shadow-sm shadow-accent/20"
-                      : "text-sidebar-foreground hover:bg-sidebar-primary/15 hover:text-accent/80"
+                      ? "border-l-2 border-accent bg-gradient-to-r from-accent/25 to-accent/5 text-accent shadow-sm shadow-accent/20"
+                      : "text-sidebar-foreground hover:bg-sidebar-primary/15 hover:text-accent/90"
                   }`}
                   onClick={() => setSidebarOpen(false)}
                 >
@@ -166,7 +167,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
               );
             })}
 
-            <div className="my-4 h-px bg-sidebar-border/30" />
+            <div className="my-4 h-px bg-sidebar-border/40" />
 
             {DOCUMENTATION_NAV.map(item => {
               const isActive = location === item.href;
@@ -174,10 +175,10 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                 <Link
                   key={item.href}
                   href={item.href || "/"}
-                  className={`block px-4 py-2 rounded-md transition-all duration-200 font-mono text-xs font-medium ${
+                  className={`block rounded-lg px-4 py-2 font-mono text-xs font-medium transition-all duration-200 ${
                     isActive
-                      ? "bg-gradient-to-r from-accent/20 to-accent/10 text-accent border-l border-accent shadow-sm shadow-accent/20"
-                      : "text-sidebar-foreground hover:bg-sidebar-primary/15 hover:text-accent/80"
+                      ? "border-l border-accent bg-gradient-to-r from-accent/20 to-accent/5 text-accent shadow-sm shadow-accent/20"
+                      : "text-sidebar-foreground/90 hover:bg-sidebar-primary/15 hover:text-accent/80"
                   }`}
                   onClick={() => setSidebarOpen(false)}
                 >
@@ -187,13 +188,13 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             })}
 
             {/* Footer */}
-            <div className="pt-6 border-t border-sidebar-border/50 space-y-3">
+            <div className="space-y-3 border-t border-sidebar-border/50 pt-6">
               <button
                 onClick={() => {
                   scrollToSupport();
                   setSidebarOpen(false);
                 }}
-                className="block w-full text-center px-4 py-2 bg-accent/20 text-accent rounded-lg font-mono text-sm font-medium hover:bg-accent/30 transition-colors"
+                className="block w-full rounded-xl border border-accent/20 bg-accent/15 px-4 py-2.5 text-center font-mono text-sm font-medium text-accent transition-all hover:-translate-y-0.5 hover:bg-accent/25 hover:shadow-lg hover:shadow-accent/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/60"
               >
                 Support Project
               </button>
@@ -211,7 +212,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       {/* Mobile Overlay */}
       {sidebarOpen && (
         <div
-          className="fixed inset-0 z-30 bg-black/50 lg:hidden"
+          className="fixed inset-0 z-30 bg-background/75 backdrop-blur-sm lg:hidden"
           onClick={() => setSidebarOpen(false)}
           aria-hidden="true"
         />
@@ -220,7 +221,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       {/* Main Content */}
       <div className="flex-1 flex flex-col min-w-0">
         {/* Header - always visible on mobile, hidden on lg+ */}
-        <header className="sticky top-0 z-30 bg-card border-b border-border lg:hidden">
+        <header className="sticky top-0 z-30 border-b border-border/80 bg-card/85 backdrop-blur-xl lg:hidden">
           <div className="flex items-center justify-between p-4">
             <Link href={ROUTES.home} className="flex items-center gap-2">
               <img
@@ -235,7 +236,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                 onClick={() => setSearchOpen(true)}
                 type="button"
                 aria-label="Search tools"
-                className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive hover:bg-accent dark:hover:bg-accent/50 size-9"
+                className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive hover:bg-accent/10 dark:hover:bg-accent/20 size-9"
               >
                 <Search size={20} className="text-foreground" />
               </button>
@@ -248,7 +249,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                 }
                 aria-expanded={sidebarOpen}
                 aria-controls="mobile-navigation"
-                className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive hover:bg-accent dark:hover:bg-accent/50 size-9"
+                className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive hover:bg-accent/10 dark:hover:bg-accent/20 size-9"
               >
                 {sidebarOpen ? (
                   <X size={20} className="text-foreground" />
@@ -266,13 +267,19 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           id="main-content"
           className="flex-1 overflow-auto min-h-0"
         >
-          <div className="max-w-6xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-8">
+          <div
+            className={
+              isHome
+                ? "w-full max-w-none px-0 py-0"
+                : "max-w-6xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-8"
+            }
+          >
             {children}
           </div>
         </main>
 
         {/* Footer */}
-        <footer className="bg-card border-t border-border p-6 text-center text-sm text-muted-foreground">
+        <footer className="border-t border-border/80 bg-card/75 p-6 text-center text-sm text-muted-foreground backdrop-blur-xl">
           <p>
             Karnel Termux — Built by{" "}
             <a
