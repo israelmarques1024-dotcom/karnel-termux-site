@@ -20,7 +20,7 @@ const termuxGroups = [
   },
   {
     title: "Karnel and AI",
-    desc: "Framework version, CLI link, banner, shell integration and all 41 AI registry commands.",
+    desc: "Framework version, CLI link, banner, shell integration and all 43 AI registry commands.",
   },
   {
     title: "Shell health",

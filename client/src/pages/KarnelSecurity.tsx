@@ -82,7 +82,8 @@ gobuster dir -u https://target.com -w ~/wordlists/common.txt`}
               language="bash"
             />
             <p className="text-sm text-muted-foreground mt-2">
-              Provide your own wordlist path. These tools are for authorized security testing only.
+              Provide your own wordlist path. These tools are for authorized
+              security testing only.
             </p>
           </div>
         </AnimatedSection>
