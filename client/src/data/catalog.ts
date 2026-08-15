@@ -44,6 +44,8 @@ export const AI_TOOLS = [
   { name: "Oh-My-Pi", flag: "--oh-my-pi", desc: "" },
   { name: "Goose CLI", flag: "--goose", desc: "" },
   { name: "Factory Droid", flag: "--droid", desc: "" },
+  { name: "Cactus", flag: "--cactus", desc: "" },
+  { name: "Hugging Face", flag: "--hugging-face", desc: "" },
 ] as const;
 
 export const DEV_TOOLS = [
