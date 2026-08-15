@@ -80,7 +80,7 @@ karnel plugin remove <name>      Uninstall a plugin
   "version": "1.0.0",
   "description": "My awesome plugin",
   "commands": ["hello"],
-  "minKarnelVersion": "4.15.0",
+  "minKarnelVersion": "4.15.1",
   "license": "MIT",
   "capabilities": []
 }`}
