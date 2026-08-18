@@ -17,6 +17,7 @@ import {
   Star,
   ScanSearch,
   Wrench,
+  Youtube,
 } from "lucide-react";
 import CodeBlock from "@/components/CodeBlock";
 import SupportProject from "@/components/SupportProject";
@@ -369,6 +370,15 @@ export default function Home() {
               >
                 Explore Docs
               </Link>
+              <a
+                href="https://www.youtube.com/@capideb"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group inline-flex items-center gap-2 rounded-xl border border-red-500/30 bg-red-500/5 px-6 py-3 text-sm font-semibold text-foreground transition-all duration-300 hover:border-red-500/50 hover:bg-red-500/10 hover:scale-105 active:scale-95"
+              >
+                <Youtube size={18} />
+                Capi.deb no YouTube
+              </a>
             </div>
           </AnimatedSection>
 
@@ -628,6 +638,15 @@ export default function Home() {
                 className="group inline-flex items-center gap-2 rounded-xl border border-border bg-card/50 px-7 py-3.5 text-sm font-semibold text-foreground transition-all duration-300 hover:border-accent/30 hover:bg-accent/5 hover:scale-105 active:scale-95"
               >
                 View on GitHub
+              </a>
+              <a
+                href="https://www.youtube.com/@capideb"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group inline-flex items-center gap-2 rounded-xl border border-red-500/30 bg-red-500/5 px-7 py-3.5 text-sm font-semibold text-foreground transition-all duration-300 hover:border-red-500/50 hover:bg-red-500/10 hover:scale-105 active:scale-95"
+              >
+                <Youtube size={18} />
+                Capi.deb no YouTube
               </a>
             </div>
           </AnimatedSection>
