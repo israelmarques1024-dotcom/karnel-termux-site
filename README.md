@@ -13,6 +13,9 @@
   <a href="https://github.com/israelmarques1024-dotcom/karnel-termux">
     <img src="https://img.shields.io/badge/CLI%20Repo-karnel--termux-0078D4?style=for-the-badge" alt="CLI">
   </a>
+  <a href="https://www.youtube.com/@capideb">
+    <img src="https://img.shields.io/badge/YouTube-Capi.deb-FF0000?style=for-the-badge&logo=youtube&logoColor=white" alt="YouTube — Capi.deb">
+  </a>
 
   <a href="https://github.com/israelmarques1024-dotcom/karnel-termux-site">
     <img src="https://img.shields.io/badge/license-MIT-0078D4?style=for-the-badge" alt="License">
@@ -56,25 +59,25 @@ Created by **Israel Marques**.
 | Linux           | `/karnel/linux`    | Linux-specific tools                                          |
 | Brain           | `/karnel/brain`    | Second brain memory system docs                               |
 | Voice           | `/karnel/voice`    | Voice command agent                                           |
-| PG              | `/karnel/pg`       | PostgreSQL manager                                            |
-| Init            | `/karnel/init`     | Project templates                                             |
+| PG              | `/karnel/pg`      | PostgreSQL manager                                            |
+| Init             | `/karnel/init`     | Project templates                                             |
 | Env             | `/karnel/env`      | Environment variable management                               |
-| Karnel Lang     | `/karnel/lang`     | Languages (Node.js, Python, Go, Rust, C/C++, PHP, Perl)       |
-| Karnel DB       | `/karnel/db`       | Database module (PostgreSQL, MariaDB, SQLite, MongoDB, Redis) |
-| Karnel Dev      | `/karnel/dev`      | Development tools                                             |
-| Karnel Npm      | `/karnel/npm`      | Global npm packages                                           |
-| Karnel Shell    | `/karnel/shell`    | ZSH + Oh My Zsh                                               |
-| Karnel UI       | `/karnel/ui`       | Font, cursor, extra-keys, and banner                          |
-| Karnel Auto     | `/karnel/auto`     | n8n automation                                                |
-| Karnel Games    | `/karnel/games`    | Terminal games                                                |
-| Karnel Network  | `/karnel/network`  | Network tools                                                 |
-| Karnel Utils    | `/karnel/utils`    | Utility scripts                                               |
-| Karnel Cleanup  | `/karnel/cleanup`  | Cache, log, and temporary-file cleanup                        |
-| Karnel Backup   | `/karnel/backup`   | Backup and restore                                            |
-| Karnel Plugin   | `/karnel/plugin`   | Plugin manager and plugin-development guide                   |
+| Karnel Lang     | `/karnel/lang`    | Languages (Node.js, Python, Go, Rust, C/C++, PHP, Perl)       |
+| Karnel DB       | `/karnel/db`      | Database module (PostgreSQL, MariaDB, SQLite, MongoDB, Redis) |
+| Karnel Dev      | `/karnel/dev`     | Development tools                                             |
+| Karnel Npm      | `/karnel/npm`     | Global npm packages                                           |
+| Karnel Shell    | `/karnel/shell`   | ZSH + Oh My Zsh                                               |
+| Karnel UI       | `/karnel/ui`     | Font, cursor, extra-keys, and banner                          |
+| Karnel Auto     | `/karnel/auto`   | n8n automation                                                |
+| Karnel Games    | `/karnel/games`  | Terminal games                                                |
+| Karnel Network  | `/karnel/network`| Network tools                                                 |
+| Karnel Utils    | `/karnel/utils`  | Utility scripts                                               |
+| Karnel Cleanup  | `/karnel/cleanup`| Cache, log, and temporary-file cleanup                        |
+| Karnel Backup   | `/karnel/backup` | Backup and restore                                            |
+| Karnel Plugin   | `/karnel/plugin` | Plugin manager and plugin-development guide                   |
 | Karnel Security | `/karnel/security` | Security tools                                                |
-| Terms           | `/terms`           | Terms of service                                              |
-| Not Found       | `/404`             | Explicit not-found page                                       |
+| Terms           | `/terms`         | Terms of service                                              |
+| Not Found       | `/404`           | Explicit not-found page                                       |
 
 ---
 
@@ -192,6 +195,9 @@ MIT © Israel Marques
 <p align="center">
   <a href="https://karneltermux.vercel.app">
     <img src="https://img.shields.io/badge/Visit%20Site-0078D4?style=for-the-badge" alt="Site">
+  </a>
+  <a href="https://www.youtube.com/@capideb">
+    <img src="https://img.shields.io/badge/YouTube-Capi.deb-FF0000?style=for-the-badge&logo=youtube&logoColor=white" alt="YouTube — Capi.deb">
   </a>
   <a href="https://github.com/israelmarques1024-dotcom/karnel-termux">
     <img src="https://img.shields.io/badge/Karnel%20Termux-181717?style=for-the-badge&logo=github" alt="CLI">
