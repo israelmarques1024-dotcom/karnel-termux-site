@@ -35,7 +35,7 @@ Created by **Israel Marques**.
 ## Features
 
 - **Documentation** for all CLI commands and modules, including Robin OSINT
-- **AI tools page** — Browse and install 41 agents, gateways, and developer utilities
+- **AI tools page** — Browse and install 45 agents, gateways, and developer utilities
 - **CLI-synchronized catalog** — Install flags and counts are generated from the Karnel CLI registries
 - **Interactive guides** — Doctor checks, PostgreSQL, voice commands, and more
 - **Responsive** — Works on mobile and desktop
