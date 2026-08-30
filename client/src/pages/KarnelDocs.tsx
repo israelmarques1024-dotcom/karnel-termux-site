@@ -2,6 +2,7 @@ import CodeBlock from "@/components/CodeBlock";
 import { AnimatedSection } from "@/components/AnimatedSection";
 import { CATALOG_COUNTS } from "@/data/catalog";
 import { ROUTES } from "@/lib/routes";
+import { Link } from "wouter";
 
 const modules = [
   {
@@ -251,7 +252,7 @@ export default function KarnelDocs() {
             code: `karnel backup                    # Local backup (configs + packages + tools)\nkarnel backup --cloud           # Backup + upload via rclone\nkarnel restore                  # Restore latest backup\nkarnel restore --cloud          # Restore via rclone`,
             extra: {
               label: "Backup includes:",
-              code: "• Full package list (dpkg)\n• Karnel tools manifest\n• Shell configs (.bashrc, .zshrc, .profile)\n• Termux settings (fonts, colors)\n• SSH keys\n• App configs (~/.config)\n• APT repositories",
+              code: "• Full package list (dpkg)\n• Karnel tools manifest\n• Shell configs (.bashrc, .zshrc, .profile)\n• Termux settings (fonts, colors)\n• SSH public keys and config (private keys are not archived)\n• App configs (~/.config)\n• APT repositories",
             },
           },
           {
@@ -340,12 +341,12 @@ export default function KarnelDocs() {
               boundary, provider privacy, persistent data locations, and
               complete command reference.
             </p>
-            <a
+            <Link
               href={ROUTES.osint}
               className="group inline-flex items-center gap-2 rounded-xl bg-accent px-6 py-3 text-sm font-semibold text-accent-foreground shadow-lg shadow-accent/25 transition-all duration-300 hover:scale-105 hover:shadow-xl active:scale-95"
             >
               View Robin Documentation
-            </a>
+            </Link>
           </div>
         </AnimatedSection>
 
@@ -357,12 +358,12 @@ export default function KarnelDocs() {
             <p className="text-muted-foreground mb-6">
               Learn how to save and restore your entire Termux.
             </p>
-            <a
+            <Link
               href={ROUTES.backup}
               className="group inline-flex items-center gap-2 rounded-xl bg-accent px-6 py-3 text-sm font-semibold text-accent-foreground shadow-lg shadow-accent/25 transition-all duration-300 hover:scale-105 hover:shadow-xl active:scale-95"
             >
               View Backup Documentation
-            </a>
+            </Link>
           </div>
         </AnimatedSection>
 

@@ -45,6 +45,8 @@ export const AI_TOOLS = [
   { name: "Goose CLI", flag: "--goose", desc: "" },
   { name: "Factory Droid", flag: "--droid", desc: "" },
   { name: "Cactus", flag: "--cactus", desc: "" },
+  { name: "Cactus Needle", flag: "--cactus-needle", desc: "" },
+  { name: "Walkie Agent", flag: "--walkie", desc: "" },
   { name: "Hugging Face", flag: "--hugging-face", desc: "" },
 ] as const;
 
@@ -127,6 +129,7 @@ export const UTILS_TOOLS = [
     desc: "Generate QR codes from URLs and text",
   },
   { name: "Superfile", flag: "--superfile", desc: "Terminal file manager" },
+  { name: "Herdr", flag: "--herdr", desc: "" },
 ] as const;
 
 export const OSINT_TOOLS = [

@@ -11,17 +11,46 @@ export default function SearchModal({ open, onClose }: SearchModalProps) {
   const [query, setQuery] = useState("");
   const [, navigate] = useLocation();
   const inputRef = useRef<HTMLInputElement>(null);
+  const dialogRef = useRef<HTMLDivElement>(null);
+  const previousFocusRef = useRef<HTMLElement | null>(null);
   const [selectedIndex, setSelectedIndex] = useState(0);
 
   const results = useMemo(() => searchTools(query), [query]);
 
   useEffect(() => {
     if (open) {
+      previousFocusRef.current = document.activeElement as HTMLElement | null;
       setQuery("");
       setSelectedIndex(0);
       setTimeout(() => inputRef.current?.focus(), 50);
+      const onKeyDown = (event: KeyboardEvent) => {
+        if (event.key === "Escape") {
+          event.preventDefault();
+          onClose();
+          return;
+        }
+        if (event.key !== "Tab") return;
+        const focusable = dialogRef.current?.querySelectorAll<HTMLElement>(
+          'button:not([disabled]), input:not([disabled]), [tabindex]:not([tabindex="-1"])'
+        );
+        if (!focusable?.length) return;
+        const first = focusable[0];
+        const last = focusable[focusable.length - 1];
+        if (event.shiftKey && document.activeElement === first) {
+          event.preventDefault();
+          last.focus();
+        } else if (!event.shiftKey && document.activeElement === last) {
+          event.preventDefault();
+          first.focus();
+        }
+      };
+      document.addEventListener("keydown", onKeyDown);
+      return () => {
+        document.removeEventListener("keydown", onKeyDown);
+        previousFocusRef.current?.focus();
+      };
     }
-  }, [open]);
+  }, [open, onClose]);
 
   const handleKeyDown = useCallback(
     (e: React.KeyboardEvent) => {
@@ -57,7 +86,16 @@ export default function SearchModal({ open, onClose }: SearchModalProps) {
   return (
     <div className="fixed inset-0 z-50 flex items-start justify-center pt-[15vh]">
       <div className="fixed inset-0 bg-black/60" onClick={onClose} />
-      <div className="relative w-full max-w-lg rounded-xl border border-border bg-background shadow-2xl">
+      <div
+        ref={dialogRef}
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="search-dialog-title"
+        className="relative w-full max-w-lg rounded-xl border border-border bg-background shadow-2xl"
+      >
+        <h2 id="search-dialog-title" className="sr-only">
+          Search Karnel documentation
+        </h2>
         <div className="flex items-center gap-3 border-b border-border px-4">
           <svg
             className="h-5 w-5 shrink-0 text-muted-foreground"
@@ -74,6 +112,7 @@ export default function SearchModal({ open, onClose }: SearchModalProps) {
           </svg>
           <input
             ref={inputRef}
+            aria-label="Search tools and categories"
             className="flex-1 bg-transparent py-4 text-base outline-none placeholder:text-muted-foreground"
             placeholder="Search tools, categories..."
             value={query}
@@ -93,7 +132,10 @@ export default function SearchModal({ open, onClose }: SearchModalProps) {
           </div>
         )}
         {results.length > 0 && (
-          <ul className="max-h-80 overflow-y-auto p-2">
+          <ul
+            className="max-h-80 overflow-y-auto p-2"
+            aria-label="Search results"
+          >
             {results.map((entry, i) => (
               <SearchItem
                 key={entry.flag}
@@ -122,22 +164,25 @@ function SearchItem({
   onSelect: () => void;
 }) {
   return (
-    <li
-      className={`flex cursor-pointer items-center gap-3 rounded-lg px-3 py-2.5 text-sm ${
-        selected ? "bg-accent text-accent-foreground" : "hover:bg-accent/50"
-      }`}
-      onClick={onSelect}
-    >
-      <span className="flex-1 truncate">
-        <span className="font-medium">{entry.name}</span>
-        <span className="ml-2 text-muted-foreground">{entry.desc}</span>
-      </span>
-      <span className="shrink-0 rounded-md bg-muted px-2 py-0.5 text-xs text-muted-foreground">
-        {entry.category}
-      </span>
-      <code className="hidden shrink-0 text-xs text-muted-foreground sm:inline-block">
-        {entry.flag}
-      </code>
+    <li>
+      <button
+        type="button"
+        className={`flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-left text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring ${
+          selected ? "bg-accent text-accent-foreground" : "hover:bg-accent/50"
+        }`}
+        onClick={onSelect}
+      >
+        <span className="flex-1 truncate">
+          <span className="font-medium">{entry.name}</span>
+          <span className="ml-2 text-muted-foreground">{entry.desc}</span>
+        </span>
+        <span className="shrink-0 rounded-md bg-muted px-2 py-0.5 text-xs text-muted-foreground">
+          {entry.category}
+        </span>
+        <code className="hidden shrink-0 text-xs text-muted-foreground sm:inline-block">
+          {entry.flag}
+        </code>
+      </button>
     </li>
   );
 }

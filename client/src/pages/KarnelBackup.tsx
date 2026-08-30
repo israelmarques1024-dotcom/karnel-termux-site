@@ -18,13 +18,13 @@ const backupCommands = [
   },
   {
     cmd: "karnel backup --cloud",
-    desc: "Backup + upload via the configured rclone remote",
+    desc: "Cloud upload via rclone (requires an explicit plaintext opt-in)",
   },
   { cmd: "karnel restore", desc: "Restore most recent backup" },
   { cmd: "karnel restore <file>", desc: "Restore a specific backup file" },
   {
     cmd: "karnel restore --cloud",
-    desc: "Restore via the configured rclone remote",
+    desc: "Cloud restore via rclone (requires an explicit unauthenticated opt-in)",
   },
   { cmd: "karnel show backup", desc: "Show backup help in terminal" },
 ];
@@ -82,9 +82,9 @@ export default function KarnelBackupPage() {
             <h2 className="text-xl font-bold font-mono mb-4">Basic Usage</h2>
             <CodeBlock
               code={`karnel backup                    # Full local backup
-karnel backup --cloud           # Backup + upload via rclone
 karnel restore                  # Restore most recent
-karnel restore --cloud          # Restore via rclone`}
+KARNEL_ALLOW_PLAINTEXT_CLOUD_BACKUP=1 karnel backup --cloud
+KARNEL_ALLOW_UNAUTHENTICATED_CLOUD_RESTORE=1 karnel restore --cloud`}
               language="bash"
               title="terminal"
             />
@@ -112,7 +112,7 @@ karnel restore --cloud          # Restore via rclone`}
                   label: "Termux",
                   desc: "Fonts, colors, properties",
                 },
-                { icon: Key, label: "SSH", desc: "Keys and configs" },
+                { icon: Key, label: "SSH", desc: "Public keys and configs" },
                 {
                   icon: FolderClosed,
                   label: "Configs",
@@ -161,12 +161,15 @@ karnel restore --cloud          # Restore via rclone`}
               backup.
             </p>
             <CodeBlock
-              code={`karnel backup --cloud             # Primeira vez: instala rclone
-rclone config                     # Configura o remote "karnel"
-karnel backup --cloud             # Agora envia ao remote "karnel"`}
+              code={`rclone config                     # Configura o remote "karnel"
+KARNEL_ALLOW_PLAINTEXT_CLOUD_BACKUP=1 karnel backup --cloud`}
               language="bash"
               title="terminal"
             />
+            <p className="mt-4 text-sm text-yellow-500">
+              Cloud backups are plaintext and cloud restores skip archive
+              authentication. Use these opt-ins only with a trusted remote.
+            </p>
           </div>
         </AnimatedSection>
 
@@ -180,7 +183,8 @@ karnel backup --cloud             # Agora envia ao remote "karnel"`}
             <CodeBlock
               code={`karnel restore                  # Restaura o backup mais recente
 karnel restore ~/backup.tar.gz   # Restaura um arquivo específico
-karnel restore --cloud           # Baixa do remote "karnel" e restaura`}
+karnel restore --cloud           # Requires the cloud-restore opt-in
+KARNEL_ALLOW_UNAUTHENTICATED_CLOUD_RESTORE=1 karnel restore --cloud`}
               language="bash"
               title="terminal"
             />

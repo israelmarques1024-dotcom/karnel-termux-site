@@ -6,6 +6,7 @@ const getLocationPath = () =>
 
 let currentLocation = getLocationPath();
 let navigating = false;
+let navigationVersion = 0;
 const listeners = new Set<() => void>();
 
 function subscribe(listener: () => void) {
@@ -30,6 +31,7 @@ export default function useTransitionLocation(): [
   const navigate = useCallback((to: string) => {
     if (to === currentLocation || navigating) return;
     navigating = true;
+    const version = ++navigationVersion;
 
     if (typeof window !== "undefined") {
       window.history.pushState(null, "", to);
@@ -45,14 +47,16 @@ export default function useTransitionLocation(): [
       ctrl
         .cover()
         .then(() => {
+          if (version !== navigationVersion) return;
           currentLocation = to;
           emitChange();
           return ctrl.reveal();
         })
         .then(() => {
-          navigating = false;
+          if (version === navigationVersion) navigating = false;
         })
         .catch(() => {
+          if (version !== navigationVersion) return;
           currentLocation = to;
           emitChange();
           navigating = false;
@@ -63,6 +67,9 @@ export default function useTransitionLocation(): [
   useEffect(() => {
     if (typeof window === "undefined") return;
     const onPop = () => {
+      navigationVersion += 1;
+      navigating = false;
+      void transitionControllerRef.current?.reveal();
       const newLoc = getLocationPath();
       if (newLoc !== currentLocation) {
         currentLocation = newLoc;

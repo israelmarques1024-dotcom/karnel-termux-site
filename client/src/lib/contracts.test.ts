@@ -43,10 +43,10 @@ describe("site contracts", () => {
 
   it("matches the released Karnel registries", () => {
     expect(CATALOG_COUNTS).toEqual({
-      ai: 43,
+      ai: 45,
       dev: 22,
       network: 2,
-      utils: 12,
+      utils: 13,
       osint: 1,
       lang: 8,
       db: 5,
