@@ -1,5 +1,6 @@
 import { AnimatedSection } from "@/components/AnimatedSection";
 import CodeBlock from "@/components/CodeBlock";
+import { CATALOG_COUNTS } from "@/data/catalog";
 
 const termuxGroups = [
   {
@@ -20,7 +21,7 @@ const termuxGroups = [
   },
   {
     title: "Karnel and AI",
-    desc: "Framework version, CLI link, banner, shell integration and all 43 AI registry commands.",
+    desc: `Framework version, CLI link, banner, shell integration and all ${CATALOG_COUNTS.ai} AI registry commands.`,
   },
   {
     title: "Shell health",

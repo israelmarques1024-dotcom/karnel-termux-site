@@ -8,14 +8,18 @@ const KARNEL_REF = "6b13b468f425a13040e4dac77eef1b449a553ea8";
 const GITHUB_RAW = `https://raw.githubusercontent.com/israelmarques1024-dotcom/karnel-termux/${KARNEL_REF}`;
 const LOCAL_KARNEL_ROOT = process.env.KARNEL_REPO_DIR;
 const CHECK = process.argv.includes("--check");
+const ALLOW_NETWORK_CHECK =
+  process.env.KARNEL_ALLOW_NETWORK_CATALOG_CHECK === "1";
 
 async function fetchText(url) {
   if (LOCAL_KARNEL_ROOT && url.startsWith(`${GITHUB_RAW}/`)) {
     const relative = url.slice(`${GITHUB_RAW}/`.length);
     return readFileSync(join(LOCAL_KARNEL_ROOT, relative), "utf8");
   }
-  if (CHECK) {
-    throw new Error("Catalog check requires KARNEL_REPO_DIR; refusing network access.");
+  if (CHECK && !ALLOW_NETWORK_CHECK) {
+    throw new Error(
+      "Catalog check requires KARNEL_REPO_DIR; refusing network access."
+    );
   }
   const res = await fetch(url);
   if (!res.ok) throw new Error(`HTTP ${res.status}: ${url}`);

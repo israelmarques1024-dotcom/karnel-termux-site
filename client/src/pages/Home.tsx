@@ -409,7 +409,7 @@ export default function Home() {
               Install In <span className="text-gradient">One Line</span>
             </h2>
             <p className="text-muted-foreground">
-              No manual prerequisites. No bloat. Pure development power.
+              Requires Termux. The npm and pnpm options also require Node.js.
             </p>
           </AnimatedSection>
 
@@ -441,7 +441,8 @@ export default function Home() {
 
           <AnimatedSection delay={200}>
             <p className="text-center text-muted-foreground text-sm mt-6">
-              Works on any Termux Android. Takes less than 2 minutes.
+              Install Termux first, then choose the method available in your
+              environment.
             </p>
           </AnimatedSection>
         </div>

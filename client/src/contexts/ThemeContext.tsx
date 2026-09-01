@@ -20,13 +20,21 @@ export function ThemeProvider({
   defaultTheme?: Theme;
 }) {
   const [theme, setTheme] = useState<Theme>(() => {
-    const stored = localStorage.getItem("theme");
-    return stored === "light" || stored === "dark" ? stored : defaultTheme;
+    try {
+      const stored = localStorage.getItem("theme");
+      return stored === "light" || stored === "dark" ? stored : defaultTheme;
+    } catch {
+      return defaultTheme;
+    }
   });
 
   useEffect(() => {
     document.documentElement.classList.toggle("dark", theme === "dark");
-    localStorage.setItem("theme", theme);
+    try {
+      localStorage.setItem("theme", theme);
+    } catch {
+      // Storage can be unavailable in embedded or privacy-restricted contexts.
+    }
   }, [theme]);
 
   return (

@@ -1,74 +1,6 @@
 import CodeBlock from "@/components/CodeBlock";
 import { AnimatedSection } from "@/components/AnimatedSection";
-
-const packages = [
-  {
-    name: "TypeScript",
-    flag: "--typescript",
-    bin: "tsc",
-    desc: "JavaScript with types",
-  },
-  {
-    name: "NestJS CLI",
-    flag: "--nestjs",
-    bin: "nest",
-    desc: "Progressive Node.js framework",
-  },
-  {
-    name: "Prettier",
-    flag: "--prettier",
-    bin: "prettier",
-    desc: "Code formatter",
-  },
-  {
-    name: "Live Server",
-    flag: "--live-server",
-    bin: "live-server",
-    desc: "Server with live reload",
-  },
-  {
-    name: "Localtunnel",
-    flag: "--localtunnel",
-    bin: "lt",
-    desc: "Public tunnels for localhost",
-  },
-  {
-    name: "Vercel CLI",
-    flag: "--vercel",
-    bin: "vercel",
-    desc: "Deploy to Vercel",
-  },
-  {
-    name: "Markserv",
-    flag: "--markserv",
-    bin: "markserv",
-    desc: "Markdown server",
-  },
-  {
-    name: "PSQL Format",
-    flag: "--psqlformat",
-    bin: "psqlformat",
-    desc: "SQL formatter",
-  },
-  {
-    name: "NPM Check Updates",
-    flag: "--ncu",
-    bin: "ncu",
-    desc: "Check package updates",
-  },
-  {
-    name: "Ngrok",
-    flag: "--ngrok",
-    bin: "ngrok",
-    desc: "Public tunnels for localhost",
-  },
-  {
-    name: "Next.js Turbopack",
-    flag: "--turbopack",
-    bin: "next-turbopack dev",
-    desc: "Run Next.js with the bundled glibc Node.js runtime",
-  },
-];
+import { NPM_TOOLS as packages } from "@/data/catalog";
 
 export default function KarnelNpm() {
   return (
@@ -113,7 +45,7 @@ export default function KarnelNpm() {
                 <h3 className="font-bold font-mono mb-2">{pkg.name}</h3>
                 <p className="text-sm text-muted-foreground mb-1">{pkg.desc}</p>
                 <p className="text-xs text-muted-foreground mb-3">
-                  Command: <code className="text-accent">{pkg.bin}</code>
+                  Install flag: <code className="text-accent">{pkg.flag}</code>
                 </p>
                 <CodeBlock
                   code={`karnel install npm ${pkg.flag}`}

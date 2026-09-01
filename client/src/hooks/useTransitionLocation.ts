@@ -5,7 +5,6 @@ const getLocationPath = () =>
   typeof window !== "undefined" ? window.location.pathname : "/";
 
 let currentLocation = getLocationPath();
-let navigating = false;
 let navigationVersion = 0;
 const listeners = new Set<() => void>();
 
@@ -29,8 +28,7 @@ export default function useTransitionLocation(): [
   const location = useSyncExternalStore(subscribe, getSnapshot);
 
   const navigate = useCallback((to: string) => {
-    if (to === currentLocation || navigating) return;
-    navigating = true;
+    if (to === currentLocation) return;
     const version = ++navigationVersion;
 
     if (typeof window !== "undefined") {
@@ -40,7 +38,6 @@ export default function useTransitionLocation(): [
       if (!ctrl) {
         currentLocation = to;
         emitChange();
-        navigating = false;
         return;
       }
 
@@ -53,13 +50,12 @@ export default function useTransitionLocation(): [
           return ctrl.reveal();
         })
         .then(() => {
-          if (version === navigationVersion) navigating = false;
+          if (version === navigationVersion) return;
         })
         .catch(() => {
           if (version !== navigationVersion) return;
           currentLocation = to;
           emitChange();
-          navigating = false;
         });
     }
   }, []);
@@ -68,7 +64,6 @@ export default function useTransitionLocation(): [
     if (typeof window === "undefined") return;
     const onPop = () => {
       navigationVersion += 1;
-      navigating = false;
       void transitionControllerRef.current?.reveal();
       const newLoc = getLocationPath();
       if (newLoc !== currentLocation) {

@@ -116,15 +116,17 @@ function RouterOutlet() {
 function App() {
   return (
     <ThemeProvider defaultTheme="dark">
-      <TooltipProvider>
-        <Router hook={useTransitionLocation}>
-          <Toaster />
-          <Layout>
-            <RouterOutlet />
-          </Layout>
-          <TransitionOverlay />
-        </Router>
-      </TooltipProvider>
+      <ErrorBoundary>
+        <TooltipProvider>
+          <Router hook={useTransitionLocation}>
+            <Toaster />
+            <Layout>
+              <RouterOutlet />
+            </Layout>
+            <TransitionOverlay />
+          </Router>
+        </TooltipProvider>
+      </ErrorBoundary>
     </ThemeProvider>
   );
 }

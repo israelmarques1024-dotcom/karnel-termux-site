@@ -124,16 +124,32 @@ export default function Termux() {
                       </td>
                       <td className="py-3 px-4 text-center">
                         {row.termux ? (
-                          <Check
-                            size={18}
-                            className="mx-auto text-emerald-500"
-                          />
+                          <>
+                            <Check
+                              size={18}
+                              aria-hidden="true"
+                              className="mx-auto text-emerald-500"
+                            />
+                            <span className="sr-only">Available</span>
+                          </>
                         ) : (
-                          <X size={18} className="mx-auto text-destructive" />
+                          <>
+                            <X
+                              size={18}
+                              aria-hidden="true"
+                              className="mx-auto text-destructive"
+                            />
+                            <span className="sr-only">Not available</span>
+                          </>
                         )}
                       </td>
                       <td className="py-3 px-4 text-center">
-                        <Check size={18} className="mx-auto text-emerald-500" />
+                        <Check
+                          size={18}
+                          aria-hidden="true"
+                          className="mx-auto text-emerald-500"
+                        />
+                        <span className="sr-only">Available</span>
                       </td>
                     </tr>
                   ))}

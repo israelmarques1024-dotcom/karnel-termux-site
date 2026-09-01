@@ -9,7 +9,7 @@
   },
   "scripts": {
     "dev": "vite --host",
-    "build": "vite build",
+    "build": "KARNEL_ALLOW_NETWORK_CATALOG_CHECK=1 node scripts/generate-catalog.mjs --check && vite build",
     "preview": "vite preview --host",
     "lint": "tsc --noEmit --incremental false --pretty",
     "test": "vitest run",

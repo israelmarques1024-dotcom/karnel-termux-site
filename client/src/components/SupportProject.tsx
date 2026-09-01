@@ -35,6 +35,7 @@ async function copy(text: string): Promise<boolean> {
 export default function SupportProject() {
   const [st, setSt] = useState<"idle" | "copied" | "error">("idle");
   const [qrDataUrl, setQrDataUrl] = useState<string>("");
+  const [qrError, setQrError] = useState(false);
   const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
@@ -49,7 +50,7 @@ export default function SupportProject() {
       })
       .catch(err => {
         console.error("Failed to generate QR code:", err);
-        if (active) setQrDataUrl("");
+        if (active) setQrError(true);
       });
     return () => {
       active = false;
@@ -115,14 +116,21 @@ export default function SupportProject() {
             {/* QR Code */}
             <div className="flex flex-col items-center gap-2">
               <div className="bg-white/[0.03] rounded-xl p-3 border border-white/[0.06]">
-                <img
-                  src={qrDataUrl}
-                  alt="QR Code Pix"
-                  width={210}
-                  height={210}
-                  className="rounded-lg"
-                  loading="lazy"
-                />
+                {qrDataUrl ? (
+                  <img
+                    src={qrDataUrl}
+                    alt="QR Code Pix"
+                    width={210}
+                    height={210}
+                    className="rounded-lg"
+                  />
+                ) : (
+                  <p className="w-[210px] p-4 text-center text-sm text-gray-400">
+                    {qrError
+                      ? "QR code unavailable. Use Pix Copia e Cola below."
+                      : "Generating QR code..."}
+                  </p>
+                )}
               </div>
               <p className="text-xs text-gray-600">
                 Escaneie com qualquer app de banco
@@ -216,6 +224,14 @@ export default function SupportProject() {
                   </>
                 )}
               </button>
+
+              <p className="sr-only" aria-live="polite">
+                {st === "copied"
+                  ? "Pix code copied to clipboard"
+                  : st === "error"
+                    ? "Unable to copy Pix code automatically"
+                    : ""}
+              </p>
 
               {st === "error" && (
                 <p className="text-xs text-gray-600 text-center">
