@@ -13,10 +13,6 @@
   <a href="https://github.com/israelmarques1024-dotcom/karnel-termux">
     <img src="https://img.shields.io/badge/CLI%20Repo-karnel--termux-0078D4?style=for-the-badge" alt="CLI">
   </a>
-  <a href="https://www.youtube.com/@capideb">
-    <img src="https://img.shields.io/badge/YouTube-Capi.deb-FF0000?style=for-the-badge&logo=youtube&logoColor=white" alt="YouTube — Capi.deb">
-  </a>
-
   <a href="https://github.com/israelmarques1024-dotcom/karnel-termux-site">
     <img src="https://img.shields.io/badge/license-MIT-0078D4?style=for-the-badge" alt="License">
   </a>
@@ -195,9 +191,6 @@ MIT © Israel Marques
 <p align="center">
   <a href="https://karneltermux.vercel.app">
     <img src="https://img.shields.io/badge/Visit%20Site-0078D4?style=for-the-badge" alt="Site">
-  </a>
-  <a href="https://www.youtube.com/@capideb">
-    <img src="https://img.shields.io/badge/YouTube-Capi.deb-FF0000?style=for-the-badge&logo=youtube&logoColor=white" alt="YouTube — Capi.deb">
   </a>
   <a href="https://github.com/israelmarques1024-dotcom/karnel-termux">
     <img src="https://img.shields.io/badge/Karnel%20Termux-181717?style=for-the-badge&logo=github" alt="CLI">
