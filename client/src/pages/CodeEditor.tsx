@@ -318,8 +318,8 @@ export default function CodeEditor() {
           {keybindings.map(cat => (
             <TabsContent key={cat.category} value={cat.category}>
               <AnimatedSection delay={750}>
-                <div className="card-hover bg-card border border-border rounded-lg overflow-hidden">
-                  <table className="w-full text-sm">
+                <div className="card-hover bg-card border border-border rounded-lg overflow-x-auto">
+                  <table className="w-full min-w-[36rem] text-sm">
                     <thead>
                       <tr className="border-b border-border bg-secondary/30">
                         <th className="text-left py-3 px-4 font-mono">Key</th>

@@ -43,15 +43,18 @@ export default function CodeBlock({
     <div className="bg-card border border-border rounded-lg overflow-hidden my-4 shadow-lg shadow-black/20 hover:shadow-accent/10 hover:shadow-2xl transition-all duration-300">
       {/* Header */}
       {(title || language) && (
-        <div className="flex items-center justify-between bg-gradient-to-r from-secondary/50 to-secondary/30 px-4 py-3 border-b border-border/50">
-          <div className="flex items-center gap-3">
+        <div className="flex items-center justify-between gap-2 bg-gradient-to-r from-secondary/50 to-secondary/30 px-3 py-2 sm:px-4 sm:py-3 border-b border-border/50">
+          <div className="flex min-w-0 items-center gap-2 sm:gap-3">
             {/* Terminal dots */}
             <div className="flex gap-1.5">
               <div className="w-2.5 h-2.5 rounded-full bg-red-500 shadow-sm" />
               <div className="w-2.5 h-2.5 rounded-full bg-yellow-500 shadow-sm" />
               <div className="w-2.5 h-2.5 rounded-full bg-green-500 shadow-sm" />
             </div>
-            <span className="text-xs text-muted-foreground font-mono ml-1 font-semibold tracking-wide">
+            <span
+              className="truncate text-xs text-muted-foreground font-mono ml-1 font-semibold tracking-wide"
+              title={title || language}
+            >
               {title || language}
             </span>
           </div>
@@ -62,7 +65,7 @@ export default function CodeBlock({
             onClick={handleCopy}
             aria-label={copied ? "Copied" : "Copy code to clipboard"}
             title={copied ? "Copied" : "Copy code"}
-            className="h-7 px-2 hover:bg-accent/10 transition-colors"
+            className="min-h-11 min-w-11 p-0 hover:bg-accent/10 transition-colors"
           >
             {copied ? (
               <Check size={14} className="text-accent animate-pulse" />
