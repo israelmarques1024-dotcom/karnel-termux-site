@@ -45,16 +45,13 @@ karnel pg shell                 # Open psql console`}
             <CodeBlock
               code={`karnel pg init
 karnel pg start
-psql -d postgres -c "CREATE ROLE postgres LOGIN SUPERUSER;"
 karnel pg create myapp`}
               language="bash"
               title="terminal"
             />
             <p className="text-sm text-muted-foreground mt-3">
-              <code>initdb</code> creates a superuser role named for your OS
-              user. Karnel connects as <code>postgres</code>, so, after the
-              server starts, create that role with the command above if it does
-              not already exist, then create the <code>myapp</code> database.
+              <code>initdb</code> creates a superuser role named for your Termux
+              OS user. Karnel uses that role when it connects to PostgreSQL.
             </p>
           </div>
         </AnimatedSection>

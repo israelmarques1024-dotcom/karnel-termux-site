@@ -106,7 +106,7 @@ export default function SupportProject() {
             >
               Apoie o Projeto
             </h2>
-            <p className="mt-2 text-sm text-gray-500">
+            <p className="mt-2 text-sm text-gray-300">
               Qualquer valor ajuda a manter o projeto vivo.
             </p>
           </div>
@@ -132,7 +132,7 @@ export default function SupportProject() {
                   </p>
                 )}
               </div>
-              <p className="text-xs text-gray-600">
+              <p className="text-xs text-gray-300">
                 Escaneie com qualquer app de banco
               </p>
             </div>
@@ -140,7 +140,7 @@ export default function SupportProject() {
             {/* Divider */}
             <div className="flex items-center gap-3" role="separator">
               <div className="flex-1 h-px bg-gradient-to-r from-transparent via-white/[0.06] to-transparent" />
-              <span className="text-xs text-gray-700 font-mono tracking-widest uppercase">
+              <span className="text-xs text-gray-300 font-mono tracking-widest uppercase">
                 ou
               </span>
               <div className="flex-1 h-px bg-gradient-to-r from-transparent via-white/[0.06] to-transparent" />
@@ -148,7 +148,7 @@ export default function SupportProject() {
 
             {/* Pix copy-and-paste code */}
             <div className="flex flex-col items-center gap-3">
-              <p className="text-xs text-gray-600">Pix Copia e Cola:</p>
+              <p className="text-xs text-gray-300">Pix Copia e Cola:</p>
 
               <div
                 onClick={() => doCopy()}
@@ -163,7 +163,7 @@ export default function SupportProject() {
                 aria-label="Copiar codigo Pix"
                 className="w-full px-4 py-3.5 rounded-xl bg-gray-800/60 border border-white/[0.06] text-center font-mono text-xs text-cyan-300/90 break-all select-all cursor-pointer hover:border-purple-500/40 hover:bg-gray-800/80 transition-colors"
               >
-                <span className="text-gray-600 text-xs mr-2 select-none">
+                <span className="text-gray-300 text-xs mr-2 select-none">
                   codigo:
                 </span>
                 {PIX_COPY_AND_PASTE}
@@ -234,7 +234,7 @@ export default function SupportProject() {
               </p>
 
               {st === "error" && (
-                <p className="text-xs text-gray-600 text-center">
+                <p className="text-xs text-gray-300 text-center">
                   Copia automática indisponível. Selecione o codigo acima e use
                   Ctrl+C / Cmd+C.
                 </p>
@@ -244,7 +244,7 @@ export default function SupportProject() {
 
           {/* === FOOTER === */}
           <div className="px-6 py-3 text-center border-t border-white/[0.06]">
-            <p className="text-[11px] text-gray-700 font-mono">
+            <p className="text-[11px] text-gray-300 font-mono">
               Karnel Termux Project &copy; 2026
             </p>
           </div>

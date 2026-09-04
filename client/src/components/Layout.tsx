@@ -146,7 +146,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           </button>
 
           {/* Navigation */}
-          <div className="flex-1 space-y-1 overflow-y-auto pr-2">
+          <div className="min-h-0 flex-1 space-y-1 overflow-y-auto pr-2">
             {/* Core Items (always visible) */}
             {navItems.map(item => {
               const isActive = location === item.href;
@@ -185,25 +185,24 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                 </Link>
               );
             })}
-
-            {/* Footer */}
-            <div className="pt-6 border-t border-sidebar-border/50 space-y-3">
-              <button
-                onClick={() => {
-                  scrollToSupport();
-                  setSidebarOpen(false);
-                }}
-                className="block w-full text-center px-4 py-2 bg-accent/20 text-accent rounded-lg font-mono text-sm font-medium hover:bg-accent/30 transition-colors"
-              >
-                Support Project
-              </button>
-              <p className="text-xs text-muted-foreground font-mono">
-                <span className="text-accent">v4.15.2</span> • Android + Termux
-              </p>
-              <p className="text-xs text-muted-foreground/60 mt-2">
-                Built for developers
-              </p>
-            </div>
+          </div>
+          {/* Keep the footer visible while the documentation list scrolls. */}
+          <div className="shrink-0 pt-6 border-t border-sidebar-border/50 space-y-3">
+            <button
+              onClick={() => {
+                scrollToSupport();
+                setSidebarOpen(false);
+              }}
+              className="block w-full text-center px-4 py-2 bg-accent/20 text-accent rounded-lg font-mono text-sm font-medium hover:bg-accent/30 transition-colors"
+            >
+              Support Project
+            </button>
+            <p className="text-xs text-muted-foreground font-mono">
+              <span className="text-accent">v4.17.22</span> • Android + Termux
+            </p>
+            <p className="text-xs text-muted-foreground/60 mt-2">
+              Built for developers
+            </p>
           </div>
         </div>
       </nav>
@@ -264,6 +263,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         <main
           ref={mainRef}
           id="main-content"
+          tabIndex={-1}
           className="flex-1 overflow-auto min-h-0"
         >
           <div className="max-w-6xl mx-auto w-full py-8">{children}</div>

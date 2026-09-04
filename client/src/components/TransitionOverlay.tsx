@@ -108,6 +108,15 @@ export default function TransitionOverlay() {
             }
             const overlay = overlayRef.current;
             if (overlay) overlay.style.opacity = "1";
+            if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+              path.style.transform = "scale(3)";
+              textGroup.style.opacity = "1";
+              textReveal.setAttribute("width", "120");
+              glow.style.opacity = "0.7";
+              setGradientColors(COVER_PEAK);
+              resolve();
+              return;
+            }
             const DURATION = 1200;
             const start = performance.now();
             path.style.transform = "scale(0)";
@@ -153,6 +162,11 @@ export default function TransitionOverlay() {
             const textReveal = textRevealRef.current;
             const glow = glowRef.current;
             if (!path || !textGroup || !textReveal || !glow) {
+              resolve();
+              return;
+            }
+            if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+              if (overlayRef.current) overlayRef.current.style.opacity = "0";
               resolve();
               return;
             }

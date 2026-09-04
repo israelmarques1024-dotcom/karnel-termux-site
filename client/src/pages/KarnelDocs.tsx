@@ -116,7 +116,7 @@ const commands = [
   { cmd: "karnel install", desc: "Install modules and packages" },
   { cmd: "karnel init", desc: "Initialize projects with templates" },
   { cmd: "karnel list", desc: "List available tools in modules" },
-  { cmd: "karnel open", desc: "Open documentation in browser" },
+  { cmd: "karnel open", desc: "Open or print a documentation URL" },
   { cmd: "karnel pg", desc: "PostgreSQL database manager" },
   { cmd: "karnel plugin", desc: "Manage plugins" },
   { cmd: "karnel reinstall", desc: "Uninstall and reinstall modules" },
@@ -210,9 +210,7 @@ export default function KarnelDocs() {
 
         <AnimatedSection delay={900}>
           <h2 className="text-2xl font-bold font-mono mb-6">Main Commands</h2>
-          <p className="text-muted-foreground mb-8">
-            Click any command to see full documentation
-          </p>
+          <p className="text-muted-foreground mb-8">Command reference</p>
         </AnimatedSection>
 
         <AnimatedSection delay={950}>
@@ -271,8 +269,8 @@ export default function KarnelDocs() {
           },
           {
             title: "karnel open",
-            desc: "Open official documentation in browser.",
-            code: `karnel open                     # Show help\nkarnel open <target>            # Open official docs in browser\nkarnel open karnel                # Opens https://karneltermux.vercel.app/karnel`,
+            desc: "Open an official documentation URL when Termux can handle it; otherwise print the URL in the terminal.",
+            code: `karnel open                     # Show help\nkarnel open <target>            # Open or print a documentation URL\nkarnel open karnel              # Opens https://karneltermux.vercel.app/`,
             extra: { label: null, code: null },
           },
           {

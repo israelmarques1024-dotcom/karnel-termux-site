@@ -98,7 +98,16 @@ function RouteWithErrorBoundary({
 
 function RouterOutlet() {
   return (
-    <Suspense fallback={<div className="min-h-screen bg-background" />}>
+    <Suspense
+      fallback={
+        <div
+          className="flex min-h-screen items-center justify-center bg-background text-sm text-muted-foreground"
+          role="status"
+        >
+          Loading documentation...
+        </div>
+      }
+    >
       <Switch>
         {APP_ROUTES.map(route => (
           <RouteWithErrorBoundary

@@ -3,51 +3,227 @@
 // Run: node scripts/generate-catalog.mjs
 
 export const AI_TOOLS = [
-  { name: "Qwen Code", flag: "--qwen-code", desc: "" },
-  { name: "Gemini CLI", flag: "--gemini-cli", desc: "" },
-  { name: "Claude Code", flag: "--claude-code", desc: "" },
-  { name: "Mistral Vibe", flag: "--mistral-vibe", desc: "" },
-  { name: "OpenClaude", flag: "--openclaude", desc: "" },
-  { name: "OpenClaw", flag: "--openclaw", desc: "" },
-  { name: "Ollama", flag: "--ollama", desc: "" },
-  { name: "Codex CLI", flag: "--codex", desc: "" },
-  { name: "OpenCode", flag: "--opencode", desc: "" },
-  { name: "MiMo Code", flag: "--mimocode", desc: "" },
-  { name: "Engram", flag: "--engram", desc: "" },
-  { name: "CodeGraph", flag: "--codegraph", desc: "" },
-  { name: "Pi Coding Agent", flag: "--pi", desc: "" },
-  { name: "Antigravity CLI", flag: "--antigravity-cli", desc: "" },
-  { name: "Minimax CLI", flag: "--minimax-cli", desc: "" },
-  { name: "Gentle AI", flag: "--gentle-ai", desc: "" },
-  { name: "GGA", flag: "--gga", desc: "" },
-  { name: "Hermes Agent", flag: "--hermes-agent", desc: "" },
-  { name: "Kimi Code", flag: "--kimi-code", desc: "" },
-  { name: "Command Code", flag: "--command-code", desc: "" },
-  { name: "Codebuff", flag: "--codebuff", desc: "" },
-  { name: "Freebuff", flag: "--freebuff", desc: "" },
-  { name: "Kilo Code CLI", flag: "--kilocode-cli", desc: "" },
-  { name: "Kiro CLI", flag: "--kiro", desc: "" },
-  { name: "Crush CLI", flag: "--crush", desc: "" },
-  { name: "Cline CLI", flag: "--cline", desc: "" },
-  { name: "Odysseus", flag: "--odysseus", desc: "" },
-  { name: "Kimchi CLI", flag: "--kimchi-code", desc: "" },
-  { name: "omniRoute", flag: "--omni-route", desc: "" },
-  { name: "Context7 Documentation Provider", flag: "--ctx7", desc: "" },
-  { name: "OpenSpec SDD Framework", flag: "--openspec", desc: "" },
-  { name: "Supercode CLI", flag: "--supercode-cli", desc: "" },
-  { name: "Puter CLI", flag: "--puter", desc: "" },
+  {
+    name: "Qwen Code",
+    flag: "--qwen-code",
+    desc: "Description unavailable from the Karnel registry.",
+  },
+  {
+    name: "Gemini CLI",
+    flag: "--gemini-cli",
+    desc: "Description unavailable from the Karnel registry.",
+  },
+  {
+    name: "Claude Code",
+    flag: "--claude-code",
+    desc: "Description unavailable from the Karnel registry.",
+  },
+  {
+    name: "Mistral Vibe",
+    flag: "--mistral-vibe",
+    desc: "Description unavailable from the Karnel registry.",
+  },
+  {
+    name: "OpenClaude",
+    flag: "--openclaude",
+    desc: "Description unavailable from the Karnel registry.",
+  },
+  {
+    name: "OpenClaw",
+    flag: "--openclaw",
+    desc: "Description unavailable from the Karnel registry.",
+  },
+  {
+    name: "Ollama",
+    flag: "--ollama",
+    desc: "Description unavailable from the Karnel registry.",
+  },
+  {
+    name: "Codex CLI",
+    flag: "--codex",
+    desc: "Description unavailable from the Karnel registry.",
+  },
+  {
+    name: "OpenCode",
+    flag: "--opencode",
+    desc: "Description unavailable from the Karnel registry.",
+  },
+  {
+    name: "MiMo Code",
+    flag: "--mimocode",
+    desc: "Description unavailable from the Karnel registry.",
+  },
+  {
+    name: "Engram",
+    flag: "--engram",
+    desc: "Description unavailable from the Karnel registry.",
+  },
+  {
+    name: "CodeGraph",
+    flag: "--codegraph",
+    desc: "Description unavailable from the Karnel registry.",
+  },
+  {
+    name: "Pi Coding Agent",
+    flag: "--pi",
+    desc: "Description unavailable from the Karnel registry.",
+  },
+  {
+    name: "Antigravity CLI",
+    flag: "--antigravity-cli",
+    desc: "Description unavailable from the Karnel registry.",
+  },
+  {
+    name: "Minimax CLI",
+    flag: "--minimax-cli",
+    desc: "Description unavailable from the Karnel registry.",
+  },
+  {
+    name: "Gentle AI",
+    flag: "--gentle-ai",
+    desc: "Description unavailable from the Karnel registry.",
+  },
+  {
+    name: "GGA",
+    flag: "--gga",
+    desc: "Description unavailable from the Karnel registry.",
+  },
+  {
+    name: "Hermes Agent",
+    flag: "--hermes-agent",
+    desc: "Description unavailable from the Karnel registry.",
+  },
+  {
+    name: "Kimi Code",
+    flag: "--kimi-code",
+    desc: "Description unavailable from the Karnel registry.",
+  },
+  {
+    name: "Command Code",
+    flag: "--command-code",
+    desc: "Description unavailable from the Karnel registry.",
+  },
+  {
+    name: "Codebuff",
+    flag: "--codebuff",
+    desc: "Description unavailable from the Karnel registry.",
+  },
+  {
+    name: "Freebuff",
+    flag: "--freebuff",
+    desc: "Description unavailable from the Karnel registry.",
+  },
+  {
+    name: "Kilo Code CLI",
+    flag: "--kilocode-cli",
+    desc: "Description unavailable from the Karnel registry.",
+  },
+  {
+    name: "Kiro CLI",
+    flag: "--kiro",
+    desc: "Description unavailable from the Karnel registry.",
+  },
+  {
+    name: "Crush CLI",
+    flag: "--crush",
+    desc: "Description unavailable from the Karnel registry.",
+  },
+  {
+    name: "Cline CLI",
+    flag: "--cline",
+    desc: "Description unavailable from the Karnel registry.",
+  },
+  {
+    name: "Odysseus",
+    flag: "--odysseus",
+    desc: "Description unavailable from the Karnel registry.",
+  },
+  {
+    name: "Kimchi CLI",
+    flag: "--kimchi-code",
+    desc: "Description unavailable from the Karnel registry.",
+  },
+  {
+    name: "omniRoute",
+    flag: "--omni-route",
+    desc: "Description unavailable from the Karnel registry.",
+  },
+  {
+    name: "Context7 Documentation Provider",
+    flag: "--ctx7",
+    desc: "Description unavailable from the Karnel registry.",
+  },
+  {
+    name: "OpenSpec SDD Framework",
+    flag: "--openspec",
+    desc: "Description unavailable from the Karnel registry.",
+  },
+  {
+    name: "Supercode CLI",
+    flag: "--supercode-cli",
+    desc: "Description unavailable from the Karnel registry.",
+  },
+  {
+    name: "Puter CLI",
+    flag: "--puter",
+    desc: "Description unavailable from the Karnel registry.",
+  },
   { name: "KeelCode", flag: "--keelcode", desc: "Hosted coding-agent CLI" },
-  { name: "Copilot-Termux", flag: "--copilot-termux", desc: "" },
-  { name: "Qoder", flag: "--qoder", desc: "" },
-  { name: "AMP Code CLI", flag: "--ampcode", desc: "" },
-  { name: "Cursor CLI", flag: "--cursor-cli", desc: "" },
-  { name: "Oh-My-Pi", flag: "--oh-my-pi", desc: "" },
-  { name: "Goose CLI", flag: "--goose", desc: "" },
-  { name: "Factory Droid", flag: "--droid", desc: "" },
-  { name: "Cactus", flag: "--cactus", desc: "" },
-  { name: "Cactus Needle", flag: "--cactus-needle", desc: "" },
-  { name: "Walkie Agent", flag: "--walkie", desc: "" },
-  { name: "Hugging Face", flag: "--hugging-face", desc: "" },
+  {
+    name: "Copilot-Termux",
+    flag: "--copilot-termux",
+    desc: "Description unavailable from the Karnel registry.",
+  },
+  {
+    name: "Qoder",
+    flag: "--qoder",
+    desc: "Description unavailable from the Karnel registry.",
+  },
+  {
+    name: "AMP Code CLI",
+    flag: "--ampcode",
+    desc: "Description unavailable from the Karnel registry.",
+  },
+  {
+    name: "Cursor CLI",
+    flag: "--cursor-cli",
+    desc: "Description unavailable from the Karnel registry.",
+  },
+  {
+    name: "Oh-My-Pi",
+    flag: "--oh-my-pi",
+    desc: "Description unavailable from the Karnel registry.",
+  },
+  {
+    name: "Goose CLI",
+    flag: "--goose",
+    desc: "Description unavailable from the Karnel registry.",
+  },
+  {
+    name: "Factory Droid",
+    flag: "--droid",
+    desc: "Description unavailable from the Karnel registry.",
+  },
+  {
+    name: "Cactus",
+    flag: "--cactus",
+    desc: "Description unavailable from the Karnel registry.",
+  },
+  {
+    name: "Cactus Needle",
+    flag: "--cactus-needle",
+    desc: "Description unavailable from the Karnel registry.",
+  },
+  {
+    name: "Walkie Agent",
+    flag: "--walkie",
+    desc: "Description unavailable from the Karnel registry.",
+  },
+  {
+    name: "Hugging Face",
+    flag: "--hugging-face",
+    desc: "Description unavailable from the Karnel registry.",
+  },
 ] as const;
 
 export const DEV_TOOLS = [
@@ -129,7 +305,11 @@ export const UTILS_TOOLS = [
     desc: "Generate QR codes from URLs and text",
   },
   { name: "Superfile", flag: "--superfile", desc: "Terminal file manager" },
-  { name: "Herdr", flag: "--herdr", desc: "" },
+  {
+    name: "Herdr",
+    flag: "--herdr",
+    desc: "Description unavailable from the Karnel registry.",
+  },
 ] as const;
 
 export const OSINT_TOOLS = [
@@ -193,7 +373,11 @@ export const DEPLOY_TOOLS = [
   { name: "Railway", flag: "--railway", desc: "Full-stack with databases" },
   { name: "Netlify", flag: "--netlify", desc: "Static sites & edge functions" },
   { name: "Vercel", flag: "--vercel", desc: "Frontend deployment platform" },
-  { name: "Supabase", flag: "--supabase", desc: "" },
+  {
+    name: "Supabase",
+    flag: "--supabase",
+    desc: "Description unavailable from the Karnel registry.",
+  },
 ] as const;
 
 export const NPM_TOOLS = [
@@ -300,36 +484,156 @@ export const GAMES_TOOLS = [
 ] as const;
 
 export const SECURITY_TOOLS = [
-  { name: "Nmap", flag: "--nmap", desc: "" },
-  { name: "Hydra", flag: "--hydra", desc: "" },
-  { name: "Nikto", flag: "--nikto", desc: "" },
-  { name: "Sqlmap", flag: "--sqlmap", desc: "" },
-  { name: "Gobuster", flag: "--gobuster", desc: "" },
-  { name: "Dirb", flag: "--dirb", desc: "" },
-  { name: "Wpscan", flag: "--wpscan", desc: "" },
-  { name: "John", flag: "--john", desc: "" },
-  { name: "Aircrack Ng", flag: "--aircrack-ng", desc: "" },
-  { name: "Metasploit", flag: "--metasploit", desc: "" },
-  { name: "Burpsuite", flag: "--burpsuite", desc: "" },
-  { name: "Zap", flag: "--zap", desc: "" },
-  { name: "Enum4linux", flag: "--enum4linux", desc: "" },
-  { name: "Smbclient", flag: "--smbclient", desc: "" },
-  { name: "Ffuf", flag: "--ffuf", desc: "" },
-  { name: "Whatweb", flag: "--whatweb", desc: "" },
-  { name: "Wafw00f", flag: "--wafw00f", desc: "" },
-  { name: "Dnsrecon", flag: "--dnsrecon", desc: "" },
-  { name: "Theharvester", flag: "--theharvester", desc: "" },
-  { name: "Subfinder", flag: "--subfinder", desc: "" },
-  { name: "Amass", flag: "--amass", desc: "" },
-  { name: "Masscan", flag: "--masscan", desc: "" },
-  { name: "Netcat", flag: "--netcat", desc: "" },
-  { name: "Tcpdump", flag: "--tcpdump", desc: "" },
-  { name: "Whois", flag: "--whois", desc: "" },
-  { name: "Hashcat", flag: "--hashcat", desc: "" },
-  { name: "Binwalk", flag: "--binwalk", desc: "" },
-  { name: "Foremost", flag: "--foremost", desc: "" },
-  { name: "Steghide", flag: "--steghide", desc: "" },
-  { name: "Exiftool", flag: "--exiftool", desc: "" },
+  {
+    name: "Nmap",
+    flag: "--nmap",
+    desc: "Description unavailable from the Karnel registry.",
+  },
+  {
+    name: "Hydra",
+    flag: "--hydra",
+    desc: "Description unavailable from the Karnel registry.",
+  },
+  {
+    name: "Nikto",
+    flag: "--nikto",
+    desc: "Description unavailable from the Karnel registry.",
+  },
+  {
+    name: "Sqlmap",
+    flag: "--sqlmap",
+    desc: "Description unavailable from the Karnel registry.",
+  },
+  {
+    name: "Gobuster",
+    flag: "--gobuster",
+    desc: "Description unavailable from the Karnel registry.",
+  },
+  {
+    name: "Dirb",
+    flag: "--dirb",
+    desc: "Description unavailable from the Karnel registry.",
+  },
+  {
+    name: "Wpscan",
+    flag: "--wpscan",
+    desc: "Description unavailable from the Karnel registry.",
+  },
+  {
+    name: "John",
+    flag: "--john",
+    desc: "Description unavailable from the Karnel registry.",
+  },
+  {
+    name: "Aircrack Ng",
+    flag: "--aircrack-ng",
+    desc: "Description unavailable from the Karnel registry.",
+  },
+  {
+    name: "Metasploit",
+    flag: "--metasploit",
+    desc: "Description unavailable from the Karnel registry.",
+  },
+  {
+    name: "Burpsuite",
+    flag: "--burpsuite",
+    desc: "Description unavailable from the Karnel registry.",
+  },
+  {
+    name: "Zap",
+    flag: "--zap",
+    desc: "Description unavailable from the Karnel registry.",
+  },
+  {
+    name: "Enum4linux",
+    flag: "--enum4linux",
+    desc: "Description unavailable from the Karnel registry.",
+  },
+  {
+    name: "Smbclient",
+    flag: "--smbclient",
+    desc: "Description unavailable from the Karnel registry.",
+  },
+  {
+    name: "Ffuf",
+    flag: "--ffuf",
+    desc: "Description unavailable from the Karnel registry.",
+  },
+  {
+    name: "Whatweb",
+    flag: "--whatweb",
+    desc: "Description unavailable from the Karnel registry.",
+  },
+  {
+    name: "Wafw00f",
+    flag: "--wafw00f",
+    desc: "Description unavailable from the Karnel registry.",
+  },
+  {
+    name: "Dnsrecon",
+    flag: "--dnsrecon",
+    desc: "Description unavailable from the Karnel registry.",
+  },
+  {
+    name: "Theharvester",
+    flag: "--theharvester",
+    desc: "Description unavailable from the Karnel registry.",
+  },
+  {
+    name: "Subfinder",
+    flag: "--subfinder",
+    desc: "Description unavailable from the Karnel registry.",
+  },
+  {
+    name: "Amass",
+    flag: "--amass",
+    desc: "Description unavailable from the Karnel registry.",
+  },
+  {
+    name: "Masscan",
+    flag: "--masscan",
+    desc: "Description unavailable from the Karnel registry.",
+  },
+  {
+    name: "Netcat",
+    flag: "--netcat",
+    desc: "Description unavailable from the Karnel registry.",
+  },
+  {
+    name: "Tcpdump",
+    flag: "--tcpdump",
+    desc: "Description unavailable from the Karnel registry.",
+  },
+  {
+    name: "Whois",
+    flag: "--whois",
+    desc: "Description unavailable from the Karnel registry.",
+  },
+  {
+    name: "Hashcat",
+    flag: "--hashcat",
+    desc: "Description unavailable from the Karnel registry.",
+  },
+  {
+    name: "Binwalk",
+    flag: "--binwalk",
+    desc: "Description unavailable from the Karnel registry.",
+  },
+  {
+    name: "Foremost",
+    flag: "--foremost",
+    desc: "Description unavailable from the Karnel registry.",
+  },
+  {
+    name: "Steghide",
+    flag: "--steghide",
+    desc: "Description unavailable from the Karnel registry.",
+  },
+  {
+    name: "Exiftool",
+    flag: "--exiftool",
+    desc: "Description unavailable from the Karnel registry.",
+  },
 ] as const;
 
 export const CATALOG_COUNTS = {

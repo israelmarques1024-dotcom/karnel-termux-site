@@ -177,8 +177,9 @@ KARNEL_ALLOW_PLAINTEXT_CLOUD_BACKUP=1 karnel backup --cloud`}
           <div className="card-hover bg-card border border-border rounded-lg p-6">
             <h2 className="text-xl font-bold font-mono mb-4">Restore</h2>
             <p className="text-muted-foreground mb-4">
-              Restore extracts the configs, restores the package list, and
-              automatically reinstalls all Karnel tools.
+              Restore applies archived configurations and package selections. It
+              does not reinstall Karnel tools; reinstall any needed tools
+              separately after restoring.
             </p>
             <CodeBlock
               code={`karnel restore                  # Restaura o backup mais recente

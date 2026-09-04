@@ -26,10 +26,20 @@ export default function CodeBlock({
   const handleCopy = async () => {
     if (timerRef.current) clearTimeout(timerRef.current);
     try {
-      if (!navigator.clipboard?.writeText) {
-        throw new Error("Clipboard API is unavailable");
+      if (navigator.clipboard?.writeText) {
+        await navigator.clipboard.writeText(code);
+      } else {
+        const textarea = document.createElement("textarea");
+        textarea.value = code;
+        textarea.style.cssText =
+          "position:fixed;left:-9999px;top:-9999px;width:1px;height:1px;opacity:0";
+        document.body.appendChild(textarea);
+        textarea.focus();
+        textarea.select();
+        const copied = document.execCommand("copy");
+        document.body.removeChild(textarea);
+        if (!copied) throw new Error("Copy command was unsuccessful");
       }
-      await navigator.clipboard.writeText(code);
       setCopied(true);
       toast.success("Copied to clipboard!");
       timerRef.current = setTimeout(() => setCopied(false), 2000);

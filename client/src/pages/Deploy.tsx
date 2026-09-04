@@ -1,18 +1,26 @@
 import CodeBlock from "@/components/CodeBlock";
 import { AnimatedSection } from "@/components/AnimatedSection";
 import { DEPLOY_TOOLS } from "@/data/catalog";
+import { ROUTES } from "@/lib/routes";
+import { useLocation } from "wouter";
 
 const tools = DEPLOY_TOOLS.map(tool => ({ ...tool, bin: tool.flag.slice(2) }));
 
 export default function Deploy() {
+  const [location] = useLocation();
+  const isSupabaseRoute = location === ROUTES.supabase;
+
   return (
     <section className="py-12 px-4">
       <div className="max-w-4xl mx-auto">
         <AnimatedSection>
-          <h1 className="text-4xl font-bold font-mono mb-4">Deploy CLIs</h1>
+          <h1 className="text-4xl font-bold font-mono mb-4">
+            {isSupabaseRoute ? "Supabase CLI" : "Deploy CLIs"}
+          </h1>
           <p className="text-lg text-muted-foreground mb-8">
-            Deploy to production directly from your phone. Vercel, Railway,
-            Netlify, and Supabase are pre-configured and ready.
+            {isSupabaseRoute
+              ? "Install Supabase from the Karnel Deploy catalog, alongside other deployment CLIs."
+              : "Install deployment CLIs directly from your phone. Vercel, Railway, Netlify, and Supabase are available in the catalog."}
           </p>
         </AnimatedSection>
 
@@ -40,7 +48,7 @@ export default function Deploy() {
         <AnimatedSection delay={250}>
           <div className="card-hover bg-card border border-border rounded-lg overflow-hidden mb-12">
             <div className="overflow-x-auto">
-              <table className="w-full text-sm">
+              <table className="w-full min-w-[42rem] text-sm">
                 <thead>
                   <tr className="border-b border-border bg-secondary/30">
                     <th className="text-left py-3 px-4 font-mono">CLI</th>

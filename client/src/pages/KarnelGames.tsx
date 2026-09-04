@@ -35,7 +35,7 @@ export default function KarnelGames() {
         <AnimatedSection delay={300}>
           <div className="card-hover bg-card border border-border rounded-lg overflow-hidden mb-12">
             <div className="overflow-x-auto">
-              <table className="w-full text-sm">
+              <table className="w-full min-w-[42rem] text-sm">
                 <thead>
                   <tr className="border-b border-border bg-secondary/30">
                     <th className="text-left py-3 px-4 font-mono">Game</th>

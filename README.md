@@ -49,7 +49,7 @@ Created by **Israel Marques**.
 | Karnel OSINT    | `/karnel/osint`    | Robin, Tor, privacy model, and lifecycle                      |
 | Code Editor     | `/karnel/editor`   | code-server (VS Code in browser)                              |
 | Deploy          | `/karnel/deploy`   | Deployment guides for Vercel, Railway, and Netlify            |
-| Supabase        | `/karnel/supabase` | Supabase deployment guide                                     |
+| Supabase        | `/karnel/supabase` | Supabase CLI entry in the Deploy catalog                      |
 | Doctor          | `/karnel/doctor`   | Termux diagnostics and project code analysis                  |
 | Show Docs       | `/karnel/show`     | Tool documentation viewer                                     |
 | Linux           | `/karnel/linux`    | Linux-specific tools                                          |
