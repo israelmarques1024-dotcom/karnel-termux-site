@@ -57,7 +57,7 @@ const modules = [
   },
   {
     name: "ZSH Shell",
-    desc: "ZSH + Oh My Zsh + 10 plugins",
+    desc: `ZSH + Oh My Zsh + ${CATALOG_COUNTS.shell} plugins`,
     cmd: "karnel install shell",
   },
   {
@@ -99,6 +99,10 @@ const modules = [
 
 const commands = [
   { cmd: "karnel --version", desc: "Show current version" },
+  {
+    cmd: "karnel --auto <command>",
+    desc: "Run supported confirmations and selections without prompts",
+  },
   { cmd: "karnel backup", desc: "Back up Termux configurations and tools" },
   { cmd: "karnel brain", desc: "Second brain — save and search memories" },
   { cmd: "karnel cleanup", desc: "Clean caches, logs, and temporary files" },
@@ -172,7 +176,10 @@ export default function KarnelDocs() {
             <h3 className="font-bold font-mono mb-4">Quick Install</h3>
             <div className="space-y-3">
               <CodeBlock
-                code={`bash -c "$(curl -fsSL https://raw.githubusercontent.com/israelmarques1024-dotcom/karnel-termux/main/install.sh)"`}
+                code={`curl -fLO https://github.com/israelmarques1024-dotcom/karnel-termux/releases/download/v4.17.34/karnel-termux-install.sh
+curl -fLO https://github.com/israelmarques1024-dotcom/karnel-termux/releases/download/v4.17.34/karnel-termux-install.sh.sha256
+sha256sum -c karnel-termux-install.sh.sha256
+bash karnel-termux-install.sh --ref v4.17.34 --commit f571178a0a7fdf05e9963d7effeeb2ddf65e7599`}
                 language="bash"
                 title="quick install"
               />
@@ -241,6 +248,25 @@ export default function KarnelDocs() {
           <h2 className="text-2xl font-bold font-mono mb-6">
             Detailed Commands
           </h2>
+        </AnimatedSection>
+
+        <AnimatedSection delay={1050}>
+          <div className="card-hover bg-card border border-border rounded-lg p-6 mb-12">
+            <h3 className="font-bold font-mono mb-2">Non-interactive mode</h3>
+            <p className="text-muted-foreground mb-4">
+              Add <code className="text-accent">--auto</code> before or after a
+              command to accept supported confirmations and recommended
+              selections. Required values, legal opt-ins, and unsafe actions are
+              never assumed.
+            </p>
+            <CodeBlock
+              code={`karnel --auto install editor --code-server
+karnel doctor termux --fix --auto
+karnel --auto update karnel`}
+              language="bash"
+              title="terminal"
+            />
+          </div>
         </AnimatedSection>
 
         {[

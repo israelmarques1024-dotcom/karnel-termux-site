@@ -31,7 +31,7 @@ Created by **Israel Marques**.
 ## Features
 
 - **Documentation** for all CLI commands and modules, including Robin OSINT
-- **AI tools page** — Browse and install 45 agents, gateways, and developer utilities
+- **AI tools page** — Browse and install 46 agents, gateways, and developer utilities
 - **CLI-synchronized catalog** — Install flags and counts are generated from the Karnel CLI registries
 - **Interactive guides** — Doctor checks, PostgreSQL, voice commands, and more
 - **Responsive** — Works on mobile and desktop
@@ -114,23 +114,24 @@ pnpm preview
 
 The catalog in `client/src/data/catalog.ts` is generated from the pinned CLI
 revision declared in `scripts/generate-catalog.mjs`. Do not edit it by hand.
-To refresh it from that published CLI revision:
+To refresh it from that published CLI revision (this is the only catalog command
+that accesses the network):
 
 ```bash
-node scripts/generate-catalog.mjs
+npm run catalog:refresh
 ```
 
 To generate from a local CLI checkout before it is published:
 
 ```bash
-KARNEL_REPO_DIR=/path/to/karnel-termux node scripts/generate-catalog.mjs
+KARNEL_REPO_DIR=/path/to/karnel-termux npm run catalog:refresh
 ```
 
 Verify that the generated file has not drifted from a local CLI checkout without
 writing files:
 
 ```bash
-KARNEL_REPO_DIR=/path/to/karnel-termux pnpm catalog:check
+KARNEL_REPO_DIR=/path/to/karnel-termux npm run catalog:check
 ```
 
 After generating, run the full verification suite:

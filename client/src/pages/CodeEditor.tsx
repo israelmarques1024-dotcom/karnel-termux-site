@@ -181,7 +181,6 @@ const configPaths = [
     path: "$HOME/.local/share/code-server/extensions/",
     purpose: "Extensões VS Code instaladas",
   },
-  { path: "$HOME/.code-server/", purpose: "Dados de sessão e estado" },
 ];
 
 const troubleshooting = [
@@ -214,28 +213,28 @@ const troubleshooting = [
 
 const features = [
   {
-    title: "Integração com IA",
-    desc: "GitHub Copilot extension + AI Chat extension com Mistral, OpenAI e Anthropic",
+    title: "VS Code no navegador",
+    desc: "O code-server serve o VS Code localmente em 127.0.0.1:8080 por padrão.",
   },
   {
-    title: "Suporte LSP",
-    desc: "8 linguagens com instalação sob demanda (JS, Python, Go, Rust, Lua, Bash, HTML, CSS)",
+    title: "Extensões sob seu controle",
+    desc: "Instale extensões e servidores de linguagem conforme as necessidades do projeto.",
   },
   {
-    title: "Formatação de Código",
-    desc: "Prettier extension, Lua Formatter, shfmt, pg_format, Python Formatter, gofmt, rustfmt",
+    title: "Configuração preservada",
+    desc: "O instalador cria a configuração inicial apenas quando ela ainda não existe.",
   },
   {
-    title: "Quick Open",
-    desc: "Buscador fuzzy para arquivos, texto e buffers",
+    title: "Neovim opcional",
+    desc: "Neovim e NvChad são componentes separados do módulo editor.",
   },
   {
-    title: "Syntax Highlighting",
-    desc: "Destaque de sintaxe avançado + seleção incremental",
+    title: "Acesso protegido",
+    desc: "A configuração padrão usa autenticação por senha e escuta apenas em loopback.",
   },
   {
-    title: "Interface Bonita",
-    desc: "Tema Eldritch, lualine, bufferline, scrollbar",
+    title: "Porta configurável",
+    desc: "Inicie o serviço na porta padrão 8080 ou informe uma porta entre 1024 e 65535.",
   },
 ];
 
@@ -246,9 +245,9 @@ export default function CodeEditor() {
         <AnimatedSection>
           <h1 className="text-4xl font-bold font-mono mb-4">code-server</h1>
           <p className="text-lg text-muted-foreground mb-8">
-            Uma configuração completa do code-server otimizada para Termux no
-            Android. Servidores de linguagem pré-configurados, assistentes de
-            IA, formatadores de código e uma interface bonita.
+            VS Code no navegador para Termux. O Karnel instala o servidor e uma
+            configuração local segura; extensões, assistentes de IA, servidores
+            de linguagem e formatadores são escolhidos por você.
           </p>
         </AnimatedSection>
 
@@ -256,7 +255,8 @@ export default function CodeEditor() {
           <div className="card-hover bg-card border border-accent/50 rounded-lg p-6 mb-12">
             <h3 className="font-bold font-mono mb-4">Quick Install</h3>
             <p className="text-sm text-muted-foreground mb-4">
-              Três opções de editor — instale individualmente ou todos:
+              O módulo contém code-server, Neovim e NvChad. Instale somente o
+              componente que deseja ou todos de uma vez:
             </p>
             <div className="space-y-2">
               <CodeBlock
@@ -300,15 +300,13 @@ export default function CodeEditor() {
             Keyboard Shortcuts
           </h2>
           <p className="text-muted-foreground mb-6">
-            Tecla Líder:{" "}
-            <code className="bg-background px-2 py-1 rounded text-accent">
-              Space
-            </code>
+            These shortcuts belong to the optional NvChad configuration, not
+            code-server. They are available only after installing NvChad.
           </p>
         </AnimatedSection>
 
         <Tabs defaultValue="Geral" className="mb-12">
-          <TabsList className="grid w-full grid-cols-3 lg:grid-cols-6">
+          <TabsList className="w-full justify-start overflow-x-auto [&>button]:flex-none [&>button]:shrink-0">
             {keybindings.map(cat => (
               <TabsTrigger key={cat.category} value={cat.category}>
                 {cat.category}
@@ -358,6 +356,10 @@ export default function CodeEditor() {
           <h2 className="text-2xl font-bold font-mono mb-6">
             Language Support
           </h2>
+          <p className="text-muted-foreground mb-6">
+            These are common VS Code extension choices. Karnel does not install
+            or configure language servers and formatters automatically.
+          </p>
         </AnimatedSection>
 
         <AnimatedSection delay={800}>
@@ -405,17 +407,17 @@ export default function CodeEditor() {
         {[
           {
             title: "Full Installation",
-            desc: "Installs code-server, VS Code extensions and all plugins.",
+            desc: "Installs code-server, Neovim, and the Karnel-managed NvChad configuration.",
             code: "karnel install editor",
           },
           {
             title: "Individual Components",
-            desc: "Install only what you need for a lighter setup.",
-            code: "karnel install editor          # Install full code-server\nkarnel start editor            # Start server on port 8080",
+            desc: "Install only the editor component you need.",
+            code: "karnel install editor --code-server\nkarnel install editor --neovim\nkarnel install editor --nvchad\nkarnel start editor            # Start code-server on port 8080",
           },
           {
             title: "VS Code Extensions",
-            desc: "Install extensions via CLI (recommended on mobile) or via the extensions panel:",
+            desc: "After code-server is installed, install extensions with its CLI or the extensions panel:",
             code: "# Via CLI (recommended for mobile):\ncode-server --install-extension ms-python.python\ncode-server --install-extension esbenp.prettier-vscode\n\n# Or via panel: Ctrl+Shift+X",
           },
         ].map((item, i) => (
@@ -509,10 +511,7 @@ export default function CodeEditor() {
 ~/.local/share/code-server/
 ├── extensions/                    # Extensões VS Code instaladas
 ├── cachedExtensionVSIXs/         # Cache de extensões
-└── workspaceStorage/             # Dados por workspace
-
-~/.code-server/
-└── ../                            # Dados de sessão e estado`}
+└── workspaceStorage/             # Dados por workspace`}
             language="bash"
             title="code-server structure"
           />

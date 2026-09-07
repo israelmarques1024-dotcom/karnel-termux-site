@@ -551,7 +551,7 @@ karnel doctor code --fix /path/to/project`}
             <div className="flex flex-wrap gap-4 text-sm">
               <a
                 className="text-accent hover:underline"
-                href="https://github.com/israelmarques1024-dotcom/karnel-termux/blob/main/docs/doctor/README.md"
+                href="https://github.com/israelmarques1024-dotcom/karnel-termux/blob/main/docs/doctor/index.md"
                 target="_blank"
                 rel="noreferrer"
               >

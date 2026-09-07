@@ -4,7 +4,7 @@ import { fileURLToPath } from "url";
 import { format } from "prettier";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
-const KARNEL_REF = "4c9e5da4c38f3c93a5f36809265feb152fd59b27";
+const KARNEL_REF = "f571178a0a7fdf05e9963d7effeeb2ddf65e7599"; // v4.17.34
 const GITHUB_RAW = `https://raw.githubusercontent.com/israelmarques1024-dotcom/karnel-termux/${KARNEL_REF}`;
 const LOCAL_KARNEL_ROOT = process.env.KARNEL_REPO_DIR;
 const CHECK = process.argv.includes("--check");
@@ -219,7 +219,7 @@ function generateCategory(name, items, descs) {
     const desc =
       descs[bin] ||
       descs[flag.replace("--", "")] ||
-      "Description unavailable from the Karnel registry.";
+      `${displayName} managed through the Karnel ${name.replace(/Tools$/, "").toLowerCase()} module.`;
     return `  { name: ${JSON.stringify(displayName)}, flag: ${JSON.stringify(flag)}, desc: ${JSON.stringify(desc)} },`;
   });
   return `export const ${name} = [\n${entries.join("\n")}\n] as const;\n`;

@@ -67,8 +67,11 @@ const stats = [
 
 const installOptions = [
   {
-    name: "curl",
-    code: `bash -c "$(curl -fsSL https://raw.githubusercontent.com/israelmarques1024-dotcom/karnel-termux/main/install.sh)"`,
+    name: "verified release",
+    code: `curl -fLO https://github.com/israelmarques1024-dotcom/karnel-termux/releases/download/v4.17.34/karnel-termux-install.sh
+curl -fLO https://github.com/israelmarques1024-dotcom/karnel-termux/releases/download/v4.17.34/karnel-termux-install.sh.sha256
+sha256sum -c karnel-termux-install.sh.sha256
+bash karnel-termux-install.sh --ref v4.17.34 --commit f571178a0a7fdf05e9963d7effeeb2ddf65e7599`,
   },
   { name: "npm", code: "npm install -g karnel-termux" },
   { name: "pnpm", code: "pnpm add -g karnel-termux" },
@@ -162,7 +165,7 @@ const features = [
   {
     href: ROUTES.security,
     icon: <Shield size={22} />,
-    title: "Security (30 tools)",
+    title: `Security (${CATALOG_COUNTS.security} tools)`,
     desc: "Nmap, Hydra, SQLMap, Metasploit, Burp, Zap and more.",
   },
   {

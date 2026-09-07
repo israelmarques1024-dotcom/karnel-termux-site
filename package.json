@@ -9,12 +9,13 @@
   },
   "scripts": {
     "dev": "vite --host",
-    "build": "KARNEL_ALLOW_NETWORK_CATALOG_CHECK=1 node scripts/generate-catalog.mjs --check && vite build",
+    "build": "vite build",
     "preview": "vite preview --host",
     "lint": "tsc --noEmit --incremental false --pretty",
     "test": "vitest run",
     "format": "prettier --write \"client/src\" \"*.{ts,json,md}\"",
     "format:check": "prettier --check \"client/src\" \"*.{ts,json,md}\"",
+    "catalog:refresh": "node scripts/generate-catalog.mjs",
     "catalog:check": "node scripts/generate-catalog.mjs --check",
     "check": "pnpm lint && pnpm test && pnpm build"
   },
