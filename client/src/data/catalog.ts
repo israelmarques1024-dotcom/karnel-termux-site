@@ -379,9 +379,9 @@ export const DEPLOY_TOOLS = [
   { name: "Netlify", flag: "--netlify", desc: "Static sites & edge functions" },
   { name: "Vercel", flag: "--vercel", desc: "Frontend deployment platform" },
   {
-    name: "Supabase",
+    name: "Supabase CLI",
     flag: "--supabase",
-    desc: "Supabase managed through the Karnel deploy_tools module.",
+    desc: "Supabase CLI for project workflows; its native binary is not supported on Android/Termux.",
   },
 ] as const;
 

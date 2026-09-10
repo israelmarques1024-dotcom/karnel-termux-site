@@ -258,6 +258,12 @@ function AnimatedStat({
     if (!inView || startedRef.current) return;
     startedRef.current = true;
 
+    const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+    if (mediaQuery.matches) {
+      setCount(value);
+      return;
+    }
+
     const duration = 2000;
     const start = performance.now();
     function tick(now: number) {
@@ -407,11 +413,17 @@ export default function Home() {
           </AnimatedSection>
 
           <AnimatedSection delay={100}>
-            <div className="flex justify-center gap-1 mb-6">
+            <div
+              className="flex justify-center gap-1 mb-6"
+              role="group"
+              aria-label="Installation method"
+            >
               {installOptions.map((opt, i) => (
                 <button
                   key={opt.name}
                   onClick={() => setInstallTab(i)}
+                  type="button"
+                  aria-pressed={installTab === i}
                   className={`px-4 py-2 text-sm font-medium rounded-lg transition-all duration-200 ${
                     installTab === i
                       ? "bg-accent text-accent-foreground"
@@ -423,7 +435,12 @@ export default function Home() {
               ))}
             </div>
 
-            <div className="animate-fade-in" key={installTab}>
+            <div
+              className="animate-fade-in"
+              role="region"
+              aria-label={`${installOptions[installTab].name} installation command`}
+              key={installTab}
+            >
               <CodeBlock
                 code={installOptions[installTab].code}
                 language="bash"

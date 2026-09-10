@@ -41,7 +41,7 @@ Created by **Israel Marques**.
 
 | Page            | Route              | Description                                                   |
 | --------------- | ------------------ | ------------------------------------------------------------- |
-| Home            | `/`                | Landing page with overview                                    |
+| Home            | `/`                | Landing page with installation and feature overview           |
 | Termux          | `/termux`          | Termux-specific tools                                         |
 | Termux API      | `/termux/api`      | Termux:API integration                                        |
 | Karnel Docs     | `/karnel`          | CLI command and module documentation                          |
@@ -49,7 +49,7 @@ Created by **Israel Marques**.
 | Karnel OSINT    | `/karnel/osint`    | Robin, Tor, privacy model, and lifecycle                      |
 | Code Editor     | `/karnel/editor`   | code-server (VS Code in browser)                              |
 | Deploy          | `/karnel/deploy`   | Deployment guides for Vercel, Railway, and Netlify            |
-| Supabase        | `/karnel/supabase` | Supabase CLI entry in the Deploy catalog                      |
+| Supabase        | `/karnel/supabase` | Supabase CLI compatibility guidance for Android/Termux        |
 | Doctor          | `/karnel/doctor`   | Termux diagnostics and project code analysis                  |
 | Show Docs       | `/karnel/show`     | Tool documentation viewer                                     |
 | Linux           | `/karnel/linux`    | Linux-specific tools                                          |
@@ -69,7 +69,7 @@ Created by **Israel Marques**.
 | Karnel Network  | `/karnel/network`  | Network tools                                                 |
 | Karnel Utils    | `/karnel/utils`    | Utility scripts                                               |
 | Karnel Cleanup  | `/karnel/cleanup`  | Cache, log, and temporary-file cleanup                        |
-| Karnel Backup   | `/karnel/backup`   | Backup and restore                                            |
+| Karnel Backup   | `/karnel/backup`   | Archive and restore scope, including limitations              |
 | Karnel Plugin   | `/karnel/plugin`   | Plugin manager and plugin-development guide                   |
 | Karnel Security | `/karnel/security` | Security tools                                                |
 | Terms           | `/terms`           | Terms of service                                              |

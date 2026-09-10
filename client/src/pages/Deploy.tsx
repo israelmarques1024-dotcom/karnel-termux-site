@@ -19,10 +19,35 @@ export default function Deploy() {
           </h1>
           <p className="text-lg text-muted-foreground mb-8">
             {isSupabaseRoute
-              ? "Install Supabase from the Karnel Deploy catalog, alongside other deployment CLIs."
+              ? "Supabase project workflows and the Android/Termux compatibility limitation."
               : "Install deployment CLIs directly from your phone. Vercel, Railway, Netlify, and Supabase are available in the catalog."}
           </p>
         </AnimatedSection>
+
+        {isSupabaseRoute && (
+          <AnimatedSection delay={150}>
+            <div className="bg-yellow-500/10 border border-yellow-500/30 rounded-lg p-6 mb-12">
+              <h2 className="text-xl font-bold font-mono mb-3">
+                Android / Termux limitation
+              </h2>
+              <p className="text-muted-foreground">
+                The official Supabase CLI downloads a native binary that is not
+                supported on Android/Termux. It can terminate with
+                <code className="text-accent"> SIGSYS </code>. Do not rely on
+                <code className="text-accent">
+                  {" "}
+                  karnel install deploy --supabase{" "}
+                </code>
+                for a working on-device CLI.
+              </p>
+              <p className="text-muted-foreground mt-3">
+                Run Supabase CLI commands from a supported desktop or CI
+                environment instead. Android projects can still use Supabase
+                through their application SDK or HTTPS APIs.
+              </p>
+            </div>
+          </AnimatedSection>
+        )}
 
         <AnimatedSection delay={100}>
           <div className="card-hover bg-card border border-accent/50 rounded-lg p-6 mb-12">

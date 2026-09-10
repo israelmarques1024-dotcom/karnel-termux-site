@@ -46,6 +46,7 @@ function parseArray(text, varName) {
 }
 
 function toDisplayName(name) {
+  if (name.toLowerCase() === "supabase") return "Supabase CLI";
   return name
     .replace(/-/g, " ")
     .replace(/\b\w/g, c => c.toUpperCase())
@@ -169,6 +170,8 @@ function lookupDescriptions(category) {
       railway: "Full-stack with databases",
       netlify: "Static sites & edge functions",
       vercel: "Frontend deployment platform",
+      supabase:
+        "Supabase CLI for project workflows; its native binary is not supported on Android/Termux.",
     },
     network: {
       dark: "Tor crawler and scraper for OSINT research",

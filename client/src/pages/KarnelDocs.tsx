@@ -103,7 +103,10 @@ const commands = [
     cmd: "karnel --auto <command>",
     desc: "Run supported confirmations and selections without prompts",
   },
-  { cmd: "karnel backup", desc: "Back up Termux configurations and tools" },
+  {
+    cmd: "karnel backup",
+    desc: "Archive selected Termux configuration and package metadata",
+  },
   { cmd: "karnel brain", desc: "Second brain — save and search memories" },
   { cmd: "karnel cleanup", desc: "Clean caches, logs, and temporary files" },
   {
@@ -272,11 +275,11 @@ karnel --auto update karnel`}
         {[
           {
             title: "karnel backup",
-            desc: "Full Termux backup — saves configs, installed packages, and Karnel tools to an archive. Optional upload through the configured rclone remote.",
+            desc: "Archives selected Termux configuration, package selections, and Karnel tool metadata. It is not a full device snapshot and does not archive installed Karnel tool files. Optional upload uses the configured rclone remote.",
             code: `karnel backup                    # Local backup (configs + packages + tools)\nkarnel backup --cloud           # Backup + upload via rclone\nkarnel restore                  # Restore latest backup\nkarnel restore --cloud          # Restore via rclone`,
             extra: {
               label: "Backup includes:",
-              code: "• Full package list (dpkg)\n• Karnel tools manifest\n• Shell configs (.bashrc, .zshrc, .profile)\n• Termux settings (fonts, colors)\n• SSH public keys and config (private keys are not archived)\n• App configs (~/.config)\n• APT repositories",
+              code: "• Package selections (dpkg list)\n• Karnel tools manifest (not installed tool files)\n• Shell configs (.bashrc, .zshrc, .profile)\n• Termux settings (fonts, colors)\n• SSH public keys and config (private keys are not archived)\n• App configs (~/.config)\n• APT repositories",
             },
           },
           {
@@ -380,7 +383,8 @@ karnel --auto update karnel`}
               Backup Documentation
             </h3>
             <p className="text-muted-foreground mb-6">
-              Learn how to save and restore your entire Termux.
+              Learn which configuration and metadata are archived and what a
+              restore does not recreate.
             </p>
             <Link
               href={ROUTES.backup}

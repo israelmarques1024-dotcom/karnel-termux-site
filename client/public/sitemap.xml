@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://karneltermux.vercel.app/</loc></url>
+  <url><loc>https://karneltermux.vercel.app/termux</loc></url>
+  <url><loc>https://karneltermux.vercel.app/termux/api</loc></url>
+  <url><loc>https://karneltermux.vercel.app/karnel</loc></url>
+  <url><loc>https://karneltermux.vercel.app/karnel/ai</loc></url>
+  <url><loc>https://karneltermux.vercel.app/karnel/osint</loc></url>
+  <url><loc>https://karneltermux.vercel.app/karnel/editor</loc></url>
+  <url><loc>https://karneltermux.vercel.app/karnel/deploy</loc></url>
+  <url><loc>https://karneltermux.vercel.app/karnel/supabase</loc></url>
+  <url><loc>https://karneltermux.vercel.app/karnel/doctor</loc></url>
+  <url><loc>https://karneltermux.vercel.app/karnel/show</loc></url>
+  <url><loc>https://karneltermux.vercel.app/karnel/linux</loc></url>
+  <url><loc>https://karneltermux.vercel.app/karnel/brain</loc></url>
+  <url><loc>https://karneltermux.vercel.app/karnel/voice</loc></url>
+  <url><loc>https://karneltermux.vercel.app/karnel/pg</loc></url>
+  <url><loc>https://karneltermux.vercel.app/karnel/init</loc></url>
+  <url><loc>https://karneltermux.vercel.app/karnel/env</loc></url>
+  <url><loc>https://karneltermux.vercel.app/karnel/lang</loc></url>
+  <url><loc>https://karneltermux.vercel.app/karnel/db</loc></url>
+  <url><loc>https://karneltermux.vercel.app/karnel/dev</loc></url>
+  <url><loc>https://karneltermux.vercel.app/karnel/npm</loc></url>
+  <url><loc>https://karneltermux.vercel.app/karnel/shell</loc></url>
+  <url><loc>https://karneltermux.vercel.app/karnel/ui</loc></url>
+  <url><loc>https://karneltermux.vercel.app/karnel/auto</loc></url>
+  <url><loc>https://karneltermux.vercel.app/karnel/games</loc></url>
+  <url><loc>https://karneltermux.vercel.app/karnel/network</loc></url>
+  <url><loc>https://karneltermux.vercel.app/karnel/utils</loc></url>
+  <url><loc>https://karneltermux.vercel.app/karnel/cleanup</loc></url>
+  <url><loc>https://karneltermux.vercel.app/karnel/backup</loc></url>
+  <url><loc>https://karneltermux.vercel.app/karnel/plugin</loc></url>
+  <url><loc>https://karneltermux.vercel.app/karnel/security</loc></url>
+  <url><loc>https://karneltermux.vercel.app/terms</loc></url>
+</urlset>

@@ -14,7 +14,7 @@ import {
 const backupCommands = [
   {
     cmd: "karnel backup",
-    desc: "Local backup of all configs + packages + tools",
+    desc: "Local archive of selected configs, package selections, and tool metadata",
   },
   {
     cmd: "karnel backup --cloud",
@@ -39,8 +39,8 @@ export default function KarnelBackupPage() {
               <span className="text-accent">backup</span> / restore
             </h1>
             <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-              Salve e restaure todo o seu ambiente Termux com um comando.
-              Configurações, pacotes instalados, ferramentas Karnel e mais.
+              Archive selected Termux configuration and package metadata for a
+              later restore. This is not a full device snapshot.
             </p>
           </div>
         </AnimatedSection>
@@ -101,7 +101,11 @@ KARNEL_ALLOW_UNAUTHENTICATED_CLOUD_RESTORE=1 karnel restore --cloud`}
                   label: "Packages",
                   desc: "Full dpkg package list",
                 },
-                { icon: Wrench, label: "Tools", desc: "Karnel tools manifest" },
+                {
+                  icon: Wrench,
+                  label: "Tools",
+                  desc: "Karnel tool manifest, not installed tool files",
+                },
                 {
                   icon: Terminal,
                   label: "Shell",
@@ -178,8 +182,8 @@ KARNEL_ALLOW_PLAINTEXT_CLOUD_BACKUP=1 karnel backup --cloud`}
             <h2 className="text-xl font-bold font-mono mb-4">Restore</h2>
             <p className="text-muted-foreground mb-4">
               Restore applies archived configurations and package selections. It
-              does not reinstall Karnel tools; reinstall any needed tools
-              separately after restoring.
+              does not restore a complete Termux installation or reinstall
+              Karnel tools; reinstall needed packages and tools separately.
             </p>
             <CodeBlock
               code={`karnel restore                  # Restaura o backup mais recente
