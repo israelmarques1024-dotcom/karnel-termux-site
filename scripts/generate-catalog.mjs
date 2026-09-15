@@ -4,7 +4,7 @@ import { fileURLToPath } from "url";
 import { format } from "prettier";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
-const KARNEL_REF = "ef4116e544713bea8b0551b4c62eeecb8dd13e0e"; // v4.17.35
+const KARNEL_REF = "6ce9fe8b0567a2129eac070d4c168dd5ea79450f"; // v4.17.36
 const GITHUB_RAW = `https://raw.githubusercontent.com/israelmarques1024-dotcom/karnel-termux/${KARNEL_REF}`;
 const LOCAL_KARNEL_ROOT = process.env.KARNEL_REPO_DIR;
 const CHECK = process.argv.includes("--check");

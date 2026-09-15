@@ -551,19 +551,19 @@ karnel doctor code --fix /path/to/project`}
             <div className="flex flex-wrap gap-4 text-sm">
               <a
                 className="text-accent hover:underline"
-                href="https://github.com/israelmarques1024-dotcom/karnel-termux/blob/main/docs/doctor/index.md"
+                href="https://karneltermux.vercel.app/docs"
                 target="_blank"
                 rel="noreferrer"
               >
-                Doctor reference
+                Documentation
               </a>
               <a
                 className="text-accent hover:underline"
-                href="https://github.com/israelmarques1024-dotcom/karnel-termux/blob/main/docs/CHANGELOG.md"
+                href="https://github.com/israelmarques1024-dotcom/karnel-termux/releases"
                 target="_blank"
                 rel="noreferrer"
               >
-                Audit changelog
+                Release notes
               </a>
             </div>
           </div>
