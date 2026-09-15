@@ -22,15 +22,14 @@ export default function Brain() {
             karnel brain — Second Brain
           </h1>
           <p className="text-lg text-muted-foreground mb-8">
-            Sistema de memória local com busca por palavras-chave e visualização
-            em grafo. Salve ideias, comandos, trechos de código e encontre tudo
-            rapidamente.
+            Local memory system with keyword search and graph visualization.
+            Save ideas, commands, code snippets, and find everything quickly.
           </p>
         </AnimatedSection>
 
         <AnimatedSection delay={100}>
           <div className="card-hover bg-card border border-accent/50 rounded-lg p-6 mb-12">
-            <h3 className="font-bold font-mono mb-4">Uso</h3>
+            <h3 className="font-bold font-mono mb-4">Usage</h3>
             <CodeBlock
               code={"karnel brain <action> [args]"}
               language="bash"
@@ -76,22 +75,22 @@ export default function Brain() {
         </AnimatedSection>
 
         <AnimatedSection delay={300}>
-          <h2 className="text-2xl font-bold font-mono mb-6">Exemplos</h2>
+          <h2 className="text-2xl font-bold font-mono mb-6">Examples</h2>
         </AnimatedSection>
 
         <div className="space-y-6 mb-12">
           {[
             {
               code: "karnel brain init",
-              desc: "Inicializa o armazenamento local antes de salvar ou buscar memórias.",
+              desc: "Initialize local storage before saving or searching memories.",
             },
             {
               code: `karnel brain search "como configurar postgres"`,
-              desc: "Busca memórias por palavras-chave e tags.",
+              desc: "Search memories by keywords and tags.",
             },
             {
               code: `karnel brain graph`,
-              desc: "Gera um grafo mostrando como suas ideias se conectam.",
+              desc: "Generate a graph showing how your ideas connect.",
             },
           ].map((ex, i) => (
             <AnimatedSection key={i} delay={400 + i * 80}>
@@ -104,14 +103,14 @@ export default function Brain() {
         </div>
 
         <AnimatedSection delay={600}>
-          <h2 className="text-2xl font-bold font-mono mb-6">Como Funciona</h2>
+          <h2 className="text-2xl font-bold font-mono mb-6">How It Works</h2>
           <div className="card-hover bg-card border border-border rounded-lg p-6">
             <p className="text-muted-foreground mb-4">
-              O <code className="text-accent">karnel brain</code> armazena suas
-              entradas como arquivos Markdown em{" "}
-              <code className="text-accent">$KARNEL_DATA/brain/</code> e usa
-              busca local por palavras-chave e tags. O grafo mostra as relações
-              criadas entre memórias.
+              The <code className="text-accent">karnel brain</code> stores your
+              entries as Markdown files in{" "}
+              <code className="text-accent">$KARNEL_DATA/brain/</code> and uses
+              local keyword and tag search. The graph shows relationships
+              created between memories.
             </p>
           </div>
         </AnimatedSection>

@@ -149,16 +149,16 @@ const commands = [
 ];
 
 const templates = [
-  { name: "next", desc: "Next.js com webpack, TypeScript, Tailwind CSS" },
-  { name: "react", desc: "React + Vite com estrutura moderna" },
-  { name: "nest", desc: "NestJS com TypeORM e autenticação" },
+  { name: "next", desc: "Next.js with webpack, TypeScript, Tailwind CSS" },
+  { name: "react", desc: "React + Vite with modern structure" },
+  { name: "nest", desc: "NestJS with TypeORM and authentication" },
   {
     name: "express",
-    desc: "Express API com TypeScript + TypeORM + migrations",
+    desc: "Express API with TypeScript + TypeORM + migrations",
   },
-  { name: "python", desc: "FastAPI com SQLModel/SQLAlchemy" },
-  { name: "go", desc: "Go com Gin ou Fiber" },
-  { name: "rust", desc: "Rust com Axum ou Actix Web" },
+  { name: "python", desc: "FastAPI with SQLModel/SQLAlchemy" },
+  { name: "go", desc: "Go with Gin or Fiber" },
+  { name: "rust", desc: "Rust with Axum or Actix Web" },
 ];
 
 export default function KarnelDocs() {
@@ -185,7 +185,7 @@ bash karnel-termux-install.sh --ref v4.17.36 --commit 6ce9fe8b0567a2129eac070d4c
                 language="bash"
                 title="quick install"
               />
-              <p className="text-center text-xs text-muted-foreground">ou</p>
+              <p className="text-center text-xs text-muted-foreground">or</p>
               <CodeBlock
                 code={`npm install -g karnel-termux`}
                 language="bash"

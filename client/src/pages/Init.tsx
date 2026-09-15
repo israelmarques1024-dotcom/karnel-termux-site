@@ -2,16 +2,16 @@ import CodeBlock from "@/components/CodeBlock";
 import { AnimatedSection } from "@/components/AnimatedSection";
 
 const templates = [
-  { name: "next", desc: "Next.js com webpack, TypeScript, Tailwind CSS" },
-  { name: "react", desc: "React + Vite com estrutura moderna" },
-  { name: "nest", desc: "NestJS com TypeORM e autenticação" },
+  { name: "next", desc: "Next.js with webpack, TypeScript, Tailwind CSS" },
+  { name: "react", desc: "React + Vite with modern structure" },
+  { name: "nest", desc: "NestJS with TypeORM and authentication" },
   {
     name: "express",
-    desc: "Express API com TypeScript + TypeORM + migrations",
+    desc: "Express API with TypeScript + TypeORM + migrations",
   },
-  { name: "python", desc: "FastAPI com SQLModel ou SQLAlchemy" },
-  { name: "go", desc: "Gin/Fiber API com Docker support" },
-  { name: "rust", desc: "Axum/Actix Web com SQLx" },
+  { name: "python", desc: "FastAPI with SQLModel or SQLAlchemy" },
+  { name: "go", desc: "Gin/Fiber API with Docker support" },
+  { name: "rust", desc: "Axum/Actix Web with SQLx" },
 ];
 
 export default function Init() {
@@ -23,14 +23,14 @@ export default function Init() {
             karnel init — Project Initialization
           </h1>
           <p className="text-lg text-muted-foreground mb-8">
-            Configure projetos existentes com dependências, estrutura de pastas
-            e ferramentas pré-definidas. Comece a codar em segundos.
+            Configure existing projects with dependencies, folder structure,
+            and predefined tools. Start coding in seconds.
           </p>
         </AnimatedSection>
 
         <AnimatedSection delay={100}>
           <div className="card-hover bg-card border border-accent/50 rounded-lg p-6 mb-12">
-            <h3 className="font-bold font-mono mb-4">Uso</h3>
+            <h3 className="font-bold font-mono mb-4">Usage</h3>
             <CodeBlock
               code={`karnel init                     # Detects project type and configures
 karnel init <template>          # Configures with specific template`}
@@ -66,7 +66,7 @@ karnel init <template>          # Configures with specific template`}
           <h2 className="text-2xl font-bold font-mono mb-6">Example</h2>
           <div className="card-hover bg-card border border-border rounded-lg p-6">
             <CodeBlock
-              code={`cd meu-projeto-next && karnel init next`}
+              code={`cd my-next-project && karnel init next`}
               language="bash"
               title="terminal"
             />

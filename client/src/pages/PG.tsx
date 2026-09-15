@@ -17,7 +17,7 @@ export default function PG() {
 
         <AnimatedSection delay={100}>
           <div className="card-hover bg-card border border-accent/50 rounded-lg p-6 mb-12">
-            <h3 className="font-bold font-mono mb-4">Uso</h3>
+            <h3 className="font-bold font-mono mb-4">Usage</h3>
             <CodeBlock
               code={`karnel pg                       # Show help
 karnel pg start                 # Start server

@@ -52,21 +52,21 @@ export default function Voice() {
             karnel voice — Speech-to-Agent
           </h1>
           <p className="text-lg text-muted-foreground mb-8">
-            Capture áudio pelo microfone, revise no editor configurado, copie
-            para a área de transferência e dispare qualquer agente de IA com o
-            prompt transcrito. Tudo em um comando.
+            Capture audio from the microphone, review in your configured editor, copy
+            to clipboard, and fire any AI agent with the transcribed prompt.
+            All in one command.
           </p>
         </AnimatedSection>
 
         <AnimatedSection delay={100}>
           <div className="card-hover bg-card border border-accent/50 rounded-lg p-6 mb-12">
-            <h3 className="font-bold font-mono mb-4">Uso Básico</h3>
+            <h3 className="font-bold font-mono mb-4">Basic Usage</h3>
             <CodeBlock
-              code={`karnel voice                     # Mostra ajuda
-karnel voice opencode             # Captura → $EDITOR → opencode run
-karnel voice text                 # Captura → $EDITOR → stdout
-karnel voice '!'                  # Atalho para "text"
-karnel voice claude-code --lang pt-BR  # Fala em português → claude`}
+              code={`karnel voice                     # Shows help
+karnel voice opencode             # Capture -> $EDITOR -> opencode run
+karnel voice text                 # Capture -> $EDITOR -> stdout
+karnel voice '!'                  # Shortcut for "text"
+karnel voice claude-code --lang pt-BR  # Speak in English -> claude`}
               language="bash"
               title="terminal"
             />
@@ -75,7 +75,7 @@ karnel voice claude-code --lang pt-BR  # Fala em português → claude`}
 
         <AnimatedSection delay={200}>
           <h2 className="text-2xl font-bold font-mono mb-6">
-            Fluxo de Trabalho
+            Workflow
           </h2>
         </AnimatedSection>
 
@@ -100,7 +100,7 @@ karnel voice claude-code --lang pt-BR  # Fala em português → claude`}
 
         <AnimatedSection delay={600}>
           <h2 className="text-2xl font-bold font-mono mb-6">
-            14 Agentes + Modo Texto
+            14 Agents + Text Mode
           </h2>
         </AnimatedSection>
 
@@ -156,7 +156,7 @@ karnel voice claude-code --lang pt-BR  # Fala em português → claude`}
                 </thead>
                 <tbody>
                   <tr className="border-b border-border/50 hover:bg-accent/5 transition-colors">
-                    <td className="p-3 font-mono">--lang &lt;código&gt;</td>
+                    <td className="p-3 font-mono">--lang &lt;code&gt;</td>
                     <td className="p-3 text-muted-foreground">
                       Speech language: pt-BR, en-US, es
                     </td>
@@ -180,25 +180,25 @@ karnel voice claude-code --lang pt-BR  # Fala em português → claude`}
         </AnimatedSection>
 
         <AnimatedSection delay={800}>
-          <h2 className="text-2xl font-bold font-mono mb-6">Exemplos</h2>
+          <h2 className="text-2xl font-bold font-mono mb-6">Examples</h2>
         </AnimatedSection>
 
         <div className="space-y-6 mb-12">
           {[
             {
-              title: "Desenvolvimento com Voz",
+              title: "Voice Development",
               code: "karnel voice claude-code --lang en-US",
-              desc: 'Fale "Create a React component with a counter" e o Claude gera o código.',
+              desc: 'Say "Create a React component with a counter" and Claude generates the code.',
             },
             {
-              title: "Código em Português",
+              title: "Code in Portuguese",
               code: "karnel voice opencode --lang pt-BR",
-              desc: "Descreva uma feature em português e o opencode implementa.",
+              desc: "Describe a feature in Portuguese and opencode implements it.",
             },
             {
-              title: "Anotações Rápidas",
+              title: "Quick Notes",
               code: "karnel voice text --raw --no-clip >> ideias.txt",
-              desc: "Transcreve direto para um arquivo sem edição nem clipboard.",
+              desc: "Transcribes directly to a file without editing or clipboard.",
             },
           ].map((ex, i) => (
             <AnimatedSection key={i} delay={900 + i * 80}>
@@ -212,7 +212,7 @@ karnel voice claude-code --lang pt-BR  # Fala em português → claude`}
         </div>
 
         <AnimatedSection delay={1100}>
-          <h2 className="text-2xl font-bold font-mono mb-6">Requisitos</h2>
+          <h2 className="text-2xl font-bold font-mono mb-6">Requirements</h2>
           <div className="card-hover bg-card border border-border rounded-lg p-6 mb-12">
             <ul className="space-y-2 text-sm text-muted-foreground">
               <li className="flex gap-2">
@@ -229,8 +229,8 @@ karnel voice claude-code --lang pt-BR  # Fala em português → claude`}
               </li>
               <li className="flex gap-2">
                 <span className="text-accent">•</span>{" "}
-                <strong>Microfone:</strong> permitir nas Config. Android &gt;
-                Apps &gt; Termux &gt; Permissões
+                <strong>Microphone:</strong> allow in Android Settings &gt;
+                Apps &gt; Termux &gt; Permissions
               </li>
               <li className="flex gap-2">
                 <span className="text-accent">•</span>{" "}
@@ -249,50 +249,49 @@ karnel voice claude-code --lang pt-BR  # Fala em português → claude`}
                 <h3 className="font-bold font-mono text-foreground mb-1">
                   "No speech detected"
                 </h3>
-                <p>Microfone sem permissão ou app Termux:API não instalado.</p>
+                <p>Microphone permission not granted or Termux:API app not installed.</p>
               </div>
               <div>
                 <h3 className="font-bold font-mono text-foreground mb-1">
-                  Captura em inglês mesmo falando português
+                  Captures in English even when speaking Portuguese
                 </h3>
                 <p>
-                  Use <code className="text-accent">--lang pt-BR</code> para
-                  forçar o idioma.
+                  Use <code className="text-accent">--lang pt-BR</code> to
+                  force the language.
                 </p>
               </div>
               <div>
                 <h3 className="font-bold font-mono text-foreground mb-1">
-                  Editor não abre
+                  Editor doesn't open
                 </h3>
                 <p>
-                  Use <code className="text-accent">--raw</code> para pular a
-                  edição quando não há TTY.
+                  Use <code className="text-accent">--raw</code> to
+                  skip editing when there's no TTY.
                 </p>
               </div>
               <div>
                 <h3 className="font-bold font-mono text-foreground mb-1">
-                  Histórico de bugs corrigidos
+                  Bug fix history
                 </h3>
                 <ul className="list-disc pl-5 space-y-1 mt-2">
                   <li>
-                    Corrigido: comando{" "}
+                    Fixed: command{" "}
                     <code className="text-accent">termux-dialog speech</code> →{" "}
                     <code className="text-accent">termux-speech-to-text</code>
                   </li>
                   <li>
-                    Corrigido: agente <code className="text-accent">kilo</code>{" "}
-                    faltando no dispatch
+                    Fixed: kilo agent missing from dispatch
                   </li>
                   <li>
-                    Corrigido: lógica booleana{" "}
-                    <code className="text-accent">is_text</code> com string
+                    Fixed: boolean logic{" "}
+                    <code className="text-accent">is_text</code> with string
                   </li>
                   <li>
-                    Corrigido: <code className="text-accent">cat | xargs</code>{" "}
-                    removido (UUOC)
+                    Fixed: <code className="text-accent">cat | xargs</code>{" "}
+                    removed (UUOC)
                   </li>
                   <li>
-                    Adicionado: opções{" "}
+                    Added: options{" "}
                     <code className="text-accent">--lang</code>,{" "}
                     <code className="text-accent">--raw</code>,{" "}
                     <code className="text-accent">--no-clip</code>

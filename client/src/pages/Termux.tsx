@@ -5,48 +5,48 @@ import { CATALOG_COUNTS } from "@/data/catalog";
 const features = [
   {
     icon: <Lock size={28} />,
-    title: "Seguro",
-    desc: "Ambiente Linux isolado com recursos de segurança integrados",
+    title: "Secure",
+    desc: "Isolated Linux environment with built-in security features",
   },
   {
     icon: <Zap size={28} />,
-    title: "Rápido",
-    desc: "Terminal leve que funciona perfeitamente em qualquer Android",
+    title: "Fast",
+    desc: "Lightweight terminal that works perfectly on any Android",
   },
   {
     icon: <Shield size={28} />,
-    title: "Poderoso",
-    desc: "Acesso a um shell Linux completo com gerenciador de pacotes",
+    title: "Powerful",
+    desc: "Access to a full Linux shell with package manager",
   },
   {
     icon: <Wrench size={28} />,
-    title: "Flexível",
-    desc: "Instale Python, Node.js, Git e milhares de outros pacotes",
+    title: "Flexible",
+    desc: "Install Python, Node.js, Git and thousands of other packages",
   },
 ];
 
 const comparisons = [
-  { feature: "Configuração com um comando", termux: false },
-  { feature: "Sistema de módulos & CLI framework", termux: false },
+  { feature: "One-command setup", termux: false },
+  { feature: "Module system & CLI framework", termux: false },
   {
-    feature: `${CATALOG_COUNTS.ai} agentes de IA pré-configurados`,
+    feature: `${CATALOG_COUNTS.ai} pre-configured AI agents`,
     termux: false,
   },
-  { feature: "code-server (VS Code no navegador)", termux: false },
-  { feature: "ZSH + plugins + memória persistente", termux: false },
-  { feature: "Deploy direto (Vercel, Railway, Netlify)", termux: false },
-  { feature: "Assistente de voz integrado", termux: false },
-  { feature: "PostgreSQL gerenciado (karnel pg)", termux: false },
-  { feature: "Diagnóstico automático (karnel doctor)", termux: false },
-  { feature: "Gerenciamento de secrets (karnel env)", termux: false },
-  { feature: "Multi-linguagem (Python, Node, Go, Rust)", termux: false },
-  { feature: "Git + GitHub CLI pré-configurados", termux: false },
-  { feature: "Mecanismo de atualização centralizado", termux: false },
-  { feature: "Segundo cérebro (karnel brain)", termux: false },
-  { feature: "Inicialização de projetos (karnel init)", termux: false },
-  { feature: "Ambiente configurado em segundos", termux: false },
-  { feature: "Gerenciamento de variáveis de ambiente", termux: false },
-  { feature: "Documentação interativa (karnel show)", termux: false },
+  { feature: "code-server (VS Code in browser)", termux: false },
+  { feature: "ZSH + plugins + persistent memory", termux: false },
+  { feature: "Direct deploy (Vercel, Railway, Netlify)", termux: false },
+  { feature: "Built-in voice assistant", termux: false },
+  { feature: "Managed PostgreSQL (karnel pg)", termux: false },
+  { feature: "Automatic diagnostics (karnel doctor)", termux: false },
+  { feature: "Secrets management (karnel env)", termux: false },
+  { feature: "Multi-language (Python, Node, Go, Rust)", termux: false },
+  { feature: "Git + GitHub CLI pre-configured", termux: false },
+  { feature: "Centralized update mechanism", termux: false },
+  { feature: "Second brain (karnel brain)", termux: false },
+  { feature: "Project initialization (karnel init)", termux: false },
+  { feature: "Environment configured in seconds", termux: false },
+  { feature: "Environment variable management", termux: false },
+  { feature: "Interactive documentation (karnel show)", termux: false },
 ];
 
 export default function Termux() {
@@ -56,10 +56,10 @@ export default function Termux() {
         <AnimatedSection>
           <h1 className="text-4xl font-bold font-mono mb-4">Termux</h1>
           <p className="text-lg text-muted-foreground mb-8">
-            Termux é um emulador de terminal Linux para Android que fornece um
-            ambiente seguro e leve para executar programas de linha de comando.
-            Ele transforma seu dispositivo Android em uma poderosa estação de
-            trabalho de desenvolvimento.
+            Termux is a Linux terminal emulator for Android that provides a
+            secure and lightweight environment to run command-line programs.
+            It transforms your Android device into a powerful development
+            workstation.
           </p>
         </AnimatedSection>
 
@@ -71,7 +71,7 @@ export default function Termux() {
               rel="noopener noreferrer"
               className="group inline-flex items-center gap-2 rounded-xl bg-accent px-6 py-3 text-sm font-semibold text-accent-foreground shadow-lg shadow-accent/25 transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-accent/40 active:scale-95"
             >
-              Baixar Termux
+              Download Termux
             </a>
           </div>
         </AnimatedSection>
@@ -91,8 +91,8 @@ export default function Termux() {
         <AnimatedSection delay={500}>
           <h2 className="text-2xl font-bold font-mono mb-6">Why Use Karnel?</h2>
           <p className="text-muted-foreground mb-6">
-            Embora o Termux funcione muito bem pronto para uso, o Karnel melhora
-            sua experiência com automação e ferramentas avançadas.
+            While Termux works great out of the box, Karnel enhances your
+            experience with automation and advanced tools.
           </p>
         </AnimatedSection>
 
@@ -103,10 +103,10 @@ export default function Termux() {
                 <thead>
                   <tr className="border-b border-border">
                     <th className="text-left py-3 px-4 font-mono font-bold">
-                      Funcionalidade
+                      Feature
                     </th>
                     <th className="text-center py-3 px-4 font-mono font-bold">
-                      Apenas Termux
+                      Termux Only
                     </th>
                     <th className="text-center py-3 px-4 font-mono font-bold">
                       Karnel
@@ -162,11 +162,11 @@ export default function Termux() {
         <AnimatedSection delay={600}>
           <div className="card-hover bg-card border border-border rounded-xl p-8">
             <h3 className="text-xl font-bold font-mono mb-4">
-              Pronto para Começar?
+              Ready to Get Started?
             </h3>
             <p className="text-muted-foreground mb-6">
-              Baixe o Termux primeiro, depois instale o Karnel para desbloquear
-              todo o potencial do seu ambiente de desenvolvimento Android.
+              Download Termux first, then install Karnel to unlock the full
+              potential of your Android development environment.
             </p>
             <div className="flex gap-4 flex-wrap">
               <a
@@ -175,7 +175,7 @@ export default function Termux() {
                 rel="noopener noreferrer"
                 className="group inline-flex items-center gap-2 rounded-xl bg-accent px-5 py-2.5 text-sm font-semibold text-accent-foreground shadow-lg shadow-accent/25 transition-all duration-300 hover:scale-105 hover:shadow-xl active:scale-95"
               >
-                Baixar Termux
+                Download Termux
               </a>
             </div>
           </div>

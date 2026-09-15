@@ -10,20 +10,20 @@ export default function Env() {
             karnel env — Environment Variable Manager
           </h1>
           <p className="text-lg text-muted-foreground mb-8">
-            Gerencia chaves de API e variáveis de ambiente de forma segura.
-            Nunca mais hardcode secrets nos seus projetos.
+            Manage API keys and environment variables securely.
+            Never hardcode secrets in your projects again.
           </p>
         </AnimatedSection>
 
         <AnimatedSection delay={100}>
           <div className="bg-card border border-accent/50 rounded-lg p-6 mb-12">
-            <h3 className="font-bold font-mono mb-4">Uso</h3>
+            <h3 className="font-bold font-mono mb-4">Usage</h3>
             <CodeBlock
-              code={`karnel env                      # Mostra ajuda
-karnel env list                 # Lista variáveis salvas
-karnel env ls                   # Alias para list
-karnel env set                  # Define uma variável interativamente
-karnel env unset                # Remove uma variável interativamente`}
+              code={`karnel env                      # Shows help
+karnel env list                 # Lists saved variables
+karnel env ls                   # Alias for list
+karnel env set                  # Set a variable interactively
+karnel env unset                # Remove a variable interactively`}
               language="bash"
               title="terminal"
             />
@@ -31,22 +31,22 @@ karnel env unset                # Remove uma variável interativamente`}
         </AnimatedSection>
 
         <AnimatedSection delay={200}>
-          <h2 className="text-2xl font-bold font-mono mb-6">Exemplos</h2>
+          <h2 className="text-2xl font-bold font-mono mb-6">Examples</h2>
         </AnimatedSection>
 
         <div className="space-y-6 mb-12">
           {[
             {
               code: "karnel env set",
-              desc: "Solicita o nome e o valor da variável sem exibir o segredo.",
+              desc: "Prompts for the variable name and value without displaying the secret.",
             },
             {
               code: "karnel env list",
-              desc: "Lista os nomes das variáveis configuradas.",
+              desc: "Lists the names of configured variables.",
             },
             {
               code: "karnel env unset",
-              desc: "Solicita qual variável deve ser removida.",
+              desc: "Prompts which variable should be removed.",
             },
           ].map((ex, i) => (
             <AnimatedSection key={i} delay={300 + i * 80}>
@@ -62,15 +62,15 @@ karnel env unset                # Remove uma variável interativamente`}
           <h2 className="text-2xl font-bold font-mono mb-6">Security</h2>
           <div className="card-hover bg-card border border-border rounded-lg p-6">
             <p className="text-muted-foreground mb-4">
-              As variáveis são gravadas como exports no arquivo de shell ativo,
-              <code className="text-accent"> ~/.zshrc</code> ou{" "}
-              <code className="text-accent">~/.bashrc</code>. Nenhum dado é
-              enviado para fora do dispositivo.
+              Variables are written as exports in the active shell file,{" "}
+              <code className="text-accent">~/.zshrc</code> or{" "}
+              <code className="text-accent">~/.bashrc</code>. No data is sent
+              outside the device.
             </p>
             <p className="text-muted-foreground">
-              Abra um novo shell ou execute{" "}
-              <code className="text-accent">source</code> no arquivo
-              correspondente para carregar alterações na sessão atual.
+              Open a new shell or run{" "}
+              <code className="text-accent">source</code> on the corresponding
+              file to load changes in the current session.
             </p>
           </div>
         </AnimatedSection>

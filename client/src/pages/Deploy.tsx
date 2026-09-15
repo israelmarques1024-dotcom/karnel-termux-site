@@ -111,7 +111,7 @@ export default function Deploy() {
         </AnimatedSection>
 
         <AnimatedSection delay={300}>
-          <h2 className="text-2xl font-bold font-mono mb-6">Uso</h2>
+          <h2 className="text-2xl font-bold font-mono mb-6">Usage</h2>
         </AnimatedSection>
 
         <div className="space-y-6">
