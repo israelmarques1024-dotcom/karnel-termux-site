@@ -40,6 +40,15 @@ const KarnelCleanup = lazy(() => import("@/pages/KarnelCleanup"));
 const KarnelBackup = lazy(() => import("@/pages/KarnelBackup"));
 const KarnelPlugin = lazy(() => import("@/pages/KarnelPlugin"));
 const KarnelSecurity = lazy(() => import("@/pages/KarnelSecurity"));
+const KarnelIa = lazy(() => import("@/pages/KarnelIa"));
+const KarnelSearch = lazy(() => import("@/pages/KarnelSearch"));
+const KarnelStatus = lazy(() => import("@/pages/KarnelStatus"));
+const KarnelUpdate = lazy(() => import("@/pages/KarnelUpdate"));
+const KarnelUpgrade = lazy(() => import("@/pages/KarnelUpgrade"));
+const KarnelList = lazy(() => import("@/pages/KarnelList"));
+const KarnelStart = lazy(() => import("@/pages/KarnelStart"));
+const KarnelSupabaseCmd = lazy(() => import("@/pages/KarnelSupabase"));
+const Changelog = lazy(() => import("@/pages/Changelog"));
 const Terms = lazy(() => import("@/pages/Terms"));
 
 const APP_ROUTES = [
@@ -74,6 +83,15 @@ const APP_ROUTES = [
   { path: ROUTES.backup, component: KarnelBackup },
   { path: ROUTES.plugin, component: KarnelPlugin },
   { path: ROUTES.security, component: KarnelSecurity },
+  { path: ROUTES.ia, component: KarnelIa },
+  { path: ROUTES.search, component: KarnelSearch },
+  { path: ROUTES.status, component: KarnelStatus },
+  { path: ROUTES.update, component: KarnelUpdate },
+  { path: ROUTES.upgrade, component: KarnelUpgrade },
+  { path: ROUTES.list, component: KarnelList },
+  { path: ROUTES.start, component: KarnelStart },
+  { path: ROUTES.supabaseCmd, component: KarnelSupabaseCmd },
+  { path: ROUTES.changelog, component: Changelog },
   { path: ROUTES.terms, component: Terms },
   { path: ROUTES.notFound, component: NotFound },
 ] as const;

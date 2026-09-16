@@ -33,16 +33,49 @@ export default function KarnelPlugin() {
               code={`karnel plugin install <approved-name>       Install an approved plugin
 karnel plugin install <user/repo> --unsafe  Install an unapproved GitHub plugin
 karnel plugin remove <name>      Uninstall a plugin
- karnel plugin update <name>      Update a plugin
- karnel plugin list               List installed plugins
- karnel plugin search --compatible Search approved compatible plugins
- karnel plugin create <name>      Scaffold a new plugin`}
+karnel plugin update <name>      Update a plugin
+karnel plugin enable <name>      Enable a disabled plugin
+karnel plugin disable <name>     Disable a plugin without removing it
+karnel plugin config <name> [key] [value]  View or set per-plugin config
+karnel plugin list               List installed plugins
+karnel plugin search --compatible Search approved compatible plugins
+karnel plugin create <name>      Scaffold a new plugin`}
               language="bash"
             />
           </div>
         </AnimatedSection>
 
         <AnimatedSection delay={175}>
+          <div className="card-hover bg-card border border-accent/50 rounded-lg p-6 mb-8">
+            <h3 className="font-bold font-mono mb-4">Enable / Disable</h3>
+            <CodeBlock
+              code={`karnel plugin disable my-plugin   # Disable without removing
+karnel plugin enable my-plugin    # Re-enable a disabled plugin`}
+              language="bash"
+            />
+            <p className="text-sm text-muted-foreground mt-2">
+              Disabled plugins are skipped during command dispatch but remain installed. Use <code>karnel plugin list</code> to see [disabled] tags.
+            </p>
+          </div>
+        </AnimatedSection>
+
+        <AnimatedSection delay={200}>
+          <div className="card-hover bg-card border border-accent/50 rounded-lg p-6 mb-8">
+            <h3 className="font-bold font-mono mb-4">Per-plugin configuration</h3>
+            <CodeBlock
+              code={`karnel plugin config my-plugin                    # Show all config
+karnel plugin config my-plugin greeting           # Get a value
+karnel plugin config my-plugin greeting "Hello"   # Set a value
+karnel plugin config my-plugin --delete greeting  # Delete a key`}
+              language="bash"
+            />
+            <p className="text-sm text-muted-foreground mt-2">
+              Each plugin has its own config namespace stored in <code>.karnel-install.json</code>.
+            </p>
+          </div>
+        </AnimatedSection>
+
+        <AnimatedSection delay={225}>
           <p className="text-sm text-muted-foreground mb-8">
             Unapproved repositories require <code>--unsafe</code> and an
             interactive confirmation because plugins run with your user
@@ -51,7 +84,7 @@ karnel plugin remove <name>      Uninstall a plugin
           </p>
         </AnimatedSection>
 
-        <AnimatedSection delay={200}>
+        <AnimatedSection delay={250}>
           <div className="card-hover bg-card border border-border rounded-lg p-6 mb-8">
             <h3 className="font-bold font-mono mb-2">Scaffold a plugin</h3>
             <p className="text-muted-foreground mb-4">
@@ -67,7 +100,7 @@ karnel plugin remove <name>      Uninstall a plugin
           </div>
         </AnimatedSection>
 
-        <AnimatedSection delay={250}>
+        <AnimatedSection delay={300}>
           <div className="card-hover bg-card border border-border rounded-lg p-6">
             <h3 className="font-bold font-mono mb-2">Plugin structure</h3>
             <p className="text-muted-foreground mb-4">
