@@ -3,6 +3,16 @@ import CodeBlock from "@/components/CodeBlock";
 
 const releases = [
   {
+    version: "4.17.40",
+    date: "2026-09-16",
+    title: "Refactoring and DRY consolidation",
+    changes: [
+      "Collapse 14 pkg-only security tool installers from 44 to 17 lines each",
+      "Collapse 4 module files (deploy, games, network, utils) from ~88 to ~40 lines",
+      "Net -450 lines of duplicated boilerplate removed",
+    ],
+  },
+  {
     version: "4.17.39",
     date: "2026-09-16",
     title: "Plugin enable/disable and per-plugin config",
