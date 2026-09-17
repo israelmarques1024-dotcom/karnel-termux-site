@@ -70,8 +70,17 @@ Created by **Israel Marques**.
 | Karnel Utils    | `/karnel/utils`    | Utility scripts                                               |
 | Karnel Cleanup  | `/karnel/cleanup`  | Cache, log, and temporary-file cleanup                        |
 | Karnel Backup   | `/karnel/backup`   | Archive and restore scope, including limitations              |
-| Karnel Plugin   | `/karnel/plugin`   | Plugin manager and plugin-development guide                   |
+| Karnel Plugin   | `/karnel/plugin`   | Plugin manager (enable/disable/config) and development guide  |
 | Karnel Security | `/karnel/security` | Security tools                                                |
+| IA (AI Manager) | `/karnel/ia`       | AI agent sessions, install tools, show launchers              |
+| Search          | `/karnel/search`   | Unified search across tools and Brain memories                |
+| Status          | `/karnel/status`   | System health dashboard (disk, RAM, services)                 |
+| Update          | `/karnel/update`   | Update modules or the framework                               |
+| Upgrade         | `/karnel/upgrade`  | Full framework upgrade with cleanup                           |
+| List            | `/karnel/list`     | List tools by category with install status                    |
+| Start           | `/karnel/start`    | Start services (code-server, Robin)                           |
+| Supabase CLI    | `/karnel/supabase-cmd` | Supabase CLI wrapper with Termux safety checks            |
+| Changelog       | `/karnel/changelog` | Release history and version notes                           |
 | Terms           | `/terms`           | Terms of service                                              |
 | Not Found       | `/404`             | Explicit not-found page                                       |
 

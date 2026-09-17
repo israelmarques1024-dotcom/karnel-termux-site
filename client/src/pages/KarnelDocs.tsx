@@ -87,7 +87,7 @@ const modules = [
   },
   {
     name: "Plugin Manager",
-    desc: "Built-in manager for approved and explicitly unsafe GitHub plugins",
+    desc: "Enable/disable plugins, per-plugin config, approved and unsafe GitHub plugins",
     cmd: "karnel plugin search",
   },
   {
@@ -124,6 +124,9 @@ const commands = [
   { cmd: "karnel init", desc: "Initialize projects with templates" },
   { cmd: "karnel list", desc: "List available tools in modules" },
   { cmd: "karnel open", desc: "Open or print a documentation URL" },
+  { cmd: "karnel search <query>", desc: "Search tools and Brain memories" },
+  { cmd: "karnel start", desc: "Start services (editor, Robin)" },
+  { cmd: "karnel status", desc: "System health dashboard" },
   { cmd: "karnel pg", desc: "PostgreSQL database manager" },
   { cmd: "karnel plugin", desc: "Manage plugins" },
   { cmd: "karnel reinstall", desc: "Uninstall and reinstall modules" },
@@ -133,10 +136,7 @@ const commands = [
     cmd: "karnel robin",
     desc: "Manage Robin OSINT, Tor, configuration, and local UI",
   },
-  { cmd: "karnel search <query>", desc: "Search tools and memories" },
   { cmd: "karnel show", desc: "Show documentation for any tool" },
-  { cmd: "karnel start", desc: "Start services (editor, etc.)" },
-  { cmd: "karnel status", desc: "Show a quick system overview" },
   { cmd: "karnel supabase", desc: "Manage Supabase CLI workflows" },
   { cmd: "karnel uninstall", desc: "Remove installed modules" },
   { cmd: "karnel update", desc: "Update modules or the framework" },
@@ -178,10 +178,10 @@ export default function KarnelDocs() {
             <h3 className="font-bold font-mono mb-4">Quick Install</h3>
             <div className="space-y-3">
               <CodeBlock
-                code={`curl -fLO https://github.com/israelmarques1024-dotcom/karnel-termux/releases/download/v4.17.36/karnel-termux-install.sh
-curl -fLO https://github.com/israelmarques1024-dotcom/karnel-termux/releases/download/v4.17.36/karnel-termux-install.sh.sha256
+                code={`curl -fLO https://github.com/israelmarques1024-dotcom/karnel-termux/releases/download/v4.17.40/karnel-termux-install.sh
+curl -fLO https://github.com/israelmarques1024-dotcom/karnel-termux/releases/download/v4.17.40/karnel-termux-install.sh.sha256
 sha256sum -c karnel-termux-install.sh.sha256
-bash karnel-termux-install.sh --ref v4.17.36 --commit 6ce9fe8b0567a2129eac070d4c168dd5ea79450f`}
+bash karnel-termux-install.sh --ref v4.17.40`}
                 language="bash"
                 title="quick install"
               />
