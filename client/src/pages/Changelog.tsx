@@ -3,6 +3,15 @@ import CodeBlock from "@/components/CodeBlock";
 
 const releases = [
   {
+    version: "4.17.41",
+    date: "2026-09-16",
+    title: "Fix missing log directory in refactored modules",
+    changes: [
+      "Restore mkdir -p for LOG_FILE in deploy, games, network, and utils modules",
+      "Install/reinstall no longer fails when cache directory does not exist",
+    ],
+  },
+  {
     version: "4.17.40",
     date: "2026-09-16",
     title: "Refactoring and DRY consolidation",
