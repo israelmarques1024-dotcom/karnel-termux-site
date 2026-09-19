@@ -3,6 +3,16 @@ import CodeBlock from "@/components/CodeBlock";
 
 const releases = [
   {
+    version: "4.17.43",
+    date: "2026-09-19",
+    title: "New stats command + dead code cleanup",
+    changes: [
+      "Add karnel stats — system overview with versions, modules, disk usage, tool counts",
+      "Remove dead code: install_ui wrapper, show_all in ia_sessions",
+      "333 scripts checked, 0 failures",
+    ],
+  },
+  {
     version: "4.17.42",
     date: "2026-09-19",
     title: "Critical bug fixes from codebase audit",
