@@ -3,6 +3,19 @@ import CodeBlock from "@/components/CodeBlock";
 
 const releases = [
   {
+    version: "4.17.42",
+    date: "2026-09-19",
+    title: "Critical bug fixes from codebase audit",
+    changes: [
+      "Fix $module vs $target in reinstall.sh (security/deploy full reinstall was broken)",
+      "Route games through module layer for consistent UX and error handling",
+      "Add user feedback to security module (separator/box/log for all lifecycle ops)",
+      "Fix hardcoded paths in ia.sh to respect KARNEL_DATA env var",
+      "Change default LOG_FILE from install_ai.log to install.log",
+      "Capture cleanup exit code in upgrade command",
+    ],
+  },
+  {
     version: "4.17.41",
     date: "2026-09-16",
     title: "Fix missing log directory in refactored modules",
