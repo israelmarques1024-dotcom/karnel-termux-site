@@ -43,6 +43,7 @@ const KarnelSecurity = lazy(() => import("@/pages/KarnelSecurity"));
 const KarnelIa = lazy(() => import("@/pages/KarnelIa"));
 const KarnelSearch = lazy(() => import("@/pages/KarnelSearch"));
 const KarnelStatus = lazy(() => import("@/pages/KarnelStatus"));
+const KarnelStats = lazy(() => import("@/pages/KarnelStats"));
 const KarnelUpdate = lazy(() => import("@/pages/KarnelUpdate"));
 const KarnelUpgrade = lazy(() => import("@/pages/KarnelUpgrade"));
 const KarnelList = lazy(() => import("@/pages/KarnelList"));
@@ -86,6 +87,7 @@ const APP_ROUTES = [
   { path: ROUTES.ia, component: KarnelIa },
   { path: ROUTES.search, component: KarnelSearch },
   { path: ROUTES.status, component: KarnelStatus },
+  { path: ROUTES.stats, component: KarnelStats },
   { path: ROUTES.update, component: KarnelUpdate },
   { path: ROUTES.upgrade, component: KarnelUpgrade },
   { path: ROUTES.list, component: KarnelList },

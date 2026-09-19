@@ -75,6 +75,7 @@ Created by **Israel Marques**.
 | IA (AI Manager) | `/karnel/ia`       | AI agent sessions, install tools, show launchers              |
 | Search          | `/karnel/search`   | Unified search across tools and Brain memories                |
 | Status          | `/karnel/status`   | System health dashboard (disk, RAM, services)                 |
+| Stats           | `/karnel/stats`    | System overview: versions, modules, disk, tool counts        |
 | Update          | `/karnel/update`   | Update modules or the framework                               |
 | Upgrade         | `/karnel/upgrade`  | Full framework upgrade with cleanup                           |
 | List            | `/karnel/list`     | List tools by category with install status                    |
